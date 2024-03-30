@@ -1,0 +1,673 @@
+---
+title: "Untitled"
+author: "Rudolf Cesaretti"
+date: "2024-02-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r}
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+
+wd$analysis <- paste0(wd$dir,"analysis/")
+wd$data_r <- paste0(wd$dir,"data-raw/")
+wd$data_p <- paste0(wd$dir,"data-processed/")
+wd$data_f <- paste0(wd$dir,"data-final-outputs/")
+wd$figs <- paste0(wd$dir,"figures/")
+wd$funcs <- paste0(wd$dir,"functions/")
+
+packages <- c("rgdal", "rgeos", "sp", "sf", "GISTools", "raster","stars", "spatstat",
+              "tidyverse", "tidyr", "nls.multstart", "nlme", "brms", "broom", 
+              "ggrepel", "minpack.lm", "data.table", "zoo", "lmtest", "sandwich", 
+              "nlstools", "MASS", "NSM3", "gridExtra", "ggnewscale", "cowplot", 
+              "scales", "viridis", "Cairo", "SpatialAcc","geodist", "REAT", "boot",
+              "fitdistrplus", "actuar")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# load packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+rm(packages,installed_packages)
+
+
+
+```
+
+
+## Large
+
+
+```{r}
+PolyL <- st_read(paste0(wd$data_r,"BOMMercedesPolygons_Large2.gpkg"))
+
+
+
+PolyL$PolyArea_ha <- as.numeric(st_area(PolyL))/10000
+
+
+Data = read.csv(paste0(wd$data_r,"MercedesDataTrial.csv"))
+Encoding(Data$Solicitor) <- "UTF-8"
+Data$Year <- as.numeric(Data$Year)
+DataCrop = Data %>% filter(Year <=1620)
+
+Data2 = DataCrop %>% filter(Remove == F) %>% group_by(Zone_Large2) %>%
+  summarize(NumMercedes = n(),
+            MercedArea_ha = sum(TotalArea_ha, na.rm=T),
+            AG_ha = sum(AGArea_ha, na.rm=T),
+            Livestock_ha = sum(Livestock_ha, na.rm=T),
+            Sheep_ha = sum((AhijaderoCorral_ha+EGMenor_ha), na.rm=T),
+            Cattle_ha = sum(EGMayor_ha, na.rm=T),
+            Cabs = sum(Cab, na.rm=T),
+            EstSheep = sum(EGMenor, na.rm=T),
+            CorralSheep = sum(AhijaderoCorral, na.rm=T),
+            EstCattle = sum(EGMayor, na.rm=T),
+            Water = sum(Water, na.rm=T),
+            Mills = sum(MolinoBatan, na.rm=T),
+            Mines = sum(Mines, na.rm=T),
+            Ventas = sum(VentaMeson, na.rm=T),
+            Year_Min = min(Year, na.rm=T),
+            Year_Q1 = quantile(Year, 0.25, na.rm=T, names=F),
+            Year_Mean = mean(Year, na.rm=T),
+            Year_Med = median(Year, na.rm=T),
+            Year_Q3 = quantile(Year, 0.75, na.rm=T, names=F),
+            Year_Max = max(Year, na.rm=T),
+            Year_sd = sd(Year, na.rm=T)) %>% 
+  rename(Name = Zone_Large2)
+
+
+MercedPolyData_L = PolyL %>% left_join(Data2, by = "Name") %>% mutate(
+  PctArea = MercedArea_ha / PolyArea_ha,
+  PctArea_LS = Livestock_ha / PolyArea_ha,
+  PctArea_SpAG = AG_ha / PolyArea_ha,
+  PctMArea_LS = Livestock_ha / MercedArea_ha,
+  PctMArea_AG = AG_ha / MercedArea_ha)
+
+st_write(MercedPolyData_L, paste0(wd$data_r, "MercedPolyData_L.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+```
+
+
+# Juris
+
+```{r}
+
+PolyJ <- st_read(paste0(wd$data_r,"BOMMercedesPolygons_Juris2.gpkg"))
+
+PolyJ$PolyArea_ha <- as.numeric(st_area(PolyJ))/10000
+
+
+
+Data = read.csv(paste0(wd$data_r,"MercedesDataTrial.csv"))
+Encoding(Data$Solicitor) <- "UTF-8"
+Data$Year <- as.numeric(Data$Year)
+DataCrop = Data %>% filter(Year <=1620)
+
+Data2 = DataCrop %>% filter(Remove == F) %>% group_by(Juris1580) %>%
+  summarize(NumMercedes = n(),
+            MercedArea_ha = sum(TotalArea_ha, na.rm=T),
+            AG_ha = sum(AGArea_ha, na.rm=T),
+            Livestock_ha = sum(Livestock_ha, na.rm=T),
+            Sheep_ha = sum((AhijaderoCorral_ha+EGMenor_ha), na.rm=T),
+            Cattle_ha = sum(EGMayor_ha, na.rm=T),
+            Cabs = sum(Cab, na.rm=T),
+            EstSheep = sum(EGMenor, na.rm=T),
+            CorralSheep = sum(AhijaderoCorral, na.rm=T),
+            EstCattle = sum(EGMayor, na.rm=T),
+            Water = sum(Water, na.rm=T),
+            Mills = sum(MolinoBatan, na.rm=T),
+            Mines = sum(Mines, na.rm=T),
+            Ventas = sum(VentaMeson, na.rm=T),
+            Year_Min = min(Year, na.rm=T),
+            Year_Q1 = quantile(Year, 0.25, na.rm=T, names=F),
+            Year_Mean = mean(Year, na.rm=T),
+            Year_Med = median(Year, na.rm=T),
+            Year_Q3 = quantile(Year, 0.75, na.rm=T, names=F),
+            Year_Max = max(Year, na.rm=T),
+            Year_sd = sd(Year, na.rm=T)) %>% 
+  rename(Name = Juris1580)
+
+
+MercedPolyData_J = PolyJ %>% left_join(Data2, by = "Name") %>% mutate(
+  PctArea = MercedArea_ha / PolyArea_ha,
+  PctArea_LS = Livestock_ha / PolyArea_ha,
+  PctArea_SpAG = AG_ha / PolyArea_ha,
+  PctMArea_LS = Livestock_ha / MercedArea_ha,
+  PctMArea_AG = AG_ha / MercedArea_ha)
+
+st_write(MercedPolyData_J, paste0(wd$data_r, "MercedPolyData_J.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+
+
+```
+
+
+Est_Unsp_ha
+AhijaderoCorral_ha
+EGMayor_ha
+EGMenor_ha
+
+
+            
+```{r}
+
+Data = read.csv(paste0(wd$data_r,"MercedesDataTrial.csv"))
+Encoding(Data$Solicitor) <- "UTF-8"
+Data$Year <- as.numeric(Data$Year)
+DataCrop = Data %>% filter(Year <=1629)
+
+
+
+DataCrop = DataCrop %>% mutate(
+  Decade = case_when(
+    Year >= 1520 & Year <= 1529 ~ 1525,
+    Year >= 1530 & Year <= 1539 ~ 1535,
+    Year >= 1540 & Year <= 1549 ~ 1545,
+    Year >= 1550 & Year <= 1559 ~ 1555,
+    Year >= 1560 & Year <= 1569 ~ 1565,
+    Year >= 1570 & Year <= 1579 ~ 1575,
+    Year >= 1580 & Year <= 1589 ~ 1585,
+    Year >= 1590 & Year <= 1599 ~ 1595,
+    Year >= 1600 & Year <= 1609 ~ 1605,
+    Year >= 1610 & Year <= 1619 ~ 1615,
+    Year >= 1620 & Year <= 1629 ~ 1625
+  )
+) 
+
+x = DataCrop %>% group_by(Decade) %>% 
+  summarize(abs_change_Total = sum(TotalArea_ha, na.rm = T),
+            abs_change_LS = sum(Livestock_ha, na.rm = T),
+            abs_change_AG = sum(AGArea_ha, na.rm = T)) %>% ungroup()
+
+
+x = x %>% mutate(
+  Traj_Total = cumsum(abs_change_Total),
+  Traj_LS = cumsum(abs_change_LS),
+  Traj_AG = cumsum(abs_change_AG),
+  rel_change_Total = (abs_change_Total / lag(Traj_Total, default = first(Traj_Total)))*100,
+  rel_change_LS = (abs_change_LS / lag(Traj_LS, default = first(Traj_LS)))*100,
+  rel_change_AG = (abs_change_AG / lag(Traj_AG, default = first(Traj_AG)))*100)
+
+BOMArea = st_drop_geometry(PolyJ) %>% rename(JurisArea_ha = PolyArea_ha, Juris1580 = Name) %>% summarize(JurisArea_ha = sum(JurisArea_ha, na.rm=T)) %>% pull(JurisArea_ha)
+
+x$BOMArea_ha = BOMArea
+
+x = x %>% rowwise() %>% mutate(DensTraj_Total = (Traj_Total / BOMArea_ha) * 100,
+                               DensTraj_LS = (Traj_LS / BOMArea_ha)*100,
+                               DensTraj_AG = (Traj_AG / BOMArea_ha)*100) %>% ungroup()
+
+x <- x %>%
+  mutate(
+    abs_change_Dens_Total = DensTraj_Total - lag(DensTraj_Total, default = first(DensTraj_Total)),
+    abs_change_Dens_LS = DensTraj_LS - lag(DensTraj_LS, default = first(DensTraj_LS)),
+    abs_change_Dens_AG = DensTraj_AG - lag(DensTraj_AG, default = first(DensTraj_AG)),
+    rel_change_Dens_Total = (abs_change_Dens_Total / lag(DensTraj_Total, default = first(DensTraj_Total)))*100,
+    rel_change_Dens_LS = (abs_change_Dens_LS / lag(DensTraj_LS, default = first(DensTraj_LS)))*100,
+    rel_change_Dens_AG = (abs_change_Dens_AG / lag(DensTraj_AG, default = first(DensTraj_AG)))*100)
+
+x2 = x %>% select(Decade, DensTraj_Total, DensTraj_LS, DensTraj_AG) %>% rename(Total = DensTraj_Total, Livestock = DensTraj_LS, AG = DensTraj_AG) %>% pivot_longer(cols = Total:AG, names_to = "LandUseType", values_to = "PctTotalLandArea")
+
+ggplot(x2, aes(x = Decade, y = PctTotalLandArea, color=LandUseType)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "",
+       x = "Decade", y = "Merced Area % of Total Area") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+x3 = x %>% select(Decade, rel_change_Dens_Total, rel_change_Dens_LS, rel_change_Dens_AG) %>% rename(Total = rel_change_Dens_Total, Livestock = rel_change_Dens_LS, AG = rel_change_Dens_AG) %>% pivot_longer(cols = Total:AG, names_to = "LandUseType", values_to = "rel_change_PctTotalLandArea")
+
+ggplot(x3, aes(x = Decade, y = rel_change_PctTotalLandArea, color=LandUseType)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "",
+       x = "Decade", y = "Rel Change Merced Area % of Total Area") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+
+ggplot(x, aes(x = Decade, y = DensTraj_LS)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "",
+       x = "Year", y = "Merced Area % of Total Area") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+
+         time_diff = Year - lag(Year, default = first(Year)),
+         abs_change_pa = abs_change / time_diff,
+         rel_change_pa = rel_change / time_diff,
+         max_pop = max(Pop),
+         #min_pop = min(population),
+         min_pop = 0) %>% 
+  ungroup() %>%
+  rowwise() %>% 
+  mutate(population_normalized = (Pop - min_pop) / (max_pop - min_pop)) %>%
+  ungroup()
+
+  
+  )
+
+  
+x = DataCrop %>% group_by(Juris1580) %>% 
+  summarize(A1520 = sum(TotalArea_ha[Decade < 1530], na.rm = T),
+            A1530 = sum(TotalArea_ha[Decade < 1540], na.rm = T),
+            A1540 = sum(TotalArea_ha[Decade < 1550], na.rm = T),
+            A1550 = sum(TotalArea_ha[Decade < 1560], na.rm = T),
+            A1560 = sum(TotalArea_ha[Decade < 1570], na.rm = T),
+            A1570 = sum(TotalArea_ha[Decade < 1580], na.rm = T),
+            A1580 = sum(TotalArea_ha[Decade < 1590], na.rm = T),
+            A1590 = sum(TotalArea_ha[Decade < 1600], na.rm = T),
+            A1600 = sum(TotalArea_ha[Decade < 1610], na.rm = T),
+            A1610 = sum(TotalArea_ha[Decade < 1620], na.rm = T),
+            A1620 = sum(TotalArea_ha[Decade < 1630], na.rm = T))
+
+
+DataAG = Data %>% filter(AGArea_ha > 0)
+
+DataLS = Data %>% filter(Livestock_ha > 0)
+
+DataLS_J = DataLS %>% group_by(Juris1580) %>%
+  summarize(NumMercedes = n(),
+            MercedArea_ha = sum(TotalArea_ha, na.rm=T),
+            Livestock_ha = sum(Livestock_ha, na.rm=T),
+            Year_Min = min(Year, na.rm=T),
+            Year_Q1 = quantile(Year, 0.25, na.rm=T, names=F),
+            Year_Mean = mean(Year, na.rm=T),
+            Year_Med = median(Year, na.rm=T),
+            Year_Q3 = quantile(Year, 0.75, na.rm=T, names=F),
+            Year_Max = max(Year, na.rm=T),
+            Year_sd = sd(Year, na.rm=T)) %>% 
+  rename(Name = Juris1580)
+
+
+
+
+```
+
+
+            
+```{r}
+
+Data = read.csv(paste0(wd$data_r,"MercedesDataTrial.csv"))
+Encoding(Data$Solicitor) <- "UTF-8"
+Data$Year <- as.numeric(Data$Year)
+DataCrop = Data %>% filter(Year <=1629)
+
+
+
+DataCrop = DataCrop %>% mutate(
+  Decade = case_when(
+    Year >= 1520 & Year <= 1529 ~ 1525,
+    Year >= 1530 & Year <= 1539 ~ 1535,
+    Year >= 1540 & Year <= 1549 ~ 1545,
+    Year >= 1550 & Year <= 1559 ~ 1555,
+    Year >= 1560 & Year <= 1569 ~ 1565,
+    Year >= 1570 & Year <= 1579 ~ 1575,
+    Year >= 1580 & Year <= 1589 ~ 1585,
+    Year >= 1590 & Year <= 1599 ~ 1595,
+    Year >= 1600 & Year <= 1609 ~ 1605,
+    Year >= 1610 & Year <= 1619 ~ 1615,
+    Year >= 1620 & Year <= 1629 ~ 1625
+  )
+) 
+
+x = DataCrop %>% group_by(Juris1580, Decade) %>% 
+  summarize(abs_change_Total = sum(TotalArea_ha, na.rm = T),
+            abs_change_LS = sum(Livestock_ha, na.rm = T),
+            abs_change_AG = sum(AGArea_ha, na.rm = T)) %>% ungroup()
+
+x <- x %>% #
+  complete(Juris1580, Decade = full_seq(Decade, 10))
+x[is.na(x)] <- 0
+x = x %>% group_by(Juris1580) %>% mutate(
+  Traj_Total = cumsum(abs_change_Total),
+  Traj_LS = cumsum(abs_change_LS),
+  Traj_AG = cumsum(abs_change_AG),
+  rel_change_Total = (abs_change_Total / lag(Traj_Total, default = first(Traj_Total)))*100,
+  rel_change_LS = (abs_change_LS / lag(Traj_LS, default = first(Traj_LS)))*100,
+  rel_change_AG = (abs_change_AG / lag(Traj_AG, default = first(Traj_AG)))*100)
+
+JurisArea = st_drop_geometry(PolyJ) %>% rename(JurisArea_ha = PolyArea_ha, Juris1580 = Name)
+
+x = x %>% left_join(JurisArea, by = "Juris1580")
+
+x = x %>% rowwise() %>% mutate(DensTraj_Total = Traj_Total / JurisArea_ha,
+                               DensTraj_LS = Traj_LS / JurisArea_ha,
+                               DensTraj_AG = Traj_AG / JurisArea_ha) %>% ungroup()
+
+ggplot(x, aes(x = Decade, y = DensTraj_LS, color = Juris1580)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "",
+       x = "Year", y = "Merced Area % of Total Area") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+
+         time_diff = Year - lag(Year, default = first(Year)),
+         abs_change_pa = abs_change / time_diff,
+         rel_change_pa = rel_change / time_diff,
+         max_pop = max(Pop),
+         #min_pop = min(population),
+         min_pop = 0) %>% 
+  ungroup() %>%
+  rowwise() %>% 
+  mutate(population_normalized = (Pop - min_pop) / (max_pop - min_pop)) %>%
+  ungroup()
+
+  
+  )
+
+  
+x = DataCrop %>% group_by(Juris1580) %>% 
+  summarize(A1520 = sum(TotalArea_ha[Decade < 1530], na.rm = T),
+            A1530 = sum(TotalArea_ha[Decade < 1540], na.rm = T),
+            A1540 = sum(TotalArea_ha[Decade < 1550], na.rm = T),
+            A1550 = sum(TotalArea_ha[Decade < 1560], na.rm = T),
+            A1560 = sum(TotalArea_ha[Decade < 1570], na.rm = T),
+            A1570 = sum(TotalArea_ha[Decade < 1580], na.rm = T),
+            A1580 = sum(TotalArea_ha[Decade < 1590], na.rm = T),
+            A1590 = sum(TotalArea_ha[Decade < 1600], na.rm = T),
+            A1600 = sum(TotalArea_ha[Decade < 1610], na.rm = T),
+            A1610 = sum(TotalArea_ha[Decade < 1620], na.rm = T),
+            A1620 = sum(TotalArea_ha[Decade < 1630], na.rm = T))
+
+
+DataAG = Data %>% filter(AGArea_ha > 0)
+
+DataLS = Data %>% filter(Livestock_ha > 0)
+
+DataLS_J = DataLS %>% group_by(Juris1580) %>%
+  summarize(NumMercedes = n(),
+            MercedArea_ha = sum(TotalArea_ha, na.rm=T),
+            Livestock_ha = sum(Livestock_ha, na.rm=T),
+            Year_Min = min(Year, na.rm=T),
+            Year_Q1 = quantile(Year, 0.25, na.rm=T, names=F),
+            Year_Mean = mean(Year, na.rm=T),
+            Year_Med = median(Year, na.rm=T),
+            Year_Q3 = quantile(Year, 0.75, na.rm=T, names=F),
+            Year_Max = max(Year, na.rm=T),
+            Year_sd = sd(Year, na.rm=T)) %>% 
+  rename(Name = Juris1580)
+
+
+
+
+```
+
+
+```{r}
+
+DataAG %>% mutate()
+
+
+
+
+
+```
+
+
+
+
+```{r}
+# Sample data (replace this with your actual dataframe)
+#set.seed(123)
+df <- tibble(
+  city = rep(c("City A", "City B", "City C"), each = 5),
+  year = rep(2010:2014, times = 3),
+  population = round(runif(15, min = 10000, max = 50000))
+)
+
+# Function to calculate absolute and relative changes
+calculate_changes <- function(x) {
+  abs_change <- c(NA, diff(x))
+  rel_change <- c(NA, diff(x) / lag(x))
+  tibble(abs_change = abs_change, rel_change = rel_change)
+}
+
+# Calculate changes
+df_changes <- df %>%
+  group_by(city) %>%
+  mutate(across(population, calculate_changes))
+
+# Summary table for rates of change
+summary_table <- df_changes %>%
+  group_by(city) %>%
+  summarise(avg_abs_change = mean(abs_change, na.rm = TRUE),
+            avg_rel_change = mean(rel_change, na.rm = TRUE))
+
+# Plot trajectories and rates of change
+ggplot(df_changes, aes(x = year, y = population, color = city)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Population Trajectories and Rates of Change",
+       x = "Year", y = "Population") +
+  theme_minimal() +
+  facet_wrap(~city, scales = "free_y") +
+  geom_text(aes(label = paste("Abs. Change:", round(abs_change, 2), "\n",
+                              "Rel. Change:", round(rel_change, 2))),
+            hjust = -0.1, vjust = 0.5, size = 3, check_overlap = TRUE,
+            data = subset(df_changes, year == max(year))) +
+  theme(legend.position = "bottom") +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.title = element_blank())
+
+# Print summary table
+print(summary_table)
+```
+
+
+
+
+
+
+
+```{r}
+df = read.csv(paste0(wd$data_r,"WhitmoreSims.csv"))
+df = df %>% filter(!(Series %in% c("ModTraj")))
+
+# Calculate absolute and relative changes
+df <- df %>%
+  arrange(Series, Year) %>%
+  group_by(Series) %>%
+  mutate(abs_change = Pop - lag(Pop, default = first(Pop)),
+         rel_change = (abs_change / lag(Pop, default = first(Pop)))*100,
+         time_diff = Year - lag(Year, default = first(Year)),
+         abs_change_pa = abs_change / time_diff,
+         rel_change_pa = rel_change / time_diff,
+         max_pop = max(Pop),
+         #min_pop = min(population),
+         min_pop = 0) %>% 
+  ungroup() %>%
+  rowwise() %>% 
+  mutate(population_normalized = (Pop - min_pop) / (max_pop - min_pop)) %>%
+  ungroup()
+
+# (1) Create a table with relative changes between dates for each city
+relative_changes_table <- df %>%
+  pivot_wider(names_from = Year, values_from = rel_change)
+
+# Print relative changes table
+print(relative_changes_table)
+
+
+  
+                                       
+
+
+# Plot overlayed population trajectory graphs
+ggplot(df, aes(x = Year, y = population_normalized, color = Series)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Population Trajectories (Normalized)",
+       x = "Year", y = "Normalized Population") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+
+ggplot(df, aes(x = Year, y = rel_change, color = Series)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Relative Rate of Change",
+       x = "Year", y = "Relative Change") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+
+ggplot(df, aes(x = Year, y = rel_change_pa, color = Series)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Relative Rate of Change",
+       x = "Year", y = "Relative Change") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+```
+
+
+```{r}
+
+# Sample data (replace this with your actual dataframe)
+#set.seed(123)
+df <- tibble(
+  city = rep(c("City A", "City B", "City C"), each = 5),
+  year = rep(2010:2014, times = 3),
+  population = round(runif(15, min = 10000, max = 50000))
+)
+
+# Calculate absolute and relative changes
+df <- df %>%
+  arrange(city, year) %>%
+  group_by(city) %>%
+  mutate(abs_change = population - lag(population, default = first(population)),
+         rel_change = abs_change / lag(population, default = first(population)))
+
+# (1) Create a table with relative changes between dates for each city
+relative_changes_table <- df %>%
+  pivot_wider(names_from = year, values_from = rel_change)
+
+# Print relative changes table
+print(relative_changes_table)
+
+# (2) Overlay the population trajectory graphs for each city, standardizing the population
+# so that 0 corresponds to the minimum population and 1 corresponds to the maximum population
+df <- df %>% group_by(city) %>% mutate(max_pop = max(population),
+                                       #min_pop = min(population),
+                                       min_pop = 0) %>% 
+  ungroup() %>%
+  rowwise() %>% 
+  mutate(population_normalized = (population - min_pop) / (max_pop - min_pop)) %>%
+  ungroup()
+                                       
+
+
+# Plot overlayed population trajectory graphs
+ggplot(df_normalized, aes(x = year, y = population_normalized, color = city)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Population Trajectories (Normalized)",
+       x = "Year", y = "Normalized Population") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+# (3) Create similar graphs for the relative rate of change
+ggplot(df, aes(x = year, y = rel_change, color = city)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Relative Rate of Change",
+       x = "Year", y = "Relative Change") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

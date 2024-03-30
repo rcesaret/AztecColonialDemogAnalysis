@@ -1,0 +1,2655 @@
+---
+title: "Historical Demography"
+author: "Rudolf Cesaretti"
+date: "2024-02-27"
+output: html_document
+---
+
+```{r, setup, include=FALSE,echo=FALSE, message=FALSE,warning=FALSE}
+require(knitr)
+# Set so that long lines in R will be wrapped:
+opts_chunk$set(tidy.opts=list(width.cutoff=75),tidy=TRUE)
+#
+rm(list = ls())
+```
+
+## Setup
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r}
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+
+wd$analysis <- paste0(wd$dir,"analysis/")
+wd$data_r <- paste0(wd$dir,"data-raw/")
+wd$data_p <- paste0(wd$dir,"data-processed/")
+wd$data_f <- paste0(wd$dir,"data-final-outputs/")
+wd$figs <- paste0(wd$dir,"figures/")
+wd$funcs <- paste0(wd$dir,"functions/")
+
+packages <- c("ggstatsplot", "rgdal", "rgeos", "sp", "sf", "spdep", "GISTools", 
+              "raster","stars", "spatstat",
+              "tidyverse", "tidyr", "nls.multstart", "nlme", "brms", "broom", 
+              "ggrepel", "minpack.lm", "data.table", "zoo", "lmtest", "sandwich", 
+              "nlstools", "MASS", "NSM3", "gridExtra", "ggnewscale", "cowplot", 
+              "scales", "viridis", "Cairo", "SpatialAcc","geodist", "REAT", "boot",
+              "fitdistrplus", "actuar", "DemoTools", "NSM3", "km.ci", "MASS", "DemoTools",
+              "easystats")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# load packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+rm(packages,installed_packages)
+
+
+
+```
+
+
+
+
+# Whitmore
+
+
+### Simulation Trajectories
+
+##### Population
+
+```{r}
+WS = read.csv(paste0(wd$data_r,"WhitmoreSimulationTrajectories.csv"))
+
+new_years <- c(1515.0, 1518.5, 1521.5, 1535.0, 1540.0, 1547.0, 1548.0, 1565.0, 1568.0, 1569.0, 1570.0, 1580.0, 1595.0, 1597.0, 1600.0, 1607.0, 1610.0, 1620.0, 1623.0, 1625.0)
+
+new_years2 <- seq(1515.0,1625.0,by=0.1)
+
+
+interpolated_data <- WS %>%
+  group_by(Series) %>%
+  do({
+    data = approx(x = .$Year, y = .$Population, xout = new_years)
+    data.frame(Year = data$x, Population = data$y, Series = unique(.$Series))
+  }) %>%
+  ungroup() %>% filter(Population > 0)
+
+WS_Pop_Traj <- WS %>%
+  group_by(Series) %>%
+  do({
+    data = approx(x = .$Year, y = .$Population, xout = new_years2)
+    data.frame(Year = data$x, Population = data$y, Series = unique(.$Series))
+  }) %>%
+  ungroup() %>% filter(Population > 0)
+
+WS = bind_rows(WS, interpolated_data)
+
+WS = WS %>% group_by(Series) %>% arrange(Year, .by_group = TRUE) %>% ungroup()
+
+group.colors <- c("Mild Simulation" ="forestgreen", "Moderate Simulation" = "tan1", "Severe Simulation" = "firebrick")
+
+epidemic_periods <- data.frame(
+  start = c(1519.0, 1530.0, 1538.0, 1545.0, 1550.0, 1558.0, 1559.0, 1563.0, 1566.0, 1576.0, 1587.0, 1590.0, 1592.0, 1595.0, 1601.0, 1604.0, 1613.0, 1615.0),
+  end = c(1522.0, 1533.0, 1539.0, 1549.0, 1551.0, 1559.0, 1560.0, 1565.0, 1567.0, 1582.0, 1589.0, 1591.0, 1594.0, 1598.0, 1603.0, 1608.0, 1614.0, 1617.0)
+)
+
+WhitmorePopTrajPlot = ggplot() +
+  geom_rect(data = epidemic_periods, aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf
+                                         #, fill = "Epidemic Periods"
+                                         ), fill = "red", alpha = 0.2) +
+  geom_line(data = WS, aes(x = Year, y = Population, color = Series), linewidth=1.1) +
+  #geom_point(data = interpolated_data, aes(x = Year, y = Population, color = Series), size= 2) +
+  labs(title = "",
+       x = "Years AD", y = "Population") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1510,1625), breaks = seq(1510, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(labels = comma, breaks = seq(0, 2500000, by = 500000)) +
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.7,.75)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+ggsave("WhitmorePopTrajPlot.png", plot = WhitmorePopTrajPlot, device = "png", path = wd$figs, scale = 1, width = 6.5, height = 4.0,   units = "in",  dpi = 1500)
+```
+
+
+##### Trib and Fertility Ratio
+
+```{r}
+WTR = read.csv(paste0(wd$data_r,"WhitmoreTribRatioSimData.csv"))
+WFR = read.csv(paste0(wd$data_r,"WhitmoreFertilityRatio.csv"))
+
+WS_TribRatio_Traj <- WTR %>%
+  group_by(Series) %>%
+  do({
+    data = approx(x = .$Year, y = .$TribRatio, xout = new_years2)
+    data.frame(Year = data$x, TribRatio = data$y, Series = unique(.$Series))
+  }) %>%
+  ungroup() %>% filter(TribRatio > 0)
+
+WS_FertbRatio_Traj <- WFR %>%
+  group_by(Series) %>%
+  do({
+    data = approx(x = .$Year, y = .$FertilityRatio, xout = new_years2)
+    data.frame(Year = data$x, FertilityRatio = data$y, Series = unique(.$Series))
+  }) %>%
+  ungroup() %>% filter(FertilityRatio > 0)
+
+WS_TribRatio_Traj <- WS_TribRatio_Traj %>% mutate(Series = case_when(
+  Series == "Mild" ~ "Mild Simulation",
+  Series == "Moderate" ~ "Moderate Simulation",
+  Series == "Severe" ~ "Severe Simulation"))
+
+WS_Traj = WS_Pop_Traj %>% left_join(WS_TribRatio_Traj, by = join_by(Year,Series)) %>%
+  left_join(WS_FertbRatio_Traj, by = join_by(Year,Series)) %>% 
+  mutate(PopTrib = 2 * Population / TribRatio,
+         PopNonTrib = Population - PopTrib,
+         PctPopTrib = PopTrib / Population,
+         PctPopNonTrib = PopNonTrib / Population,
+         DependencyRatio = PopNonTrib / PopTrib,
+         PopTrib45 = Population * FertilityRatio,
+         PopTrib50Est = (PopTrib45+PopTrib)/2,
+         TribRatio45 = Population / (PopTrib45/2),
+         
+         TribRatio50Est = Population / (PopTrib50Est/2)
+         ) %>%
+  filter(PopTrib > 0)
+
+ggplot() +
+  geom_rect(data = epidemic_periods, aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf
+                                         #, fill = "Epidemic Periods"
+                                         ), fill = "red", alpha = 0.2) +
+  geom_line(data = WS_Traj, aes(x = Year, y = TribRatio45, color = Series), linewidth=1.1) +
+  labs(title = "",#Percent of Total Population Aged 15-60
+       x = "Years AD", y = "Approx. Tributary Ratio (Ages 15-45)") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1515,1625), breaks = seq(1520, 1620, by = 10), expand = c(0,0)) +
+  #scale_y_continuous(breaks = seq(3.2, 3.9, by = 0.1)) +
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.7,.85)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+
+TribRatio50Est_Plot = ggplot() +
+  geom_rect(data = epidemic_periods, aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf
+                                         #, fill = "Epidemic Periods"
+                                         ), fill = "red", alpha = 0.2) +
+  geom_line(data = WS_Traj, aes(x = Year, y = TribRatio50Est, color = Series), linewidth=1.1) +
+  labs(title = "",#Percent of Total Population Aged 15-60
+       x = "Years AD", y = "Approx. Tributary Ratio (Ages 15-50)") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1515,1625), breaks = seq(1520, 1620, by = 10), expand = c(0,0)) +
+  #scale_y_continuous(breaks = seq(3.2, 3.9, by = 0.1)) +
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.7,.85)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+PctAge_15_60_Plot = ggplot() +
+  geom_rect(data = epidemic_periods, aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf
+                                         #, fill = "Epidemic Periods"
+                                         ), fill = "red", alpha = 0.2) +
+  geom_line(data = WS_Traj, aes(x = Year, y = PctPopTrib, color = Series), linewidth=1.1) +
+  labs(title = "",#Percent of Total Population Aged 15-60
+       x = "Years AD", y = "Percent of Population Aged 15-60") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1515,1625), breaks = seq(1520, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(labels = percent, breaks = seq(0.51, 0.64, by = 0.01)) +#
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.7,.85)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+PctAge_0_15_60up_Plot = ggplot() +
+  geom_rect(data = epidemic_periods, aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf
+                                         #, fill = "Epidemic Periods"
+                                         ), fill = "red", alpha = 0.2) +
+  geom_line(data = WS_Traj, aes(x = Year, y = PctPopNonTrib, color = Series), linewidth=1.1) +
+  labs(title = "",#Percent of Total Population Aged 0-15 and 60+
+       x = "Years AD", y = "Percent of Population Aged 0-15 and 60+") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1515,1625), breaks = seq(1520, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(labels = percent, breaks = seq(0.36, 0.49, by = 0.01)) +#
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.8,.15)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+DependRatioPlot = ggplot() +
+  geom_rect(data = epidemic_periods, aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf
+                                         #, fill = "Epidemic Periods"
+                                         ), fill = "red", alpha = 0.2) +
+  geom_line(data = WS_Traj, aes(x = Year, y = DependencyRatio, color = Series), linewidth=1.1) +
+  labs(title = "",
+       x = "Years AD", y = "Dependency Ratio") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1515,1625), breaks = seq(1520, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(breaks = seq(0.6, 0.95, by = 0.05)) +#labels = percent, 
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.8,.15)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+TribRatioPlot = ggplot() +
+  geom_rect(data = epidemic_periods, aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf
+                                         #, fill = "Epidemic Periods"
+                                         ), fill = "red", alpha = 0.2) +
+  geom_line(data = WS_Traj, aes(x = Year, y = TribRatio, color = Series), linewidth=1.1) +
+  labs(title = "",#Approximation of the Tributary Ratio (P/T)
+       x = "Years AD", y = "Approximation of Tributary Ratio") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1515,1625), breaks = seq(1520, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(breaks = seq(3.2, 3.9, by = 0.1)) +#labels = percent, 
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.8,.15)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+ggsave("WhitmoreTribRatio50EstPlot.png", plot = TribRatio50Est_Plot, device = "png", path = wd$figs, scale = 1, width = 6.5, height = 4.0,   units = "in",  dpi = 1500)
+
+ggsave("WhitmoreTribRatioPlot.png", plot = TribRatioPlot, device = "png", path = wd$figs, scale = 1, width = 6.5, height = 4.0,   units = "in",  dpi = 1500)
+
+ggsave("WhitmoreDependRatioPlot.png", plot = DependRatioPlot, device = "png", path = wd$figs, scale = 1, width = 6.5, height = 4.0,   units = "in",  dpi = 1500)
+
+ggsave("PctAge_0_15_60up_Plot.png", plot = PctAge_0_15_60up_Plot, device = "png", path = wd$figs, scale = 1, width = 6.5, height = 4.0,   units = "in",  dpi = 1500)
+
+ggsave("PctAge_15_60_Plot.png", plot = PctAge_15_60_Plot, device = "png", path = wd$figs, scale = 1, width = 6.5, height = 4.0,   units = "in",  dpi = 1500)
+
+WS_Traj %>% group_by(Series) %>% summarize(AvgTribRatio = mean(TribRatio), AvgPctPop_15_60 = mean(PctPopTrib), AvgPctPop_0_15_60up = mean(PctPopNonTrib), AvgDependRatio = mean(DependencyRatio), AvgTribRatio50Est = mean(TribRatio50Est))
+
+```
+
+
+650 400
+
+
+
+
+
+
+
+### Normalized Pop Traectories
+
+```{r}
+WSN <- WS %>%
+  arrange(Series, Year) %>%
+  group_by(Series) %>%
+  mutate(abs_change = Population - lag(Population, default = first(Population)),
+         rel_change = (abs_change / lag(Population, default = first(Population)))*100,
+         time_diff = Year - lag(Year, default = first(Year)),
+         abs_change_pa = abs_change / time_diff,
+         rel_change_pa = rel_change / time_diff,
+         #max_pop = max(Population),
+         max_pop = max(Population),
+         #min_pop = min(population),
+         min_pop = 0) %>% 
+  ungroup() %>% 
+  rowwise() %>% 
+  mutate(Pop_Pct_1519 = (Population - min_pop) / (max_pop - min_pop)) %>%
+  ungroup()
+
+WSN <- WSN %>%
+  group_by(Series) %>%
+  mutate(Population_1570 = Population[Year == 1570.0]) %>%
+  mutate(Pop_Pct_1570 = (Population / Population_1570)) %>%
+  select(-Population_1570) %>%
+  ungroup()
+
+ggplot() +
+  geom_line(data = WSN, aes(x = Year, y = Pop_Pct_1519, color = Series), linewidth=1.1) +
+  #geom_point() +
+  labs(title = "",
+       x = "Years AD", y = "Normalized Population (1519 = 100%)") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1510,1625), breaks = seq(1510, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(labels = percent, breaks = seq(0, 1, by = 0.2)) +#
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.7,.75)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black"))+
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+ggplot() +
+  geom_line(data = WSN, aes(x = Year, y = Pop_Pct_1570, color = Series), linewidth=1.1) +
+  #geom_point() +
+  labs(title = "",
+       x = "Years AD", y = "Normalized Population (1570 = 100%)") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1510,1625), breaks = seq(1510, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(labels = percent, breaks = seq(0,10, by = 1)) +#
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.7,.75)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black"))+
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+```
+
+```{r}
+PDT = read.csv(paste0(wd$dir,"PopDeclineTraj_TrialData.csv"))
+
+ggplot() +
+  geom_point(data = PDT, aes(x = Year, y = Pop_Pct_1570, color = Series), size=1.8) +
+  geom_line(data = PDT, aes(x = Year, y = Pop_Pct_1570, color = Series), linewidth=0.8) +
+  new_scale_color()+
+  geom_line(data = WSN, aes(x = Year, y = Pop_Pct_1570, color = Series), linewidth=1.1) +
+  labs(title = "",
+       x = "Years AD", y = "Normalized Population (1570 = 100%)") +
+  #theme_minimal() +
+  theme_bw() +
+  scale_x_continuous(limits = c(1520,1625), breaks = seq(1510, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(limits = c(0,5), labels = percent) +#, breaks = seq(0,10, by = 1)
+  #scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  theme(legend.position = c(.7,.75)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black"))+
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+```
+
+
+PopDeclineTraj_TrialData
+
+```{r}
+df = read.csv(paste0(wd$data_r,"WhitmoreSims.csv"))
+df = df %>% filter(!(Series %in% c("ModTraj")))
+
+# Calculate absolute and relative changes
+df <- df %>%
+  arrange(Series, Year) %>%
+  group_by(Series) %>%
+  mutate(abs_change = Pop - lag(Pop, default = first(Pop)),
+         rel_change = (abs_change / lag(Pop, default = first(Pop)))*100,
+         time_diff = Year - lag(Year, default = first(Year)),
+         abs_change_pa = abs_change / time_diff,
+         rel_change_pa = rel_change / time_diff,
+         max_pop = max(Pop),
+         #min_pop = min(population),
+         min_pop = 0) %>% 
+  ungroup() %>%
+  rowwise() %>% 
+  mutate(population_normalized = (Pop - min_pop) / (max_pop - min_pop)) %>%
+  ungroup()
+
+# (1) Create a table with relative changes between dates for each city
+relative_changes_table <- df %>%
+  pivot_wider(names_from = Year, values_from = rel_change)
+
+# Print relative changes table
+print(relative_changes_table)
+
+
+  
+                                       
+
+
+# Plot overlayed population trajectory graphs
+ggplot(df, aes(x = Year, y = population_normalized, color = Series)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Population Trajectories (Normalized)",
+       x = "Year", y = "Normalized Population") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+
+ggplot(df, aes(x = Year, y = rel_change, color = Series)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Relative Rate of Change",
+       x = "Year", y = "Relative Change") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+
+ggplot(df, aes(x = Year, y = rel_change_pa, color = Series)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Relative Rate of Change",
+       x = "Year", y = "Relative Change") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+```
+
+
+
+
+
+
+# 18th Century
+
+
+### HGIS de las Indias
+
+
+##### Points
+
+```{r}
+#demog_pts <- st_read(paste0(wd$dir, "demografia_lugares.gpkg")) # 4326
+demog_pts <- st_read(paste0(wd$data_r, "demog_pts_crop.gpkg")) # 4326
+
+MexStatesPoly = st_read(paste0(wd$data_r, "Mexico_States_Poly_2023_LCC.gpkg")) # 9802
+
+MexStatesPoly <- st_transform(MexStatesPoly, crs = st_crs(demog_pts))
+
+MexStatesPoly <- MexStatesPoly %>% rename(MexState = NOMGEO)
+
+demog_pts <- st_join(demog_pts, MexStatesPoly, join = st_within)
+
+coords <- st_coordinates(demog_pts)
+
+demog_pts$LonX <- coords[, 1]
+demog_pts$LatY <- coords[, 2]
+
+#colnames(demog_pts)
+
+demog_pts_Rev <- demog_pts %>% select(-it_Blancos_rel, -it_Indios_rel, -it_Mestizos_rel, -it_Castas_rel, -it_Indefinidos_rel#, -, -, -, -, -, -, -, 
+                                      ) %>% rename(
+  Pop_ = it_Blancos,
+  X = it_Indios,
+  X = it_Mestizos,
+  X = it_Castas,
+  X = it_Indefinidos,
+  X = it_Esclavos,
+  X = ,
+  X = ,
+  X = ,
+)
+
+```
+
+
+
+ 
+ [22] ""             ""              ""           
+ [25] ""              ""             ""                 
+ [34] "it_Vecinos_doc"         "it_Tributarios_doc"     "it_Familias_doc"       
+ [37] "it_Total_doc"           "it_Eclesiasticos_t_doc" "it_Blancos_t_doc"      
+ [40] "it_Indefinidos_t_doc"   "it_Indios_t_doc"        "it_Mestizos_t_doc"     
+ [43] "it_Castas_t_doc"        "it_Negros_t_doc"        "it_Esclavos_t_doc"     
+ [46] "it_Eclesiásticos_m_doc" "it_Eclesiásticos_f_doc" "it_Blancos_m_doc"      
+ [49] "it_Blancos_f_doc"       "it_Indefinidos_m_doc"   "it_Indefinidos_f_doc"  
+ [52] "it_Indios_m_doc"        "it_Indios_f_doc"        "it_Mestizos_m_doc"     
+ [55] "it_Mestizos_f_doc"      "it_Castas_m_doc"        "it_Castas_f_doc"       
+ [58] "it_Negros_m_doc"        "it_Negros_f_doc"        "it_Esclavos_m_doc"     
+ [61] "it_Esclavos_f_doc"      "it_Blancos_m_cas_doc"   "it_Blancos_m_sol_doc"  
+ [64] "it_Blancos_m_men_doc"   "it_Blancos_f_cas_doc"   "it_Blancos_f_sol_doc"  
+ [67] "it_Blancos_f_men_doc"   "it_Indios_m_cas_doc"    "it_Indios_m_sol_doc"   
+ [70] "it_Indios_m_men_doc"    "it_Indios_f_cas_doc"    "it_Indios_f_sol_doc"   
+ [73] "it_Indios_f_men_doc"    "it_Indefinido_m_cas"    "it_Indefinido_m_sol"   
+ [76] "it_Indefinido_m_men"    "it_Indefinido_f_cas"    "it_Indefinido_f_sol"   
+ [79] "it_Indefinido_f_men"    "it_Mestizos_m_cas_doc"  "it_Mestizos_m_sol_doc" 
+ [82] "it_Mestizos_m_men_doc"  "it_Mestizos_f_cas_doc"  "it_Mestizos_f_sol_doc" 
+ [85] "it_Mestizos_f_men_doc"  "it_Castas_m_cas_doc"    "it_Castas_m_sol_doc"   
+ [88] "it_Castas_m_men_doc"    "it_Castas_f_cas_doc"    "it_Castas_f_sol_doc"   
+ [91] "it_Castas_f_men_doc"    "it_Negros_m_cas_doc"    "it_Negros_m_sol_doc"   
+ [94] "it_Negros_m_men_doc"    "it_Negros_f_cas_doc"    "it_Negros_f_sol_doc"   
+ [97] "it_Negros_f_men_doc"    "it_Esclavos_m_cas_doc"  "it_Esclavos_m_sol_doc" 
+[100] "it_Esclavos_m_men_doc"  "it_Esclavos_f_cas_doc"  "it_Esclavos_f_sol_doc" 
+[103] "it_Esclavos_f_men_doc"  "it_Blancos_m_viudos"    "it_Blancos_f_viudos"   
+[106] "it_Indios_m_viudos"     "it_Indios_f_viudos"     "it_Mestizos_m_viudos"  
+[109] "it_Mestizos_f_viudos"   "it_Castas_m_viudos"     "it_Castas_f_viudos"    
+[112] "it_Negros_m_viudos"     "it_Negros_f_viudos"     "it_Esclavos_m_viudos"  
+[115] "it_Esclavos_f_viudos"   "it_Indefinido_m_viudos" "it_Indefinido_f_viudos"
+[118] "it_Casas_doc"           "it_Familias_Blancos"    "it_Familias_Indios"    
+[121] "it_Fam_Indefinidos"     "it_Fam_Mestizos"        "it_Fam_Castas"         
+[124] "it_Fam_Negros"          "it_Fam_Esclavos"        "it_Etnia_principal"    
+[127] "it_Etnias"             
+
+
+
+
+[4]             "it_Contexto_Sup1"       "it_Contexto_Sup2"      
+  [7] "it_Contexto_Sup3"       "it_Contexto_Sup4"                     
+ [10]           
+ [13]       "it_START_"              "it_END_"               
+ [16]                 
+ [19]               "it_Total"             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1] "OBJECTID"  "it_ID"  "it_Label"   "it_GZ_ID"   "it_REG" "it_Alcance_tipo"  "it_Fecha_Dato"   
+ "it_Dato_tipo"           "it_Fuente"   
+"it_SUMAS"               "it_Nota"  
+"it_Curatos"             "it_Anexos"              "it_Nucleos"  
+
+                                         
+  
+
+
+
+
+"GZ_cert"   "GZ_metodo"
+"GZ_OBJECTID","GZ_gz_id" "GZ_label", "GZ_partido_generico"    "GZ_provincia_generica"  "GZ_region", , , , , , , ,"GZ_curato_generico"  
+ "GZ_iglesia_cat"         "GZ_servido_por"         "GZ_categoria"          
+[139] "GZ_categoria_especial"  "GZ_cabildo"             "GZ_parcialidad"        
+[142] "GZ_es_parte_de" 
+ "GZ_pais"                "GZ_nombre"  "GZ_variantes"  
+"GZ_nombrehoy"  
+  "MexState","LonX","LatY","geom"   
+ "GZ_fuente_ID"  
+"GZ_importancia" 
+
+
+
+```{r}
+
+
+demog_poly <- st_read(paste0(wd$data_r, "demografia_territorios.gpkg")) # 4326
+
+demog_poly <- demog_poly %>% filter(it_Fuente == "sanchez-santiro")
+demog_poly = st_make_valid(demog_poly)
+centroids <- st_centroid(demog_poly)
+centroids <- st_join(centroids, MexStatesPoly, join = st_within)
+coords <- st_coordinates(centroids)
+
+demog_poly$LonX <- coords[, 1]
+demog_poly$LatY <- coords[, 2]
+demog_poly$MexState <- centroids$MexState
+
+demog_poly_df = st_drop_geometry(demog_poly)
+
+demog_pts_df = st_drop_geometry(demog_pts)
+
+
+
+#crs(MexStatesPoly)
+
+MexStatesPoly <- st_transform(MexStatesPoly, crs = st_crs(demog_pts))
+
+MexStatesPoly <- MexStatesPoly %>% rename(MexState = NOMGEO)
+
+demog_pts <- st_join(demog_pts, MexStatesPoly, join = st_within)
+
+coords <- st_coordinates(demog_pts)
+
+demog_pts$LonX <- coords[, 1]
+demog_pts$LatY <- coords[, 2]
+
+#######################################
+
+
+
+
+demog_poly2 = demog_poly %>% select(geom, OBJECTID:it_Fuente)
+
+multipolygons <- demog_poly2[sapply(geoms, function(x) inherits(x, "MULTIPOLYGON")), ]
+
+
+
+
+
+centroids <- st_centroid(demog_poly)
+
+
+
+joined_data <- st_join(demog_poly, MexStatesPoly, join = st_intersects)
+
+joined_data <- joined_data %>%
+  group_by(demographic_polygon_id) %>%
+  summarise(max_overlap_state_attribute = state_attribute[which.max(st_area(st_intersection(geometry, state_geometry)))])
+
+
+write.csv(demog_pts_df , paste0(wd$data_r,"demog_pts_df.csv"))
+
+write.csv(demog_poly_df , paste0(wd$data_r,"demog_poly_df2.csv"))
+```
+
++proj=lcc +lat_1=30 +lat_2=62 +lat_0=0 +lon_0=105 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs
+154 Loja
+155 Quito
+
+
+### 1778 Census
+
+```{r}
+
+C1774_1778 = read.csv(paste0(wd$data_r,"C18Data_HGISIndias.csv"), encoding="UTF-8")
+
+```
+
+
+
+### 1790 Census
+
+
+#### Age-Sex-Status
+
+
+```{r}
+
+C1790_ASS = read.csv(paste0(wd$data_r,"Census1790_States_AgeSexStatus.csv"))
+Encoding(C1790_ASS$Name) <- "UTF-8"
+
+C1790_ASS_long = C1790_ASS %>% pivot_longer(cols = "T":"F", names_to = "Sex", values_to = "Value", values_drop_na = F)
+
+C1790_ASS_long = C1790_ASS_long %>% mutate(Variable = paste0(AgeStatus, "_", Sex))
+
+C1790_ASS_wide = C1790_ASS_long %>% select(-AgeStatus, -Status, -Age, -Sex) %>% pivot_wider(id_cols = c("Name", "Year"), names_from = Variable, values_from = Value, values_fill = NA)
+
+write.csv(C1790_ASS_wide, paste0(wd$data_r,"Census1790_States_AgeSexStatus_wide.csv"))
+
+
+```
+
+
+#### Age-Sex
+
+```{r}
+C1790_AS = read.csv(paste0(wd$data_r,"Census1790_States_AgeSex.csv"))
+Encoding(C1790_AS$Name) <- "UTF-8"
+
+C1790_AS_long = C1790_AS %>% pivot_longer(cols = "T":"F", names_to = "Sex", values_to = "Value", values_drop_na = F)
+
+C1790_AS_long = C1790_AS_long %>% mutate(Variable = paste0(Ages, "_", Sex))
+
+C1790_AS_wide = C1790_AS_long %>% select(-Ages, -Sex) %>% pivot_wider(id_cols = c("Name", "Year"), names_from = Variable, values_from = Value, values_fill = NA)
+
+write.csv(C1790_AS_wide, paste0(wd$data_r,"Census1790_States_AgeSex_wide.csv"), fileEncoding = "UTF-8")
+
+
+```
+
+
+
+
+
+
+OaxacaCSV
+OaxacaHEI
+OaxacaCoast
+# Age Heaping in the Census Data
+
+```{r}
+
+Oaxaca1777 = read.csv(paste0(wd$data_r,"Oaxaca1777.csv"))
+
+Oaxaca1777 = Oaxaca1777 %>% filter(!(AgeGroup == "Total")) %>% 
+  mutate(AgeGroupLower = as.numeric(AgeGroupLower),
+         AgeGroupUpper = as.numeric(AgeGroupUpper))
+
+OaxacaTotal = Oaxaca1777 %>% filter(Name == "Oaxaca Total")
+
+OaxacaRural = Oaxaca1777 %>% filter(Name == "Rural Oaxaca")
+
+Antequera = Oaxaca1777 %>% filter(Name == "Oaxaca Ciudad Antequera (Region VI)")
+
+Mixteca = Oaxaca1777 %>% filter(Name == "Oaxaca Mixteca Alta (Region IV)")
+
+OaxacaCSV = Oaxaca1777 %>% filter(Name == "Oaxaca Central & Southern Valleys (Regions III & V)")
+
+OaxacaHEI = Oaxaca1777 %>% filter(Name == "Oaxaca Highland East Interior (Region II)")
+
+OaxacaCoast = Oaxaca1777 %>% filter(Name == "Oaxaca Coasts (Region I)")
+
+
+my_labels = c("0-4", "5-9", "10-14", "15-19", "20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+")
+
+ggplot(data = Oaxaca1777, aes(x = AgeGroupLower, y = PctTotal, color = Label)) + 
+  geom_line(linewidth=1)+
+  labs(title = "Age Structure - Bishiopric of Oaxaca 1777",
+       x = "Age Group (5 year)", y = "Proportion of Population") +
+  theme_bw() +
+  scale_x_continuous(limits = c(0,93), breaks = seq(0, 90, by = 5), labels=my_labels) +
+  scale_y_continuous(labels = percent, breaks = seq(0, 0.175, by = 0.025)) +
+  theme(legend.position = "inside", legend.position.inside = c(0.8, 0.65)) +
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text.x = element_text(size = 10, color="black")) +
+  theme(axis.text.x = element_text(angle = 45, size = 10, color="black", hjust = 1)) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+```
+Overall, these are mostly pretty similar with the exception of Ciudad Antequera as explained by Cook and Borah (1971).
+The Mixteca alta looks wonky for the 15-29 groups, but this may be the result of outmigration
+Coastal looks wonky in terms of 0-4, possibly due to lower negro births as explained by Cook and Borah (1971)
+I will thus go with Rural Oaxaca, which is the total Bishopric of Oaxaca minus Ciudad Antequera
+
+
+https://timriffe.github.io/DemoTools/articles/Age-heaping_quality_with_Demotools.html
+
+```{r}
+paste("Oaxaca Rural:")
+check_heaping_sawtooth(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("Oaxaca Total:")
+check_heaping_sawtooth(Value = OaxacaTotal$Total, Age = OaxacaTotal$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaTotal$Total, Age = OaxacaTotal$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("Antequera:")
+check_heaping_sawtooth(Value = Antequera$Total, Age = Antequera$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = Antequera$Total, Age = Antequera$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("Mixteca:")
+check_heaping_sawtooth(Value = Mixteca$Total, Age = Mixteca$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = Mixteca$Total, Age = Mixteca$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("OaxacaCSV:")
+check_heaping_sawtooth(Value = OaxacaCSV$Total, Age = OaxacaCSV$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaCSV$Total, Age = OaxacaCSV$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("OaxacaHEI:")
+check_heaping_sawtooth(Value = OaxacaHEI$Total, Age = OaxacaHEI$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaHEI$Total, Age = OaxacaHEI$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("OaxacaCoast:")
+check_heaping_sawtooth(Value = OaxacaCoast$Total, Age = OaxacaCoast$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaCoast$Total, Age = OaxacaCoast$AgeGroupLower, ageMin = 20, ageMax = 75)
+```
+These numeric indices of heaping distortions in 5 year data seem to cross-validate our visual inspection. The Highland Eastern Interior seems to be the least distorted, making it a possible sample for analysis if Rural Oaxaca doesnt work out
+
+
+```{r}
+
+OaxacaRural$Total_Arriaga <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, method = "Arriaga", OAG = TRUE)),0)
+OaxacaRural$Male_Arriaga <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Male, Age = OaxacaRural$AgeGroupLower, method = "Arriaga", OAG = TRUE)),0)
+OaxacaRural$Female_Arriaga <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Female, Age = OaxacaRural$AgeGroupLower, method = "Arriaga", OAG = TRUE)),0)
+
+OaxacaRural$Total_cf <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, method = "Carrier-Farrag", OAG = TRUE)),0)
+OaxacaRural$Male_cf <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Male, Age = OaxacaRural$AgeGroupLower, method = "Carrier-Farrag", OAG = TRUE)),0)
+OaxacaRural$Female_cf <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Female, Age = OaxacaRural$AgeGroupLower, method = "Carrier-Farrag", OAG = TRUE)),0)
+
+OaxacaRural$Total_KKN <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, method = "KKN", OAG = TRUE)),0)
+OaxacaRural$Male_KKN <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Male, Age = OaxacaRural$AgeGroupLower, method = "KKN", OAG = TRUE)),0)
+OaxacaRural$Female_KKN <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Female, Age = OaxacaRural$AgeGroupLower, method = "KKN", OAG = TRUE)),0)
+
+OaxacaRural$Total_UN <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, method = "United Nations", OAG = TRUE)),0)
+OaxacaRural$Male_UN <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Male, Age = OaxacaRural$AgeGroupLower, method = "United Nations", OAG = TRUE)),0)
+OaxacaRural$Female_UN <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Female, Age = OaxacaRural$AgeGroupLower, method = "United Nations", OAG = TRUE)),0)
+
+OaxacaRural$Total_Strong <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, method = "Strong", OAG = TRUE)),0)
+OaxacaRural$Male_Strong <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Male, Age = OaxacaRural$AgeGroupLower, method = "Strong", OAG = TRUE)),0)
+OaxacaRural$Female_Strong <- round(as.numeric(smooth_age_5(Value = OaxacaRural$Female, Age = OaxacaRural$AgeGroupLower, method = "Strong", OAG = TRUE)),0)
+
+OaxacaRural_long = OaxacaRural %>% 
+  select(Label, AgeGroupLower, Total, Total_Arriaga, Total_cf, Total_KKN, Total_UN, Total_Strong) %>% 
+  pivot_longer(cols = Total:Total_Strong, values_to = "Value", names_to = "Variable") %>% 
+  group_by(Variable) %>% 
+  arrange(AgeGroupLower, .by_group = T) %>% 
+  mutate(TotalPop = sum(Value),
+         PctTotal = Value/TotalPop) %>% 
+  ungroup()
+
+plot1 = ggplot(data = OaxacaRural_long, aes(x = AgeGroupLower, y = PctTotal, color = Variable)) + 
+  geom_line(linewidth=1)+
+  labs(title = "Age Structure - Bishiopric of Oaxaca 1777",
+       x = "Age Group (5 year)", y = "Proportion of Population") +
+  theme_bw() +
+  scale_x_continuous(limits = c(0,93), breaks = seq(0, 90, by = 5), labels=my_labels) +
+  scale_y_continuous(labels = percent, breaks = seq(0, 0.2, by = 0.025)) +
+  theme(legend.position = "inside", legend.position.inside = c(0.8, 0.65)) +
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text.x = element_text(size = 10, color="black")) +
+  theme(axis.text.x = element_text(angle = 45, size = 10, color="black", hjust = 1)) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+df = OaxacaRural_long %>% filter(Variable == "Total")
+
+plot1 = plot1 + geom_line(data = df, aes(x=AgeGroupLower, y = PctTotal), color = "black", linewidth=1)
+
+plot1
+```
+
+UN looks like the best method. 
+UN stays true to the younger age groups (likely the product of infant mortality; shape of curve seems robust given that it is shared by several subregions)
+UN method also smoothes the older age group bumps, which are likely the product of heaping
+
+```{r}
+OaxacaRuralUN_long = OaxacaRural %>% 
+  select(Label, AgeGroupLower, Total, Male, Female, Total_UN, Male_UN, Female_UN) %>% 
+  pivot_longer(cols = Total:Female_UN, values_to = "Value", names_to = "Variable") %>% 
+  group_by(Variable) %>% 
+  arrange(AgeGroupLower, .by_group = T) %>% 
+  mutate(TotalPop = sum(Value),
+         PctTotal = Value/TotalPop) %>% 
+  ungroup() %>% 
+  mutate(
+    Sex = case_when(
+      Variable == "Female" ~ "Female",
+      Variable == "Female_UN" ~ "Female",
+      Variable == "Male" ~ "Male",
+      Variable == "Male_UN" ~ "Male",
+      Variable == "Total" ~ "Total",
+      Variable == "Total_UN" ~ "Total"),
+    Series = case_when(
+      Variable == "Female" ~ "Raw Data",
+      Variable == "Female_UN" ~ "UN Smooth",
+      Variable == "Male" ~ "Raw Data",
+      Variable == "Male_UN" ~ "UN Smooth",
+      Variable == "Total" ~ "Raw Data",
+      Variable == "Total_UN" ~ "UN Smooth")
+    )
+
+ggplot(data = OaxacaRuralUN_long, aes(x = AgeGroupLower, y = PctTotal, color = Variable)) + 
+  geom_line(linewidth=1)+
+  labs(title = "Age Structure - Bishiopric of Oaxaca 1777",
+       x = "Age Group (5 year)", y = "Proportion of Population") +
+  theme_bw() +
+  scale_x_continuous(limits = c(0,93), breaks = seq(0, 90, by = 5), labels=my_labels) +
+  scale_y_continuous(labels = percent, breaks = seq(0, 0.2, by = 0.025)) +
+  theme(legend.position = "inside", legend.position.inside = c(0.8, 0.65)) +
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text.x = element_text(size = 10, color="black")) +
+  theme(axis.text.x = element_text(angle = 45, size = 10, color="black", hjust = 1)) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+```
+
+
+```{r}
+paste("Total:")
+check_heaping_sawtooth(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaRural$Total, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("Total UN:")
+check_heaping_sawtooth(Value = OaxacaRural$Total_UN, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaRural$Total_UN, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+
+paste("Male:")
+check_heaping_sawtooth(Value = OaxacaRural$Male, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaRural$Male, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("Male UN:")
+check_heaping_sawtooth(Value = OaxacaRural$Male_UN, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaRural$Male_UN, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+
+paste("Female:")
+check_heaping_sawtooth(Value = OaxacaRural$Female, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaRural$Female, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+paste("Female UN:")
+check_heaping_sawtooth(Value = OaxacaRural$Female_UN, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+check_heaping_roughness(Value = OaxacaRural$Female_UN, Age = OaxacaRural$AgeGroupLower, ageMin = 20, ageMax = 75)
+```
+
+It is clear from these heaping metrics that the UN smoothing makes a considerable difference
+
+### Pop Pyramid Diagrams
+
+```{r}
+UN_Pyramid = OaxacaRuralUN_long %>% filter(Series == "UN Smooth") %>% filter(!(Sex == "Total")) %>% 
+  mutate(PctTotalPyramid = ifelse(Sex == "Male", PctTotal*-1, PctTotal),
+         AgeGroupLowerFact = factor(AgeGroupLower))
+
+RawData_Pyramid = OaxacaRuralUN_long %>% filter(Series == "Raw Data") %>% filter(!(Sex == "Total")) %>% 
+  mutate(PctTotalPyramid = ifelse(Sex == "Male", PctTotal*-1, PctTotal),
+         AgeGroupLowerFact = factor(AgeGroupLower))
+
+ggplot(UN_Pyramid,aes(x = PctTotalPyramid, y = AgeGroupLowerFact, fill = Sex)) +
+    geom_col() +
+  labs(title = "United Nations Smooth",
+       y = "Age Group (5-year)", x = "Proportion of Population") +
+  theme_bw() +
+  scale_y_discrete(labels=my_labels) +
+  scale_x_continuous(labels=function(x) percent(abs(x)), breaks = seq(-0.2, 0.2, by = 0.05)) +
+  theme(legend.position = "inside", legend.position.inside = c(0.8, 0.75)) +
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text.x = element_text(size = 10, color="black")) +
+  theme(axis.text.x = element_text(angle = 45, size = 10, color="black", hjust = 1)) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+ggplot(RawData_Pyramid,aes(x = PctTotalPyramid, y = AgeGroupLowerFact, fill = Sex)) +
+    geom_col() +
+  labs(title = "Raw Data",
+       y = "Age Group (5-year)", x = "Proportion of Population") +
+  theme_bw() +
+  scale_y_discrete(labels=my_labels) +
+  scale_x_continuous(labels=function(x) percent(abs(x)), breaks = seq(-0.2, 0.2, by = 0.05)) +
+  theme(legend.position = "inside", legend.position.inside = c(0.8, 0.75)) +
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text.x = element_text(size = 10, color="black")) +
+  theme(axis.text.x = element_text(angle = 45, size = 10, color="black", hjust = 1)) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+
+```
+
+
+
+
+
+
+# Life Tables vs Data
+
+
+
+
+### Function for Comparative Metric Table
+
+```{r}
+
+CompareMetrics = function(x, y, x_name, r, y_name){
+  KS = ks.test(x, y)
+  ks_stat = as.numeric(KS$statistic)
+  ks_p = as.numeric(KS$p.value)
+  chi = chisq.test(x, y)
+  chi_stat = as.numeric(chi$statistic)
+  chi_p = as.numeric(chi$p.value)
+  rmse <- sqrt(mean((x - y)^2))
+  mae <- mean(abs(x - y))
+  df = data.frame(LifeTable = x_name, r =r, Observed = y_name, KS_stat = ks_stat, KS_p = ks_p, ChiSq_stat = chi_stat, ChiSq_p = chi_p, RMSE = rmse, MAE = mae)
+  return(df)
+}
+
+
+```
+
+
+
+
+
+
+### Rural Oaxaca 1777
+
+```{r}
+
+WLT = read.csv(paste0(wd$data_r,"WestLifeTables.csv"))
+
+### Table of Statistics
+
+W3M0 = CompareMetrics(x = round(WLT$X3W_M_r0*91082, 0), y = OaxacaRural$Male, x_name = "Model 3 West Male", r = 0, y_name = "Rural Oaxaca Males, 1777")
+W3M5 = CompareMetrics(x = round(WLT$X3W_M_r5*91082, 0), y = OaxacaRural$Male, x_name = "Model 3 West Male", r = 0.5, y_name = "Rural Oaxaca Males, 1777")
+W3F0 = CompareMetrics(x = round(WLT$X3W_F_r0*88476, 0), y = OaxacaRural$Female, x_name = "Model 3 West Female", r = 0, y_name = "Rural Oaxaca Females, 1777")
+W3F5 = CompareMetrics(x = round(WLT$X3W_F_r5*88476, 0), y = OaxacaRural$Female, x_name = "Model 3 West Female", r = 0.5, y_name = "Rural Oaxaca Females, 1777")
+
+W8M0 = CompareMetrics(x = round(WLT$X8W_M_r0*91082, 0), y = OaxacaRural$Male, x_name = "Model 8 West Male", r = 0, y_name = "Rural Oaxaca Males, 1777")
+W8M5 = CompareMetrics(x = round(WLT$X8W_M_r5*91082, 0), y = OaxacaRural$Male, x_name = "Model 8 West Male", r = 0.5, y_name = "Rural Oaxaca Males, 1777")
+W8F0 = CompareMetrics(x = round(WLT$X8W_F_r0*88476, 0), y = OaxacaRural$Female, x_name = "Model 8 West Female", r = 0, y_name = "Rural Oaxaca Females, 1777")
+W8F5 = CompareMetrics(x = round(WLT$X8W_F_r5*88476, 0), y = OaxacaRural$Female, x_name = "Model 8 West Female", r = 0.5, y_name = "Rural Oaxaca Females, 1777")
+
+W1M0 = CompareMetrics(x = round(WLT$X1W_M_r0*91082, 0), y = OaxacaRural$Male, x_name = "Model 1 West Male", r = 0, y_name = "Rural Oaxaca Males, 1777")
+W1M5 = CompareMetrics(x = round(WLT$X1W_M_r5*91082, 0), y = OaxacaRural$Male, x_name = "Model 1 West Male", r = 0.5, y_name = "Rural Oaxaca Males, 1777")
+W1F0 = CompareMetrics(x = round(WLT$X1W_F_r0*88476, 0), y = OaxacaRural$Female, x_name = "Model 1 West Female", r = 0, y_name = "Rural Oaxaca Females, 1777")
+W1F5 = CompareMetrics(x = round(WLT$X1W_F_r5*88476, 0), y = OaxacaRural$Female, x_name = "Model 1 West Female", r = 0.5, y_name = "Rural Oaxaca Females, 1777")
+
+RuralOaxaca_LifeTable_Stats = bind_rows(W3M0, W3M5, W3F0, W3F5, W8M0, W8M5, W8F0, W8F5, W1M0, W1M5, W1F0, W1F5)
+
+
+
+### Model 3 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 3 West Males r=0 vs. Oaxaca Rural Males
+ecdf.ks.CI(round(WLT$X3W_M_r0*91082, 0), family="sans", main= "3 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Males r=5 vs. Oaxaca Rural Males
+ecdf.ks.CI(round(WLT$X3W_M_r5*91082, 0), family="sans", main= "3 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=0 vs. Oaxaca Rural Females
+ecdf.ks.CI(round(WLT$X3W_F_r0*88476, 0), family="sans", main= "3 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=5 vs. Oaxaca Rural Females
+ecdf.ks.CI(round(WLT$X3W_F_r5*88476, 0), family="sans", main= "3 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 3 West Males r=0 vs. Oaxaca Rural Males
+ecdf.ks.CI(round(WLT$X8W_M_r0*91082, 0), family="sans", main= "8 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Males r=5 vs. Oaxaca Rural Males
+ecdf.ks.CI(round(WLT$X8W_M_r5*91082, 0), family="sans", main= "8 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=0 vs. Oaxaca Rural Females
+ecdf.ks.CI(round(WLT$X8W_F_r0*88476, 0), family="sans", main= "8 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=5 vs. Oaxaca Rural Females
+ecdf.ks.CI(round(WLT$X8W_F_r5*88476, 0), family="sans", main= "8 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+
+### Model 1 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 3 West Males r=0 vs. Oaxaca Rural Males
+ecdf.ks.CI(round(WLT$X1W_M_r0*91082, 0), family="sans", main= "1 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Males r=5 vs. Oaxaca Rural Males
+ecdf.ks.CI(round(WLT$X1W_M_r5*91082, 0), family="sans", main= "1 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=0 vs. Oaxaca Rural Females
+ecdf.ks.CI(round(WLT$X1W_F_r0*88476, 0), family="sans", main= "1 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=5 vs. Oaxaca Rural Females
+ecdf.ks.CI(round(WLT$X1W_F_r5*88476, 0), family="sans", main= "1 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by 5-Year Age Group", ylab="ECDF(Pop by 5-yr Age Group)")
+lines(ecdf(OaxacaRural$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+```
+
+
+
+
+### Mexico 1790
+
+```{r}
+C1790_AS2 = read.csv(paste0(wd$data_r,"Census1790_States_AgeSex2.csv"))
+
+WLT2 = read.csv(paste0(wd$data_r,"WestLifeTables_Bins1790.csv"))
+
+Mexico1790 = C1790_AS2 %>% filter(Name == "Mexico")
+
+### Table of Statistics
+
+W3M0 = CompareMetrics(x = round(WLT2$X3W_M_r0*574786, 0), y = Mexico1790$Male, x_name = "Model 3 West Male", r = 0, y_name = "Mexico Males, 1790")
+W3M5 = CompareMetrics(x = round(WLT2$X3W_M_r5*574786, 0), y = Mexico1790$Male, x_name = "Model 3 West Male", r = 0.5, y_name = "Mexico Males, 1790")
+W3F0 = CompareMetrics(x = round(WLT2$X3W_F_r0*573187, 0), y = Mexico1790$Female, x_name = "Model 3 West Female", r = 0, y_name = "Mexico Females, 1790")
+W3F5 = CompareMetrics(x = round(WLT2$X3W_F_r5*573187, 0), y = Mexico1790$Female, x_name = "Model 3 West Female", r = 0.5, y_name = "Mexico Females, 1790")
+
+W8M0 = CompareMetrics(x = round(WLT2$X8W_M_r0*574786, 0), y = Mexico1790$Male, x_name = "Model 8 West Male", r = 0, y_name = "Mexico Males, 1790")
+W8M5 = CompareMetrics(x = round(WLT2$X8W_M_r5*574786, 0), y = Mexico1790$Male, x_name = "Model 8 West Male", r = 0.5, y_name = "Mexico Males, 1790")
+W8F0 = CompareMetrics(x = round(WLT2$X8W_F_r0*573187, 0), y = Mexico1790$Female, x_name = "Model 8 West Female", r = 0, y_name = "Mexico Females, 1790")
+W8F5 = CompareMetrics(x = round(WLT2$X8W_F_r5*573187, 0), y = Mexico1790$Female, x_name = "Model 8 West Female", r = 0.5, y_name = "Mexico Females, 1790")
+
+W1M0 = CompareMetrics(x = round(WLT2$X1W_M_r0*574786, 0), y = Mexico1790$Male, x_name = "Model 1 West Male", r = 0, y_name = "Mexico Males, 1790")
+W1M5 = CompareMetrics(x = round(WLT2$X1W_M_r5*574786, 0), y = Mexico1790$Male, x_name = "Model 1 West Male", r = 0.5, y_name = "Mexico Males, 1790")
+W1F0 = CompareMetrics(x = round(WLT2$X1W_F_r0*573187, 0), y = Mexico1790$Female, x_name = "Model 1 West Female", r = 0, y_name = "Mexico Females, 1790")
+W1F5 = CompareMetrics(x = round(WLT2$X1W_F_r5*573187, 0), y = Mexico1790$Female, x_name = "Model 1 West Female", r = 0.5, y_name = "Mexico Females, 1790")
+
+Mexico1790_LifeTable_Stats = bind_rows(W3M0, W3M5, W3F0, W3F5, W8M0, W8M5, W8F0, W8F5, W1M0, W1M5, W1F0, W1F5)
+
+### Model 3 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 3 West Males r=0 vs. Mexico 1790 Males
+ecdf.ks.CI(round(WLT2$X3W_M_r0*574786, 0), family="sans", main= "3 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Males r=5 vs. Mexico 1790 Males
+ecdf.ks.CI(round(WLT2$X3W_M_r5*574786, 0), family="sans", main= "3 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=0 vs. Mexico 1790 Females
+ecdf.ks.CI(round(WLT2$X3W_F_r0*573187, 0), family="sans", main= "3 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=5 vs. Mexico 1790 Females
+ecdf.ks.CI(round(WLT2$X3W_F_r5*573187, 0), family="sans", main= "3 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 8 West Males r=0 vs. Mexico 1790 Males
+ecdf.ks.CI(round(WLT2$X8W_M_r0*574786, 0), family="sans", main= "8 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Males r=5 vs. Mexico 1790 Males
+ecdf.ks.CI(round(WLT2$X8W_M_r5*574786, 0), family="sans", main= "8 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Females r=0 vs. Mexico 1790 Females
+ecdf.ks.CI(round(WLT2$X8W_F_r0*573187, 0), family="sans", main= "8 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Females r=5 vs. Mexico 1790 Females
+ecdf.ks.CI(round(WLT2$X8W_F_r5*573187, 0), family="sans", main= "8 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 1 West Males r=0 vs. Mexico 1790 Males
+ecdf.ks.CI(round(WLT2$X1W_M_r0*574786, 0), family="sans", main= "1 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Males r=5 vs. Mexico 1790 Males
+ecdf.ks.CI(round(WLT2$X1W_M_r5*574786, 0), family="sans", main= "1 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Females r=0 vs. Mexico 1790 Females
+ecdf.ks.CI(round(WLT2$X1W_F_r0*573187, 0), family="sans", main= "1 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Females r=5 vs. Mexico 1790 Females
+ecdf.ks.CI(round(WLT2$X1W_F_r5*573187, 0), family="sans", main= "1 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Mexico1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+x = ggplot(data = Mexico1790, aes(x = AgesLower, y = (Total/sum(Total)))) + 
+  geom_line(linewidth=1)+
+  labs(title = "Age Structure - Mexico 1790",
+       x = "Age Group", y = "Proportion of Population") +
+  theme_bw() +
+  scale_x_continuous(breaks = seq(0, 50, by = 5)) +
+  scale_y_continuous(labels = percent, breaks = seq(0, 0.2, by = 0.025)) +
+  theme(legend.position = "inside", legend.position.inside = c(0.8, 0.65)) +
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text.x = element_text(size = 10, color="black")) +
+  theme(axis.text.x = element_text(angle = 45, size = 10, color="black", hjust = 1)) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+WLT2 = WLT2 %>% mutate(X3W_T_r5 = (X3W_F_r5+X3W_M_r5)/2, X8W_T_r5 = (X8W_F_r5+X8W_M_r5)/2, X1W_T_r5 = (X1W_F_r5+X1W_M_r5)/2)
+
+x = x+ geom_line(data = Tlaxcala1790, aes(x = AgesLower, y = (Total/sum(Total))), linewidth=1, color="red")+
+  geom_line(data = Puebla1790, aes(x = AgesLower, y = (Total/sum(Total))), linewidth=1, color="blue")+
+  geom_line(data = CMex1790, aes(x = AgesLower, y = (Total/sum(Total))), linewidth=1, color="green2")+
+  geom_line(data = WLT2, aes(x = AgeBracketStart, y = X3W_T_r5), linewidth=1, color="brown4", linetype="dashed")+
+    geom_line(data = WLT2, aes(x = AgeBracketStart, y = X8W_T_r5), linewidth=1, color="purple", linetype="dashed")+
+geom_line(data = WLT2, aes(x = AgeBracketStart, y = X1W_T_r5), linewidth=1, color="forestgreen", linetype="dashed")
+```
+
+
+### Tlaxcala 1790
+
+```{r}
+C1790_AS2 = read.csv(paste0(wd$data_r,"Census1790_States_AgeSex2.csv"))
+
+WLT2 = read.csv(paste0(wd$data_r,"WestLifeTables_Bins1790.csv"))
+
+Tlaxcala1790 = C1790_AS2 %>% filter(Name == "Tlaxcala") #(Name %in% c("Tlaxcala", "Tlaxcala", "Puebla"))
+
+### Table of Statistics
+
+W3M0 = CompareMetrics(x = round(WLT2$X3W_M_r0*29997, 0), y = Tlaxcala1790$Male, x_name = "Model 3 West Male", r = 0, y_name = "Tlaxcala Males, 1790")
+W3M5 = CompareMetrics(x = round(WLT2$X3W_M_r5*29997, 0), y = Tlaxcala1790$Male, x_name = "Model 3 West Male", r = 0.5, y_name = "Tlaxcala Males, 1790")
+W3F0 = CompareMetrics(x = round(WLT2$X3W_F_r0*29151, 0), y = Tlaxcala1790$Female, x_name = "Model 3 West Female", r = 0, y_name = "Tlaxcala Females, 1790")
+W3F5 = CompareMetrics(x = round(WLT2$X3W_F_r5*29151, 0), y = Tlaxcala1790$Female, x_name = "Model 3 West Female", r = 0.5, y_name = "Tlaxcala Females, 1790")
+
+W8M0 = CompareMetrics(x = round(WLT2$X8W_M_r0*29997, 0), y = Tlaxcala1790$Male, x_name = "Model 8 West Male", r = 0, y_name = "Tlaxcala Males, 1790")
+W8M5 = CompareMetrics(x = round(WLT2$X8W_M_r5*29997, 0), y = Tlaxcala1790$Male, x_name = "Model 8 West Male", r = 0.5, y_name = "Tlaxcala Males, 1790")
+W8F0 = CompareMetrics(x = round(WLT2$X8W_F_r0*29151, 0), y = Tlaxcala1790$Female, x_name = "Model 8 West Female", r = 0, y_name = "Tlaxcala Females, 1790")
+W8F5 = CompareMetrics(x = round(WLT2$X8W_F_r5*29151, 0), y = Tlaxcala1790$Female, x_name = "Model 8 West Female", r = 0.5, y_name = "Tlaxcala Females, 1790")
+
+W1M0 = CompareMetrics(x = round(WLT2$X1W_M_r0*29997, 0), y = Tlaxcala1790$Male, x_name = "Model 1 West Male", r = 0, y_name = "Tlaxcala Males, 1790")
+W1M5 = CompareMetrics(x = round(WLT2$X1W_M_r5*29997, 0), y = Tlaxcala1790$Male, x_name = "Model 1 West Male", r = 0.5, y_name = "Tlaxcala Males, 1790")
+W1F0 = CompareMetrics(x = round(WLT2$X1W_F_r0*29151, 0), y = Tlaxcala1790$Female, x_name = "Model 1 West Female", r = 0, y_name = "Tlaxcala Females, 1790")
+W1F5 = CompareMetrics(x = round(WLT2$X1W_F_r5*29151, 0), y = Tlaxcala1790$Female, x_name = "Model 1 West Female", r = 0.5, y_name = "Tlaxcala Females, 1790")
+
+Tlaxcala1790_LifeTable_Stats = bind_rows(W3M0, W3M5, W3F0, W3F5, W8M0, W8M5, W8F0, W8F5, W1M0, W1M5, W1F0, W1F5)
+
+### Model 3 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 3 West Males r=0 vs. Tlaxcala 1790 Males
+ecdf.ks.CI(round(WLT2$X3W_M_r0*29997, 0), family="sans", main= "3 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Males r=5 vs. Tlaxcala 1790 Males
+ecdf.ks.CI(round(WLT2$X3W_M_r5*29997, 0), family="sans", main= "3 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=0 vs. Tlaxcala 1790 Females
+ecdf.ks.CI(round(WLT2$X3W_F_r0*29151, 0), family="sans", main= "3 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=5 vs. Tlaxcala 1790 Females
+ecdf.ks.CI(round(WLT2$X3W_F_r5*29151, 0), family="sans", main= "3 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 8 West Males r=0 vs. Tlaxcala 1790 Males
+ecdf.ks.CI(round(WLT2$X8W_M_r0*29997, 0), family="sans", main= "8 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Males r=5 vs. Tlaxcala 1790 Males
+ecdf.ks.CI(round(WLT2$X8W_M_r5*29997, 0), family="sans", main= "8 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Females r=0 vs. Tlaxcala 1790 Females
+ecdf.ks.CI(round(WLT2$X8W_F_r0*29151, 0), family="sans", main= "8 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Females r=5 vs. Tlaxcala 1790 Females
+ecdf.ks.CI(round(WLT2$X8W_F_r5*29151, 0), family="sans", main= "8 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 1 West Males r=0 vs. Tlaxcala 1790 Males
+ecdf.ks.CI(round(WLT2$X1W_M_r0*29997, 0), family="sans", main= "1 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Males r=5 vs. Tlaxcala 1790 Males
+ecdf.ks.CI(round(WLT2$X1W_M_r5*29997, 0), family="sans", main= "1 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Females r=0 vs. Tlaxcala 1790 Females
+ecdf.ks.CI(round(WLT2$X1W_F_r0*29151, 0), family="sans", main= "1 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Females r=5 vs. Tlaxcala 1790 Females
+ecdf.ks.CI(round(WLT2$X1W_F_r5*29151, 0), family="sans", main= "1 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Tlaxcala1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+```
+
+
+
+
+### Puebla 1790
+
+```{r}
+C1790_AS2 = read.csv(paste0(wd$data_r,"Census1790_States_AgeSex2.csv"))
+
+WLT2 = read.csv(paste0(wd$data_r,"WestLifeTables_Bins1790.csv"))
+
+Puebla1790 = C1790_AS2 %>% filter(Name == "Puebla") #(Name %in% c("Puebla", "Puebla", "Puebla"))
+
+### Table of Statistics
+
+W3M0 = CompareMetrics(x = round(WLT2$X3W_M_r0*271769, 0), y = Puebla1790$Male, x_name = "Model 3 West Male", r = 0, y_name = "Puebla Males, 1790")
+W3M5 = CompareMetrics(x = round(WLT2$X3W_M_r5*271769, 0), y = Puebla1790$Male, x_name = "Model 3 West Male", r = 0.5, y_name = "Puebla Males, 1790")
+W3F0 = CompareMetrics(x = round(WLT2$X3W_F_r0*270519, 0), y = Puebla1790$Female, x_name = "Model 3 West Female", r = 0, y_name = "Puebla Females, 1790")
+W3F5 = CompareMetrics(x = round(WLT2$X3W_F_r5*270519, 0), y = Puebla1790$Female, x_name = "Model 3 West Female", r = 0.5, y_name = "Puebla Females, 1790")
+
+W8M0 = CompareMetrics(x = round(WLT2$X8W_M_r0*271769, 0), y = Puebla1790$Male, x_name = "Model 8 West Male", r = 0, y_name = "Puebla Males, 1790")
+W8M5 = CompareMetrics(x = round(WLT2$X8W_M_r5*271769, 0), y = Puebla1790$Male, x_name = "Model 8 West Male", r = 0.5, y_name = "Puebla Males, 1790")
+W8F0 = CompareMetrics(x = round(WLT2$X8W_F_r0*270519, 0), y = Puebla1790$Female, x_name = "Model 8 West Female", r = 0, y_name = "Puebla Females, 1790")
+W8F5 = CompareMetrics(x = round(WLT2$X8W_F_r5*270519, 0), y = Puebla1790$Female, x_name = "Model 8 West Female", r = 0.5, y_name = "Puebla Females, 1790")
+
+W1M0 = CompareMetrics(x = round(WLT2$X1W_M_r0*271769, 0), y = Puebla1790$Male, x_name = "Model 1 West Male", r = 0, y_name = "Puebla Males, 1790")
+W1M5 = CompareMetrics(x = round(WLT2$X1W_M_r5*271769, 0), y = Puebla1790$Male, x_name = "Model 1 West Male", r = 0.5, y_name = "Puebla Males, 1790")
+W1F0 = CompareMetrics(x = round(WLT2$X1W_F_r0*270519, 0), y = Puebla1790$Female, x_name = "Model 1 West Female", r = 0, y_name = "Puebla Females, 1790")
+W1F5 = CompareMetrics(x = round(WLT2$X1W_F_r5*270519, 0), y = Puebla1790$Female, x_name = "Model 1 West Female", r = 0.5, y_name = "Puebla Females, 1790")
+
+Puebla1790_LifeTable_Stats = bind_rows(W3M0, W3M5, W3F0, W3F5, W8M0, W8M5, W8F0, W8F5, W1M0, W1M5, W1F0, W1F5)
+
+### Model 3 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 3 West Males r=0 vs. Puebla 1790 Males
+ecdf.ks.CI(round(WLT2$X3W_M_r0*271769, 0), family="sans", main= "3 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Males r=5 vs. Puebla 1790 Males
+ecdf.ks.CI(round(WLT2$X3W_M_r5*271769, 0), family="sans", main= "3 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=0 vs. Puebla 1790 Females
+ecdf.ks.CI(round(WLT2$X3W_F_r0*270519, 0), family="sans", main= "3 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=5 vs. Puebla 1790 Females
+ecdf.ks.CI(round(WLT2$X3W_F_r5*270519, 0), family="sans", main= "3 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 8 West Males r=0 vs. Puebla 1790 Males
+ecdf.ks.CI(round(WLT2$X8W_M_r0*271769, 0), family="sans", main= "8 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Males r=5 vs. Puebla 1790 Males
+ecdf.ks.CI(round(WLT2$X8W_M_r5*271769, 0), family="sans", main= "8 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Females r=0 vs. Puebla 1790 Females
+ecdf.ks.CI(round(WLT2$X8W_F_r0*270519, 0), family="sans", main= "8 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Females r=5 vs. Puebla 1790 Females
+ecdf.ks.CI(round(WLT2$X8W_F_r5*270519, 0), family="sans", main= "8 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 1 West Males r=0 vs. Puebla 1790 Males
+ecdf.ks.CI(round(WLT2$X1W_M_r0*271769, 0), family="sans", main= "1 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Males r=5 vs. Puebla 1790 Males
+ecdf.ks.CI(round(WLT2$X1W_M_r5*271769, 0), family="sans", main= "1 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Females r=0 vs. Puebla 1790 Females
+ecdf.ks.CI(round(WLT2$X1W_F_r0*270519, 0), family="sans", main= "1 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Females r=5 vs. Puebla 1790 Females
+ecdf.ks.CI(round(WLT2$X1W_F_r5*270519, 0), family="sans", main= "1 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(Puebla1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+```
+
+
+
+
+
+### CMEX 1790
+
+```{r}
+C1790_AS2 = read.csv(paste0(wd$data_r,"Census1790_States_AgeSex2.csv"))
+
+WLT2 = read.csv(paste0(wd$data_r,"WestLifeTables_Bins1790.csv"))
+
+CMex1790 = C1790_AS2 %>% filter(Name %in% c("Mexico", "Tlaxcala", "Puebla")) %>%
+  group_by(Ages, AgesLower) %>% summarize(Total = sum(Total), Male = sum(Male), Female = sum(Female)) %>% 
+  arrange(AgesLower)
+
+
+### Table of Statistics
+
+W3M0 = CompareMetrics(x = round(WLT2$X3W_M_r0*876552, 0), y = CMex1790$Male, x_name = "Model 3 West Male", r = 0, y_name = "CMex Males, 1790")
+W3M5 = CompareMetrics(x = round(WLT2$X3W_M_r5*876552, 0), y = CMex1790$Male, x_name = "Model 3 West Male", r = 0.5, y_name = "CMex Males, 1790")
+W3F0 = CompareMetrics(x = round(WLT2$X3W_F_r0*872857, 0), y = CMex1790$Female, x_name = "Model 3 West Female", r = 0, y_name = "CMex Females, 1790")
+W3F5 = CompareMetrics(x = round(WLT2$X3W_F_r5*872857, 0), y = CMex1790$Female, x_name = "Model 3 West Female", r = 0.5, y_name = "CMex Females, 1790")
+
+W8M0 = CompareMetrics(x = round(WLT2$X8W_M_r0*876552, 0), y = CMex1790$Male, x_name = "Model 8 West Male", r = 0, y_name = "CMex Males, 1790")
+W8M5 = CompareMetrics(x = round(WLT2$X8W_M_r5*876552, 0), y = CMex1790$Male, x_name = "Model 8 West Male", r = 0.5, y_name = "CMex Males, 1790")
+W8F0 = CompareMetrics(x = round(WLT2$X8W_F_r0*872857, 0), y = CMex1790$Female, x_name = "Model 8 West Female", r = 0, y_name = "CMex Females, 1790")
+W8F5 = CompareMetrics(x = round(WLT2$X8W_F_r5*872857, 0), y = CMex1790$Female, x_name = "Model 8 West Female", r = 0.5, y_name = "CMex Females, 1790")
+
+W1M0 = CompareMetrics(x = round(WLT2$X1W_M_r0*876552, 0), y = CMex1790$Male, x_name = "Model 1 West Male", r = 0, y_name = "CMex Males, 1790")
+W1M5 = CompareMetrics(x = round(WLT2$X1W_M_r5*876552, 0), y = CMex1790$Male, x_name = "Model 1 West Male", r = 0.5, y_name = "CMex Males, 1790")
+W1F0 = CompareMetrics(x = round(WLT2$X1W_F_r0*872857, 0), y = CMex1790$Female, x_name = "Model 1 West Female", r = 0, y_name = "CMex Females, 1790")
+W1F5 = CompareMetrics(x = round(WLT2$X1W_F_r5*872857, 0), y = CMex1790$Female, x_name = "Model 1 West Female", r = 0.5, y_name = "CMex Females, 1790")
+
+CMex1790_LifeTable_Stats = bind_rows(W3M0, W3M5, W3F0, W3F5, W8M0, W8M5, W8F0, W8F5, W1M0, W1M5, W1F0, W1F5)
+
+### Model 3 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 3 West Males r=0 vs. CMex 1790 Males
+ecdf.ks.CI(round(WLT2$X3W_M_r0*876552, 0), family="sans", main= "3 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Males r=5 vs. CMex 1790 Males
+ecdf.ks.CI(round(WLT2$X3W_M_r5*876552, 0), family="sans", main= "3 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=0 vs. CMex 1790 Females
+ecdf.ks.CI(round(WLT2$X3W_F_r0*872857, 0), family="sans", main= "3 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 3 West Females r=5 vs. CMex 1790 Females
+ecdf.ks.CI(round(WLT2$X3W_F_r5*872857, 0), family="sans", main= "3 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 8 West Males r=0 vs. CMex 1790 Males
+ecdf.ks.CI(round(WLT2$X8W_M_r0*876552, 0), family="sans", main= "8 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Males r=5 vs. CMex 1790 Males
+ecdf.ks.CI(round(WLT2$X8W_M_r5*876552, 0), family="sans", main= "8 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Females r=0 vs. CMex 1790 Females
+ecdf.ks.CI(round(WLT2$X8W_F_r0*872857, 0), family="sans", main= "8 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 8 West Females r=5 vs. CMex 1790 Females
+ecdf.ks.CI(round(WLT2$X8W_F_r5*872857, 0), family="sans", main= "8 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+### Model 8 West ###
+
+par(mfrow = c(2, 2))
+
+# Model 1 West Males r=0 vs. CMex 1790 Males
+ecdf.ks.CI(round(WLT2$X1W_M_r0*876552, 0), family="sans", main= "1 West Male (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Males r=5 vs. CMex 1790 Males
+ecdf.ks.CI(round(WLT2$X1W_M_r5*876552, 0), family="sans", main= "1 West Male (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Male), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Females r=0 vs. CMex 1790 Females
+ecdf.ks.CI(round(WLT2$X1W_F_r0*872857, 0), family="sans", main= "1 West Female (r = 0)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+# Model 1 West Females r=5 vs. CMex 1790 Females
+ecdf.ks.CI(round(WLT2$X1W_F_r5*872857, 0), family="sans", main= "1 West Female (r = 0.5)", cex.main=2, font.main=2, font.lab=2, xlab="Population by Age Group", ylab="ECDF(Pop by Age Group)")
+lines(ecdf(CMex1790$Female), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+par(mfrow = c(1, 1))
+
+
+```
+
+
+
+
+
+
+
+# Whitmore Preston Analysis
+
+```{r}
+
+Preston = read.csv(paste0(wd$data_r,"Preston1973.csv"))
+
+Preston_Avg = Preston %>% filter(Sex == "Average") %>% mutate(WhitmorePlus = WhitmoreCombo+CertainChronic+Maternal+OtherViolence+CertainDiseasesofInf)
+
+#CD_8W_F_qx = c(0.19562, 0.13161, 0.03756, 0.02934, 0.03868, 0.04857, 0.05454, 0.06161, 0.06789, 0.07362, 0.08098, 0.1052, 0.13488, 0.19432, 0.26006, 0.3659, 0.49548, 0.64329, 0.79818, 0.91664, 0.97887, 1)
+
+#AgeLower = c(0,1,seq(5,100,5))
+
+
+CD_8W_B_lifetable <- lt_abridged(nqx = CD_qx$CD_8W_B_qx[1:21], Age = CD_qx$AgeLower[1:21], AgeInt = inferAgeIntAbr(vec = CD_qx$CD_8W_B_qx[1:21]), region = "w", axmethod = "un",a0rule = "cd", Sex = "b", OAnew = 85,  mod = FALSE)
+
+CD_3W_B_lifetable <- lt_abridged(nqx = CD_qx$CD_3W_B_qx[1:21], Age = CD_qx$AgeLower[1:21], AgeInt = inferAgeIntAbr(vec = CD_qx$CD_3W_B_qx[1:21]), region = "w", axmethod = "un",a0rule = "cd", Sex = "b", OAnew = 85,  mod = FALSE)
+
+CD_1W_B_lifetable <- lt_abridged(nqx = CD_qx$CD_1W_B_qx[1:21], Age = CD_qx$AgeLower[1:21], AgeInt = inferAgeIntAbr(vec = CD_qx$CD_1W_B_qx[1:21]), region = "w", axmethod = "un",a0rule = "cd", Sex = "b", OAnew = 85,  mod = FALSE)
+
+
+
+Preston_Avg$nMx_3W = CD_3W_B_lifetable$nMx*1000
+
+Preston_Avg$nMx_8W = CD_8W_B_lifetable$nMx*1000
+
+Preston_Avg$nMx_1W = CD_1W_B_lifetable$nMx*1000
+
+
+plot(Preston_Avg$WhitmoreCombo, Preston_Avg$nMx_8W)
+plot(Preston_Avg$WhitmoreCombo, Preston_Avg$nMx_3W)
+plot(Preston_Avg$WhitmoreCombo, Preston_Avg$nMx_1W)
+
+lm_PrestWC_8W = lm(nMx_8W ~ WhitmoreCombo, data = Preston_Avg)
+summary(lm_PrestWC_8W)
+
+lm_PrestWC_3W = lm(nMx_3W ~ WhitmoreCombo, data = Preston_Avg)
+summary(lm_PrestWC_3W)
+
+lm_PrestWC_1W = lm(nMx_1W ~ WhitmoreCombo, data = Preston_Avg)
+summary(lm_PrestWC_1W)
+
+CorMatdf = Preston_Avg %>% dplyr::select(nMx_1W, nMx_3W, nMx_8W, WhitmoreCombo, AllCauses, WhitmorePlus)
+
+cor(CorMatdf)
+
+ggplot() +
+  geom_line(data = Preston_Avg, aes(x = Age, y = WhitmoreCombo), color = "black", linetype = "dashed", linewidth=1.1) +
+  geom_line(data = Preston_Avg, aes(x = Age, y = AllCauses), color = "brown4", linetype = "dashed", linewidth=1.1) +
+  geom_line(data = Preston_Avg, aes(x = Age, y = WhitmorePlus), color = "purple", linetype = "dashed", linewidth=1.1) +
+  geom_line(data = Preston_Avg, aes(x = Age, y = nMx_8W), color = "blue",  linewidth=1.1) +
+  geom_line(data = Preston_Avg, aes(x = Age, y = nMx_3W), color = "green", linewidth=1.1) +
+  geom_line(data = Preston_Avg, aes(x = Age, y = nMx_1W), color = "red",  linewidth=1.1) +
+  #geom_point(data = interpolated_data, aes(x = Year, y = Population, color = Series), size= 2) +
+  labs(title = "",
+       x = "Age", y = "Death Rate (per 1,000)") +
+  #theme_minimal() +
+  theme_bw() +
+  #scale_x_continuous(limits = c(1510,1625), breaks = seq(1510, 1620, by = 10), expand = c(0,0)) +
+  scale_y_continuous(transform = "log10") +
+  #scale_color_brewer(palette = "Set1") +
+  #scale_color_manual(values=group.colors)+
+  #scale_fill_manual(values = c("Epidemic Periods" = "red"), name = "", guide = guide_legend(override.aes = list(alpha = 0.2)))
+  #theme(legend.position = c(.7,.75)) +
+  #legend.background = element_rect(linetype = 2, size = 0.5, colour = 1)
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text = element_text(size = 10, color="black")) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+
+
+```
+
+
+# Paleodemog Life Tables
+
+### Function to Calculate stable population Life Tables
+
+```{r}
+
+StablePopLT <- function(ModelName,
+                                       Sex,
+                                       AgeLower, 
+                                       qx, 
+                                       r, # intrinsic growth rate 
+                                       OpenAgeNew = max(AgeLower)
+                                       ){
+  
+  
+    AgeInt <- inferAgeIntAbr(vec = qx)
+    lifetable <- lt_abridged(nqx = qx, Age = AgeLower, AgeInt = AgeInt, region = "w",
+                       axmethod = "un",a0rule = "cd", Sex = Sex, OAnew = OpenAgeNew,  mod = FALSE)
+  
+  if(r == 0){
+    lifetable$cx = lifetable$nLx/sum(lifetable$nLx)
+  }else{
+    AgeInt = c(lifetable$AgeInt[!is.na(lifetable$AgeInt)], 5)
+    ex <- exp(-r * (lifetable$Age + ((0.5*AgeInt))))
+    LX_ex <- lifetable$nLx * ex
+    lifetable$cx = LX_ex/sum(LX_ex)
+  }
+  
+  lifetable$r <- r
+  
+  lifetable$Model <- ModelName
+  
+  lifetable$Sex <- ifelse(Sex == 'f', "Female", "Male") 
+  
+  lifetable$dummy <- 0 
+  
+  lifetable = lifetable %>% dplyr::select(Model, Sex, r, Age, AgeInt, AgeInt, nMx, nAx, nqx, lx, ndx, nLx, Sx, Tx, ex, cx)
+  
+  return(lifetable)
+}
+
+
+
+```
+
+
+### Atlapulco
+
+```{r}
+
+Marquez = read.csv(paste0(wd$data_r,"MarquezMorfinPaleodemogLifeTables.csv"))
+
+Atlapulco = Marquez %>% filter(Case == "San Gregorio Atlapulco")
+
+Atlapulco_LT_r1 = StablePopLT(ModelName = "Atlapulco", Sex = "b", AgeLower = Atlapulco$AgeLower, qx = Atlapulco$qx, r = 0.004, OpenAgeNew = 70)
+
+yy = data.frame(AgeLower = c(0, Atlapulco_LT_r1$Age[3:16]), cx = c((Atlapulco_LT_r1$cx[1]+Atlapulco_LT_r1$cx[2]), Atlapulco_LT_r1$cx[3:16]))
+
+my_labels2 = c("0-4", "5-9", "10-14", "15-19", "20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74")
+
+ggplot(yy,aes(x = cx, y = factor(AgeLower))) +
+    geom_col() +
+  labs(title = "Atlapulco",
+       y = "Age Group (5-year)", x = "Proportion of Population") +
+  theme_bw() +
+  scale_y_discrete(labels=my_labels2) +
+  scale_x_continuous(labels=percent, breaks = seq(0, 0.25, by = 0.05)) +
+  #theme(legend.position = "inside", legend.position.inside = c(0.8, 0.75)) +
+  #theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text.x = element_text(size = 10, color="black")) +
+  theme(axis.text.x = element_text(angle = 45, size = 10, color="black", hjust = 1)) +
+  theme(axis.title.y = element_text(size = 12, face = "bold")) +
+  theme(axis.title.x = element_text(size = 12, face = "bold")) #+
+  #theme(legend.text = element_text(size = 12)) +
+  #theme(legend.title = element_blank())
+
+```
+
+# 1805 Mat Trib Integration
+
+
+
+### Create 1805 Mat Trib data
+
+```{r}
+
+
+
+#df %>% rename_at(vars(-Name, -State), ~ paste0(., '_2017'))
+
+MT1805_A = read.csv(paste0(wd$data_r,"MatTrib_1805_1810_PartA.csv"))
+
+MT1805_B_long = read.csv(paste0(wd$data_r,"MatTrib_1805_1810_PartB_long.csv"))
+
+MT1805_B_long = MT1805_B_long %>% mutate(
+  
+  TribClass_TotalPersons_NotAbsent = TribClass_TotalPersons - Ausentes,
+  
+  NonTribAge = Reservados + NinosNinas + Proximos,
+  TotalExempt = Proximos + NinosNinas + Governadores + Caciques + Reservados + ViudasSolteras + Ausentes,
+  TotalTribPers = ViudosSolteros + Casadas_HusbNoTrib + Casados_WifeNoTrib + Casados_WifeTrib + Casados_WifeTrib + Casados_SinEdad + Casados_SinEdad,
+  Pct_NonTribAge = Pct_Reservados+Pct_NinosProximos,
+  Pct_VaSaNinoProxReserv = Pct_Reservados+Pct_NinosProximos + Pct_ViudasSolteras,
+  MC_ratio = Proximos / Casados,
+  NC_ratio = NinosNinas / Casados,
+  NMC_ratio = (Proximos + NinosNinas) / Casados,
+  AC_ratio = Reservados / Casados,
+  Pct_CasadosSinEdad = Casados_SinEdad / Casados,
+  Pct_MarriedNonTrib = (Casados_WifeNoTrib + Casadas_HusbNoTrib) / (Casados_WifeNoTrib + Casadas_HusbNoTrib + Casados_WifeTrib),
+  
+  TribClass_TotalPersons_C16 = TribClass_TotalPersons + Casados_WifeNoTrib + Casadas_HusbNoTrib,
+  TribClass_TotalPersons_NotAbsent_C16 = TribClass_TotalPersons_C16 - Ausentes,
+  Casados_C16 = Casados_WifeTrib + Casados_SinEdad + Casadas_HusbNoTrib + Casados_WifeNoTrib,
+  TotalExempt_C16 = Proximos + NinosNinas + Governadores + Caciques + Reservados,
+  TribPersons_C16 = Casados_C16 + Casados_C16 + ViudosSolteros + ViudasSolteras,
+  Tribs_C16 = Casados_C16 + ((ViudosSolteros + ViudasSolteras)/2),
+  PT_ratio_C16 = TribClass_TotalPersons_NotAbsent_C16 / Tribs_C16,
+  PC_ratio_C16 = TribClass_TotalPersons_NotAbsent_C16 / Casados_C16,
+  TC_ratio_C16 = Tribs_C16 / Casados_C16,
+  CT_ratio_C16 =  Casados_C16 / Tribs_C16,
+  VSC_ratio_C16 = (ViudosSolteros + ViudasSolteras) / Casados_C16,
+  VaSaC_ratio_C16 = ViudasSolteras / Casados_C16,
+  VoSoC_ratio_C16 = ViudosSolteros / Casados_C16,
+  MC_ratio_C16 = Proximos / Casados_C16,
+  NC_ratio_C16 = NinosNinas / Casados_C16,
+  NMC_ratio_C16 = (Proximos + NinosNinas) / Casados_C16,
+  AC_ratio_C16 = Reservados / Casados_C16,
+  Pct_NinosProximos_C16 = (Proximos + NinosNinas)/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Ninos_C16 = NinosNinas/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Proximos_C16 = Proximos/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Reservados_C16 = Reservados/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_TotalExempt_C16 = TotalExempt_C16/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Ausentes_C16 = Ausentes / TribClass_TotalPersons_C16,
+  Pct_Married_C16 = (Casados_C16*2)/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_CaciquesGov_C16 = (Governadores + Caciques) / TribClass_TotalPersons_NotAbsent_C16,
+  Pct_ViudasSolteras_C16 = ViudasSolteras/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_ViudosSolteros_C16 = ViudosSolteros/ TribClass_TotalPersons_NotAbsent_C16,
+  PctViudSoltTotal_C16 = (ViudosSolteros + ViudasSolteras) / TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Casados_C16 = Casados_C16 / TribClass_TotalPersons_NotAbsent_C16,
+  TribsC16C18_Ratio = Tribs_C16 / Tribs
+)
+
+
+MT1805_B_T = MT1805_B_long %>% filter(Race == "Total") %>% 
+  dplyr::select(-ORD, -Race, -TribClassSuffix, -TribClass, -Year1, -Year2, -Fecha1, -Fecha2) %>% 
+  rename_at(vars(-Partido, -Provincia, -OBJECTID), ~ paste0(., '_T'))
+MT1805_B_IP = MT1805_B_long %>% filter(TribClass == "Indios de Pueblo") %>% 
+  dplyr::select(-ORD, -Race, -TribClassSuffix, -TribClass, -Year1, -Year2, -Fecha1, -Fecha2) %>% 
+  rename_at(vars(-Partido, -Provincia, -OBJECTID), ~ paste0(., '_IP'))
+MT1805_B_ILV = MT1805_B_long %>% filter(TribClass == "Indios Laborios y Vagos") %>% 
+  dplyr::select(-ORD, -Race, -TribClassSuffix, -TribClass, -Year1, -Year2, -Fecha1, -Fecha2) %>% 
+  rename_at(vars(-Partido, -Provincia, -OBJECTID), ~ paste0(., '_ILV'))
+MT1805_B_NML = MT1805_B_long %>% filter(TribClass == "Negros y Mulatos libres") %>% 
+  dplyr::select(-ORD, -Race, -TribClassSuffix, -TribClass, -Year1, -Year2, -Fecha1, -Fecha2) %>% 
+  rename_at(vars(-Partido, -Provincia, -OBJECTID), ~ paste0(., '_NML'))
+
+#MT1805_B_T = read.csv(paste0(wd$dir,"MatTrib_1805_1810_PartB_T.csv"))
+#MT1805_B_IP = read.csv(paste0(wd$dir,"MatTrib_1805_1810_PartB_IP.csv"))
+#MT1805_B_NML = read.csv(paste0(wd$dir,"MatTrib_1805_1810_PartB_NML.csv"))
+#MT1805_B_ILV = read.csv(paste0(wd$dir,"MatTrib_1805_1810_PartB_ILV.csv"))
+
+
+
+MT1805_B_I = MT1805_B_long %>% filter(Race == "Indio") %>% 
+  group_by(Partido, Provincia, OBJECTID) %>%
+  summarize(Caciques = sum(Caciques, na.rm=T),
+            Governadores = sum(Governadores, na.rm=T),
+            Reservados = sum(Reservados, na.rm=T),
+            Ausentes = sum(Ausentes, na.rm=T),
+            ViudasSolteras = sum(ViudasSolteras, na.rm=T),
+            NinosNinas = sum(NinosNinas, na.rm=T),
+            Casados = sum(Casados, na.rm=T),
+            Casadas = sum(Casadas, na.rm=T),
+            Casados_WifeTrib = sum(Casados_WifeTrib, na.rm=T),
+            Casados_SinEdad = sum(Casados_SinEdad, na.rm=T),
+            Casados_WifeNoTrib = sum(Casados_WifeNoTrib, na.rm=T),
+            ViudosSolteros = sum(ViudosSolteros, na.rm=T),
+            Casadas_HusbNoTrib = sum(Casadas_HusbNoTrib, na.rm=T),
+            Proximos = sum(Proximos, na.rm=T),
+            Tribs = sum(Tribs, na.rm=T),
+            TribsNewSystem = sum(TribsNewSystem, na.rm=T),
+            TribClass_TotalPersons = sum(TribClass_TotalPersons, na.rm=T),
+            PT_ratio = TribClass_TotalPersons / Tribs,
+            PC_ratio = TribClass_TotalPersons / Casados,
+            TC_ratio = Tribs / Casados,
+            CT_ratio = Casados / Tribs,
+            VSC_ratio = (ViudosSolteros + ViudasSolteras) / Casados,
+            VaSaC_ratio = ViudasSolteras / Casados,
+            VoSoC_ratio = ViudosSolteros / Casados,
+            Pct_NinosProximos = (NinosNinas+Proximos)/TribClass_TotalPersons,
+            Pct_Ninos = NinosNinas/TribClass_TotalPersons,
+            Pct_Reservados = Reservados/TribClass_TotalPersons,
+            Pct_TotalExempt = (Caciques + Governadores + Proximos + NinosNinas + Reservados)/ TribClass_TotalPersons,
+            Pct_CaciquesGov = (Caciques+Governadores)/TribClass_TotalPersons,
+            Pct_Ausentes = Ausentes/TribClass_TotalPersons,
+            Pct_ViudasSolteras = ViudasSolteras/TribClass_TotalPersons,
+            Pct_ViudosSolteros = ViudosSolteros/TribClass_TotalPersons,
+            Pct_ViudSoltTotal = (ViudosSolteros + ViudasSolteras)/TribClass_TotalPersons,
+            Pct_Proximos = Proximos/TribClass_TotalPersons,
+            Pct_Married = (Casados+Casadas)/TribClass_TotalPersons,
+            Pct_Casados = Casados/TribClass_TotalPersons,
+            TribsNewOld_Ratio = TribsNewSystem/Tribs) %>% ungroup() %>% 
+  mutate(
+    TribClass_TotalPersons_NotAbsent = TribClass_TotalPersons - Ausentes,
+  
+  NonTribAge = Reservados + NinosNinas + Proximos,
+  TotalExempt = Proximos + NinosNinas + Governadores + Caciques + Reservados + ViudasSolteras + Ausentes,
+  TotalTribPers = ViudosSolteros + Casadas_HusbNoTrib + Casados_WifeNoTrib + Casados_WifeTrib + Casados_WifeTrib + Casados_SinEdad + Casados_SinEdad,
+  Pct_NonTribAge = Pct_Reservados+Pct_NinosProximos,
+  Pct_VaSaNinoProxReserv = Pct_Reservados+Pct_NinosProximos + Pct_ViudasSolteras,
+  MC_ratio = Proximos / Casados,
+  NC_ratio = NinosNinas / Casados,
+  NMC_ratio = (Proximos + NinosNinas) / Casados,
+  AC_ratio = Reservados / Casados,
+  Pct_CasadosSinEdad = Casados_SinEdad / Casados,
+  Pct_MarriedNonTrib = (Casados_WifeNoTrib + Casadas_HusbNoTrib) / (Casados_WifeNoTrib + Casadas_HusbNoTrib + Casados_WifeTrib),
+  
+  TribClass_TotalPersons_C16 = TribClass_TotalPersons + Casados_WifeNoTrib + Casadas_HusbNoTrib,
+  TribClass_TotalPersons_NotAbsent_C16 = TribClass_TotalPersons_C16 - Ausentes,
+  Casados_C16 = Casados_WifeTrib + Casados_SinEdad + Casadas_HusbNoTrib + Casados_WifeNoTrib,
+  TotalExempt_C16 = Proximos + NinosNinas + Governadores + Caciques + Reservados,
+  TribPersons_C16 = Casados_C16 + Casados_C16 + ViudosSolteros + ViudasSolteras,
+  Tribs_C16 = Casados_C16 + ((ViudosSolteros + ViudasSolteras)/2),
+  PT_ratio_C16 = TribClass_TotalPersons_NotAbsent_C16 / Tribs_C16,
+  PC_ratio_C16 = TribClass_TotalPersons_NotAbsent_C16 / Casados_C16,
+  TC_ratio_C16 = Tribs_C16 / Casados_C16,
+  CT_ratio_C16 =  Casados_C16 / Tribs_C16,
+  VSC_ratio_C16 = (ViudosSolteros + ViudasSolteras) / Casados_C16,
+  VaSaC_ratio_C16 = ViudasSolteras / Casados_C16,
+  VoSoC_ratio_C16 = ViudosSolteros / Casados_C16,
+  MC_ratio_C16 = Proximos / Casados_C16,
+  NC_ratio_C16 = NinosNinas / Casados_C16,
+  NMC_ratio_C16 = (Proximos + NinosNinas) / Casados_C16,
+  AC_ratio_C16 = Reservados / Casados_C16,
+  Pct_NinosProximos_C16 = (Proximos + NinosNinas)/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Ninos_C16 = NinosNinas/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Proximos_C16 = Proximos/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Reservados_C16 = Reservados/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_TotalExempt_C16 = TotalExempt_C16/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Ausentes_C16 = Ausentes / TribClass_TotalPersons_C16,
+  Pct_Married_C16 = (Casados_C16*2)/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_CaciquesGov_C16 = (Governadores + Caciques) / TribClass_TotalPersons_NotAbsent_C16,
+  Pct_ViudasSolteras_C16 = ViudasSolteras/ TribClass_TotalPersons_NotAbsent_C16,
+  Pct_ViudosSolteros_C16 = ViudosSolteros/ TribClass_TotalPersons_NotAbsent_C16,
+  PctViudSoltTotal_C16 = (ViudosSolteros + ViudasSolteras) / TribClass_TotalPersons_NotAbsent_C16,
+  Pct_Casados_C16 = Casados_C16 / TribClass_TotalPersons_NotAbsent_C16,
+  TribsC16C18_Ratio = Tribs_C16 / Tribs)  %>% 
+  rename_at(vars(-Partido, -Provincia, -OBJECTID), ~ paste0(., '_I'))
+
+
+setdiff(MT1805_B_I$Partido,MT1805_A$Partido)
+setdiff(MT1805_A$Partido,MT1805_B_I$Partido)
+
+# 133 Guanajuato
+# 156 Compostela
+# 159 Guadalaxara
+# 172 Xolapa (Oztotipac)
+
+MT1805_B_IP = MT1805_B_IP %>% select(Partido, Provincia, OBJECTID, Tribs_IP, Pct_TotalExempt_C16_IP, Pct_Ninos_C16_IP, Pct_Proximos_C16_IP, Pct_NinosProximos_C16_IP, Pct_Ausentes_C16_IP, TribClass_TotalPersons_IP, TribClass_TotalPersons_C16_IP, TribClass_TotalPersons_NotAbsent_C16_IP, PT_ratio_IP, PT_ratio_C16_IP, PC_ratio_IP, PC_ratio_C16_IP, TC_ratio_IP, TC_ratio_C16_IP, Pct_ViudasSolteras_IP, Pct_ViudasSolteras_C16_IP, Pct_ViudosSolteros_IP, Pct_ViudosSolteros_C16_IP, Pct_Casados_IP, Pct_Casados_C16_IP, VSC_ratio_IP, VSC_ratio_C16_IP, VaSaC_ratio_IP, VaSaC_ratio_C16_IP, Pct_Married_IP, Pct_Married_C16_IP, VoSoC_ratio_IP, VoSoC_ratio_C16_IP, MC_ratio_IP, MC_ratio_C16_IP, NC_ratio_IP, NC_ratio_C16_IP, NMC_ratio_IP, NMC_ratio_C16_IP, AC_ratio_IP,  AC_ratio_C16_IP)
+
+MT1805_B_ILV = MT1805_B_ILV %>% select(Partido, Provincia, OBJECTID, Tribs_ILV, Pct_TotalExempt_C16_ILV, Pct_Ninos_C16_ILV, Pct_Proximos_C16_ILV, Pct_NinosProximos_C16_ILV, Pct_Ausentes_C16_ILV, TribClass_TotalPersons_ILV, TribClass_TotalPersons_C16_ILV, TribClass_TotalPersons_NotAbsent_C16_ILV, PT_ratio_ILV, PT_ratio_C16_ILV, PC_ratio_ILV, PC_ratio_C16_ILV, TC_ratio_ILV, TC_ratio_C16_ILV, Pct_ViudasSolteras_ILV, Pct_ViudasSolteras_C16_ILV, Pct_ViudosSolteros_ILV, Pct_ViudosSolteros_C16_ILV, Pct_Casados_ILV, Pct_Casados_C16_ILV, VSC_ratio_ILV, VSC_ratio_C16_ILV, VaSaC_ratio_ILV, VaSaC_ratio_C16_ILV, Pct_Married_ILV, Pct_Married_C16_ILV, VoSoC_ratio_ILV, VoSoC_ratio_C16_ILV, MC_ratio_ILV, MC_ratio_C16_ILV, NC_ratio_ILV, NC_ratio_C16_ILV, NMC_ratio_ILV, NMC_ratio_C16_ILV, AC_ratio_ILV,  AC_ratio_C16_ILV)
+
+MT1805_B_NML = MT1805_B_NML %>% select(Partido, Provincia, OBJECTID, Tribs_NML, Pct_TotalExempt_C16_NML, Pct_Ninos_C16_NML, Pct_Proximos_C16_NML, Pct_NinosProximos_C16_NML, Pct_Ausentes_C16_NML, TribClass_TotalPersons_NML, TribClass_TotalPersons_C16_NML, TribClass_TotalPersons_NotAbsent_C16_NML, PT_ratio_NML, PT_ratio_C16_NML, PC_ratio_NML, PC_ratio_C16_NML, TC_ratio_NML, TC_ratio_C16_NML, Pct_ViudasSolteras_NML, Pct_ViudasSolteras_C16_NML, Pct_ViudosSolteros_NML, Pct_ViudosSolteros_C16_NML, Pct_Casados_NML, Pct_Casados_C16_NML, VSC_ratio_NML, VSC_ratio_C16_NML, VaSaC_ratio_NML, VaSaC_ratio_C16_NML, Pct_Married_NML, Pct_Married_C16_NML, VoSoC_ratio_NML, VoSoC_ratio_C16_NML, MC_ratio_NML, MC_ratio_C16_NML, NC_ratio_NML, NC_ratio_C16_NML, NMC_ratio_NML, NMC_ratio_C16_NML, AC_ratio_NML,  AC_ratio_C16_NML)
+
+
+MT1805_wide = MT1805_A %>% #dplyr::select(-OBJECTID) %>% 
+  left_join(MT1805_B_T, by=join_by(Partido == Partido, Provincia == Provincia)) %>% 
+  left_join(MT1805_B_IP, by=join_by(Partido, Provincia, OBJECTID)) %>% 
+  left_join(MT1805_B_ILV, by=join_by(Partido, Provincia, OBJECTID)) %>% 
+  left_join(MT1805_B_NML, by=join_by(Partido, Provincia, OBJECTID)) %>% 
+  left_join(MT1805_B_I, by=join_by(Partido, Provincia, OBJECTID)) %>% 
+  mutate(TribPopGrowthRate = log(Tribs1810/Tribs1805) / (YearMid1805-YearMid1810),
+         TributePerCapita_1805 = TotalYearlyTribute1805 / TribClass_TotalPersons_T,
+         TributePerTrib_1805 = TotalYearlyTribute1805 / Tribs_T,
+         TributePerCapita_1810 = TotalYearlyTribute1810 / TribClass_TotalPersons_T,
+         TributePerTrib_1810 = TotalYearlyTribute1810 / Tribs_T,
+         Pct_TribPop_Indio = (TribClass_TotalPersons_T - TribClass_TotalPersons_NML)/TribClass_TotalPersons_T,
+         Pct_TribPop_NML =TribClass_TotalPersons_NML/TribClass_TotalPersons_T,
+         Pct_TribPop_ILV =TribClass_TotalPersons_ILV/TribClass_TotalPersons_T
+ )
+
+setdiff(MT1805_wide$Partido,MT1805_A$Partido)
+setdiff(MT1805_A$Partido,MT1805_wide$Partido)
+
+
+
+
+```
+
+
+
+
+
+
+
+
+### Non-Spatial Analysis of 1805 P/T Ratio
+
+
+##### Get data together
+
+```{r}
+x = MT1805_B_long %>% #filter(Race == "Indio") %>% 
+  mutate(Pct_TotalExempt = (Proximos + NinosNinas + Governadores + Caciques + Reservados + ViudasSolteras + Ausentes)/TribClass_TotalPersons,
+         Tribs = (Casados + Casadas + ViudosSolteros)/2,
+         PT_ratio = TribClass_TotalPersons/Tribs)
+
+
+
+xx = x %>% filter(TribClass == "Indios de Pueblo") %>% filter(Provincia %in% c("Mexico", "Puebla", "Tlaxcala"))
+
+```
+
+
+##### Polynomial Regression
+
+```{r}
+model = lm(PT_ratio_C16 ~ poly(Pct_TotalExempt_C16, 7, raw = F), data = MT1805_B_long)
+report(model)
+```
+
+
+##### Descriptive Stats
+
+```{r}
+y =  x %>% select(Partido, Provincia, TribClass, Pct_TotalExempt, Pct_TotalExempt_C16, PT_ratio, PT_ratio_C16)
+
+ystats = y %>% group_by(Provincia, TribClass) %>% 
+  summarize(mean_Pct_TotalExempt = mean(Pct_TotalExempt, na.rm=T),
+            med_Pct_TotalExempt = median(Pct_TotalExempt, na.rm=T),
+            sd_Pct_TotalExempt = sd(Pct_TotalExempt, na.rm=T),
+            
+            mean_Pct_TotalExempt_C16 = mean(Pct_TotalExempt_C16, na.rm=T),
+            med_Pct_TotalExempt_C16 = median(Pct_TotalExempt_C16, na.rm=T),
+            sd_Pct_TotalExempt_C16 = sd(Pct_TotalExempt_C16, na.rm=T),
+            
+            mean_PT_ratio = mean(PT_ratio, na.rm=T),
+            med_PT_ratio = median(PT_ratio, na.rm=T),
+            sd_PT_ratio = sd(PT_ratio, na.rm=T),
+            
+            mean_PT_ratio_C16 = mean(PT_ratio_C16, na.rm=T),
+            med_PT_ratio_C16 = median(PT_ratio_C16, na.rm=T),
+            sd_PT_ratio_C16 = sd(PT_ratio_C16, na.rm=T))
+#Provincia, Partido, Provincia, 
+
+
+
+
+x %>% select(TribClass, Pct_TotalExempt, Pct_TotalExempt_C16, PT_ratio, PT_ratio_C16) %>% 
+  group_by(TribClass) %>% 
+  report() %>%
+  summary()
+
+
+```
+
+
+```{r}
+xx = x %>% filter(PT_ratio < 8) %>% filter(Race == "Indio") 
+
+mean(xx$PT_ratio)
+sd(xx$PT_ratio)
+median(xx$PT_ratio)
+
+mean(x$PT_ratio_C16)
+sd(xx$PT_ratio_C16)
+median(xx$PT_ratio_C16)
+
+mean(xx$Pct_TotalExempt)
+sd(xx$Pct_TotalExempt)
+median(xx$Pct_TotalExempt)
+
+mean(xx$Pct_TotalExempt_C16)
+sd(xx$Pct_TotalExempt_C16)
+median(xx$Pct_TotalExempt_C16)
+```
+
+##### Plots
+
+```{r}
+
+xxx = x %>% filter(PT_ratio < 8) %>% filter(Race == "Indio") %>% select(Partido, Provincia,Pct_TotalExempt, Pct_TotalExempt_C16, PT_ratio,PT_ratio_C16) %>% pivot_longer(cols=PT_ratio:PT_ratio_C16, names_to = "Tributary_Defn", values_to = "Value") %>%
+  rowwise() %>% mutate(Pct_TotalExempt2 = ifelse(Tributary_Defn == "PT_ratio", Pct_TotalExempt, Pct_TotalExempt_C16)) %>% ungroup()
+
+
+
+
+pp = ggplot() + geom_point(data = xxx, mapping = aes(Pct_TotalExempt2, Value, fill=Tributary_Defn), size =4, stroke=0.3, shape = 21, color="black", alpha=0.5  )+
+  scale_fill_manual(name = "Tributary System",values = c("cyan2", "firebrick1"), breaks = c("PT_ratio", "PT_ratio_C16"), labels = c("18th Century", "16th Century"))+
+  #labs(x ="Percent Exempt", y = "P/T Ratio")+
+  stat_smooth(data = xxx, mapping = aes(Pct_TotalExempt2, Value), method = lm, formula = y ~ poly(x, 11, raw = T), color="black", linewidth=1.2)+
+  labs(x = "Percent Exempt", y = "P/T ratio")+
+theme_bw() +
+  scale_x_continuous(labels = percent, breaks = seq(0, 1, by = 0.1)) +
+  scale_y_continuous(breaks = seq(0, 7, by = 0.5)) +
+  theme(legend.position = "inside", legend.position.inside = c(0.3, 0.8)) +
+  theme(legend.background = element_rect(colour = "black")) +
+  theme(axis.text.x = element_text(size = 11, color="black")) +
+  theme(axis.text.x = element_text(angle = 45, size = 11, color="black", hjust = 1)) +
+  theme(axis.title.y = element_text(size = 14, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14, face = "bold")) +
+  theme(legend.text = element_text(size = 12)) +
+  theme(legend.title = element_blank())
+#3.7
+
+## Insert histogram
+
+h2 = ggplot(xxx,aes(x = Pct_TotalExempt2)) +
+  geom_histogram(aes(group = Tributary_Defn, fill = Tributary_Defn),alpha = 0.5, position = "identity", color = "black") +
+  scale_fill_manual(name = "Tributary System", values = c("cyan1", "indianred1"), breaks = c("PT_ratio", "PT_ratio_C16"), labels = c("18th Century", "16th Century"))+
+  #geom_density(aes(group = Tributary_Defn, color = Tributary_Defn, y=135 * ..count..), adjust = 2, size=1, alpha=0.5)+
+  scale_color_manual(name = "Tributary System",values = c("cyan2", "firebrick1"), breaks = c("PT_ratio", "PT_ratio_C16"), labels = c("18th Century", "16th Century"))+
+  labs(x ="Percent Exempt", y = "Count")+
+  geom_vline(xintercept = 0.5080376, color="turquoise3", linewidth=1.5)+
+  geom_vline(xintercept = 0.4296362, color="firebrick", linewidth=1.5)+
+  geom_vline(xintercept = 0.29, color="black", linetype="dashed", linewidth=1.5)+
+    theme_bw()+
+    scale_x_continuous(labels = percent, breaks=seq(0,0.8,0.05)) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, color="black", size=11), 
+          axis.text.y = element_text(color="black", size=11), 
+          axis.title.x = element_text(color="black", size=14, face="bold"),
+          axis.title.y = element_text(color="black", size=14, face="bold"),
+          legend.justification=c(0,1), legend.position=c(0.1,0.9), 
+          legend.title=element_blank(),
+          legend.box.background = element_rect(colour = "black"),
+          legend.text = element_text(colour="black", size = 12),
+          legend.background = element_rect(fill="white",size=0.5, linetype="solid", color ="black"))
+
+h1 = ggplot(xxx,aes(x = Value)) +
+  geom_histogram(aes(group = Tributary_Defn, fill = Tributary_Defn),alpha = 0.5, position = "identity", color = "black") +
+  scale_fill_manual(name = "Tributary System", values = c("cyan1", "indianred1"), breaks = c("PT_ratio", "PT_ratio_C16"), labels = c("18th Century", "16th Century"))+
+  #geom_density(aes(group = Tributary_Defn, color = Tributary_Defn, y=135 * ..count..), adjust = 2, size=1, alpha=0.5)+
+  scale_color_manual(name = "Tributary System",values = c("cyan2", "firebrick1"), breaks = c("PT_ratio", "PT_ratio_C16"), labels = c("18th Century", "16th Century"))+
+  labs(x ="P/T Ratio", y = "Count")+
+    theme_bw()+
+    #scale_x_continuous(limits= c(0,5000), breaks=seq(0,5000,500)) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, color="black", size=11), 
+          axis.text.y = element_text(color="black", size=11), 
+          axis.title.x = element_text(color="black", size=14, face="bold"),
+          axis.title.y = element_text(color="black", size=14, face="bold"),
+          legend.justification=c(0,1), legend.position=c(0.6,0.9), 
+          legend.title=element_blank(),
+          legend.box.background = element_rect(colour = "black"),
+          legend.text = element_text(colour="black", size = 12),
+          legend.background = element_rect(fill="white",size=0.5, linetype="solid", color ="black"))
+
+ggp2 = plot_grid(pp, h1, labels = c('A', 'B'), label_size = 28)
+
+
+#save figure
+ggsave("PT_Ratio_Example.png", plot = ggp2, device = "png", path = wd$figs, scale = 1, width = 8, height = 4.5,   units = "in",  dpi = 1500)
+```
+
+
+```{r}
+#x = MT1805_B_I %>% #filter(Race == "Indio") %>% 
+#  mutate(Pct_TotalExempt_I = (Proximos_I + NinosNinas_I + Governadores_I + Caciques_I + Reservados_I + ViudasSolteras_I + Ausentes_I)/TribClass_TotalPersons_I,
+#         Tribs_I = (Casados_I + Casadas_I + ViudosSolteros_I)/2,
+#         PT_ratio_I = TribClass_TotalPersons_I/Tribs_I)
+#pp = ggplot() + geom_point(data = x, mapping = aes(Pct_TotalExempt_C16, PT_ratio_C16), size =2)+
+#  geom_point(data = xx, mapping = aes(Pct_TotalExempt_C16, PT_ratio_C16), color = "red", size=2.5)+
+#  stat_smooth(data = x, mapping = aes(Pct_TotalExempt_C16, PT_ratio_C16), method = lm, formula = y ~ poly(x, 11, raw = T), color="dodgerblue")+
+#  labs(x = "Percent Exempt", y = "P/T ratio")+
+#theme_bw() +
+#  scale_x_continuous(labels = percent, breaks = seq(0, 1, by = 0.1)) +
+#  scale_y_continuous(breaks = seq(0, 25, by = 5)) +
+#  theme(legend.position = "inside", legend.position.inside = c(0.8, 0.65)) +
+#  theme(legend.background = element_rect(colour = "black")) +
+#  theme(axis.text.x = element_text(size = 11, color="black")) +
+#  theme(axis.text.x = element_text(angle = 45, size = 11, color="black", hjust = 1)) +
+#  theme(axis.title.y = element_text(size = 14, face = "bold")) +
+#  theme(axis.title.x = element_text(size = 14, face = "bold")) +
+#  theme(legend.text = element_text(size = 12)) +
+#  theme(legend.title = element_blank())
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+
+ZERO VALUES NA
+
+NEW CAMINO REAL
+NUM CABECERAS PER POP
+OUWENEEL and SvB DATA INTEGRATE
+Gazeteer
+Accessibility
+Calculate Growth rates
+Relative % of total pop
+Index of urbanization
+Urb rate estimate
+
+
+### Demog Time Series Data
+
+```{r}
+
+Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeriesNewSpain.csv"))
+
+TribTimeSeries = TribTimeSeries %>% mutate(
+  r_1570_1580 = log(Trib1580/Trib1570)/10,
+  r_1570_1590 = log(Trib1590/Trib1570)/20,
+  r_1570_1600 = log(Trib1600/Trib1570)/30,
+  r_1570_1620 = log(Trib1620/Trib1570)/50,
+  r_1570_1645 = log(Trib1645/Trib1570)/75,
+  r_1570_1688 = log(Trib1688/Trib1570)/118,
+  r_1580_1590 = log(Trib1590/Trib1580)/10,
+  r_1590_1600 = log(Trib1600/Trib1590)/10,
+  r_1600_1620 = log(Trib1620/Trib1600)/20,
+  r_1620_1645 = log(Trib1645/Trib1620)/25,
+  r_1600_1645 = log(Trib1645/Trib1600)/45,
+  r_1645_1688 = log(Trib1688/Trib1645)/43,
+  r_1645_1688 = log(Trib1688/Trib1645)/43,
+  r_1688_1745 = log(Trib1745/Trib1688)/57,
+  r_1745_1800 = log(Trib1745/Trib1688)/55,
+  r_1688_1720 = log(Trib1720/Trib1688)/32,
+  r_1720_1725 = log(Trib1725/Trib1720)/5,
+  r_1725_1730 = log(Trib1730/Trib1725)/5,
+  r_1730_1735 = log(Trib1735/Trib1730)/5,
+  r_1735_1745 = log(Trib1745/Trib1735)/10,
+  r_1745_1750 = log(Trib1750/Trib1745)/10,
+  r_1750_1765 = log(Trib1765/Trib1750)/15,
+  r_1765_1775 = log(Trib1775/Trib1765)/10,
+  r_1775_1780 = log(Trib1780/Trib1775)/5,
+  r_1780_1785 = log(Trib1785/Trib1780)/5,
+  r_1785_1790 = log(Trib1790/Trib1785)/5,
+  r_1790_1800 = log(Trib1800/Trib1790)/10,
+  r_1800_1810 = log(Trib1810/Trib1800)/10,
+  r_1790_1810 = log(Trib1810/Trib1790)/20,
+  Trib1580_Pct1570 = Trib1580/Trib1570,
+  Trib1590_Pct1570 = Trib1590/Trib1570,
+  Trib1600_Pct1570 = Trib1600/Trib1570,
+  Trib1620_Pct1570 = Trib1620/Trib1570,
+  Trib1645_Pct1570 = Trib1645/Trib1570,
+  Trib1688_Pct1570 = Trib1688/Trib1570,
+  Trib1745_Pct1570 = Trib1745/Trib1570,
+  Trib1800_Pct1570 = Trib1800/Trib1570,
+  PctDecline_1570_1600 = (1-(Trib1600/Trib1570))*-1,
+  PctDecline_1570_1645 = (1-(Trib1645/Trib1570))*-1,
+  PctDecline_1570_1688 = (1-(Trib1688/Trib1570))*-1,
+  PctDecline_1570_1745 = (1-(Trib1745/Trib1570))*-1,
+  PctDecline_1570_1800 = (1-(Trib1800/Trib1570))*-1
+) %>% rename(GerhNum = GerhardNum)
+
+Juris1800_Data = Juris1800 %>% left_join(TribTimeSeries, by = "OBJECTID")
+
+st_write(Juris1800_Data, paste0(wd$data_r, "TribTimeSeries.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+```
+
+
+
+
+
+### Merge Partidos With Demog Data
+
+```{r}
+
+```
+
+
+
+
+
+```{r}
+
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3.gpkg"))
+
+
+Partidos1800_Data = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>%
+  left_join(MT1805_wide, by = "OBJECTID") %>%
+  mutate(Popdens_TribPop_km2 = TribClass_TotalPersons_T/Area_km2,
+         Popdens_TotalPopEst_km2 = TotalPop1805_Est/Area_km2)
+
+setdiff(MT1805_wide$OBJECTID,Partidos1800_Data$OBJECTID)
+setdiff(Partidos1800_Data$OBJECTID,MT1805_wide$OBJECTID)
+
+# [1] 181198 189399 189480 189502 189535 189687
+
+plot(st_geometry(Partidos1800_Data), col = sf.colors(12, categorical = TRUE), border = 'black', 
+     axes = F)
+  
+Partidos1800_Data_OUW = Partidos1800_Data %>% filter(OuweneelData == "Yes")
+
+plot(st_geometry(Partidos1800_Data_OUW), col = sf.colors(12, categorical = TRUE), border = 'black', 
+     axes = F)
+
+
+
+#Partidos1800_Data = Partidos1800 %>% left_join(MT1805_wide, by = "OBJECTID") %>%
+#  mutate(Popdens_TribPop_km2 = TribClass_TotalPersons_T/Area_km2,
+#         Popdens_TotalPopEst_km2 = TotalPop1805_Est/Area_km2)
+
+st_write(Partidos1800_Data, paste0(wd$data_r, "Partidos1800_Data_v3.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+
+
+```
+
+
+
+```{r}
+x = Partidos1800_Data %>% filter(PT_ratio_C16_I < 5) %>% mutate(
+  AdultPop_C16_I = TribClass_TotalPersons_NotAbsent_C16_I - NinosNinas_I - Proximos_I - Reservados_I,
+  PctAdult_Casados = Casados_C16_I / AdultPop_C16_I,
+  PctAdult_Married = (Casados_C16_I + Casados_C16_I) / AdultPop_C16_I,
+  PctAdult_VoSo = ViudosSolteros_I / AdultPop_C16_I,
+  PctAdult_VaSa = ViudasSolteras_I / AdultPop_C16_I,
+  PctAdult_VS = (ViudosSolteros_I+ViudasSolteras_I) / AdultPop_C16_I
+  
+  
+                                                                ) %>%
+  filter(Provincia.x %in% c("Mexico", "Puebla", "Veracruz", "Oaxaca", "Tlaxcala"))
+
+plot(x$Pct_ViudosSolteros_I, x$PT_ratio_C16_I)
+
+model = lm(PT_ratio_C16_I ~ Pct_ViudosSolteros_I, data = x)
+summary(model)
+plot(x$ViudasSolteras_I, x$PT_ratio_C16_I)
+plot(x$Pct_Proximos_I, x$PT_ratio_C16_I)
+plot(x$Pct_NinosProximos_I, x$PT_ratio_C16_I)
+plot(x$Pct_Reservados_I, x$PT_ratio_C16_I)
+plot(x$PctAdult_VaSa, x$PT_ratio_C16_I)
+plot(x$VSC_ratio_C16_I, x$PT_ratio_C16_I)
+plot(x$Pct_Married_C16_I, x$PT_ratio_C16_I)
+VSC_ratio_C16_I
+```
+
+
+
+
+
+```{r}
+
+
+x = MT1805_wide %>% dplyr::select(Provincia, Partido, OBJECTID)
+Tribs1805
+TotalYearlyTribute1805
+
+
+write.csv(st_drop_geometry(Partidos1800), paste0(wd$data_r,"Partidos1800_df.csv"))
+write.csv(st_drop_geometry(Partidos1800_Data), paste0(wd$data_r,"Partidos1800_Data_df.csv"))
+Partidos1800_Data
+
+
+plot(Partidos1800_Data$Pct_Casados_I, Partidos1800_Data$PT_ratio_T)
+plot(Partidos1800_Data$Pct_NinosProximos_T, Partidos1800_Data$PT_ratio_T)
+plot(Partidos1800_Data$Pct_NinosProximos_T, Partidos1800_Data$PT_ratio_T)
+plot(Partidos1800_Data$TribPopGrowthRate, Partidos1800_Data$PT_ratio_T)
+plot(Partidos1800_Data$TribPopGrowthRate, Partidos1800_Data$Pct_NinosProximos_T)
+plot(Partidos1800_Data$TribPopGrowthRate, Partidos1800_Data$Pct_Reservados_T)
+plot(Partidos1800_Data$PT_ratio_T, Partidos1800_Data$Pct_TotalExempt_T)
+plot(Partidos1800_Data$TribPopGrowthRate, Partidos1800_Data$Pct_TotalExempt_T)
+plot(Partidos1800_Data$PT_ratio_T, Partidos1800_Data$Pct_ViudasSolteras_T)
+plot(Partidos1800_Data$PT_ratio_T, Partidos1800_Data$Pct_ViudosSolteros_T)
+plot(Partidos1800_Data$PT_ratio_T, Partidos1800_Data$Pct_Casados_T)
+plot(Partidos1800_Data$PT_ratio_T, Partidos1800_Data$Pct_ViudSoltTotal_T)
+plot(Partidos1800_Data$Pct_TotalExempt_T, Partidos1800_Data$Pct_Casados_T)
+
+#growth rate 1805-1810
+
+```
+
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+### Graphs
+
+```{r}
+plot(Partidos1800_Data_OUW$Pct_Casados_I, Partidos1800_Data_OUW$PT_ratio_T)
+plot(Partidos1800_Data_OUW$Pct_NinosProximos_T, Partidos1800_Data_OUW$PT_ratio_T)
+plot(Partidos1800_Data_OUW$Pct_NinosProximos_T, Partidos1800_Data_OUW$PT_ratio_T)
+plot(Partidos1800_Data_OUW$TribPopGrowthRate, Partidos1800_Data_OUW$PT_ratio_T)
+plot(Partidos1800_Data_OUW$TribPopGrowthRate, Partidos1800_Data_OUW$Pct_NinosProximos_T)
+plot(Partidos1800_Data_OUW$TribPopGrowthRate, Partidos1800_Data_OUW$Pct_Reservados_T)
+plot(Partidos1800_Data_OUW$PT_ratio_T, Partidos1800_Data_OUW$Pct_TotalExempt_T)
+plot(Partidos1800_Data_OUW$TribPopGrowthRate, Partidos1800_Data_OUW$Pct_TotalExempt_T)
+plot(Partidos1800_Data_OUW$PT_ratio_T, Partidos1800_Data_OUW$Pct_ViudasSolteras_T)
+plot(Partidos1800_Data_OUW$PT_ratio_T, Partidos1800_Data_OUW$Pct_ViudosSolteros_T)
+plot(Partidos1800_Data_OUW$PT_ratio_T, Partidos1800_Data_OUW$Pct_Casados_T)
+plot(Partidos1800_Data_OUW$PT_ratio_T, Partidos1800_Data_OUW$Pct_ViudSoltTotal_T)
+plot(Partidos1800_Data_OUW$Pct_TotalExempt_T, Partidos1800_Data_OUW$Pct_Casados_T)
+
+
+plot(Partidos1800_Data_OUW$VanOssMonuments, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TotalTribPop1805_NML, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TotalTribPop1805_Ind, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_Indios, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_NonIndios, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_Blancos, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_Castas, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_Mestizos, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_NM, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Popdens_TotalPopEst_km2, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Popdens_TribPop_km2, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TribPop_ILV, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TribPop_NML, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_TribPop_Indio, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$TributePerCapita_1805, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$TributePerTrib_1805, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$TributePerCapita_1810, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$TributePerTrib_1810, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$TribsNewOld_Ratio_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_Casados_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_Married_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_Proximos_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_ViudSoltTotal_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_ViudosSolteros_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_ViudasSolteras_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_Ausentes_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_CaciquesGov_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_TotalExempt_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_Reservados_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_Ninos_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$Pct_NinosProximos_I, Partidos1800_Data_OUW$PT_ratio_I) ####
+plot(Partidos1800_Data_OUW$VoSoC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$VaSaC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$VSC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$CT_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$TC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$PC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$PT_ratio_T, Partidos1800_Data_OUW$PT_ratio_I)
+
+Partidos1800_Data_OUW = Partidos1800_Data_OUW %>% mutate(
+  Pct_NonTribAge_I = Pct_Reservados_I+Pct_NinosProximos_I,
+  Pct_VaSaNinoProxReserv_I = Pct_Reservados_I+Pct_NinosProximos_I + Pct_ViudasSolteras_I,
+  MC_ratio_I = Proximos_I / Casados_I,
+  NC_ratio_I = NinosNinas_I / Casados_I,
+  NMC_ratio_I = (Proximos_I + NinosNinas_I) / Casados_I,
+  AC_ratio_I = Reservados_I / Casados_I,
+  Pct_CasadosSinEdad_I = Casados_SinEdad_I / Casados_I,
+  Pct_MarriedNonTrib_I = (Casados_WifeNoTrib_I + Casadas_HusbNoTrib_I) / (Casados_WifeNoTrib_I + Casadas_HusbNoTrib_I + Casados_WifeTrib_I),
+  TotalExempt1_I = Proximos_I + NinosNinas_I + Governadores_I + Caciques_I + Reservados_I,
+  TotalExempt2_I = Proximos_I + NinosNinas_I + Governadores_I + Caciques_I + Reservados_I + ViudasSolteras_I,
+  TotalExempt3_I = Proximos_I + NinosNinas_I + Governadores_I + Caciques_I + Reservados_I + ViudasSolteras_I + Ausentes_I,
+  Pct_TotalExempt1_I = TotalExempt1_I / TribClass_TotalPersons_I,
+  Pct_TotalExempt2_I = TotalExempt2_I / TribClass_TotalPersons_I,
+  Pct_TotalExempt3_I = TotalExempt3_I / TribClass_TotalPersons_I,
+  Pct_TotalTribPers1_I = 1 - Pct_TotalExempt3_I,
+  TotalTribPers_I = ViudosSolteros_I + Casadas_HusbNoTrib_I + Casados_WifeNoTrib_I + Casados_WifeTrib_I + Casados_WifeTrib_I + Casados_SinEdad_I + Casados_SinEdad_I,
+  Pct_TotalTribPers2_I = TotalTribPers_I / TribClass_TotalPersons_I
+)
+plot(Partidos1800_Data_OUW$Popdens_TribPop_km2, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Popdens_TotalPopEst_km2, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_NonTribAge_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_VaSaNinoProxReserv_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$MC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$NC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$NMC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$AC_ratio_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_CasadosSinEdad_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_MarriedNonTrib_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TotalExempt1_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TotalExempt2_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TotalExempt3_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TotalTribPers1_I, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$Pct_TotalTribPers2_I, Partidos1800_Data_OUW$PT_ratio_I)
+
+write.csv(st_drop_geometry(Partidos1800_Data_OUW) , paste0(wd$data_r,"Partidos1800_Data_OUW.csv"))
+
+
+
+
+plot(Partidos1800_Data_OUW$, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$, Partidos1800_Data_OUW$PT_ratio_I)
+plot(Partidos1800_Data_OUW$, Partidos1800_Data_OUW$PT_ratio_I)
+
+plot(Partidos1800_Data_OUW["PT_ratio_I"])
+plot(Partidos1800_Data_OUW["Pct_NinosProximos_I"])
+plot(Partidos1800_Data_OUW["Pct_Ninos_I"])
+plot(Partidos1800_Data_OUW["Pct_Proximos_I"])
+plot(Partidos1800_Data_OUW["Pct_Reservados_I"])
+plot(Partidos1800_Data_OUW["Pct_NonTribAge_I"])
+plot(Partidos1800_Data_OUW["Pct_NonTribAge_I"])
+```
+
+
+
+
+### PCA
+
+```{r}
+x = Partidos1800_Data %>% dplyr::select(#Juris_Tipo,Obispado,Provincia.x,Area_km2,CaminoReal,EconomyType,VanOssUrban,Tipo,
+                                        TotalTribPop1805,VanOssMonuments,PT_ratio_1805,Pct_TotalTribPop1805_NML,Pct_TotalTribPop1805_Ind,
+                                        #(TotalTribPop1805/NumCabeceras1805),(TotalTribPop1810/NumCabeceras1810),
+                                        Pct_Indios,Pct_NonIndios,Pct_Blancos,Pct_Castas,Pct_Mestizos,Pct_NM,PT_ratio_T,PC_ratio_T,CT_ratio_T,TC_ratio_T,VSC_ratio_T,VaSaC_ratio_T,VoSoC_ratio_T,Pct_NinosProximos_T,Pct_Ninos_T,Pct_Reservados_T,Pct_TotalExempt_T,Pct_CaciquesGov_T,Pct_Ausentes_T,Pct_ViudasSolteras_T,Pct_ViudosSolteros_T,Pct_ViudSoltTotal_T,Pct_Proximos_T,Pct_Married_T,TribsNewOld_Ratio_T,Pct_Casados_T,TribPopGrowthRate,TributePerTrib_1805,TributePerCapita_1805,Pct_TribPop_Indio,Pct_TribPop_ILV,Pct_TribPop_NML, Popdens_TotalPopEst_km2, Popdens_TribPop_km2, Pct_TribPop_Indio) %>%
+  filter(complete.cases(PT_ratio_1805)) %>% st_drop_geometry()%>% na.omit()
+
+pc = prcomp(x)
+print(pc)#
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+""                                ""                               
+[143] ""                                ""                               
+[145] ""                               ""                            
+[147] ""                             ""                      
+[149] ""                               ""                         
+[151] ""                         ""                        
+[153] ""                            ""                     
+[155] ""                      ""                      
+[157] ""                            ""                            
+[159] ""                             "" 
+""                         ""                    
+[311] ""                       "TributePerCapita_1810"                    
+[313] "TributePerTrib_1810"                       ""                        
+[315] ""                           "" 
+                
+ [27] "MacroRegion"                               "VanOssRegionType"                         
+ [29] ""                               ""                          
+ [31] "Port_Start"                                "Port_End"                                 
+ [33] "CasaMoneda_Start"                          "CasaMoneda_End"                           
+ [35] "CajaReal_Start"                            "CajaReal_End"                             
+ [37] "University_Start"                          "University_End"                           
+ [39] "PrintingPress_Start"                       "PrintingPress_End"                        
+ [41] "SlicherVanBathNum"                         "GerhardName"                              
+ [43] "AggType"                                   "SvBComplexEcon"                           
+ [45] "SvBOneSidedEcon"                           "SvBIntrmedEcon"                           
+ [47] "SvBEconType"                               "SvBState"                                 
+                              
+ [75] ""                  ""                     
+ [77] "Pct_TotalTribPop1805_Ind"                  ""                            
+ [79] "PT_ratio_1805_Ind"                         "TribsMedios_Ind_1810"                     
+ [81] "TribsEnteros_Ind_1810"                     "TribsMedios_Mul_1810"                     
+ [83] "TribsEnteros_Mul_1810"                     "TribsPersons_Ind_1810"                    
+ [85] "TribsPersons_Mul_1810"                     "TribsPersons_Total_1810"                  
+ [87] "Tribs1810"                                 "TotalPop1805_Est"                         
+ [89] "Indios"                                    "NonIndios"                                
+ [91] "Blancos"                                   "Castas"                                   
+ [93] "Mestizos"                                  "NM"                                       
+ [95] ""                                ""                            
+ [97] "Pct_Blancos"                               "Pct_Castas"                               
+ [99] ""                              ""                                   
+[101] "TributosRey1805"                           "TributosEncomiendaCaxa1805"               
+[103] "TributosEncomiendaFueraCaxa1805"           "TributosEncomiendaTotal1805"              
+[105] "TributosDiezmosEclesiasticosCaxa1805"      "TributosDiezmosEclesiasticosFueraCaxa1805"
+[107] "TributosDiezmosEclesiasticosTotal1805"     "TributosDoctrinas1805"                    
+[109] "MedioRealMinistros1805"                    "MedioRealHospital1805"                    
+[111] "TotalYearlyTribute1805"                    "TributosRey1810"                          
+[113] "TributosEncomiendaCaxa1810"                "TributoEncomiendaFueraCaxa1810"           
+[115] "TributosEncomiendaTotal1810"               "TributosDiezmosEclesiasticosCaxa1810"     
+[117] "TributosDiezmosEclesiasticosFueraCaxa1810" "TributosDiezmosEclesiasticosTotal1810"    
+[119] "TributosDoctrinas1810"                     "MedioRealMinistros1810"                   
+[121] "MedioRealHospital1810"                     "RealYMedioComunidades1810"                
+[123] "TotalYearlyTribute1810"                    "Caciques_T"                               
+[125] "Governadores_T"                            "Reservados_T"                             
+[127] "Ausentes_T"                                "ViudasSolteras_T"                         
+[129] "NinosNinas_T"                              "Casados_T"                                
+[131] "Casadas_T"                                 "Casados_WifeTrib_T"                       
+[133] "Casados_SinEdad_T"                         "Casados_WifeNoTrib_T"                     
+[135] "ViudosSolteros_T"                          "Casadas_HusbNoTrib_T"                     
+[137] "Proximos_T"                                "Tribs_T"                                  
+[139] "TribsNewSystem_T"                          "TribClass_TotalPersons_T"                 
+[141]                      
+[161] "Caciques_IP"                               "Governadores_IP"                          
+[163] "Reservados_IP"                             "Ausentes_IP"                              
+[165] "ViudasSolteras_IP"                         "NinosNinas_IP"                            
+[167] "Casados_IP"                                "Casadas_IP"                               
+[169] "Casados_WifeTrib_IP"                       "Casados_SinEdad_IP"                       
+[171] "Casados_WifeNoTrib_IP"                     "ViudosSolteros_IP"                        
+[173] "Casadas_HusbNoTrib_IP"                     "Proximos_IP"                              
+[175] "Tribs_IP"                                  "TribsNewSystem_IP"                        
+[177] "TribClass_TotalPersons_IP"                 "PT_ratio_IP"                              
+[179] "PC_ratio_IP"                               "TC_ratio_IP"                              
+[181] "CT_ratio_IP"                               "VSC_ratio_IP"                             
+[183] "VaSaC_ratio_IP"                            "VoSoC_ratio_IP"                           
+[185] "Pct_NinosProximos_IP"                      "Pct_Ninos_IP"                             
+[187] "Pct_Reservados_IP"                         "Pct_TotalExempt_IP"                       
+[189] "Pct_CaciquesGov_IP"                        "Pct_Ausentes_IP"                          
+[191] "Pct_ViudasSolteras_IP"                     "Pct_ViudosSolteros_IP"                    
+[193] "Pct_ViudSoltTotal_IP"                      "Pct_Proximos_IP"                          
+[195] "Pct_Married_IP"                            "Pct_Casados_IP"                           
+[197] "TribsNewOld_Ratio_IP"                      "Caciques_ILV"                             
+[199] "Governadores_ILV"                          "Reservados_ILV"                           
+[201] "Ausentes_ILV"                              "ViudasSolteras_ILV"                       
+[203] "NinosNinas_ILV"                            "Casados_ILV"                              
+[205] "Casadas_ILV"                               "Casados_WifeTrib_ILV"                     
+[207] "Casados_SinEdad_ILV"                       "Casados_WifeNoTrib_ILV"                   
+[209] "ViudosSolteros_ILV"                        "Casadas_HusbNoTrib_ILV"                   
+[211] "Proximos_ILV"                              "Tribs_ILV"                                
+[213] "TribsNewSystem_ILV"                        "TribClass_TotalPersons_ILV"               
+[215] "PT_ratio_ILV"                              "PC_ratio_ILV"                             
+[217] "TC_ratio_ILV"                              "CT_ratio_ILV"                             
+[219] "VSC_ratio_ILV"                             "VaSaC_ratio_ILV"                          
+[221] "VoSoC_ratio_ILV"                           "Pct_NinosProximos_ILV"                    
+[223] "Pct_Ninos_ILV"                             "Pct_Reservados_ILV"                       
+[225] "Pct_TotalExempt_ILV"                       "Pct_CaciquesGov_ILV"                      
+[227] "Pct_Ausentes_ILV"                          "Pct_ViudasSolteras_ILV"                   
+[229] "Pct_ViudosSolteros_ILV"                    "Pct_ViudSoltTotal_ILV"                    
+[231] "Pct_Proximos_ILV"                          "Pct_Married_ILV"                          
+[233] "Pct_Casados_ILV"                           "TribsNewOld_Ratio_ILV"                    
+[235] "Caciques_NML"                              "Governadores_NML"                         
+[237] "Reservados_NML"                            "Ausentes_NML"                             
+[239] "ViudasSolteras_NML"                        "NinosNinas_NML"                           
+[241] "Casados_NML"                               "Casadas_NML"                              
+[243] "Casados_WifeTrib_NML"                      "Casados_SinEdad_NML"                      
+[245] "Casados_WifeNoTrib_NML"                    "ViudosSolteros_NML"                       
+[247] "Casadas_HusbNoTrib_NML"                    "Proximos_NML"                             
+[249] "Tribs_NML"                                 "TribsNewSystem_NML"                       
+[251] "TribClass_TotalPersons_NML"                "PT_ratio_NML"                             
+[253] "PC_ratio_NML"                              "TC_ratio_NML"                             
+[255] "CT_ratio_NML"                              "VSC_ratio_NML"                            
+[257] "VaSaC_ratio_NML"                           "VoSoC_ratio_NML"                          
+[259] "Pct_NinosProximos_NML"                     "Pct_Ninos_NML"                            
+[261] "Pct_Reservados_NML"                        "Pct_TotalExempt_NML"                      
+[263] "Pct_CaciquesGov_NML"                       "Pct_Ausentes_NML"                         
+[265] "Pct_ViudasSolteras_NML"                    "Pct_ViudosSolteros_NML"                   
+[267] "Pct_ViudSoltTotal_NML"                     "Pct_Proximos_NML"                         
+[269] "Pct_Married_NML"                           "Pct_Casados_NML"                          
+[271] "TribsNewOld_Ratio_NML"                     "Caciques_I"                               
+[273] "Governadores_I"                            "Reservados_I"                             
+[275] "Ausentes_I"                                "ViudasSolteras_I"                         
+[277] "NinosNinas_I"                              "Casados_I"                                
+[279] "Casadas_I"                                 "Casados_WifeTrib_I"                       
+[281] "Casados_SinEdad_I"                         "Casados_WifeNoTrib_I"                     
+[283] "ViudosSolteros_I"                          "Casadas_HusbNoTrib_I"                     
+[285] "Proximos_I"                                "Tribs_I"                                  
+[287] "TribsNewSystem_I"                          "TribClass_TotalPersons_I"                 
+[289] "PT_ratio_I"                                "PC_ratio_I"                               
+[291] "TC_ratio_I"                                "CT_ratio_I"                               
+[293] "VSC_ratio_I"                               "VaSaC_ratio_I"                            
+[295] "VoSoC_ratio_I"                             "Pct_NinosProximos_I"                      
+[297] "Pct_Ninos_I"                               "Pct_Reservados_I"                         
+[299] "Pct_TotalExempt_I"                         "Pct_CaciquesGov_I"                        
+[301] "Pct_Ausentes_I"                            "Pct_ViudasSolteras_I"                     
+[303] "Pct_ViudosSolteros_I"                      "Pct_ViudSoltTotal_I"                      
+[305] "Pct_Proximos_I"                            "Pct_Married_I"                            
+[307] "Pct_Casados_I"                             "TribsNewOld_Ratio_I"                      
+[309] 
+
+
+    #popdensity
+    #Num cabecera density, freq per person
+    #tribute paid per person
+    # %Pop NML, Indio, ILV
+    #%change in PT ratio
+```
+
+
+
+sum(MT1805_wide$ORDNEW)
+sum(Partidos1800_Data$ORDNEW, na.rm=T)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

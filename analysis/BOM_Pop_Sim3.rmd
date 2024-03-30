@@ -1,0 +1,539 @@
+---
+title: "BOM Pop Simulation"
+author: "Rudolf Cesaretti"
+date: "2024-03-20"
+output: html_document
+---
+
+
+```{r, setup, include=FALSE,echo=FALSE, message=FALSE,warning=FALSE}
+require(knitr)
+# Set so that long lines in R will be wrapped:
+opts_chunk$set(tidy.opts=list(width.cutoff=75),tidy=TRUE)
+#
+rm(list = ls())
+```
+
+## Setup
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+C:\Users\TJ McMote\Dropbox (ASU)\AztecColonialDemography\AztecColonialDemogAnalysis
+```{r}
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+
+wd$analysis <- paste0(wd$dir,"analysis/")
+wd$data_r <- paste0(wd$dir,"data-raw/")
+wd$data_p <- paste0(wd$dir,"data-processed/")
+wd$data_f <- paste0(wd$dir,"data-final-outputs/")
+wd$figs <- paste0(wd$dir,"figures/")
+wd$funcs <- paste0(wd$dir,"functions/")
+
+packages <- c(
+              "tidyverse", "tidyr", "data.table", "gridExtra", "ggnewscale", 
+              "cowplot", "scales", "viridis", "Cairo", "actuar", "DemoTools", 
+              "NSM3", "km.ci", "popbio", "demography", "demogR", "DT")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# load packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+rm(packages,installed_packages)
+
+
+
+```
+
+# Functions
+
+### Create demogR lifetable from DemogTools lifetable
+
+```{r}
+lifetable_DemogTools_to_demogR <- function(qx, #Vector of conditional death probabilities in abridged age classes.
+                                           AgeLower,  #integer. A vector of ages of the lower bound of the age classes.
+                                           Sex, # character. Either male "m", female "f", or both "b"
+                                           OpenAgeNew = max(AgeLower) #Desired open age group (5-year ages only). Default max(Age). If higher then rates are extrapolated
+                                           #Round = T
+) {
+  
+  AgeInt <- inferAgeIntAbr(vec = qx)
+  
+  lifetable <- lt_abridged(nqx = qx, Age = AgeLower, AgeInt = AgeInt, region = "w",
+                       axmethod = "un",a0rule = "cd", Sex = Sex, OAnew = OpenAgeNew,  mod = FALSE)
+  
+  
+  
+  lifetable_demogR = data.frame(x = lifetable$Age, 
+                                nax = round(lifetable$nAx,4), 
+                                nMx = round(lifetable$nMx,4), 
+                                nqx = round(lifetable$nqx,4), 
+                                lx = round(lifetable$lx/100000,4), 
+                                ndx = round(lifetable$ndx/100000,4), 
+                                nLx = round(lifetable$nLx/100000,4), 
+                                Tx = round(lifetable$Tx/100000,2), 
+                                ex = round(lifetable$ex,2))
+  
+  return(lifetable_demogR)
+}
+
+
+```
+
+
+### Calculate stable population
+
+```{r}
+
+StablePopulationLifeTables <- function(ModelName,
+                                       Sex,
+                                       AgeLower, 
+                                       qx, 
+                                       r, # intrinsic growth rate 
+                                       OpenAgeNew = max(AgeLower),
+                                       abridged = T
+                                       ){
+  
+  if(abridged==T){
+    AgeInt <- inferAgeIntAbr(vec = qx)
+    lifetable <- lt_abridged(nqx = qx, Age = AgeLower, AgeInt = AgeInt, region = "w",
+                       axmethod = "un",a0rule = "cd", Sex = Sex, OAnew = OpenAgeNew,  mod = FALSE)
+  }else{
+    lifetable <- lt_single_qx(nqx = qx, Age = AgeLower, region = "w",
+                        Sex = Sex,  mod = FALSE, OAnew = 99)
+  }
+  
+  
+  
+  
+  if(r == 0){
+    lifetable$cx = lifetable$nLx/sum(lifetable$nLx)
+  }else{
+    AgeInt = c(lifetable$AgeInt[!is.na(lifetable$AgeInt)], 5)
+    ex <- exp(-r * (lifetable$Age + ((0.5*AgeInt))))
+    LX_ex <- lifetable$nLx * ex
+    lifetable$cx = LX_ex/sum(LX_ex)
+  }
+  
+  lifetable$r <- r
+  
+  lifetable$Model <- ModelName
+  
+  lifetable$Sex <- ifelse(Sex == 'f', "Female", "Male") 
+  
+  lifetable$dummy <- 0 
+  
+  lifetable = lifetable %>% dplyr::select(Model, Sex, r, Age, AgeInt, AgeInt, nMx, nAx, nqx, lx, ndx, nLx, Sx, Tx, ex, cx)
+  
+  return(lifetable)
+}
+
+
+
+```
+
+
+### Combine male and female life tables
+
+```{r}
+
+MixedLifeTable <- function(male_life_table, female_life_table, Pop_Births_M, Pop_Births_F, PctBirthsAge, CBR_M, CBR_F, joined = T, abridged = T){
+  sex_ratio_at_birth = 1.05
+  #Pop_Births_M = 34.885
+  #Pop_Births_F = 37.5
+  m = male_life_table$cx * Pop_Births_M * sex_ratio_at_birth
+  f = female_life_table$cx * Pop_Births_F
+  male_frac = m / (m+f)
+  female_frac = f / (m+f)
+  sex_ratio = m/f
+  cx_total = (male_frac * male_life_table$cx) + (female_frac * female_life_table$cx)
+  cx_total = cx_total / sum(cx_total)
+  lx_total = (male_frac * male_life_table$lx) + (female_frac * female_life_table$lx)
+  
+  if(abridged==T){
+    combined_life_table <- lt_abridged(lx = lx_total, Age = male_life_table$Age, AgeInt = male_life_table$AgeInt, region = "w", axmethod = "un",a0rule = "cd", Sex = "b", mod = FALSE)
+  }else{
+    
+    combined_life_table <- lt_single_qx(nqx = lt_id_l_q(lx_total), Age = male_life_table$Age, type = "l",  Sex = "b", OAnew = 99)
+    
+  }
+  
+  
+
+  combined_life_table$cx <- cx_total
+  combined_life_table$male_frac <- male_frac
+  combined_life_table$female_frac <- female_frac
+  combined_life_table$sex_ratio <- sex_ratio
+  
+  #PctBirthsAge = CD_ASFR$PctBirths
+  #CBR_F = 26.67
+  #CBR_M = 28.67
+  CBR_M_Total = CBR_M*1000
+  CBR_F_Total = CBR_F*1000
+  Births_M = PctBirthsAge*CBR_M_Total
+  Births_F = PctBirthsAge*CBR_F_Total
+  Births_Total = (male_frac * Births_M) + (female_frac * Births_F)
+  CBR_Total = sum(Births_Total)/1000
+  ASFR_T = Births_Total / (combined_life_table$cx*100000)
+  ASFR_F = Births_Total / (female_life_table$cx*100000)
+  
+  male_life_table$CBR = CBR_M
+  female_life_table$CBR = CBR_F
+  combined_life_table$CBR = CBR_Total
+  male_life_table$ASFR_Sex = Births_M/(male_life_table$cx*100000)
+  female_life_table$ASFR_Sex = Births_F/(female_life_table$cx*100000)
+  combined_life_table$ASFR_Sex = ASFR_T
+  
+  combined_life_table$ASFR_T = ASFR_T
+  combined_life_table$ASFR_TF = ASFR_F
+  
+  combined_life_table$r <- male_life_table$r
+  
+  combined_life_table$Model <- male_life_table$Model
+  
+  combined_life_table$Sex <- "Both"
+  
+  combined_life_table$dummy <- 0 
+  
+  combined_life_table = combined_life_table %>% dplyr::select(Model, Sex, r, Age, AgeInt, AgeInt, nMx, nAx, nqx, lx, ndx, nLx, Sx, Tx, ex, cx, male_frac, female_frac, sex_ratio, CBR, ASFR_Sex, ASFR_T, ASFR_TF)
+  
+  
+  if(joined == T){
+    out = bind_rows(male_life_table, female_life_table, combined_life_table)
+  }else{
+    out = combined_life_table
+  }
+  
+  return(out)
+  
+}
+
+
+```
+
+
+### Leslie Matrix Construction
+
+
+
+```{r}
+
+LeslieMatrix <- function(, , , ){
+  
+  
+  
+  
+}
+
+
+```
+
+
+# Life Table Calc Workflow
+
+
+### PctBirths by Age Interpolation
+
+% of total births by age group estimated from:
+https://www.jstor.org/stable/42778266
+https://www.scielo.org.mx/scielo.php?pid=S1665-44202022000100044&script=sci_arttext
+Modified to slant slightly younger
+Then using the CBRs and age structure for Coale and Demney models 1-3-8 West, these percentages were converted to Age specific fertility rates (ASFRs)
+
+```{r}
+CD_ASFR = read.csv(paste0(wd$data_r,"CD_ASFR.csv"))
+CD_ASFR$AgeInt = c(1,4,rep(5,17))
+CD_ASFR$AgeMidpoint = CD_ASFR$AgeLower + (0.5*CD_ASFR$AgeInt)
+
+# Generate interpolation points for each integer from 0 to 90
+interpolation_ages <- seq(0, 99, by = 1) # Every integer from 0 to 90
+# Perform spline interpolation
+#interpolated_ASFR <- spline(CD_ASFR$AgeMidpoint, CD_ASFR$PctBirths, xout = interpolation_ages, method = "natural")
+fit_loess <- loess(CD_ASFR$PctBirths ~ CD_ASFR$AgeMidpoint, span = 0.22, degree=2)
+interpolated_PctBirths <- as.data.frame(interpolation_ages)
+colnames(interpolated_PctBirths) <- "AgeLower"
+
+
+interpolated_PctBirths$PctBirths <- predict(fit_loess, newdata = interpolation_ages)
+interpolated_PctBirths = interpolated_PctBirths %>% mutate(PctBirths = ifelse(PctBirths >= 0, PctBirths, 0), PctBirths = ifelse(is.na(PctBirths), 0, PctBirths))
+interpolated_PctBirths = interpolated_PctBirths %>% mutate(PctBirthsNormalized = PctBirths/sum(PctBirths))
+
+# Plot the original data points
+plot(CD_ASFR$AgeMidpoint, CD_ASFR$PctBirths, xlim = c(0, 90), ylim = range(CD_ASFR$PctBirths), pch = 19, main = "Spline Interpolation", xlab = "Ages", ylab = "% Births")
+lines(CD_ASFR$AgeMidpoint, CD_ASFR$PctBirths, col = "red")
+# Add the smooth curve generated by spline interpolation
+lines(interpolated_PctBirths$AgeLower, interpolated_PctBirths$PctBirths, col = "blue")
+lines(interpolated_PctBirths$AgeLower, interpolated_PctBirths$PctBirthsNormalized, col = "green")
+
+```
+
+
+
+### *Calculate life tables (Needs list and loops or Pmap)
+
+
+
+
+```{r}
+CD_qx = read.csv(paste0(wd$data_r,"CD_qx.csv"))
+
+###### 8 West r = 0 ######
+
+## abridged
+
+CD_8W_M_lifetable <- lt_abridged(nqx = CD_qx$CD_8W_M_qx[1:21], Age = CD_qx$AgeLower[1:21], AgeInt = inferAgeIntAbr(vec = CD_qx$CD_8W_M_qx[1:21]), region = "w", axmethod = "un",a0rule = "cd", Sex = "m", OAnew = 85,  mod = FALSE)
+
+CD_8W_M_lifetable_r0 <- StablePopulationLifeTables(ModelName = "8 West", Sex = "m", AgeLower = CD_8W_M_lifetable$Age, qx = CD_8W_M_lifetable$nqx, r = 0)
+
+CD_8W_F_lifetable <- lt_abridged(nqx = CD_qx$CD_8W_F_qx, Age = CD_qx$AgeLower, AgeInt = inferAgeIntAbr(vec = CD_qx$CD_8W_M_qx), region = "w", axmethod = "un",a0rule = "cd", Sex = "f", OAnew = 85,  mod = FALSE)
+
+CD_8W_F_lifetable_r0 <- StablePopulationLifeTables(ModelName = "8 West", Sex = "f", AgeLower = CD_8W_F_lifetable$Age, qx = CD_8W_F_lifetable$nqx, r = 0)
+
+CD_8W_r0 <- MixedLifeTable(male_life_table = CD_8W_M_lifetable_r0, female_life_table = CD_8W_F_lifetable_r0, Pop_Births_M = 34.885, Pop_Births_F = 37.5, joined = T, PctBirthsAge = CD_ASFR$PctBirths, CBR_F = 26.67, CBR_M = 28.67)
+
+## single
+
+CD_8W_M_lifetable <- lt_abridged2single(nqx = CD_qx$CD_8W_M_qx[1:21], Age = CD_qx$AgeLower[1:21],  region = "w", axmethod = "un",a0rule = "cd", Sex = "m", OAnew = 99,  mod = FALSE)
+
+CD_8W_M_lifetable_r0 <- StablePopulationLifeTables(ModelName = "8 West", Sex = "m", AgeLower = CD_8W_M_lifetable$Age, qx = CD_8W_M_lifetable$nqx, r = 0, abridged = F)
+
+CD_8W_F_lifetable <- lt_abridged2single(nqx = CD_qx$CD_8W_F_qx, Age = CD_qx$AgeLower, region = "w", axmethod = "un",a0rule = "cd", Sex = "f", OAnew = 99,  mod = FALSE)
+
+CD_8W_F_lifetable_r0 <- StablePopulationLifeTables(ModelName = "8 West", Sex = "f", AgeLower = CD_8W_F_lifetable$Age, qx = CD_8W_F_lifetable$nqx, r = 0, abridged = F)
+
+CD_8W_r0 <- MixedLifeTable(male_life_table = CD_8W_M_lifetable_r0, female_life_table = CD_8W_F_lifetable_r0, Pop_Births_M = 34.885, Pop_Births_F = 37.5, joined = T, PctBirthsAge = interpolated_PctBirths$PctBirthsNormalized, CBR_F = 26.67, CBR_M = 28.67, abridged = F)
+
+#CD_3W_M_lifetable = lifetable_DemogTools_to_demogR(qx = CD_qx$CD_3W_B_qx[1:21], AgeLower = c(0,1,seq(5,95,5)), Sex = "b", OpenAgeNew = 85)
+
+#CD_1W_M_lifetable = lifetable_DemogTools_to_demogR(qx = CD_qx$CD_1W_B_qx[1:20], AgeLower = c(0,1,seq(5,90,5)), Sex = "b", OpenAgeNew = 85)
+
+
+
+```
+
+
+# **Epidemic Mortality
+
+
+# **Agricultural Production
+
+
+
+# **Simulation Setup
+
+
+
+# **Simulation
+
+
+
+
+
+
+
+
+
+# Unused
+
+
+
+```{r}
+53.785/1000
+
+LeslieMat_3W_r0 = leslie.matrix(lx = CD_3W_B_lifetable$lx, mx = CD_ASFR$ASFR_3W_r5, L = TRUE, peryear = 1, one.sex = F, infant.class = TRUE) 
+```
+
+
+
+Coale and Demeny Life table Variables
+
+1000 q(x) = nqx = Probability at age x of dying before reaching age x + n
+
+d(x) = ndx = Number of deaths between age x and x + n out of an original cohort of 100,000
+
+1000 m(x) = nmx = Death rate in the life table population (number of deaths per person-years lived) between age x and x + n.
+
+l(x) = lx = Number of survivors at age x out of an original cohort of 100,000.
+
+L(x) = nLx = Number of person-years lived between age x and x + n by an original cohort of 100,000. This column gives the age distribution in a stationary population with 100,000 annual births and deaths.
+
+P(x) = The proportion of persons in a given five year age group in the stationary population alive five years later. Note however that the entry after age zero in this column in P(birth), [5L0/5/0]; and that the entry after age 1 is P(0-4), [5L5/5L0]; and that the entry after age 95 is Γ(100)/Γ(95), [Γ10ο/Γ95].
+
+T(x) = Tx = Number of person-years lived at age x and over by an original cohort of 100,000.
+
+e(x) = ex = Average number of years remaining to be lived (expectation of life) at age x
+
+
+
+#####demogR
+
+Life Table Inputs:
+
+x	= age at the beginning of the interval
+
+nDx = deaths (counts)
+
+nKx = population size (counts)
+
+you can calculate nDx and nKx from Coale and Demeny
+
+
+
+Life Table Variables
+
+x	= age at the beginning of the interval
+
+*nax	= person-years lived by those dying in the interval x to x+n
+
+nMx	= period central death rate
+
+nqx	= probability of death between ages x and x+n
+
+lx	= probability of survival to exact age x
+
+ndx	= proportion of deaths occurring between ages x and x+n
+
+nLx	= person-years lived in the interval x to x+n
+
+Tx = person-years of life left in the cohort at age x
+
+ex = life expectancy at age x
+```{r}
+
+
+## Construct lx and mx values
+data(goodman)
+mlt <- with(goodman, life.table(x=age, nDx=mad.nDx, nKx=mad.nKx))
+mx <- goodman$mad.bx/goodman$mad.nKx
+
+## Now make the Leslie matrix
+mad <- leslie.matrix(lx=mlt$nLx, mx=mx)
+
+## Might as well do something with it too!
+eigen.analysis(mad)
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+### DemoTools
+
+
+
+
+Lifetable in data.frame with columns
+
+Ageinteger. Lower bound of abridged age class,
+
+AgeIntinteger. Age class widths.
+
+nMxnumeric. Age-specific central death rates.
+
+nAxnumeric. Average time spent in interval by those deceased in interval.
+
+nqxnumeric. Age-specific conditional death probabilities.
+
+lxnumeric. Lifetable survivorship
+
+ndxnumeric. Lifetable deaths distribution.
+
+nLxnumeric. Lifetable exposure.
+
+Sxnumeric. Survivor ratios in uniform 5-year age groups.
+
+Txnumeric. Lifetable total years left to live above age x.
+
+exnumeric. Age-specific remaining life expectancy
+
+
+```{r}
+
+#Example witn Mexican data from UN
+ nMx <- c(0.11621,0.02268,0.00409,0.00212,0.00295,0.00418,0.00509,0.00609,
+ 0.00714,0.00808,0.00971,0.0125,0.0175,0.02551,0.03809,0.05595,0.08098,
+ 0.15353,0.2557)
+ 
+ AgeInt <- inferAgeIntAbr(vec = nMx)
+ 
+ MX.lifetable <- lt_abridged(nMx = nMx, Age = c(0,1,seq(5,85,by=5)), AgeInt = AgeInt,
+                       axmethod = "un",Sex = "m",   mod = FALSE)
+ MX.lifetable <- round(MX.lifetable,3)
+ 
+ datatable(MX.lifetable[,c(1,3,4,6,7,9,11)],
+           options = list(paging=FALSE,ordering=T,dom = 't'),
+           rownames = F,
+           caption = 'Lifetable for Mexican men')
+
+####################
+ 
+qx = c(0.19562, 0.13161, 0.03756, 0.02934, 0.03868, 0.04857, 0.05454, 0.06161, 0.06789, 0.07362, 0.08098, 0.1052, 0.13488, 0.19432, 0.26006, 0.3659, 0.49548, 0.64329, 0.79818, 0.91664, 0.97887, 1)
+
+AgeLower = c(0,1,seq(5,100,5))
+
+AgeInt <- inferAgeIntAbr(vec = qx)
+
+lifetable <- lt_abridged(nqx = qx, Age = AgeLower, AgeInt = AgeInt, region = "w",
+                       axmethod = "un",a0rule = "cd", Sex = "f",   mod = FALSE)
+
+lifetable_demogR = data.frame(x = AgeLower, nax = round(lifetable$nAx,4), nMx = round(lifetable$nMx,4), nqx = round(lifetable$nqx,4), lx = round(lifetable$lx/100000,4), ndx = round(lifetable$ndx/100000,4), nLx = round(lifetable$nLx/100000,4), Tx = round(lifetable$Tx/100000,2), ex = round(lifetable$ex,2))
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+AgeLower = c(0,1,seq(5,90,5))
+
+CD_8W_F_PctPop = c(2.7,8.97,10.21,9.64,9.09,8.48,7.85,7.21,6.58,5.96,5.37,4.75,4.09,3.34,2.53,1.72,0.97,0.41,0.12,0.02)/100
+
+CD_8W_F_Pop100k = CD_8W_F_PctPop*100000
+
+
+
+
+
+
+CD_8W_F_PctDeathsAtAge = c(23.28,12.44,3.01,2.21,2.76,3.25,3.38,3.53,3.56,3.51,3.48,4.06,4.54,5.52,5.8,5.89,4.93,3.16,1.36,0.34)/100
+
+CD_8W_F_DeathRate = 40.65 # deaths per 1000 persons; x100 = deaths per 100,000
+
+nDx2 = CD_8W_F_PctDeathsAtAge*CD_8W_F_DeathRate*100
+
+LT <- life.table(x=AgeLower, nDx=nDx, nKx=CD_8W_F_Pop100k)
+sum(CD_8W_F_PctDeathsAtAge)
+```
+
+
+
+

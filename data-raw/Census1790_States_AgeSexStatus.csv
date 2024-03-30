@@ -1,0 +1,561 @@
+﻿Name,Year,Age,Status,AgeStatus,T,M,F
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+Alta California,1790,Total,Pop,Pop_Total,8540,4472,4068
+Alta California,1790,0_6,Pop,Pop_0_6,2147,1084,1063
+Alta California,1790,7_15,Pop,Pop_7_15,1854,1057,797
+Alta California,1790,16_24,Pop,Pop_16_24,1655,899,756
+Alta California,1790,25_39,Pop,Pop_25_39,1841,961,880
+Alta California,1790,40_49,Pop,Pop_40_49,567,249,318
+Alta California,1790,50_up,Pop,Pop_50_up,476,222,254
+Alta California,1790,Total,Solteros,Solteros_Total,4362,2435,1927
+Alta California,1790,0_6,Solteros,Solteros_0_6,2147,1084,1063
+Alta California,1790,7_15,Solteros,Solteros_7_15,1758,1045,713
+Alta California,1790,16_24,Solteros,Solteros_16_24,265,191,74
+Alta California,1790,25_39,Solteros,Solteros_25_39,102,79,23
+Alta California,1790,40_49,Solteros,Solteros_40_49,42,21,21
+Alta California,1790,50_up,Solteros,Solteros_50_up,48,15,33
+Alta California,1790,Total,Casados,Casados_Total,3771,1920,1851
+Alta California,1790,0_6,Casados,Casados_0_6,0,0,0
+Alta California,1790,7_15,Casados,Casados_7_15,94,12,82
+Alta California,1790,16_24,Casados,Casados_16_24,1344,687,657
+Alta California,1790,25_39,Casados,Casados_25_39,1634,847,787
+Alta California,1790,40_49,Casados,Casados_40_49,451,207,244
+Alta California,1790,50_up,Casados,Casados_50_up,248,167,81
+Alta California,1790,Total,Viudos,Viudos_Total,407,117,290
+Alta California,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Alta California,1790,7_15,Viudos,Viudos_7_15,2,0,2
+Alta California,1790,16_24,Viudos,Viudos_16_24,46,21,25
+Alta California,1790,25_39,Viudos,Viudos_25_39,105,35,70
+Alta California,1790,40_49,Viudos,Viudos_40_49,74,21,53
+Alta California,1790,50_up,Viudos,Viudos_50_up,180,40,140
+Baja California,1790,Total,Pop,Pop_Total,4076,2258,1818
+Baja California,1790,0_6,Pop,Pop_0_6,773,398,375
+Baja California,1790,7_15,Pop,Pop_7_15,739,392,347
+Baja California,1790,16_24,Pop,Pop_16_24,615,321,294
+Baja California,1790,25_39,Pop,Pop_25_39,851,473,378
+Baja California,1790,40_49,Pop,Pop_40_49,500,300,200
+Baja California,1790,50_up,Pop,Pop_50_up,598,374,224
+Baja California,1790,Total,Solteros,Solteros_Total,1801,1082,719
+Baja California,1790,0_6,Solteros,Solteros_0_6,773,398,375
+Baja California,1790,7_15,Solteros,Solteros_7_15,682,390,292
+Baja California,1790,16_24,Solteros,Solteros_16_24,228,185,43
+Baja California,1790,25_39,Solteros,Solteros_25_39,78,76,2
+Baja California,1790,40_49,Solteros,Solteros_40_49,24,22,2
+Baja California,1790,50_up,Solteros,Solteros_50_up,16,11,5
+Baja California,1790,Total,Casados,Casados_Total,1914,958,956
+Baja California,1790,0_6,Casados,Casados_0_6,0,0,0
+Baja California,1790,7_15,Casados,Casados_7_15,57,2,55
+Baja California,1790,16_24,Casados,Casados_16_24,368,124,244
+Baja California,1790,25_39,Casados,Casados_25_39,697,339,358
+Baja California,1790,40_49,Casados,Casados_40_49,415,239,176
+Baja California,1790,50_up,Casados,Casados_50_up,377,254,123
+Baja California,1790,Total,Viudos,Viudos_Total,361,218,143
+Baja California,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Baja California,1790,7_15,Viudos,Viudos_7_15,0,0,0
+Baja California,1790,16_24,Viudos,Viudos_16_24,19,12,7
+Baja California,1790,25_39,Viudos,Viudos_25_39,76,58,18
+Baja California,1790,40_49,Viudos,Viudos_40_49,61,39,22
+Baja California,1790,50_up,Viudos,Viudos_50_up,205,109,96
+Durango,1790,Total,Pop,Pop_Total,123070,62844,60226
+Durango,1790,0_6,Pop,Pop_0_6,22263,11642,10621
+Durango,1790,7_15,Pop,Pop_7_15,28294,14350,13944
+Durango,1790,16_24,Pop,Pop_16_24,26153,13398,12755
+Durango,1790,25_39,Pop,Pop_25_39,27137,13651,13486
+Durango,1790,40_49,Pop,Pop_40_49,9304,4754,4550
+Durango,1790,50_up,Pop,Pop_50_up,9919,5049,4870
+Durango,1790,Total,Solteros,Solteros_Total,71557,38761,32796
+Durango,1790,0_6,Solteros,Solteros_0_6,22263,11642,10621
+Durango,1790,7_15,Solteros,Solteros_7_15,27474,14338,13136
+Durango,1790,16_24,Solteros,Solteros_16_24,11775,6597,5178
+Durango,1790,25_39,Solteros,Solteros_25_39,6451,3966,2485
+Durango,1790,40_49,Solteros,Solteros_40_49,1583,972,611
+Durango,1790,50_up,Solteros,Solteros_50_up,2011,1246,765
+Durango,1790,Total,Casados,Casados_Total,43232,21857,21375
+Durango,1790,0_6,Casados,Casados_0_6,0,0,0
+Durango,1790,7_15,Casados,Casados_7_15,807,12,795
+Durango,1790,16_24,Casados,Casados_16_24,13898,6543,7355
+Durango,1790,25_39,Casados,Casados_25_39,17538,8615,8923
+Durango,1790,40_49,Casados,Casados_40_49,6318,3524,2794
+Durango,1790,50_up,Casados,Casados_50_up,4671,3163,1508
+Durango,1790,Total,Viudos,Viudos_Total,8281,2226,6055
+Durango,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Durango,1790,7_15,Viudos,Viudos_7_15,13,0,13
+Durango,1790,16_24,Viudos,Viudos_16_24,480,258,222
+Durango,1790,25_39,Viudos,Viudos_25_39,3148,1070,2078
+Durango,1790,40_49,Viudos,Viudos_40_49,1403,258,1145
+Durango,1790,50_up,Viudos,Viudos_50_up,3237,640,2597
+Guadalajara,1790,Total,Pop,Pop_Total,505428,235075,270353
+Guadalajara,1790,0_6,Pop,Pop_0_6,71468,42001,29467
+Guadalajara,1790,7_15,Pop,Pop_7_15,95729,43265,52464
+Guadalajara,1790,16_24,Pop,Pop_16_24,121859,54738,67121
+Guadalajara,1790,25_39,Pop,Pop_25_39,138185,59894,78291
+Guadalajara,1790,40_49,Pop,Pop_40_49,47509,22441,25068
+Guadalajara,1790,50_up,Pop,Pop_50_up,30678,12736,17942
+Guadalajara,1790,Total,Solteros,Solteros_Total,308109,151325,156784
+Guadalajara,1790,0_6,Solteros,Solteros_0_6,71468,42001,29467
+Guadalajara,1790,7_15,Solteros,Solteros_7_15,80010,40434,39576
+Guadalajara,1790,16_24,Solteros,Solteros_16_24,66160,31387,34773
+Guadalajara,1790,25_39,Solteros,Solteros_25_39,52970,18904,34066
+Guadalajara,1790,40_49,Solteros,Solteros_40_49,24007,13040,10967
+Guadalajara,1790,50_up,Solteros,Solteros_50_up,13494,5559,7935
+Guadalajara,1790,Total,Casados,Casados_Total,169016,78949,90067
+Guadalajara,1790,0_6,Casados,Casados_0_6,0,0,0
+Guadalajara,1790,7_15,Casados,Casados_7_15,15719,2831,12888
+Guadalajara,1790,16_24,Casados,Casados_16_24,42558,21279,21279
+Guadalajara,1790,25_39,Casados,Casados_25_39,80313,40131,40182
+Guadalajara,1790,40_49,Casados,Casados_40_49,16881,8137,8744
+Guadalajara,1790,50_up,Casados,Casados_50_up,13545,6571,6974
+Guadalajara,1790,Total,Viudos,Viudos_Total,28303,4801,23502
+Guadalajara,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Guadalajara,1790,7_15,Viudos,Viudos_7_15,0,0,0
+Guadalajara,1790,16_24,Viudos,Viudos_16_24,13141,2072,11069
+Guadalajara,1790,25_39,Viudos,Viudos_25_39,4902,859,4043
+Guadalajara,1790,40_49,Viudos,Viudos_40_49,6621,1264,5357
+Guadalajara,1790,50_up,Viudos,Viudos_50_up,3639,606,3033
+Guanajuato (no ciudad),1790,Total,Pop,Pop_Total,398029,199933,198096
+Guanajuato (no ciudad),1790,0_6,Pop,Pop_0_6,91402,45745,45657
+Guanajuato (no ciudad),1790,7_15,Pop,Pop_7_15,101630,50325,51305
+Guanajuato (no ciudad),1790,16_24,Pop,Pop_16_24,57541,28703,28838
+Guanajuato (no ciudad),1790,25_39,Pop,Pop_25_39,74128,37198,36930
+Guanajuato (no ciudad),1790,40_49,Pop,Pop_40_49,40124,20512,19612
+Guanajuato (no ciudad),1790,50_up,Pop,Pop_50_up,33204,17450,15754
+Guanajuato (no ciudad),1790,Total,Solteros,Solteros_Total,231136,116213,114923
+Guanajuato (no ciudad),1790,0_6,Solteros,Solteros_0_6,91402,45745,45657
+Guanajuato (no ciudad),1790,7_15,Solteros,Solteros_7_15,82269,40816,41453
+Guanajuato (no ciudad),1790,16_24,Solteros,Solteros_16_24,28651,15081,13570
+Guanajuato (no ciudad),1790,25_39,Solteros,Solteros_25_39,17780,8904,8876
+Guanajuato (no ciudad),1790,40_49,Solteros,Solteros_40_49,7106,3695,3411
+Guanajuato (no ciudad),1790,50_up,Solteros,Solteros_50_up,3928,1972,1956
+Guanajuato (no ciudad),1790,Total,Casados,Casados_Total,137643,69862,67781
+Guanajuato (no ciudad),1790,0_6,Casados,Casados_0_6,0,0,0
+Guanajuato (no ciudad),1790,7_15,Casados,Casados_7_15,17855,8818,9037
+Guanajuato (no ciudad),1790,16_24,Casados,Casados_16_24,26026,12287,13739
+Guanajuato (no ciudad),1790,25_39,Casados,Casados_25_39,49630,25477,24153
+Guanajuato (no ciudad),1790,40_49,Casados,Casados_40_49,24915,12755,12160
+Guanajuato (no ciudad),1790,50_up,Casados,Casados_50_up,19217,10525,8692
+Guanajuato (no ciudad),1790,Total,Viudos,Viudos_Total,29250,13858,15392
+Guanajuato (no ciudad),1790,0_6,Viudos,Viudos_0_6,0,0,0
+Guanajuato (no ciudad),1790,7_15,Viudos,Viudos_7_15,1506,691,815
+Guanajuato (no ciudad),1790,16_24,Viudos,Viudos_16_24,2864,1335,1529
+Guanajuato (no ciudad),1790,25_39,Viudos,Viudos_25_39,6718,2817,3901
+Guanajuato (no ciudad),1790,40_49,Viudos,Viudos_40_49,8103,4062,4041
+Guanajuato (no ciudad),1790,50_up,Viudos,Viudos_50_up,10059,4953,5106
+Guanajuato + Ciudad Guanajuato,1790,Total,Pop,Pop_Total,430127,214553,215574
+Guanajuato + Ciudad Guanajuato,1790,0_6,Pop,Pop_0_6,95675,47840,47835
+Guanajuato + Ciudad Guanajuato,1790,7_15,Pop,Pop_7_15,108945,53944,55001
+Guanajuato + Ciudad Guanajuato,1790,16_24,Pop,Pop_16_24,63362,31207,32155
+Guanajuato + Ciudad Guanajuato,1790,25_39,Pop,Pop_25_39,80588,39712,40876
+Guanajuato + Ciudad Guanajuato,1790,40_49,Pop,Pop_40_49,44951,22760,22191
+Guanajuato + Ciudad Guanajuato,1790,50_up,Pop,Pop_50_up,36606,19090,17516
+Guanajuato + Ciudad Guanajuato,1790,Total,Solteros,Solteros_Total,249387,124191,125196
+Guanajuato + Ciudad Guanajuato,1790,0_6,Solteros,Solteros_0_6,95675,47840,47835
+Guanajuato + Ciudad Guanajuato,1790,7_15,Solteros,Solteros_7_15,87132,43238,43894
+Guanajuato + Ciudad Guanajuato,1790,16_24,Solteros,Solteros_16_24,32088,16427,15661
+Guanajuato + Ciudad Guanajuato,1790,25_39,Solteros,Solteros_25_39,21480,10104,11376
+Guanajuato + Ciudad Guanajuato,1790,40_49,Solteros,Solteros_40_49,8428,4281,4147
+Guanajuato + Ciudad Guanajuato,1790,50_up,Solteros,Solteros_50_up,4584,2301,2283
+Guanajuato + Ciudad Guanajuato,1790,Total,Casados,Casados_Total,146048,73900,72148
+Guanajuato + Ciudad Guanajuato,1790,0_6,Casados,Casados_0_6,0,0,0
+Guanajuato + Ciudad Guanajuato,1790,7_15,Casados,Casados_7_15,19533,9626,9907
+Guanajuato + Ciudad Guanajuato,1790,16_24,Casados,Casados_16_24,27910,13195,14715
+Guanajuato + Ciudad Guanajuato,1790,25_39,Casados,Casados_25_39,51136,26183,24953
+Guanajuato + Ciudad Guanajuato,1790,40_49,Casados,Casados_40_49,26629,13561,13068
+Guanajuato + Ciudad Guanajuato,1790,50_up,Casados,Casados_50_up,20840,11335,9505
+Guanajuato + Ciudad Guanajuato,1790,Total,Viudos,Viudos_Total,34692,16462,18230
+Guanajuato + Ciudad Guanajuato,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Guanajuato + Ciudad Guanajuato,1790,7_15,Viudos,Viudos_7_15,2280,1080,1200
+Guanajuato + Ciudad Guanajuato,1790,16_24,Viudos,Viudos_16_24,3364,1585,1779
+Guanajuato + Ciudad Guanajuato,1790,25_39,Viudos,Viudos_25_39,7972,3425,4547
+Guanajuato + Ciudad Guanajuato,1790,40_49,Viudos,Viudos_40_49,9894,4918,4976
+Guanajuato + Ciudad Guanajuato,1790,50_up,Viudos,Viudos_50_up,11182,5454,5728
+Ciudad Guanajuato,1790,Total,Pop,Pop_Total,32098,14620,17478
+Ciudad Guanajuato,1790,0_6,Pop,Pop_0_6,4273,2095,2178
+Ciudad Guanajuato,1790,7_15,Pop,Pop_7_15,7315,3619,3696
+Ciudad Guanajuato,1790,16_24,Pop,Pop_16_24,5821,2504,3317
+Ciudad Guanajuato,1790,25_39,Pop,Pop_25_39,6460,2514,3946
+Ciudad Guanajuato,1790,40_49,Pop,Pop_40_49,4827,2248,2579
+Ciudad Guanajuato,1790,50_up,Pop,Pop_50_up,3402,1640,1762
+Ciudad Guanajuato,1790,Total,Solteros,Solteros_Total,18251,7978,10273
+Ciudad Guanajuato,1790,0_6,Solteros,Solteros_0_6,4273,2095,2178
+Ciudad Guanajuato,1790,7_15,Solteros,Solteros_7_15,4863,2422,2441
+Ciudad Guanajuato,1790,16_24,Solteros,Solteros_16_24,3437,1346,2091
+Ciudad Guanajuato,1790,25_39,Solteros,Solteros_25_39,3700,1200,2500
+Ciudad Guanajuato,1790,40_49,Solteros,Solteros_40_49,1322,586,736
+Ciudad Guanajuato,1790,50_up,Solteros,Solteros_50_up,656,329,327
+Ciudad Guanajuato,1790,Total,Casados,Casados_Total,8405,4038,4367
+Ciudad Guanajuato,1790,0_6,Casados,Casados_0_6,0,0,0
+Ciudad Guanajuato,1790,7_15,Casados,Casados_7_15,1678,808,870
+Ciudad Guanajuato,1790,16_24,Casados,Casados_16_24,1884,908,976
+Ciudad Guanajuato,1790,25_39,Casados,Casados_25_39,1506,706,800
+Ciudad Guanajuato,1790,40_49,Casados,Casados_40_49,1714,806,908
+Ciudad Guanajuato,1790,50_up,Casados,Casados_50_up,1623,810,813
+Ciudad Guanajuato,1790,Total,Viudos,Viudos_Total,5442,2604,2838
+Ciudad Guanajuato,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Ciudad Guanajuato,1790,7_15,Viudos,Viudos_7_15,774,389,385
+Ciudad Guanajuato,1790,16_24,Viudos,Viudos_16_24,500,250,250
+Ciudad Guanajuato,1790,25_39,Viudos,Viudos_25_39,1254,608,646
+Ciudad Guanajuato,1790,40_49,Viudos,Viudos_40_49,1791,856,935
+Ciudad Guanajuato,1790,50_up,Viudos,Viudos_50_up,1123,501,622
+Merida,1790,Total,Pop,Pop_Total,364022,180579,183443
+Merida,1790,0_6,Pop,Pop_0_6,107097,57010,50087
+Merida,1790,7_15,Pop,Pop_7_15,58577,28835,29742
+Merida,1790,16_24,Pop,Pop_16_24,69159,34680,34479
+Merida,1790,25_39,Pop,Pop_25_39,63143,30669,32474
+Merida,1790,40_49,Pop,Pop_40_49,38038,16867,21171
+Merida,1790,50_up,Pop,Pop_50_up,28008,12518,15490
+Merida,1790,Total,Solteros,Solteros_Total,199814,103202,96612
+Merida,1790,0_6,Solteros,Solteros_0_6,107097,57010,50087
+Merida,1790,7_15,Solteros,Solteros_7_15,48058,24721,23337
+Merida,1790,16_24,Solteros,Solteros_16_24,15984,8105,7879
+Merida,1790,25_39,Solteros,Solteros_25_39,15831,7729,8102
+Merida,1790,40_49,Solteros,Solteros_40_49,7378,3261,4117
+Merida,1790,50_up,Solteros,Solteros_50_up,5466,2376,3090
+Merida,1790,Total,Casados,Casados_Total,146387,73339,73048
+Merida,1790,0_6,Casados,Casados_0_6,0,0,0
+Merida,1790,7_15,Casados,Casados_7_15,10423,4114,6309
+Merida,1790,16_24,Casados,Casados_16_24,50701,26182,24519
+Merida,1790,25_39,Casados,Casados_25_39,42569,22262,20307
+Merida,1790,40_49,Casados,Casados_40_49,25276,12274,13002
+Merida,1790,50_up,Casados,Casados_50_up,17418,8507,8911
+Merida,1790,Total,Viudos,Viudos_Total,17821,4038,13783
+Merida,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Merida,1790,7_15,Viudos,Viudos_7_15,96,0,96
+Merida,1790,16_24,Viudos,Viudos_16_24,2474,393,2081
+Merida,1790,25_39,Viudos,Viudos_25_39,4743,678,4065
+Merida,1790,40_49,Viudos,Viudos_40_49,5384,1332,4052
+Merida,1790,50_up,Viudos,Viudos_50_up,5124,1635,3489
+Mexico + CDMX,1790,Total,Pop,Pop_Total,1147973,574786,573187
+Mexico + CDMX,1790,0_6,Pop,Pop_0_6,260360,137190,123170
+Mexico + CDMX,1790,7_15,Pop,Pop_7_15,227236,119158,108078
+Mexico + CDMX,1790,16_24,Pop,Pop_16_24,194931,89707,105224
+Mexico + CDMX,1790,25_39,Pop,Pop_25_39,279154,134173,144981
+Mexico + CDMX,1790,40_49,Pop,Pop_40_49,102007,51060,50947
+Mexico + CDMX,1790,50_up,Pop,Pop_50_up,84285,43498,40787
+Mexico + CDMX,1790,Total,Solteros,Solteros_Total,600216,320096,280120
+Mexico + CDMX,1790,0_6,Solteros,Solteros_0_6,260360,137190,123170
+Mexico + CDMX,1790,7_15,Solteros,Solteros_7_15,217135,115993,101142
+Mexico + CDMX,1790,16_24,Solteros,Solteros_16_24,81533,46039,35494
+Mexico + CDMX,1790,25_39,Solteros,Solteros_25_39,28561,15212,13349
+Mexico + CDMX,1790,40_49,Solteros,Solteros_40_49,7589,3434,4155
+Mexico + CDMX,1790,50_up,Solteros,Solteros_50_up,5038,2228,2810
+Mexico + CDMX,1790,Total,Casados,Casados_Total,469074,233754,235320
+Mexico + CDMX,1790,0_6,Casados,Casados_0_6,0,0,0
+Mexico + CDMX,1790,7_15,Casados,Casados_7_15,9302,2844,6458
+Mexico + CDMX,1790,16_24,Casados,Casados_16_24,109245,42411,66834
+Mexico + CDMX,1790,25_39,Casados,Casados_25_39,225622,112797,112825
+Mexico + CDMX,1790,40_49,Casados,Casados_40_49,73412,42406,31006
+Mexico + CDMX,1790,50_up,Casados,Casados_50_up,51493,33296,18197
+Mexico + CDMX,1790,Total,Viudos,Viudos_Total,78683,20936,57747
+Mexico + CDMX,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Mexico + CDMX,1790,7_15,Viudos,Viudos_7_15,799,321,478
+Mexico + CDMX,1790,16_24,Viudos,Viudos_16_24,4153,1257,2896
+Mexico + CDMX,1790,25_39,Viudos,Viudos_25_39,24971,6164,18807
+Mexico + CDMX,1790,40_49,Viudos,Viudos_40_49,21006,5220,15786
+Mexico + CDMX,1790,50_up,Viudos,Viudos_50_up,27754,7974,19780
+Mexico (No CDMX),1790,Total,Pop,Pop_Total,1043223,529308,513915
+Mexico (No CDMX),1790,0_6,Pop,Pop_0_6,241978,128631,113347
+Mexico (No CDMX),1790,7_15,Pop,Pop_7_15,210030,111525,98505
+Mexico (No CDMX),1790,16_24,Pop,Pop_16_24,174104,81310,92794
+Mexico (No CDMX),1790,25_39,Pop,Pop_25_39,249624,121764,127860
+Mexico (No CDMX),1790,40_49,Pop,Pop_40_49,91378,46303,45075
+Mexico (No CDMX),1790,50_up,Pop,Pop_50_up,76109,39775,36334
+Mexico (No CDMX),1790,Total,Solteros,Solteros_Total,545739,295097,250642
+Mexico (No CDMX),1790,0_6,Solteros,Solteros_0_6,241978,128631,113347
+Mexico (No CDMX),1790,7_15,Solteros,Solteros_7_15,200578,108535,92043
+Mexico (No CDMX),1790,16_24,Solteros,Solteros_16_24,71106,41220,29886
+Mexico (No CDMX),1790,25_39,Solteros,Solteros_25_39,22816,12704,10112
+Mexico (No CDMX),1790,40_49,Solteros,Solteros_40_49,5671,2499,3172
+Mexico (No CDMX),1790,50_up,Solteros,Solteros_50_up,3590,1508,2082
+Mexico (No CDMX),1790,Total,Casados,Casados_Total,432233,216015,216218
+Mexico (No CDMX),1790,0_6,Casados,Casados_0_6,0,0,0
+Mexico (No CDMX),1790,7_15,Casados,Casados_7_15,8906,2773,6133
+Mexico (No CDMX),1790,16_24,Casados,Casados_16_24,100059,39061,60998
+Mexico (No CDMX),1790,25_39,Casados,Casados_25_39,206830,103700,103130
+Mexico (No CDMX),1790,40_49,Casados,Casados_40_49,68143,39271,28872
+Mexico (No CDMX),1790,50_up,Casados,Casados_50_up,48295,31210,17085
+Mexico (No CDMX),1790,Total,Viudos,Viudos_Total,65251,18196,47055
+Mexico (No CDMX),1790,0_6,Viudos,Viudos_0_6,0,0,0
+Mexico (No CDMX),1790,7_15,Viudos,Viudos_7_15,546,217,329
+Mexico (No CDMX),1790,16_24,Viudos,Viudos_16_24,2939,1029,1910
+Mexico (No CDMX),1790,25_39,Viudos,Viudos_25_39,19978,5360,14618
+Mexico (No CDMX),1790,40_49,Viudos,Viudos_40_49,17564,4533,13031
+Mexico (No CDMX),1790,50_up,Viudos,Viudos_50_up,24224,7057,17167
+CDMX,1790,Total,Pop,Pop_Total,104750,45478,59272
+CDMX,1790,0_6,Pop,Pop_0_6,18382,8559,9823
+CDMX,1790,7_15,Pop,Pop_7_15,17206,7633,9573
+CDMX,1790,16_24,Pop,Pop_16_24,20827,8397,12430
+CDMX,1790,25_39,Pop,Pop_25_39,29530,12409,17121
+CDMX,1790,40_49,Pop,Pop_40_49,10629,4757,5872
+CDMX,1790,50_up,Pop,Pop_50_up,8176,3723,4453
+CDMX,1790,Total,Solteros,Solteros_Total,54477,24999,29478
+CDMX,1790,0_6,Solteros,Solteros_0_6,18382,8559,9823
+CDMX,1790,7_15,Solteros,Solteros_7_15,16557,7458,9099
+CDMX,1790,16_24,Solteros,Solteros_16_24,10427,4819,5608
+CDMX,1790,25_39,Solteros,Solteros_25_39,5745,2508,3237
+CDMX,1790,40_49,Solteros,Solteros_40_49,1918,935,983
+CDMX,1790,50_up,Solteros,Solteros_50_up,1448,720,728
+CDMX,1790,Total,Casados,Casados_Total,36841,17739,19102
+CDMX,1790,0_6,Casados,Casados_0_6,0,0,0
+CDMX,1790,7_15,Casados,Casados_7_15,396,71,325
+CDMX,1790,16_24,Casados,Casados_16_24,9186,3350,5836
+CDMX,1790,25_39,Casados,Casados_25_39,18792,9097,9695
+CDMX,1790,40_49,Casados,Casados_40_49,5269,3135,2134
+CDMX,1790,50_up,Casados,Casados_50_up,3198,2086,1112
+CDMX,1790,Total,Viudos,Viudos_Total,13432,2740,10692
+CDMX,1790,0_6,Viudos,Viudos_0_6,0,0,0
+CDMX,1790,7_15,Viudos,Viudos_7_15,253,104,149
+CDMX,1790,16_24,Viudos,Viudos_16_24,1214,228,986
+CDMX,1790,25_39,Viudos,Viudos_25_39,4993,804,4189
+CDMX,1790,40_49,Viudos,Viudos_40_49,3442,687,2755
+CDMX,1790,50_up,Viudos,Viudos_50_up,3530,917,2613
+Nuevo Mexico,1790,Total,Pop,Pop_Total,30953,16039,14914
+Nuevo Mexico,1790,0_6,Pop,Pop_0_6,7679,4116,3563
+Nuevo Mexico,1790,7_15,Pop,Pop_7_15,6828,3675,3153
+Nuevo Mexico,1790,16_24,Pop,Pop_16_24,5040,2770,2270
+Nuevo Mexico,1790,25_39,Pop,Pop_25_39,5945,2814,3131
+Nuevo Mexico,1790,40_49,Pop,Pop_40_49,3437,1775,1662
+Nuevo Mexico,1790,50_up,Pop,Pop_50_up,2024,889,1135
+Nuevo Mexico,1790,Total,Solteros,Solteros_Total,19531,10643,8888
+Nuevo Mexico,1790,0_6,Solteros,Solteros_0_6,7679,4116,3563
+Nuevo Mexico,1790,7_15,Solteros,Solteros_7_15,6735,3675,3060
+Nuevo Mexico,1790,16_24,Solteros,Solteros_16_24,3034,1869,1165
+Nuevo Mexico,1790,25_39,Solteros,Solteros_25_39,1177,567,610
+Nuevo Mexico,1790,40_49,Solteros,Solteros_40_49,502,278,224
+Nuevo Mexico,1790,50_up,Solteros,Solteros_50_up,404,138,266
+Nuevo Mexico,1790,Total,Casados,Casados_Total,9732,4866,4866
+Nuevo Mexico,1790,0_6,Casados,Casados_0_6,0,0,0
+Nuevo Mexico,1790,7_15,Casados,Casados_7_15,93,0,93
+Nuevo Mexico,1790,16_24,Casados,Casados_16_24,1721,811,910
+Nuevo Mexico,1790,25_39,Casados,Casados_25_39,4060,2027,2033
+Nuevo Mexico,1790,40_49,Casados,Casados_40_49,2471,1351,1120
+Nuevo Mexico,1790,50_up,Casados,Casados_50_up,1387,677,710
+Nuevo Mexico,1790,Total,Viudos,Viudos_Total,1690,530,1160
+Nuevo Mexico,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Nuevo Mexico,1790,7_15,Viudos,Viudos_7_15,0,0,0
+Nuevo Mexico,1790,16_24,Viudos,Viudos_16_24,285,90,195
+Nuevo Mexico,1790,25_39,Viudos,Viudos_25_39,708,220,488
+Nuevo Mexico,1790,40_49,Viudos,Viudos_40_49,464,146,318
+Nuevo Mexico,1790,50_up,Viudos,Viudos_50_up,233,74,159
+Oaxaca,1790,Total,Pop,Pop_Total,411336,206981,204355
+Oaxaca,1790,0_6,Pop,Pop_0_6,77170,45577,31593
+Oaxaca,1790,7_15,Pop,Pop_7_15,74922,40692,34230
+Oaxaca,1790,16_24,Pop,Pop_16_24,76468,33635,42833
+Oaxaca,1790,25_39,Pop,Pop_25_39,111433,49697,61736
+Oaxaca,1790,40_49,Pop,Pop_40_49,39960,19995,19965
+Oaxaca,1790,50_up,Pop,Pop_50_up,31383,17385,13998
+Oaxaca,1790,Total,Solteros,Solteros_Total,225060,119511,105549
+Oaxaca,1790,0_6,Solteros,Solteros_0_6,77170,45577,31593
+Oaxaca,1790,7_15,Solteros,Solteros_7_15,74289,40568,33821
+Oaxaca,1790,16_24,Solteros,Solteros_16_24,44923,21340,23583
+Oaxaca,1790,25_39,Solteros,Solteros_25_39,19127,7990,11137
+Oaxaca,1790,40_49,Solteros,Solteros_40_49,6022,2712,3310
+Oaxaca,1790,50_up,Solteros,Solteros_50_up,3429,1324,2105
+Oaxaca,1790,Total,Casados,Casados_Total,152007,77949,74058
+Oaxaca,1790,0_6,Casados,Casados_0_6,0,0,0
+Oaxaca,1790,7_15,Casados,Casados_7_15,533,124,409
+Oaxaca,1790,16_24,Casados,Casados_16_24,29825,12026,17799
+Oaxaca,1790,25_39,Casados,Casados_25_39,79417,39016,40401
+Oaxaca,1790,40_49,Casados,Casados_40_49,25020,15068,9952
+Oaxaca,1790,50_up,Casados,Casados_50_up,17212,11715,5497
+Oaxaca,1790,Total,Viudos,Viudos_Total,34269,9521,24748
+Oaxaca,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Oaxaca,1790,7_15,Viudos,Viudos_7_15,0,0,0
+Oaxaca,1790,16_24,Viudos,Viudos_16_24,1720,269,1451
+Oaxaca,1790,25_39,Viudos,Viudos_25_39,12889,2691,10198
+Oaxaca,1790,40_49,Viudos,Viudos_40_49,8918,2215,6703
+Oaxaca,1790,50_up,Viudos,Viudos_50_up,10742,4346,6396
+Puebla,1790,Total,Pop,Pop_Total,528463,257944,270519
+Puebla,1790,0_6,Pop,Pop_0_6,96452,48968,47484
+Puebla,1790,7_15,Pop,Pop_7_15,105287,52142,53145
+Puebla,1790,16_24,Pop,Pop_16_24,86509,37446,49063
+Puebla,1790,25_39,Pop,Pop_25_39,119657,57402,62255
+Puebla,1790,40_49,Pop,Pop_40_49,57184,28906,28278
+Puebla,1790,50_up,Pop,Pop_50_up,63374,33080,30294
+Puebla,1790,Total,Solteros,Solteros_Total,275804,136676,139128
+Puebla,1790,0_6,Solteros,Solteros_0_6,96452,48968,47484
+Puebla,1790,7_15,Solteros,Solteros_7_15,102493,51183,51310
+Puebla,1790,16_24,Solteros,Solteros_16_24,47484,21675,25809
+Puebla,1790,25_39,Solteros,Solteros_25_39,13924,6982,6942
+Puebla,1790,40_49,Solteros,Solteros_40_49,10285,6681,3604
+Puebla,1790,50_up,Solteros,Solteros_50_up,5166,1187,3979
+Puebla,1790,Total,Casados,Casados_Total,208665,109953,98712
+Puebla,1790,0_6,Casados,Casados_0_6,0,0,0
+Puebla,1790,7_15,Casados,Casados_7_15,2452,902,1550
+Puebla,1790,16_24,Casados,Casados_16_24,37131,14645,22486
+Puebla,1790,25_39,Casados,Casados_25_39,97574,48731,48843
+Puebla,1790,40_49,Casados,Casados_40_49,35706,19803,15903
+Puebla,1790,50_up,Casados,Casados_50_up,35802,25872,9930
+Puebla,1790,Total,Viudos,Viudos_Total,43994,11315,32679
+Puebla,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Puebla,1790,7_15,Viudos,Viudos_7_15,342,57,285
+Puebla,1790,16_24,Viudos,Viudos_16_24,1894,1126,768
+Puebla,1790,25_39,Viudos,Viudos_25_39,8159,1689,6470
+Puebla,1790,40_49,Viudos,Viudos_40_49,11193,2422,8771
+Puebla,1790,50_up,Viudos,Viudos_50_up,22406,6021,16385
+San Luis Potosi,1790,Total,Pop,Pop_Total,242280,124944,117336
+San Luis Potosi,1790,0_6,Pop,Pop_0_6,54901,28468,26433
+San Luis Potosi,1790,7_15,Pop,Pop_7_15,50951,27328,23623
+San Luis Potosi,1790,16_24,Pop,Pop_16_24,44967,21854,23113
+San Luis Potosi,1790,25_39,Pop,Pop_25_39,52938,27523,25415
+San Luis Potosi,1790,40_49,Pop,Pop_40_49,20909,10758,10151
+San Luis Potosi,1790,50_up,Pop,Pop_50_up,17614,9013,8601
+San Luis Potosi,1790,Total,Solteros,Solteros_Total,131194,71570,59624
+San Luis Potosi,1790,0_6,Solteros,Solteros_0_6,54901,28468,26433
+San Luis Potosi,1790,7_15,Solteros,Solteros_7_15,44046,24688,19358
+San Luis Potosi,1790,16_24,Solteros,Solteros_16_24,17831,10515,7316
+San Luis Potosi,1790,25_39,Solteros,Solteros_25_39,7801,4797,3004
+San Luis Potosi,1790,40_49,Solteros,Solteros_40_49,3223,1648,1575
+San Luis Potosi,1790,50_up,Solteros,Solteros_50_up,3392,1454,1938
+San Luis Potosi,1790,Total,Casados,Casados_Total,98875,50176,48699
+San Luis Potosi,1790,0_6,Casados,Casados_0_6,0,0,0
+San Luis Potosi,1790,7_15,Casados,Casados_7_15,6275,2495,3780
+San Luis Potosi,1790,16_24,Casados,Casados_16_24,25271,10564,14707
+San Luis Potosi,1790,25_39,Casados,Casados_25_39,41478,21805,19673
+San Luis Potosi,1790,40_49,Casados,Casados_40_49,15021,8407,6614
+San Luis Potosi,1790,50_up,Casados,Casados_50_up,10830,6905,3925
+San Luis Potosi,1790,Total,Viudos,Viudos_Total,12211,3198,9013
+San Luis Potosi,1790,0_6,Viudos,Viudos_0_6,0,0,0
+San Luis Potosi,1790,7_15,Viudos,Viudos_7_15,630,145,485
+San Luis Potosi,1790,16_24,Viudos,Viudos_16_24,1865,775,1090
+San Luis Potosi,1790,25_39,Viudos,Viudos_25_39,3659,921,2738
+San Luis Potosi,1790,40_49,Viudos,Viudos_40_49,2665,703,1962
+San Luis Potosi,1790,50_up,Viudos,Viudos_50_up,3392,654,2738
+Sinaloa,1790,Total,Pop,Pop_Total,55062,27772,27290
+Sinaloa,1790,0_6,Pop,Pop_0_6,11538,6104,5434
+Sinaloa,1790,7_15,Pop,Pop_7_15,12508,6636,5872
+Sinaloa,1790,16_24,Pop,Pop_16_24,8681,3838,4843
+Sinaloa,1790,25_39,Pop,Pop_25_39,12633,6098,6535
+Sinaloa,1790,40_49,Pop,Pop_40_49,5344,2772,2572
+Sinaloa,1790,50_up,Pop,Pop_50_up,4358,2324,2034
+Sinaloa,1790,Total,Solteros,Solteros_Total,32030,16724,15306
+Sinaloa,1790,0_6,Solteros,Solteros_0_6,11538,6104,5434
+Sinaloa,1790,7_15,Solteros,Solteros_7_15,12371,6596,5775
+Sinaloa,1790,16_24,Solteros,Solteros_16_24,4786,2373,2413
+Sinaloa,1790,25_39,Solteros,Solteros_25_39,2267,1219,1048
+Sinaloa,1790,40_49,Solteros,Solteros_40_49,486,256,230
+Sinaloa,1790,50_up,Solteros,Solteros_50_up,582,176,406
+Sinaloa,1790,Total,Casados,Casados_Total,20164,10082,10082
+Sinaloa,1790,0_6,Casados,Casados_0_6,0,0,0
+Sinaloa,1790,7_15,Casados,Casados_7_15,127,33,94
+Sinaloa,1790,16_24,Casados,Casados_16_24,3807,1441,2366
+Sinaloa,1790,25_39,Casados,Casados_25_39,9479,4575,4904
+Sinaloa,1790,40_49,Casados,Casados_40_49,4075,2210,1865
+Sinaloa,1790,50_up,Casados,Casados_50_up,2676,1823,853
+Sinaloa,1790,Total,Viudos,Viudos_Total,2868,966,1902
+Sinaloa,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Sinaloa,1790,7_15,Viudos,Viudos_7_15,10,7,3
+Sinaloa,1790,16_24,Viudos,Viudos_16_24,88,24,64
+Sinaloa,1790,25_39,Viudos,Viudos_25_39,887,304,583
+Sinaloa,1790,40_49,Viudos,Viudos_40_49,783,306,477
+Sinaloa,1790,50_up,Viudos,Viudos_50_up,1100,325,775
+Sonora,1790,Total,Pop,Pop_Total,38305,20473,17832
+Sonora,1790,0_6,Pop,Pop_0_6,9296,4948,4348
+Sonora,1790,7_15,Pop,Pop_7_15,8648,5048,3600
+Sonora,1790,16_24,Pop,Pop_16_24,6703,3132,3571
+Sonora,1790,25_39,Pop,Pop_25_39,8105,4297,3808
+Sonora,1790,40_49,Pop,Pop_40_49,3103,1691,1412
+Sonora,1790,50_up,Pop,Pop_50_up,2450,1357,1093
+Sonora,1790,Total,Solteros,Solteros_Total,19815,11434,8381
+Sonora,1790,0_6,Solteros,Solteros_0_6,9296,4948,4348
+Sonora,1790,7_15,Solteros,Solteros_7_15,7879,4784,3095
+Sonora,1790,16_24,Solteros,Solteros_16_24,1828,1163,665
+Sonora,1790,25_39,Solteros,Solteros_25_39,615,412,203
+Sonora,1790,40_49,Solteros,Solteros_40_49,108,71,37
+Sonora,1790,50_up,Solteros,Solteros_50_up,89,56,33
+Sonora,1790,Total,Casados,Casados_Total,16600,8300,8300
+Sonora,1790,0_6,Casados,Casados_0_6,0,0,0
+Sonora,1790,7_15,Casados,Casados_7_15,767,263,504
+Sonora,1790,16_24,Casados,Casados_16_24,4742,1912,2830
+Sonora,1790,25_39,Casados,Casados_25_39,6924,3642,3282
+Sonora,1790,40_49,Casados,Casados_40_49,2529,1442,1087
+Sonora,1790,50_up,Casados,Casados_50_up,1638,1041,597
+Sonora,1790,Total,Viudos,Viudos_Total,1890,739,1151
+Sonora,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Sonora,1790,7_15,Viudos,Viudos_7_15,2,1,1
+Sonora,1790,16_24,Viudos,Viudos_16_24,133,57,76
+Sonora,1790,25_39,Viudos,Viudos_25_39,566,243,323
+Sonora,1790,40_49,Viudos,Viudos_40_49,466,178,288
+Sonora,1790,50_up,Viudos,Viudos_50_up,723,260,463
+Tlaxcala,1790,Total,Pop,Pop_Total,59148,29997,29151
+Tlaxcala,1790,0_6,Pop,Pop_0_6,12841,6707,6134
+Tlaxcala,1790,7_15,Pop,Pop_7_15,12601,6483,6118
+Tlaxcala,1790,16_24,Pop,Pop_16_24,10632,5226,5406
+Tlaxcala,1790,25_39,Pop,Pop_25_39,13713,6628,7085
+Tlaxcala,1790,40_49,Pop,Pop_40_49,4868,2505,2363
+Tlaxcala,1790,50_up,Pop,Pop_50_up,4493,2448,2045
+Tlaxcala,1790,Total,Solteros,Solteros_Total,30653,15749,14904
+Tlaxcala,1790,0_6,Solteros,Solteros_0_6,12841,6707,6134
+Tlaxcala,1790,7_15,Solteros,Solteros_7_15,11820,6003,5817
+Tlaxcala,1790,16_24,Solteros,Solteros_16_24,3711,1894,1817
+Tlaxcala,1790,25_39,Solteros,Solteros_25_39,1352,687,665
+Tlaxcala,1790,40_49,Solteros,Solteros_40_49,776,384,392
+Tlaxcala,1790,50_up,Solteros,Solteros_50_up,153,74,79
+Tlaxcala,1790,Total,Casados,Casados_Total,25714,12854,12860
+Tlaxcala,1790,0_6,Casados,Casados_0_6,0,0,0
+Tlaxcala,1790,7_15,Casados,Casados_7_15,781,480,301
+Tlaxcala,1790,16_24,Casados,Casados_16_24,6473,3193,3280
+Tlaxcala,1790,25_39,Casados,Casados_25_39,11288,5512,5776
+Tlaxcala,1790,40_49,Casados,Casados_40_49,3320,1679,1641
+Tlaxcala,1790,50_up,Casados,Casados_50_up,3852,1990,1862
+Tlaxcala,1790,Total,Viudos,Viudos_Total,2781,1394,1387
+Tlaxcala,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Tlaxcala,1790,7_15,Viudos,Viudos_7_15,0,0,0
+Tlaxcala,1790,16_24,Viudos,Viudos_16_24,448,139,309
+Tlaxcala,1790,25_39,Viudos,Viudos_25_39,1073,429,644
+Tlaxcala,1790,40_49,Viudos,Viudos_40_49,772,442,330
+Tlaxcala,1790,50_up,Viudos,Viudos_50_up,488,384,104
+Veracruz,1790,Total,Pop,Pop_Total,163539,85694,77845
+Veracruz,1790,0_6,Pop,Pop_0_6,37287,20083,17204
+Veracruz,1790,7_15,Pop,Pop_7_15,29486,15765,13721
+Veracruz,1790,16_24,Pop,Pop_16_24,30140,14065,16075
+Veracruz,1790,25_39,Pop,Pop_25_39,43354,22764,20590
+Veracruz,1790,40_49,Pop,Pop_40_49,12773,6950,5823
+Veracruz,1790,50_up,Pop,Pop_50_up,10499,6067,4432
+Veracruz,1790,Total,Solteros,Solteros_Total,72318,40721,31597
+Veracruz,1790,0_6,Solteros,Solteros_0_6,37287,20083,17204
+Veracruz,1790,7_15,Solteros,Solteros_7_15,26183,15209,10974
+Veracruz,1790,16_24,Solteros,Solteros_16_24,6492,4121,2371
+Veracruz,1790,25_39,Solteros,Solteros_25_39,2012,1161,851
+Veracruz,1790,40_49,Solteros,Solteros_40_49,229,98,131
+Veracruz,1790,50_up,Solteros,Solteros_50_up,115,49,66
+Veracruz,1790,Total,Casados,Casados_Total,83339,42765,40574
+Veracruz,1790,0_6,Casados,Casados_0_6,0,0,0
+Veracruz,1790,7_15,Casados,Casados_7_15,3238,556,2682
+Veracruz,1790,16_24,Casados,Casados_16_24,22879,9649,13230
+Veracruz,1790,25_39,Casados,Casados_25_39,38595,20851,17744
+Veracruz,1790,40_49,Casados,Casados_40_49,10810,6345,4465
+Veracruz,1790,50_up,Casados,Casados_50_up,7817,5364,2453
+Veracruz,1790,Total,Viudos,Viudos_Total,7882,2208,5674
+Veracruz,1790,0_6,Viudos,Viudos_0_6,0,0,0
+Veracruz,1790,7_15,Viudos,Viudos_7_15,65,0,65
+Veracruz,1790,16_24,Viudos,Viudos_16_24,769,295,474
+Veracruz,1790,25_39,Viudos,Viudos_25_39,2747,752,1995
+Veracruz,1790,40_49,Viudos,Viudos_40_49,1734,507,1227
+Veracruz,1790,50_up,Viudos,Viudos_50_up,2567,654,1913

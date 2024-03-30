@@ -1,0 +1,61 @@
+Case,AgeLower,ex,qx
+Catedral Metropolitana,0,23.9,0.225
+Catedral Metropolitana,1,29.7,0.1342
+Catedral Metropolitana,5,30,0.1386
+Catedral Metropolitana,10,29.4,0.0761
+Catedral Metropolitana,15,26.7,0.1517
+Catedral Metropolitana,20,26,0.1038
+Catedral Metropolitana,25,23.7,0.1355
+Catedral Metropolitana,30,22,0.094
+Catedral Metropolitana,35,19,0.1289
+Catedral Metropolitana,40,16.5,0.1625
+Catedral Metropolitana,45,14.2,0.2328
+Catedral Metropolitana,50,12.7,0.264
+Catedral Metropolitana,55,11.4,0.1908
+Catedral Metropolitana,60,8.5,0.1792
+Catedral Metropolitana,65,4.8,0.069
+Catedral Metropolitana,70,2.5,0.0123
+Santa Cruz y Soledad,0,30.1,0.1667
+Santa Cruz y Soledad,1,35.1,0.08
+Santa Cruz y Soledad,5,33.9,0.0373
+Santa Cruz y Soledad,10,30.1,0.0452
+Santa Cruz y Soledad,15,26.5,0.0608
+Santa Cruz y Soledad,20,23,0.0647
+Santa Cruz y Soledad,25,19.4,0.1231
+Santa Cruz y Soledad,30,16.8,0.0263
+Santa Cruz y Soledad,35,12.2,0.1622
+Santa Cruz y Soledad,40,9.1,0.3548
+Santa Cruz y Soledad,45,7.7,0.4667
+Santa Cruz y Soledad,50,7.2,0.5
+Santa Cruz y Soledad,55,6.9,0.25
+Santa Cruz y Soledad,60,3.3,0.8333
+Santa Cruz y Soledad,65,2.5,1
+San Jose de los Naturales,0,22.3,0.18
+San Jose de los Naturales,1,26.1,0.0896
+San Jose de los Naturales,5,24.4,0.0522
+San Jose de los Naturales,10,20.6,0.0365
+San Jose de los Naturales,15,16.3,0.1545
+San Jose de los Naturales,20,13.9,0.1953
+San Jose de los Naturales,25,11.6,0.3093
+San Jose de los Naturales,30,10.7,0.4058
+San Jose de los Naturales,35,11.3,0.3032
+San Jose de los Naturales,40,10.1,0.3605
+San Jose de los Naturales,45,9.4,0.2189
+San Jose de los Naturales,50,6.3,0.3225
+San Jose de los Naturales,55,3.2,0.8872
+San Jose de los Naturales,60,5,0.5728
+San Jose de los Naturales,65,2.5,1
+San Gregorio Atlapulco,0,15.6,0.2131
+San Gregorio Atlapulco,1,18.7,0.3413
+San Gregorio Atlapulco,5,23.4,0.13
+San Gregorio Atlapulco,10,21.5,0.0774
+San Gregorio Atlapulco,15,18.1,0.124
+San Gregorio Atlapulco,20,15.3,0.2053
+San Gregorio Atlapulco,25,13.6,0.2007
+San Gregorio Atlapulco,30,11.4,0.3343
+San Gregorio Atlapulco,35,10.9,0.2311
+San Gregorio Atlapulco,40,8.4,0.415
+San Gregorio Atlapulco,45,7.7,0.3215
+San Gregorio Atlapulco,50,5.1,0.6308
+San Gregorio Atlapulco,55,4.5,0.5898
+San Gregorio Atlapulco,60,2.5,1

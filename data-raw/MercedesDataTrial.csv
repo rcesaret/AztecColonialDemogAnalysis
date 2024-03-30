@@ -1,0 +1,1364 @@
+﻿ID,Year,Loc_Orig,,Remove,Zone_Med,Juris1580,Zone_Large2,Solicitor,TotalArea_ha,AGArea_ha,Cab,SuerteHuerta,Pedazos,Water,HerAgua_Molino,Agua_Rio,Agua_Riego,Agua,MolinoBatan,Molino,HeridoAgua_Molino,HeridoAgua_Batan,Batan,Buildings_ha,Buildings,VentaMeson,SolaresCasas,Solares,Casas,Livestock_ha,EGMenor_ha,EGMenor,EGMayor_ha,EGMayor,AhijaderoCorral_ha,AhijaderoCorral,Ahijadero,CORRAL,Est_Unsp_ha,Est_Unsp,Mines,Calera,Piedra,ColinNumber
+1,1595,Oculma,,FALSE,Acolman North,Teotihuacan,Temascalapa,Martín de Aguirre,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1329
+2,1595,Oculma,,FALSE,Acolman North,Teotihuacan,Temascalapa,Antonio de Pedraza,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1330
+3,1601,Oculma,,FALSE,Acolman North,Teotihuacan,Temascalapa,Luis de Semiño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1333
+4,1616,Oculma,,FALSE,Acolman North,Teotihuacan,Temascalapa,Agustín de Iturriaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1337
+5,1609,"Mateo, San",,FALSE,Acolman North,Teotihuacan,Temascalapa,Juan turrado,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1255
+6,1613,Oculma,,FALSE,Acolman North,Teotihuacan,Temascalapa,Juan de Moreda,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,1334
+7,1614,"Tochatlauco, San Mateo",,FALSE,Acolman North,Teotihuacan,Temascalapa,Antonio de Mendoza,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2556
+8,1584,Oculma,,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Dr. de la Fuente,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,1321
+9,1589,Oculma,,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Lucas López,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1324
+10,1590,Tecama y Oculma,,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Jerónimo Herrera,432.935,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,390.135,390.135,0.5,0,,0,0,,,0,,0,0,0,1553
+11,1595,Oculma,,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Pedro Ruíz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1331
+12,1597,Oculma,,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Catalina de Alvarado,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1332
+13,1613,"Atla, Santiago",,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Luis Moreno de la Torre,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,113
+14,1613,"Atla, Santiago",,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Luis Moreno,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,114
+15,1613,Oculma,,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Leonor de Quiñónes y Ulloa,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1335
+16,1613,"Atla, Santiago",,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Pedro Serrano,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,112
+17,1616,"Teotihuacan, San Juan",,FALSE,Acolman Central,Teotihuacan,Lower Teo Valley,Andrés del Valle,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,1988
+18,1582,Oculma,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,Cristóbal Pérez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,1320
+19,1587,Oculma,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,Francisco de Arbolancha,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1322
+20,1587,Oculma,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,Cristóbal Gudiel,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1323
+21,1588,"Andres, San",,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,Gabriel de Balmoseda,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,88
+22,1590,Oculma,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,Baltasar de Lama,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1326
+23,1590,Oculma,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,Juan de Morales,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1327
+24,1595,Oculma y Santiago Atla,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,María Delgadillo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1328
+25,1597,Chiconautla y Oculma,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,Hernando Xaramillo,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,576
+26,1618,Tepexpa,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,Mariana de la Marcha,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2072
+27,1632,Oculma,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,,0,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1338
+28,1632,Oculma,,FALSE,Acolman South,Teotihuacan,Lower Teo Valley,,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1339
+29,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Común de San Francisco,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+30,1543,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Alonso de Mata,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+31,1550,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Miguel de Escobar Jerónimo de Men doza Francisco Cerón Carbajal Francisco de Burgos,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+32,1588,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Lupercio Despes (14),1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,0,,,0,,0,0,0,
+33,1589,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Común de Amecameca,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,0,,,0,,0,0,0,
+34,1589,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Pedro de Herencia,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+35,1591,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Juan Cervantes de Castro,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+36,1591,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Julián de Corcuera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+37,1591,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Alonso de la Cueva (1),171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+38,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Comunidad de San Diego,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+39,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,"Francisco de Men doza, (cacique de Amecameca)",780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+40,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Francisco de Silva,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+41,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Juan Bautista de Gaona (13),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+42,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,"Juan B.G., Comuni dad de Amecameca",780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+43,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Francisco de Mendoza (12),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+44,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Comunidad de Iztlacozauhcan,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+45,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Miguel Bautista,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+46,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Comunidad de Amecameca,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+47,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Comunidad de Amecameca,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+48,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Marco de Rivera,823.07,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+49,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Marcos de Ordaz,823.07,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+50,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Felipe Páez de Mendoza (indígena),823.07,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+51,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Barrio de Tzacualtitlan,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+52,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Diego de Salazar (1),865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+53,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Diego de Salazar,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+54,1594,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Comunidad de Amecameca,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+55,1594,Amecameca y Chimalhuacan,,FALSE,Amecameca,Chalco,Chalco,Ambrosio de Rueda,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+56,1595,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Luis de Villegas,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+57,1595,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Barrio de San Fran cisco Texinca,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+58,1595,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Comunidad de Santo Domingo,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+59,1595,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Común de Santo Domingo,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+60,1595,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Barrio Tzacualtitlan,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+61,1595,Amecameca,,FALSE,Amecameca,Chalco,Chalco,María de Vargas (vecina de Amecameca),865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+62,1595,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Comunidad de Iztlacozauhcan,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+63,1597,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Común de Calayuco,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+64,1597,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Pedro de Alzola,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+65,1602,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Juan Alonso,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+66,1602,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Francisco Gómez (vecino de Amecameca),171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+67,1603,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Francisco Gómez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+68,1606,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Diego Telles de Barahona,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+69,1607,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Martín de Savala,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+70,1607,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Ambrosio Saguiño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+71,1607,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Juan Bautista,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+72,1608,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Juan de Saavedra y Monsalve,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+73,1608,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Marcos de Rivera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+74,1608,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Alonso Arteaga,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+75,1613,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Francisca de Sandoval (cacique de Tlalmanalco),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+76,1613,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Común de San Francisco Tlilhuacan,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+77,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,"Andrés de San Pedro y Estrada (12), Atlautla",780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+78,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Pedro de Estrada (12),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+79,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Pedro de Estrada (12),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+80,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Pedro de Estrada (8),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+81,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Juan de San Miguel (8),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+82,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Andrés de San Pedro y Estrada (12),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+83,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Común de San Miguel Atlautla,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+84,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Común de San Miguel,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+85,1615,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Juan de Cárcega,2469.21,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,2340.81,2340.81,3,0,,0,0,,,0,,0,0,0,
+86,1616,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Francisco Pérez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+87,1616,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Gaspar Mejía,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+88,1616,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Marcos de Rivera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+89,1616,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Pedro de Castilla,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+90,1616,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Pedro del Castillo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+91,1617,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Marcos de Rivera,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+92,1623,Amecameca,,FALSE,Amecameca,Chalco,Chalco,Domingo González Araujo,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+93,1613,Tlalnepantla,,TRUE,Azcapotzalco,Tacuba,Tacuba,Domingo de Alva,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2525
+94,1563,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Bartolomé de Torres Montalvo,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,151
+95,1565,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Juan Rodríguez Gamarra,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,156
+96,1565,Cuaguacan,,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Francisca de Silva,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,297
+97,1565,Cuaguacan,,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Diego Agúndez,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,296
+98,1565,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Alonso de Solórzano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,153
+99,1565,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Alonso Ortiz de Zúñiga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,154
+100,1565,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Juan de Nájera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,155
+101,1565,Tepotzotlan y Atzcapotzaltongo,,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Alonso de Solórzano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2093
+102,1567,Cuaguacan,,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Martín Cano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,298
+103,1588,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Juan Vela,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,157
+104,1588,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Juan Vela,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,158
+105,1589,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Alonso de Zárate,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,160
+106,1589,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Juan Grande,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,159
+107,1593,Cuaguacan y Tepotzotlan,,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Juan Porras de Ulloa,1841.21,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,1755.61,0,,1755.61,1,0,0,,,0,,0,0,0,299
+108,1594,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Diego Pérez Maldonado,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,0,,,780.27,1,0,0,0,162
+109,1594,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Alonso Núñez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,161
+110,1602,"Atzcapotzaltongo, San Pedro",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Andrés Pérez,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,163
+111,1612,"Mazatlan, Sta. Maria",,FALSE,Azcapotzaltongo,Tacuba,Tacuba,Fernando Carrasco,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,1257
+112,1560,Texcoco,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Luis de Pareja,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,2227
+113,1565,"Texcoco, Calpulalpa y Tlapanaloya",,FALSE,Calpulalpan,Texcoco,Calpulalpan,Juan de Villarreal,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,1,1,0,2234
+114,1575,Calpulalpan,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Antonio de Guadalajara,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,1,1,0,188
+115,1575,Calpulalpan,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Antonio Delgadillo,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,1,1,0,189
+116,1576,Texcoco,,FALSE,Calpulalpan,Texcoco,Calpulalpan,los religiosos de San Agustín,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,1,0,1,2239
+117,1576,Texcoco,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Cristóbal Yáñez Roldán,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,1,1,0,2240
+118,1581,Calpulalpan,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Juan Villerías,0,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,0,,,0,,0,0,0,190
+119,1593,Calpulalpan,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Juan de Saavedra Guzmán,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,191
+120,1605,Texcoco,,FALSE,Calpulalpan,Texcoco,Calpulalpan,,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,0,,,0,,0,0,0,2286
+121,1606,Texcoco,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Sebastián Romano,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2289
+122,1607,Texcoco,,FALSE,Calpulalpan,Texcoco,Calpulalpan,,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,1,1,0,2308
+123,1608,Texcoco,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Andrés Díaz,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,2314
+124,1612,Texcoco,,FALSE,Calpulalpan,Texcoco,Calpulalpan,Juan de la Torre Rivadeneira,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,2317
+125,1565,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Ortuño de Ibarra (6),0,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+126,1565,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Antón Méndez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+127,1579,Chalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Miguel López Bocanegra,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+128,1589,Chalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Hospital,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+129,1591,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Francisco Martín,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+130,1593,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego Ramírez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+131,1595,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Alonso Ruiz de la Lima,0,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+132,1595,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Hordón Zevi llagrán,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+133,1595,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Hernando García (indio),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+134,1598,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Lorenzo Miranda,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+135,1600,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Yáñez y María Figueroa,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,0,,,0,,0,0,0,
+136,1601,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de Córdova,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+137,1602,Mezquique,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Gutiérrez de Medina,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,1278
+138,1602,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Alonso Núñez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+139,1602,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Gutiérrez de Medina,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+140,1603,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Bautista de Ureta,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,0,,,0,,0,0,0,
+141,1603,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Alonso Pérez Carreño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+142,1606,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Cristóbal de Montalvo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+143,1607,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Alonso Núñez Casilla,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+144,1607,Misquique y Cuitlahuac,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Alonso Nuñez Casillas,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,0,,,0,,0,0,0,1285
+145,1607,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Bartolomé Montero,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+146,1608,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Godoy,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+147,1613,Chalcoatengo y Cuitlahuac,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego de Cisneros,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,484
+148,1614,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Fernando de Villegas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+149,1616,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de Herrera,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+150,1617,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Domingo Andrés (indígena),171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+151,1618,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Alonso Núñez Casilla,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+152,1619,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Hernando Aguilar (vecino de Ayotzingo),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+153,1622,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Mateo de San Martín Figueroa,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+154,1622,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego de Lara,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+155,1644,Tlalmanalco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Hugo Ruiz Lozano,1755.61,0,,,,0,,,,,0,,,,,0,0,,0,,,1755.61,0,,1755.61,1,0,0,,,0,,0,0,0,
+156,1567,,,TRUE,Chalco Unspecified,Chalco,Chalco,Diego Ortiz (1),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+157,1567,,,TRUE,Chalco Unspecified,Chalco,Chalco,Juan Galván (1),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+158,1594,,,TRUE,Chalco Unspecified,Chalco,Chalco,Jerónimo de Matienzos,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+159,1615,Tierras suyas,,TRUE,Chalco Unspecified,Chalco,Chalco,"Andrés de San Pedro y Estrada (12), Atlautla",780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+160,1555,Chiautla y Texcoco,,FALSE,Chiautla,Texcoco,Texcoco,Martín,0,0,,,,0,,,,,0,,,,,0.5,1,,1,,1,0,0,,0,,0,0,,,0,,0,0,0,552
+161,1583,Texcoco,,FALSE,Chiautla,Texcoco,Texcoco,Juan de Cueva,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2241
+162,1593,Chiautla y Texcoco,,FALSE,Chiautla,Texcoco,Texcoco,alcalde mayor del ciudad de Texcoco,0,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,0,,,0,,0,0,0,553
+163,1597,Texcoco,,FALSE,Chiautla,Texcoco,Texcoco,Hernando Núñez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2267
+164,1613,Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,pueblo of chiautla,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,554
+165,1613,Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,pueblo of chiautla,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,555
+166,1613,Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,Gaspar de Vargas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,556
+167,1613,Texcoco; Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,Diego Vázquez Sámano,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2321
+168,1614,Papalotla,,FALSE,Chiautla,Texcoco,Texcoco,Juan Martínez del Campo,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1425
+169,1614,Texcoco; Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,Juan de Alaya,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2337
+170,1614,Texcoco,,FALSE,Chiautla,Texcoco,Texcoco,Juan Martínez del Campo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2338
+171,1615,Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,Leonardo Delaño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,558
+172,1615,Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,Leonardo Delaño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,557
+173,1615,Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,Juan Gómez Pinto,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,560
+174,1615,Chiautla,,FALSE,Chiautla,Texcoco,Texcoco,Juan de Ayala,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,559
+175,1617,Papalotla,,FALSE,Chiautla,Texcoco,Texcoco,Antonio Padilla,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,1426
+176,1567,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Pedro Catalán,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,568
+177,1567,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Luis Martín,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,569
+178,1582,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Francisco González,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,570
+179,1585,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Francisco de Alcalá,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,571
+180,1588,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Hernando del Carpio,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,573
+181,1588,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Hernando del Carpio,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,572
+182,1593,Tequicistlan y Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Bernardino de Casasola,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,2168
+183,1596,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Bartolomé de Entrambasaguas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,575
+184,1596,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Bernardo del Castillo,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,574
+185,1597,Chiconautla y Oculma,,FALSE,Chiconautla,Xaltocan,Xaltocan,Hernando Xaramillo,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,576
+186,1603,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Gabriel López,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,577
+187,1612,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Diego Díaz Calderón,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,578
+188,1612,"Tecalco, San Andres",,FALSE,Chiconautla,Xaltocan,Xaltocan,al corregidor del partido de Chiconautla,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,1540
+189,1613,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Corregidor de Chiconautla,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,582
+190,1613,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Antonio Hernández de Aguilar,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,581
+191,1613,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,580
+192,1613,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Pablo de la Serna,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,583
+193,1616,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,"gobernador, alcaldes y común",15,15,,,1,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,585
+194,1618,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Alcalde Mayor Chiconautla,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,586
+195,1618,"Tecalco, San Andres",,FALSE,Chiconautla,Xaltocan,Xaltocan,gobernador,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,1541
+196,1636,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Pedro Ortiz de Arri,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,590
+197,1643,Chiconautla,,FALSE,Chiconautla,Xaltocan,Xaltocan,Francisco de Chávez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,591
+198,1595,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Común de Chimalhuacan,823.07,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+199,1595,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Antonio Matienzos (14),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+200,1595,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Marcos de Rivera,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+201,1601,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Cristóbal Escobar,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+202,1601,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Marcos Frandino de Sotomayor,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+203,1601,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Pedro Rodríguez de Madrid,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+204,1602,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Juan Navarro,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+205,1602,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Ambrosio Rueda,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+206,1603,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Pedro Rodríguez de Madrid,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+207,1603,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Pedro Rodríguez de Madrid,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+208,1603,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Antonio de Novoa,994.27,214,5,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+209,1604,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Común de Caltecoya,0,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+210,1605,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Común de Mamalhuazucan,195.07,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,195.07,0,,0,,195.07,1,,1,0,,0,0,0,
+211,1606,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Sebastián Romano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+212,1606,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Alonso Núñez,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+213,1607,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Juan Godoy,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+214,1607,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Alonso Núñez Casillas,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+215,1607,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Juan de la Serna,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+216,1608,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Alonso Michel Castañeda,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+217,1609,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Alonso Núñez Casillas,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+218,1613,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Alonso Núñez Casilla,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+219,1613,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Juan de Castro,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+220,1613,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Común de Tepetlixpa,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+221,1613,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Común de Tepetlixpa,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+222,1613,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Juan Fernández de la Concha (ministro de Cámara),256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+223,1614,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Pedro de Prado,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+224,1615,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Pedro de Prado,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+225,1615,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Pedro del Prado,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+226,1616,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Alonso Núñez Casilla,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+227,1621,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Felipe Martínez de la Canal,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+228,1622,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Felipe Martínez de la Canal,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+229,1622,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Felipe Martínez de la Canal,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,
+230,1626,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Juan de Salazar,1037.07,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+231,1633,Chimalhuacan,,FALSE,Chimalhuacan Chalco,Chalco,Chalco,Luis Díaz,1122.67,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,0,,,0,,0,0,0,
+232,1567,Coacalco,,FALSE,Tultitlan Coacalco,Ecatepec,Ecatepec,Melchor de Toranzos,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,206
+233,1567,Coacalco,,FALSE,Tultitlan Coacalco,Ecatepec,Ecatepec,Cristóbal Pérez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,204
+234,1567,Coacalco,,FALSE,Tultitlan Coacalco,Ecatepec,Ecatepec,Alonso de Segura,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,0,,,0,,0,0,0,205
+235,1583,Coacalco,,FALSE,Tultitlan Coacalco,Ecatepec,Ecatepec,Fernando Sotelo Moctezuma,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,207
+236,1585,Coacalco,,FALSE,Tultitlan Coacalco,Ecatepec,Ecatepec,Rodrigo de Avila,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,208
+237,1586,Coacalco,,FALSE,Tultitlan Coacalco,Ecatepec,Ecatepec,Fernando de Moctezuma,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,209
+238,1590,Coacalco,,FALSE,Tultitlan Coacalco,Ecatepec,Ecatepec,Antonio Delgadillo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,210
+239,1601,"Francisco, San",,FALSE,Tultitlan Coacalco,Ecatepec,Ecatepec,los naturales de este pueblo,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,659
+240,1563,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan Pérez,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,214
+241,1564,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Diego de Viedma,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,215
+242,1565,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de Castilla,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,217
+243,1566,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Jerónimo de Bustamente,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,219
+244,1567,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Antonio de Espinosa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,220
+245,1567,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Pedro Pérez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,221
+246,1567,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Andrés de Estrada,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,222
+247,1583,Coatepec e Ixtapaluca,,FALSE,Coatepec,Coatepec,Coatepec,Alonso Martínez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,223
+248,1584,Coatepec e Ixtapaluca,,FALSE,Coatepec,Coatepec,Coatepec,Alonso Martínez,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,225
+249,1584,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Catalina Díaz,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,224
+250,1588,"Pedro, San",,FALSE,Coatepec,Coatepec,Coatepec,Antonio de Castro,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1429
+251,1589,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Beatriz de Villegas,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,226
+252,1590,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Antonio Jiménez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,227
+253,1592,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de Villegas,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,228
+254,1594,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Pedro de Brisuela,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,229
+255,1600,"Chimalhuacan, San Vicente",,FALSE,Coatepec,Coatepec,Coatepec,Pedro Rodríguez de Madrid,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,601
+256,1601,Chimalhuacan y Chicoloapa,,FALSE,Coatepec,Coatepec,Coatepec,Silvestre de Aybar,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,602
+257,1601,Chimalhuacan y Chicoloapa,,FALSE,Coatepec,Coatepec,Coatepec,Silvestre de Aybar,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,602
+258,1601,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de la Rosa,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,232
+259,1601,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de Meneses Montenegro,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,233
+260,1601,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Miguel Jiménez Armenteros,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,234
+261,1601,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,María de Santillán,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,235
+262,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juana de Santillán,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,238
+263,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de la Rosa,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,241
+264,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Pablo de San Juan,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,243
+265,1602,Chimalhuacan y Chicoloapa,,FALSE,Coatepec,Coatepec,Coatepec,Silvestre de Aybar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,605
+266,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Baltasar de Salazar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,237
+267,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Silvestre de Aybar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,239
+268,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Baltasar Ochoa de Lexalde,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,244
+269,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Pedro de Herrero,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,246
+270,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de la Rosa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,247
+271,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Martín de San Juan,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,236
+272,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Francisco Rodríguez Chacón,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,240
+273,1602,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Isabel de la Parra,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,245
+274,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Miguel Jiménez de Armenteros,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,258
+275,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de Abrego,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,248
+276,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Diego Tello,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,249
+277,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Alonso de Ledesma,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,250
+278,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Leonor Ramírez de Castro,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,255
+279,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Pedro de Arenas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,256
+280,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan Bautista de Ureta,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,259
+281,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Alonso de Ledesma,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,252
+282,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Pedro del Corral,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,253
+283,1603,Chicoloapa y Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Pedro del Corral,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,563
+284,1603,Coatepec y Coatlinchan,,FALSE,Coatepec,Coatepec,Coatepec,Juan Martín del Campo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,251
+285,1603,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Ana de Aguilar,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,257
+286,1605,Guatongo y Chimalhuacan,,FALSE,Coatepec,Coatepec,Coatepec,Martín de Urquiaga,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,667
+287,1605,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Pedro de Badillo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,260
+288,1606,Chicoloapa,,FALSE,Coatepec,Coatepec,Coatepec,pueblo of chicoloapan,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,565
+289,1608,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Diego de Rebolledo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,261
+290,1608,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Diego Temiño Bañuelos,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,262
+291,1613,Chicoloapa,,FALSE,Coatepec,Coatepec,Coatepec,Luis Moreno,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,566
+292,1613,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de la Riva,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,266
+293,1613,Cuitlahuac y Chimalhuacan,,FALSE,Coatepec,Coatepec,Coatepec,Juan Fernández de la Concha,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,393
+294,1613,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Juan de la Riva,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,265
+295,1614,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Antonio de Salazar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,268
+296,1615,Coatepec,,FALSE,Coatepec,Coatepec,Coatepec,Alvaro López de Soria,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,269
+297,1565,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Francisco Granado,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,271
+298,1565,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Pedro Vázquez de Vargas,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,272
+299,1566,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Francisco Durán,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,273
+300,1601,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,María de Santillán,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,274
+301,1603,Coatepec y Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Alonso de Ledesma,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,254
+302,1603,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Juan de Espinosa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,276
+303,1603,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Miguel Senteno,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,277
+304,1603,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Francisco de Arellano,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,278
+305,1603,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Bartolome de Entrambasaguas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,275
+306,1605,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Jerónimo Tremiño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,279
+307,1606,Sacamultetelco y Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Domingo Núñez,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1465
+308,1606,Huexotla y Cuatinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Juan Heredia,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,710
+309,1606,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Jerónimo Tremiño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,281
+310,1606,Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Nicolás de Espinosa,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,280
+311,1607,Huexotla y Coatlinchan,,FALSE,Coatlinchan,Texcoco,Texcoco,Nicolás de Melgosa,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,714
+312,1613,Texcoco,,FALSE,Coatlinchan,Texcoco,Texcoco,,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2328
+313,1606,Coatlinchan y Huejutla,,FALSE,Coatlinchan,Texcoco,Texcoco,Juan de Heredia,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,282
+314,1606,Coatlinchan y Huejutla,,FALSE,Huexotla,Texcoco,Texcoco,Juan de Heredia,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,282
+315,1550,Tacubaya,,FALSE,Coyoacan,Coyoacan,Coyoacan,MARTIN DE IRCIO,42.8,42.8,1,,,1,,,,,1,,1,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+316,1556,Tacubaya,,FALSE,Coyoacan,Coyoacan,Coyoacan,BARTOLOME DE FONTANA,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+317,1557,San Bartolome Coatepec,,FALSE,Coyoacan,Coyoacan,Coyoacan,Bernardino Ruiz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+318,1560,Ocotepec,,FALSE,Coyoacan,Coyoacan,Coyoacan,don Francisco de Velaco y Pedro de la Fuente,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+319,1565,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Pedro Hernandez,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+320,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,M de Herra,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+321,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Gavriel Ruiz,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+322,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Antonio Alonso,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+323,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Rodrigo Bezerro,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+324,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Alvaro de Zamora,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+325,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Francisco de Salazar,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+326,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Pedro Vargas,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+327,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Juan Sanchez,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+328,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Francisco Romero,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+329,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Tribio Calderon,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+330,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Alonso Diaz,0,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+331,1567,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,LUIS PATIÑO,0,0,,,,0,,,,,0,,,,,1,2,,2,2,,0,0,,0,,0,,,,0,,0,0,0,AGN
+332,1585,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Perez de Portugal,0,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+333,1589,"Fe, Santa",,FALSE,Coyoacan,Coyoacan,Coyoacan,Antonio de Saavedra,15,15,,,1,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,653
+334,1604,Tlalpan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Disclced Carmelites,0,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+335,1605,Cuauhximalpan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Disclced Carmelites,0,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+336,1606,Cuauhximalpan,,FALSE,Coyoacan,Coyoacan,Coyoacan,Carlos Martin,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,HornAGN
+337,1607,Coyoacan,,FALSE,Coyoacan,Coyoacan,Coyoacan,MIGUEL DIAS,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+338,1617,Tacubaya,,FALSE,Coyoacan,Coyoacan,Coyoacan,FRANCISCO FRANCO,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+339,1623,San Agustin de las Cuevas,,FALSE,Coyoacan,Coyoacan,Coyoacan,BARTOLOME RODRIGUES,15,15,,,1,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+340,1641,San Agustin de las Cuevas,,FALSE,Coyoacan,Coyoacan,Coyoacan,JOSE PERES,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+341,1565,Coyotepec,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,0,,0,,0,,,,1560.54,2,0,0,0,289
+342,1585,Huehuetoca y Coyotepec,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Leonor Rodríguez Caballero,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,682
+343,1590,Coyotepec y Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Rodrigo Nieto,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,290
+344,1543,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,0,,0,,0,,,,1560.54,2,0,0,0,304
+345,1544,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Martín López,21.4,21.4,0.5,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,306
+346,1555,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Alonso de Avila Alvarado,0,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,308
+347,1565,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Alonso de Avila Alvarado,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,312
+348,1565,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Alonso de Dávila Alvarado,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,313
+349,1565,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juana de Soto,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,310
+350,1565,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Catalina de Montejo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,311
+351,1567,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro Ruíz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,314
+352,1567,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan de la Rosa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,316
+353,1567,"Tultepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Domingo Jiménez,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2619
+354,1583,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Diego Clemente,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,320
+355,1583,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pablo Pascual,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,321
+356,1583,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Clemente,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,318
+357,1583,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Miguel de San Gregorio,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,319
+358,1583,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Marcos Mejía,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,317
+359,1583,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Sebastián de Luna,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,322
+360,1584,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Amador Sánchez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,323
+361,1584,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Toribio Díaz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,324
+362,1584,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Diego Díaz del Castillo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,326
+363,1584,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Pérez Ponce,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,325
+364,1584,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Fulgencio Vique,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,327
+365,1585,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro Delgado,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,328
+366,1585,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan de Carvajal,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,329
+367,1587,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Francisco de Herrera,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,330
+368,1587,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Bautista,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,331
+369,1588,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Andrés Rodríguez de Meneses,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,332
+370,1588,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Francisco de Herrera,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,333
+371,1589,"Tultepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2620
+372,1590,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Alonso de Heredia,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,336
+373,1590,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan del Castillo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,335
+374,1591,Tlaltelpan Sta. Ana,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan de Avila,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1629
+375,1594,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Luis Juárez de Peralta,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,338
+376,1594,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Antón de Loya,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,337
+377,1597,"Tultepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Antonio de Nava,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2621
+378,1597,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Alonso Pérez Revuelto,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,339
+379,1597,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Felipe de Vargas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,340
+380,1600,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Andrés Merino de Meneses,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,342
+381,1600,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Baltasar de Luna,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,343
+382,1601,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro Lopez,32.1,32.1,0.75,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,344
+383,1602,Cuautitlan y Tultitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Agustín de Villalva,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,345
+384,1602,"Tepacuilco, San Miguel",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Esteban,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1998
+385,1603,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Feijo de Barrio,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,352
+386,1603,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Feijo de Barrio,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,354
+387,1603,Cuautitlan y Tultitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Urquiza,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,349
+388,1603,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Alonso Oxea,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,346
+389,1603,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro de Carranza,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,347
+390,1603,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Sebastián de Luna,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,350
+391,1603,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Luis de Salcedo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,353
+392,1603,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Luis de Salcedo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,351
+393,1606,"Tultepec, Sta. Maria y Nativitas, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Sebastián de Luna,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2622
+394,1607,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro de Carranza,32.1,32.1,0.75,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,361
+395,1607,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Diego Caballero,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,356
+396,1607,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Diego Caballero,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,357
+397,1607,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Sebastián de Minaya,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,360
+398,1607,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Fernando Méndez de Ocampo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,355
+399,1607,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan de Arquiza,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,359
+400,1609,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Andrés de Tapia y Sosa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,362
+401,1612,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro Velázquez,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,363
+402,1613,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Benítez Camacho,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,364
+403,1613,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Benítez Camacho,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,365
+404,1615,"Tultepec, Sta. Maria y San Francisco",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2623
+405,1615,"Totoltepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,mayordomos y diputados,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2614
+406,1615,"Totoltepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,"alcaldes, regidores, principales y común",908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2615
+407,1616,Cuautitlan y Tultepec,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Sebastián de Luna,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,366
+408,1616,Santiago,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,los principales y naturales,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,1472
+409,1616,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan de Leyva,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,367
+410,1616,"Tultepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,los naturales,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2624
+411,1616,"Tultepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,"indios, diputados y mayordomos",42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2625
+412,1616,"Toltepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,común,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2559
+413,1617,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Antonio de Carvajal y Tapia,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,368
+414,1617,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Francisco de Cabiedes,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,369
+415,1618,Santiago,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,al común y principales,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1474
+416,1618,"Tenopalco Tultepec, San Francisco",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,común y principales,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1959
+417,1618,"Tultepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,"indios, diputados y mayordomos",42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2626
+418,1618,"Tultepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,común y naturales,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2627
+419,1618,"Totoltepec, Sta. Maria",,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,común y principales,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2616
+420,1626,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Bautista Burgo,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,370
+421,1626,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Bautista Burgo,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,371
+422,1630,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro de Ubierna y Solórzano,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,372
+423,1632,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Juan Calderón,0.5,0,,,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,373
+424,1634,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro de Ubierna,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,374
+425,1637,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,Pedro de Ubierna y Solórzano,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,375
+426,1641,Cuautitlan,,FALSE,Cuauhtitlan,Cuauhtitlan,Cuauhtitlan,José de Bañuelos,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,376
+427,1579,Chalco,,FALSE,Cuitlahuac,Chalco,Chalco,"Bernardino Arias, vecino de Cuitlahuac",15.5,15,,1,,0,,,,,0,,,,,0.5,1,,1,1,,0,0,,0,,0,,,,0,,0,0,0,
+428,1601,Cuitlahuac,,FALSE,Cuitlahuac,Chalco,Chalco,Juan Bautista de Ureta,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,388
+429,1601,Tlalmanalco y Chalco Atenco,,FALSE,Cuitlahuac,Chalco,Chalco,Silvestre de Aybar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+430,1602,Cuitlahuac,,FALSE,Cuitlahuac,Chalco,Chalco,Juan Bautista de Ureta,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,390
+431,1602,Cuitlahuac,,FALSE,Cuitlahuac,Chalco,Chalco,Juan de Espinoza,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+432,1602,Tlalmanalco y Chalco Atenco,,FALSE,Cuitlahuac,Chalco,Chalco,Juan Bautista de Ureta,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+433,1607,Cuitlahuac,,FALSE,Cuitlahuac,Chalco,Chalco,Juan de Amaya,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,392
+434,1607,Cuitlahuac,,FALSE,Cuitlahuac,Chalco,Chalco,Juan de Amaya,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,391
+435,1607,Tlalmanalco y Chalco Atenco,,FALSE,Cuitlahuac,Chalco,Chalco,Juan de Amaya,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,
+436,1613,Tlalmanalco y Chalco Atenco,,FALSE,Cuitlahuac,Chalco,Chalco,Diego de Cisneros,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+437,1574,Culhuacan,,FALSE,Iztapalapa Culhuacan,Mexicaltzinco,Mexicaltzinco,Juan Martínez del Campo,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,1,0,1,400
+438,1584,Culhuacan,,FALSE,Iztapalapa Culhuacan,Mexicaltzinco,Mexicaltzinco,Juan López,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,401
+439,1595,Culhuacan,,FALSE,Iztapalapa Culhuacan,Mexicaltzinco,Mexicaltzinco,Pueblo de Cuhuacan,2535.88,0,,,,0,,,,,0,,,,,0,0,,0,,,2535.88,780.27,1,1755.61,1,0,,,,0,,0,0,0,402
+440,1614,Culhuacan,,FALSE,Iztapalapa Culhuacan,Mexicaltzinco,Mexicaltzinco,Alvaro Nunez Carretero,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,1,0,1,403
+441,1620,Culhuacan,,FALSE,Iztapalapa Culhuacan,Mexicaltzinco,Mexicaltzinco,,43.8,42.8,1,,,0,,,,,0,,,,,1,2,,2,1,1,0,0,,0,,0,,,1,0,,0,0,0,404
+442,1620,Culhuacan,,FALSE,Iztapalapa Culhuacan,Mexicaltzinco,Mexicaltzinco,Pablo Ortíz,513.6,513.6,12,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,405
+443,1542,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Alvaro de Temiño,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,636
+444,1555,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,638
+445,1584,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Melchor Dávila,2,0,,,,4,,,,,4,,4,,,2,4,,0,,,0,0,,0,,0,,,,0,,0,0,0,644
+446,1591,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Francisco de Medinilla Alvarado,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,645
+447,1601,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Enrique Enríquez,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,647
+448,1601,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Lorenzo de Figueroa,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,649
+449,1615,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Juan de Solís,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,650
+450,1617,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Juan Velasco,1988.54,428,10,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,,,,0,,0,0,0,651
+451,1619,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,,0.5,0,,,,1,1,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,652
+452,1619,Chiconautla y San Cristobal,,FALSE,Ecatepec,Ecatepec,Ecatepec,Pedro de Gálvez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,587
+453,1561,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,la comunidad del hospital,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,,,,0,,0,0,0,669
+454,1563,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Juan de Torres,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,674
+455,1563,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Martín López,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,675
+456,1563,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Baltasar de la Serna,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,671
+457,1563,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Juan de Marzana,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,672
+458,1565,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,677
+459,1567,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Andrés Cabrera,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,679
+460,1567,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Gabriel de Logroño,823.07,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,678
+461,1576,Huehuetoca y Tepexyutlaspa,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Melchor Muñoz,390.135,0,,,,0,,,,,0,,,,,0,0,,0,,,390.135,390.135,0.5,0,,0,,,,0,,0,0,0,680
+462,1577,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Luis de Velasco,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,681
+463,1585,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Antonio de Pedraza,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,684
+464,1585,Huehuetoca y Coyotepec,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Leonor Rodríguez Caballero,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,682
+465,1585,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,María de Cepeda,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,683
+466,1590,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Antón Piñón,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,686
+467,1591,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Beatriz de Contreras,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,687
+468,1592,"Utlaxpa, Huehuetoca y Tepotzotlan",,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Francisco Galván,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2665
+469,1594,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Antón Piñón,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,688
+470,1595,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Antón Piñón,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,689
+471,1595,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Pedro de Campos Guerrero,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,690
+472,1597,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Cristóbal Rodríguez,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,691
+473,1600,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Antón Piñón,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,693
+474,1600,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Juan López Morillo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,692
+475,1601,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Antonio de Pedroza,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,694
+476,1602,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Francisco Pacho,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,695
+477,1603,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Juan Esteban Cauzino,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,697
+478,1603,"Huehuetoca, San Miguel",,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Alonso Díaz,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,696
+479,1605,Tequixquiac y Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Alonso de la Vega,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2181
+480,1606,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Gonzalo Martín de la Orta,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,698
+481,1607,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Gonzalo Martín de la Orta,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,699
+482,1608,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Juan Báez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,701
+483,1613,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Bartolomé Sáenz Arredondo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,702
+484,1615,Huehuetoca,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Andrés Pérez,299.6,299.6,7,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,703
+485,1585,Texcoco,,FALSE,Huexotla,Texcoco,Texcoco,Ana Ramírez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2242
+486,1594,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,,45,45,,,3,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,704
+487,1601,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Juan Angel,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,706
+488,1601,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Juan de Alanís,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,705
+489,1603,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Juan de Espinosa,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,708
+490,1603,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,707
+491,1606,Huexotla y Cuatinchan,,FALSE,Huexotla,Texcoco,Texcoco,Juan Heredia,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,710
+492,1606,Huexotla y Cuatinchan,,FALSE,Huexotla,Texcoco,Texcoco,Nicolás de Melgosa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,711
+493,1606,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Domingo de Alaiza,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,712
+494,1606,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Alonso Lazo de la Vega,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,713
+495,1606,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Domingo de Alaiza,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,709
+496,1607,Huexotla y Coatlinchan,,FALSE,Huexotla,Texcoco,Texcoco,Nicolás de Melgosa,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,714
+497,1608,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Domingo de Alaiza,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,716
+498,1608,Texcoco,,FALSE,Huexotla,Texcoco,Texcoco,Juan de Heredia,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2312
+499,1608,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Domingo de Alaiza,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,715
+500,1609,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Pedro Sánchez del Campo,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,717
+501,1613,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Xácome Pasalu,0.5,0,,,,1,,,,,1,,,1,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,718
+502,1613,Texcoco,,FALSE,Huexotla,Texcoco,Texcoco,,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2328
+503,1613,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,alcalde mayor,599.2,599.2,14,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,719
+504,1616,"Tetlanapa, Elosuchitlan y Apipilhuazco",,FALSE,Huexotla,Texcoco,Texcoco,Diego de Iscena,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2546
+505,1617,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Martín de Sancores,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,722
+506,1617,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,Pedro Sánchez,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,721
+507,1622,"Texcoco; Teotihuacan, San Juan",,FALSE,Huexotla,Texcoco,Texcoco,Felipe Martínez,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2365
+508,1634,Huexotla,,FALSE,Huexotla,Texcoco,Texcoco,,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,723
+509,1609,Hueypoxtla y Tlapanaloya,,FALSE,Hueypoxtla,Hueypoxtla,Hueypoxtla,Jácome de Arigón,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,724
+510,1563,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Francisco Ramos,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+511,1565,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Bautista de Avendaño,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+512,1565,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Amador de Angulo,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+513,1565,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Martín de Cuéllar (5),64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+514,1567,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Francisco de Garagarza (1),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+515,1567,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Francisco Ortuño de Ibarra (6),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+516,1567,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Ruiz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+517,1574,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Alonso Martínez (9),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+518,1580,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Sebastián de Villena (10),21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+519,1580,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Fernando de Herrera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+520,1583,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Álvaro Ruiz (11),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+521,1584,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego de Páez (10),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+522,1584,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego de Paz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+523,1585,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego de Tarifa,74.9,74.9,1.75,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+524,1585,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego de Ponce,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+525,1589,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Alonso Rodríguez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+526,1589,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juana Ximénez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+527,1589,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juana Ximénez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+528,1590,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Mateo Rodríguez (1),256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+529,1593,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego de Aguilera,3511.22,0,,,,0,,,,,0,,,,,0,0,,0,,,3511.22,0,,3511.22,2,0,,,1,0,,0,0,0,
+530,1595,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Común de Ixtapaluca,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+531,1595,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Ortiz del Pozo,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,
+532,1599,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Luis de Illescas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+533,1600,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego Méndez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+534,1600,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Manuel de Arteaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+535,1600,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Luis de Illescas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+536,1600,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Esteban Chacón Arteaga,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+537,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Luis de Illescas,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,
+538,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Jerónimo de la Cruz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+539,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,María Ordóñez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+540,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Luis de Illescas,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+541,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Martín de San Juan,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+542,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Silvestre de Aybar,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+543,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Martín Ascué de Munguía,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+544,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Bautista de Ureta,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+545,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan Bautista de Ureta,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+546,1601,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Silvestre de Aybar,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+547,1602,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Martín de San Juan,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+548,1602,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de Soto (vecino de Ixtapaluca),128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+549,1602,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Luis de Illescas,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+550,1602,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Martín de San Juan,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+551,1602,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Lorenzo Pacheco,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+552,1602,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Lorenzo Pacheco,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+553,1602,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Silvestre de Aybar,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+554,1603,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Antonio Gómez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+555,1603,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de Córdova,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+556,1603,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Francisco de Arellano,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+557,1603,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Hernando Muñoz,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+558,1604,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Francisco de Arellano,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+559,1604,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de Saucedo,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+560,1605,Tlalmanalco y Chalco Atenco,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Baltazar de Cervantes,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+561,1605,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Cristóbal Montalvo,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+562,1606,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de Vallejo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+563,1606,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Leonor de Quiñónez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+564,1607,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Fernán González,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+565,1608,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de Vallejo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+566,1613,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de la Riva,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+567,1613,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Juan de la Riva,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+568,1613,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Hernán Carrillo Altamirano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+569,1613,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Hernán Carrillo Altamirano (15),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+570,1613,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Diego Rebolledo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+571,1615,Ixtapaluca,,FALSE,Chalco Atenco Iztapaluca,Chalco,Chalco,Común de Ixtapaluca,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+572,1543,Coatepec,,FALSE,Otumba,Otumba,Otumba,Gonzalo Hernández,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,213
+573,1565,Otumba,,FALSE,Otumba,Otumba,Otumba,Magdalena de Urbina,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1352
+574,1577,Otumba,,FALSE,Otumba,Otumba,Otumba,Cristóbal Yáñez Roldán,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,1353
+575,1584,Otumba,,FALSE,Otumba,Otumba,Otumba,Juan García de Cueva,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1354
+576,1589,Cuautlancingo,,FALSE,Otumba,Otumba,Otumba,Juan de Bazán,149.8,149.8,3.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,382
+577,1589,Otumba,,FALSE,Otumba,Otumba,Otumba,los naturales,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1355
+578,1591,Axoloapa,,FALSE,Otumba,Otumba,Otumba,Juan de Laguna,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,165
+579,1591,Otumba y Aguatepec,,FALSE,Otumba,Otumba,Otumba,Antón de Loya,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1356
+580,1591,Tlamapa,,FALSE,Otumba,Otumba,Otumba,Alonso de Cuevas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2541
+581,1592,Ajoloapa,,FALSE,Otumba,Otumba,Otumba,Miguel López de Berganzo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,23
+582,1595,Otumba,,FALSE,Otumba,Otumba,Otumba,Juan Pacheco Maldonado,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1357
+583,1596,Otumba,,FALSE,Otumba,Otumba,Otumba,,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1361
+584,1596,Axapusco y Otumba,,FALSE,Otumba,Otumba,Otumba,Martín de Agurto,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,164
+585,1596,Otumba,,FALSE,Otumba,Otumba,Otumba,Leonor de Mata,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1358
+586,1596,Otumba,,FALSE,Otumba,Otumba,Otumba,Alonso García de la Parra,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1362
+587,1596,Otumba,,FALSE,Otumba,Otumba,Otumba,los naturales,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1359
+588,1596,Otumba,,FALSE,Otumba,Otumba,Otumba,Juan Sardina,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1360
+589,1597,Otumba y Aguatepec,,FALSE,Otumba,Otumba,Otumba,Leonor de Mata,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1363
+590,1597,Otumba,,FALSE,Otumba,Otumba,Otumba,Alonso de Cepeda,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1364
+591,1597,Otumba,,FALSE,Otumba,Otumba,Otumba,Gonzalo Hernández Labrador,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1365
+592,1597,Otumba,,FALSE,Otumba,Otumba,Otumba,Juan Bautista Michel,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1366
+593,1598,Tlamapa,,FALSE,Otumba,Otumba,Otumba,Francisco Pérez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2543
+594,1598,Oztoticpac y Otumba,,FALSE,Otumba,Otumba,Otumba,Juan Serrano,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1398
+595,1599,Oztoticpac,,FALSE,Otumba,Otumba,Otumba,Juan Bautista Michel,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1399
+596,1601,"Otumba, Loma de Zultepec",,FALSE,Otumba,Otumba,Otumba,Juan Alonso de las Casas,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1367
+597,1602,Otumba,,FALSE,Otumba,Otumba,Otumba,Hernando de Santoyana,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1368
+598,1603,Otumba,,FALSE,Otumba,Otumba,Otumba,Gaspar López,1122.67,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1369
+599,1605,Otumba,,FALSE,Otumba,Otumba,Otumba,Domingo de Loaysa,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1370
+600,1606,Otumba,,FALSE,Otumba,Otumba,Otumba,Domingo de Loaysa,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1371
+601,1607,Caltlapan,,FALSE,Otumba,Otumba,Otumba,Pueblo de Aztacameca,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,194
+602,1609,Otumba,,FALSE,Otumba,Otumba,Otumba,Alvaro de Velasco,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1373
+603,1609,Otumba,,FALSE,Otumba,Otumba,Otumba,Alvaro de Velasco,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1376
+604,1609,"Otumba, Cuyoaca, San Juan y Tezayuca",,FALSE,Otumba,Otumba,Otumba,Juan López de Salcedo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1377
+605,1609,Otumba,,FALSE,Otumba,Otumba,Otumba,Francisco Martín Espejel,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1372
+606,1609,Otumba,,FALSE,Otumba,Otumba,Otumba,Juan López de Salcedo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1374
+607,1609,Oztoticpac,,FALSE,Otumba,Otumba,Otumba,Juan Bautista Michel,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1400
+608,1609,Otumba,,FALSE,Otumba,Otumba,Otumba,Sebastián Velázquez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1375
+609,1612,Otumba,,FALSE,Otumba,Otumba,Otumba,Alonso Domínguez,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1379
+610,1612,Otumba y Tepeapulco,,FALSE,Otumba,Otumba,Otumba,Alvaro de Velasco,1731.74,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,,,,0,,0,0,0,1378
+611,1614,Otumba,,FALSE,Otumba,Otumba,Otumba,Juan Pérez de Salazar,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1381
+612,1614,Otumba,,FALSE,Otumba,Otumba,Otumba,Alonso Núñez de la Zerda,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1380
+613,1614,Otumba,,FALSE,Otumba,Otumba,Otumba,Francisco Martín Espejel,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1383
+614,1615,Otumba,,FALSE,Otumba,Otumba,Otumba,Francisco Téllez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1384
+615,1615,Otumba,,FALSE,Otumba,Otumba,Otumba,Martín de Velasco,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1386
+616,1615,Otumba,,FALSE,Otumba,Otumba,Otumba,Martín de Velasco,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1385
+617,1615,"Otumba y Martin, San",,FALSE,Otumba,Otumba,Otumba,Martín de Velasco,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1387
+618,1615,Otumba,,FALSE,Otumba,Otumba,Otumba,Francisco González,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1388
+619,1616,"Astacameca y Tlamaca, Sta. Cruz",,FALSE,Otumba,Otumba,Otumba,"Lucas de Salcedo, Pedro González Perlín",780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,98
+620,1616,"Joloapan, San Miguel",,FALSE,Otumba,Otumba,Otumba,Antonio de Mendoza,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,899
+621,1616,"Techiyauco, San Lorenzo",,FALSE,Otumba,Otumba,Otumba,el corregidor del partido de Otumba,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1602
+622,1617,Texcazongo,,FALSE,Otumba,Otumba,Otumba,,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2216
+623,1617,Astacameca,,FALSE,Otumba,Otumba,Otumba,Felipe Martínez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,100
+624,1617,Tlalpexoco,,FALSE,Otumba,Otumba,Otumba,Martín Dirsio,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2537
+625,1617,Aguatepel,,FALSE,Otumba,Otumba,Otumba,Juan Pérez de Salazar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,21
+626,1617,Astacameca,,FALSE,Otumba,Otumba,Otumba,Domingo de Santiago,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,99
+627,1617,Otumba,,FALSE,Otumba,Otumba,Otumba,Martín de Velasco,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1389
+628,1617,Oztoticpac,,FALSE,Otumba,Otumba,Otumba,gobernador,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1401
+629,1617,Oztoticpac,,FALSE,Otumba,Otumba,Otumba,Tomás de San Nicolás,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1402
+630,1617,"Tlamapa, Sta. Cruz y Aztacameca",,FALSE,Otumba,Otumba,Otumba,Domingo de Lizalde,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2542
+631,1618,Astacameca,,FALSE,Otumba,Otumba,Otumba,Felipe Martínez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,102
+632,1585,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Juan Pérez de Oyanguren,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1452
+633,1588,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Antonio de Castro,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1437
+634,1594,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Juan Pérez de Ayanguren,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1438
+635,1594,Ocotitlan,,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Baltasar García,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1293
+636,1594,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Luis de Figueroa,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1435
+637,1596,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Luis de Figueroa,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1436
+638,1599,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Antón Costas,0.5,0,,,,0,,,,,0,,,,,0.5,1,,1,,1,0,0,,0,,0,,,,0,,0,0,0,1439
+639,1602,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Rodrigo de Amarilla,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1442
+640,1602,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Luis Maldonado,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1440
+641,1602,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Luis Maldonado,30,30,,,2,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1441
+642,1602,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Rodrigo de Amarilla,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1443
+643,1602,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Juan Maldonado,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1453
+644,1602,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Jerónimo de Amarilla,30,30,,,2,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1454
+645,1602,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Cristóbal Rodríguez,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1455
+646,1603,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Juan Pérez de Oyanguren,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1444
+647,1603,Tepozoatlauco,,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Alonso de Campos,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2153
+648,1603,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Juana Martín,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1445
+649,1603,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Juan de Amarilla,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1456
+650,1607,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Francisco de Santillán,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1458
+651,1607,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Cristóbal Sánchez de Hinojosa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1459
+652,1607,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,corregidor,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1457
+653,1616,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,esta ermita,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1446
+654,1618,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1460
+655,1620,"Atlaco, Santa Maria",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,,30,30,,,2,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,115
+656,1621,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,Gonzalo de Córdova,75,75,,,5,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1461
+657,1632,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,,0.5,0,,,,0,,,,,1,,,,1,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,1448
+658,1634,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1449
+659,1635,"Remedios, Nuestra Sra. de Los",,FALSE,Remedios Naucalpan,Tacuba,Tacuba,,0.5,0,,,,0,,,,,1,,,,1,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,1450
+660,1543,Coatepec,,FALSE,Tecamac,Xaltocan,Xaltocan,Gonzalo de Salazar,0.5,0,,,,1,,,,,1,,1,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,212
+661,1555,Tecama,,FALSE,Tecamac,Xaltocan,Xaltocan,Juan de Castañeda,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1549
+662,1567,Tecama,,FALSE,Tecamac,Xaltocan,Xaltocan,Fernando de Portugal,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,1551
+663,1585,Tecama,,FALSE,Tecamac,Xaltocan,Xaltocan,Juan Domínguez,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1552
+664,1590,Tecama y Oculma,,FALSE,Tecamac,Xaltocan,Xaltocan,Jerónimo Herrera,432.935,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,390.135,390.135,0.5,0,,0,,,,0,,0,0,0,1553
+665,1603,Xoloc,,FALSE,Tecamac,Xaltocan,Xaltocan,Juan Gutiérrez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2667
+666,1606,Tecama,,FALSE,Tecamac,Xaltocan,Xaltocan,Alonso de Zárate,1037.07,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1555
+667,1607,Tecama,,FALSE,Tecamac,Xaltocan,Xaltocan,Matías de Solís,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1556
+668,1545,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Común de Zoyatzingo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+669,1545,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Común de Juchitepec,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+670,1564,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Manuel de Sandoval,0,0,,,,1,1,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+671,1567,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Bernardino de Guzmán (1) (5),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+672,1567,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Domingo de San Luis (8),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+673,1567,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Francisco de Porras (1),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+674,1568,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Pedro Ordóñez (1),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+675,1580,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Julián de Ávila,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+676,1581,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,"Bernardino, Diego y Pedro Arias de Ávila",171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+677,1582,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Julián de Ávila,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+678,1583,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan López Sayago,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+679,1583,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan Suárez de la Roseta,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+680,1585,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Julián Dávila (1),951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+681,1587,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Diego de Vaena,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+682,1592,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan Trujeno,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+683,1592,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan Trujeno,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+684,1593,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Miguel López del Huerto,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+685,1594,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Andrés Zuloaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+686,1594,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan de Laris,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+687,1594,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Sebastián de Agana,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+688,1594,Tlalmanalco y Chalco Atenco,,FALSE,Tenango del Aire,Chalco,Chalco,María de Vargas,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+689,1595,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Común de Tenango Tepopula,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+690,1595,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Pedro Calvo,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+691,1595,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Pedro Calvo,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+692,1597,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Pedro Santiago (8),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+693,1597,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Julián de Ávila,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,
+694,1598,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Luis de Villegas,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+695,1601,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Diego de Paz (11),171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+696,1602,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan de Contreras (9),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+697,1602,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan de Ávila Salazar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+698,1602,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Diego de Paz (11),171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+699,1603,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Pedro Rodríguez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+700,1603,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Pedro Rodríguez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+701,1603,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Baltazar de Herrera (regidor de la ciudad de México),951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+702,1605,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Gaspar López de Bahamonte,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+703,1605,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Agustín de Villalba,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+704,1606,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Agustín de Villalba,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+705,1606,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Pedro de Arellano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+706,1606,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Gaspar López de Bahamonte,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+707,1606,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Gabriel Juárez,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+708,1606,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Común de Juchitepec,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+709,1607,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Jorge de Urquizo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+710,1609,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Domingo Núñez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+711,1610,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Común de San Antonio Suacingo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+712,1613,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan Domínguez,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+713,1616,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Marcos de Rivera,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+714,1616,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Común de Tepetlixpa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+715,1616,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan Durán,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+716,1616,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Común de San Martín,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+717,1621,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Juan Martínez de Basave,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+718,1623,Tenango,,FALSE,Tenango del Aire,Chalco,Chalco,Felipe Martínez de la Canal,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+719,1544,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Bernardino Vázquez de Tapia,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,1883
+720,1560,Caguacan,,FALSE,Tenayuca,Tacuba,Tacuba,Luisa de Navarrete,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,178
+721,1561,Caguacan,,FALSE,Tenayuca,Tacuba,Tacuba,Amador Angulo,823.07,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,179
+722,1563,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,comunidad,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1884
+723,1565,Caguacan,,FALSE,Tenayuca,Tacuba,Tacuba,Elvira de Léon,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,180
+724,1565,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Nicolás de Cuéllar,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1887
+725,1565,Caguacan,,FALSE,Tenayuca,Tacuba,Tacuba,Bartolomé Ponce,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,181
+726,1565,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan González,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1886
+727,1565,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Antonio de Nava,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,1885
+728,1565,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Bartolomé de Vilchis,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1889
+729,1575,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Fulgencio de Vique,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1890
+730,1577,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Antonio Alonso,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1891
+731,1577,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Fernández de Estercios,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1893
+732,1577,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Hernando de Cartagena,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1892
+733,1581,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Antonio Díaz de Villalobos,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2488
+734,1581,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Hernando Pacheco,32.1,32.1,0.75,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2485
+735,1581,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Antonio Díaz de Almaguer,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2487
+736,1581,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Isabel González,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2489
+737,1581,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Diego de Salcedo,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,1894
+738,1581,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Villaseca,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,1895
+739,1583,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Hernando Román,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2491
+740,1584,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Arias de Valdés,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,1898
+741,1584,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,María Cerón,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1897
+742,1589,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Nicolás de Vega,25.68,25.68,0.6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1899
+743,1590,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Gutiérrez Montaño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1901
+744,1590,"Tenayuca, San Bartolome y Tlalnepantla",,FALSE,Tenayuca,Tacuba,Tacuba,Pedro Sánchez,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1900
+745,1592,Santiago,,FALSE,Tenayuca,Tacuba,Tacuba,María de la Cruz,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1470
+746,1593,"Tenayuca, San Bartolome y Tlalnepantla",,FALSE,Tenayuca,Tacuba,Tacuba,Sebastián de Luna,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1902
+747,1595,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Lorenzo Sánchez,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1903
+748,1600,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Miguel Romero,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2499
+749,1600,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Barrios,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1906
+750,1600,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Fernández de Junco,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1905
+751,1600,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Barrios,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1904
+752,1600,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Guevara,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1907
+753,1600,"Tenayuca, San Bartolome y Tlaltelolco Santiago",,FALSE,Tenayuca,Tacuba,Tacuba,Sebastián Solano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1908
+754,1600,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Luis Pérez de Zamora,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1909
+755,1601,Huixquiluca,,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Arrojeta,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,725
+756,1601,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,1911
+757,1601,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Antonio de Novoa,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2503
+758,1601,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Juan Bautista de Ureta,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2505
+759,1601,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Matías de Salcedo,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,1914
+760,1601,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Baltasar de Vargas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1910
+761,1601,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Barrios,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1912
+762,1601,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Pedro de Sotomayor,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1913
+763,1601,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Gregorio de Porras,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1915
+764,1602,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Bernardino de Leyva,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2508
+765,1602,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Portocarrero,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1917
+766,1602,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Benítez Camacho,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1916
+767,1603,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Gonzalo Marcos Bohorques,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2511
+768,1603,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Matías de Bohorques,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1918
+769,1605,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,María Carreño,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1919
+770,1605,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Antonio de Neyra,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1920
+771,1605,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Cristóbal de Anaya,1646.14,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,,,,0,,0,0,0,2514
+772,1605,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Domingo López de Cándamo,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2513
+773,1606,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Gregorio de Porras,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2515
+774,1606,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Andrés de Tapia y Sosa,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2517
+775,1607,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Fernando de Ocampo,15,15,,,1,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1924
+776,1607,"Tecpan, San Miguel",,FALSE,Tenayuca,Tacuba,Tacuba,el corregidor de Tenayuca,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1591
+777,1607,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Fernando Méndez de Ocampo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1922
+778,1607,"Tenayuca, San Bartolome y Tlalnepantla",,FALSE,Tenayuca,Tacuba,Tacuba,Luis de Peralta,449.4,449.4,10.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1923
+779,1611,"Tenayuca, San Bartolome y San Geronimo",,FALSE,Tenayuca,Tacuba,Tacuba,Andrés de la Vega,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1925
+780,1612,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,José Sánchez,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1928
+781,1612,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Pedro Martín,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2520
+782,1612,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Alonso Pérez Carreño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2521
+783,1612,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Chavarría,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1926
+784,1612,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Pedro Martín,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1927
+785,1612,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Pedro de la Barrera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1930
+786,1612,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Chavarría,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1931
+787,1612,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Pedro de la Barrera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1933
+788,1612,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1932
+789,1612,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Pedro de Cueva Alfaro,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1934
+790,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Francisco González,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1939
+791,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Melchor Gómez,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1942
+792,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Lorenzo Sánchez,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1947
+793,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Lorenzo Sánchez,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1948
+794,1613,"Geronimo, San",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Ramírez Jiménez,32.1,32.1,0.75,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,664
+795,1613,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,García López de Espinar,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2527
+796,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Diego de Cisneros,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1944
+797,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Antonio de Bohorques,15,15,,,1,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1945
+798,1613,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Pedro Serrano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2526
+799,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Domingo Juárez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1936
+800,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Alfonso Bravo Gaona,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1937
+801,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Benítez Camacho,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1940
+802,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Pedro de Nieba,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1946
+803,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Pedro de Nieba,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1949
+804,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Marcos Pérez de Oyanguren,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1950
+805,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1935
+806,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan Benítez Camacho,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1943
+807,1613,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Luis de Espinosa,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1941
+808,1613,Tlalnepantla,,FALSE,Tenayuca,Tacuba,Tacuba,Alonso de Mirabal,1122.67,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2524
+809,1615,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Juan de Chavarría,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1952
+810,1615,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Antonio de Vallejo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1953
+811,1615,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,"gobernador, alcaldes y principales",85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1954
+812,1616,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Lorenzo Sánchez,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1956
+813,1616,"Tenayuca, San Bartolome",,FALSE,Tenayuca,Tacuba,Tacuba,Luis de Espinosa,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1955
+814,1635,"Caguacan, Sta. Maria Magdalena",,FALSE,Tenayuca,Tacuba,Tacuba,Diego de Porras Villerías,2426.41,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,2340.81,2340.81,3,0,,0,,,,0,,0,0,0,182
+815,1563,Tecalhuacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Alonso de Bazán,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1543
+816,1563,Tecalhuacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Miguel Ortiz,1,0,,,,1,,,,,2,1,1,,,1,2,,0,,,0,0,,0,,0,,,,0,,0,0,0,1542
+817,1564,Tecalhuacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Antón Gutiérrez Labrador,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1544
+818,1564,Teocalhueyacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Francisco Galván,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1960
+819,1565,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Pedro Alonso Izquierdo,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2483
+820,1567,Teocalhueyacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Pedro de Quero,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1961
+821,1576,Tecalhuacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Juan de Vidal,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1547
+822,1576,Tecalhuacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,"Hospital Real de los Indios, Ciudad de México",171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1546
+823,1577,Teocalhueyacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Isidro Morcillas,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1962
+824,1581,Teocalhueyacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Leonor de Vera,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1964
+825,1581,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Lope García de Palacio y Juan de Rivas,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2486
+826,1581,Teocalhueyacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Lope García de Palacio,107,107,2.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1963
+827,1583,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Marcos García,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,2490
+828,1590,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,María Verdugo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2492
+829,1590,Teocalhueyacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Francisco de Leiva,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1965
+830,1593,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Agustina Muñoz,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2493
+831,1593,Teocalhueyacan,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Martín Cerón Saavedra,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1966
+832,1594,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,María de Mercado,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2494
+833,1595,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Alonso Gutiérrez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2496
+834,1595,Tlalnepantla Teocalhuacan Corpus Cristi,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Luis de Peralta,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2497
+835,1599,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Juan Fernández,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2498
+836,1601,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Felipe de Vargas,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2502
+837,1601,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Francisco Penin,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2501
+838,1601,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,María Ordóñez,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2504
+839,1602,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2506
+840,1602,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Alonso Ozea,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2507
+841,1603,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Alonso Ozea,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2509
+842,1603,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Juan de Zavala,15,15,,,1,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2510
+843,1606,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Juan de Godoy,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2516
+844,1606,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Andrés de Tapia y Sosa,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2518
+845,1612,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,García López de Espinar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2522
+846,1613,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Martín y Isabel Díaz,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2528
+847,1621,Tlalnepantla,,FALSE,Teocalhueyacan,Tacuba,Tacuba,Diego de Barrientos,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2532
+848,1583,Teoloyucan,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Damián Sedeño,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1967
+849,1605,Teoloyucan,,FALSE,Huehuetoca,Cuauhtitlan,Cuauhtitlan,Antonio de Neyra,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1968
+850,1583,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Diego de Aguilera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1972
+851,1585,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Cristóbal Gudiel,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,1973
+852,1590,"Mateo, San",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Luis Grande,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1251
+853,1590,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Juan Grande,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1974
+854,1591,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Juan de Peralera,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1975
+855,1595,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Francisco Verdugo Bazán,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1977
+856,1595,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1978
+857,1595,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Francisca Verdugo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1976
+858,1598,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Hernando Núñez,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1979
+859,1598,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Lázaro García,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1980
+860,1599,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1981
+861,1599,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Esteban Pérez Petroh,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1982
+862,1607,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Diego de Rebolledo,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1984
+863,1607,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Alonso de Tolosa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1985
+864,1608,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Diego de Rebolledo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1986
+865,1615,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Andrés del Valle,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1987
+866,1616,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,el pago que llaman Loateguacán,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1990
+867,1617,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1991
+868,1620,"Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Pedro Sánchez,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,1992
+869,1622,"Texcoco; Teotihuacan, San Juan",,FALSE,Teotihuacan,Teotihuacan,Teotihuacan,Felipe Martínez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2365
+870,1565,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Francisco González,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2010
+871,1593,Texcoco,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Juan de Molina,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2257
+872,1597,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2014
+873,1597,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Leonor de Saavedra,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2013
+874,1597,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,María de Arriaga,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2011
+875,1597,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,María de Mosquera,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2012
+876,1598,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Isabel Cortés,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2018
+877,1598,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,los naturales,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2019
+878,1598,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Gonzalo de Salazar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2021
+879,1598,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Inés de Perea,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2015
+880,1598,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Gonzalo de Salazar,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2017
+881,1598,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Leonor de Saavedra,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2020
+882,1598,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Ana de Arriaga,171.7,171.2,4,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2016
+883,1599,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Isabel Cortés,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2023
+884,1599,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Cibrián de Santa María,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2025
+885,1599,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Manuel Chiora Cano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2022
+886,1599,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Ana de Arriaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2029
+887,1599,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Leonor de Saavedra,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2026
+888,1599,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Inés de Perea,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2028
+889,1599,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,María de Mosquera,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2024
+890,1599,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,María de Mosquera,128.9,128.4,3,,,1,,,,,1,,1,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2027
+891,1600,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Alonso de Santoyo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2030
+892,1601,Texcoco,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Lorenzo de Figueroa,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2272
+893,1603,Texcoco; Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Rui Díaz de los Ríos,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2279
+894,1603,Texcoco,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Pedro de Villarroel,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2282
+895,1603,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Juan de Leguízamo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2033
+896,1603,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Bartolomé Téllez Jirón,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2031
+897,1603,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Pedro de Contreras,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2032
+898,1603,Texcoco; Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Juan Maldonado,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2278
+899,1605,Tepetlaoxtoc y San Cristobal Zazatzintitlan,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Miguel de Rojas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2034
+900,1606,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Miguel de Rojas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2035
+901,1607,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2038
+902,1607,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,común y naturales,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2037
+903,1607,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,comunidad,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2039
+904,1607,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Diego de Molina y Padilla,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2040
+905,1608,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Juan de Gámiz Hechabarri,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2041
+906,1609,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Leonor de Saavedra,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2042
+907,1612,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Leonor de Saavedra,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2043
+908,1613,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,gobernador y naturales,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2044
+909,1613,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Francisco Téllez,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2046
+910,1613,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Pedro Serrano del Arco,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2045
+911,1614,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,gobernador y naturales,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2047
+912,1614,"Tequetzpalco, San Miguel",,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,los principales y común,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2164
+913,1614,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Manuel de Figueroa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2049
+914,1615,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,Juan de Alaya,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2051
+915,1615,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,gobernador y alcaldes,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2050
+916,1616,Tepetlaoxtoc,,FALSE,Tepetlaoztoc,Texcoco,Tepetlaoztoc,común,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2052
+917,1593,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Juan de Santiago,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1634
+918,1593,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Francisco Jiménez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,1635
+919,1595,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Pedro Jiménez,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1636
+920,1613,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,gobernador,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1640
+921,1585,Tepexpa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,María Vázquz de Ulloa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2056
+922,1588,"Zacualuca, Santiago",,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Diego Núñez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2694
+923,1590,Tepexpa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,los naturales,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2058
+924,1590,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Francisco Jiménez,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1633
+925,1595,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,comunidad,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1637
+926,1599,Texcoco,,FALSE,Tepexpan North,Texcoco,Temascalapa,Hernando de Sandoval,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,1,,0,,0,0,0,2271
+927,1599,Tepexpa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Francisco de Medina,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2061
+928,1606,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Diego Pérez,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1638
+929,1606,"Teotihuacan, San Juan",,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Gabriel Tamayo,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,1983
+930,1613,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,gobernador,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1639
+931,1613,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,comunidad,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1641
+932,1613,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,los naturales,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1642
+933,1617,Temascalapa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,1643
+934,1619,Tepexpa,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Antonio Ruíz,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2073
+935,1636,Oculma,,FALSE,Tepexpan North,Teotihuacan,Temascalapa,Hernando Pacheco,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1340
+936,1585,Tepexpa,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Jerónimo Baeza de Herrera,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2057
+937,1589,Oculma,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Diego de Aguilera,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1325
+938,1590,Tequicistlan y Oculma,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Hernando Jaramillo,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2166
+939,1590,Tequicistlan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Catalina de Tovar Cervantes,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2165
+940,1591,Tepexpa,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Hernando Jaramillo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2059
+941,1593,Tequicistlan y Chiconautla,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2167
+942,1593,Tepexpa y Tequiztlan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Bernardino de Casasola,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2060
+943,1593,Texcoco,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,Pedro de Maseguer,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2259
+944,1594,Texcoco,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2262
+945,1594,Texcoco,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,Bernardino de Casasola,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2261
+946,1595,Texcoco,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,Cristóbal Hernández,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2263
+947,1596,Totolcingo,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Pedro Cano Moctezuma,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2613
+948,1596,Tequicistlan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Hernando Jaramillo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2169
+949,1600,Tepexpa y San Juan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Hernando Jaramillo,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2062
+950,1603,Tepetascueco,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Alonso de Ulloa,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2009
+951,1606,Texcoco,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2287
+952,1606,Texcoco,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,Alonso de Salas,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2292
+953,1606,"Tequicistlan, Tepexpan y Oculma",,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Jerónimo Bermúdez,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2170
+954,1607,Tequicistlan y Tepepan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2171
+955,1607,"Buenaventura, San, y Cuanala",,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,Francisco de Leyva,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,177
+956,1613,Tepexpa,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Mariana de la Marcha,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2063
+957,1613,Tequicistlan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2172
+958,1613,Texcoco,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2320
+959,1613,Tepexpa,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,"gobernador, alcaldes y común",85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2066
+960,1613,Tepexpa y Tequizquitlan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Pedro Serrano del Arco,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2064
+961,1615,Texcoco,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,Juan García Ponce,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2343
+962,1616,"Teotihuacan, San Juan",,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Diego de Ochandiano,0.5,0,,,,1,,,,1,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,1989
+963,1617,Tepexpa y Tequizquitlan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2069
+964,1617,Tequicistlan y Tepexpa,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2173
+965,1617,Tepexpa y Tequizquitlan,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,Fernando de Baeza y Marcha,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2071
+966,1617,Tepexpa,,FALSE,Tepexpan South,Teotihuacan,Lower Teo Valley,gobernador y alcalde,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2068
+967,1631,Tonala y Nesquepayaque,,FALSE,Tepexpan South,Texcoco,Lower Teo Valley,,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2606
+968,1560,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Baltasar Antonio,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2078
+969,1560,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Luis de Navarrete,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2079
+970,1560,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,comunidad,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,,,,0,,0,0,0,2080
+971,1560,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Blas de Bustamente,844.47,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2081
+972,1563,Tepotzotlan y Tecalhuacan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Luis de Navarrete,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2084
+973,1563,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Melchor Pérez,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2085
+974,1563,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Colegio de San Juan de Letrán,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2082
+975,1563,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Hernán Sánchez de Muñón,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2086
+976,1563,Tepujaco,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Miguel Rodríguez de Acevedo,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2154
+977,1563,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Cornelio Banbontune,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2087
+978,1565,Tepujaco,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2156
+979,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,2096
+980,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan Antonio Covarrubias,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2089
+981,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Luis de Navarrete,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,2091
+982,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Melchor Dávalos,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2102
+983,1565,Tepujaco,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Donis de Portugal,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2159
+984,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,García Pérez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2090
+985,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Pedro García de Beas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2092
+986,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan de la Sesma,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2094
+987,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan Téllez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2095
+988,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Brígida Coronel,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2100
+989,1565,Tepujaco,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Lic. Sedeño,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2158
+990,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Montemayor Dávalos,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2099
+991,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Pedro de la Fuente,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2101
+992,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Catalina de Montejo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2103
+993,1565,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,,2,0,,,,0,,,,,0,,,,,2,4,,4,2,2,0,0,,0,,0,,,,0,,0,0,0,2098
+994,1565,"Cuautlalpa, Santiago",,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Esteban de Aranda,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,378
+995,1567,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Melchor Pérez,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2106
+996,1567,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Hernán Martín Monroy,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2105
+997,1567,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan de Orozco,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2109
+998,1567,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Luisa de Navarrete,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2110
+999,1567,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,María Manuela e Isabel de Portugal,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2108
+1000,1577,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Antonio Nieto,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2111
+1001,1581,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,doctor Sedeño,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2113
+1002,1581,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,María de Castañeda,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2112
+1003,1582,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Antonio García Barruero,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2114
+1004,1583,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Isabel Muñoz,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2115
+1005,1583,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Martín de Rivas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2116
+1006,1583,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan de Cuevas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2117
+1007,1583,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan Antonio Covarrubias,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2120
+1008,1583,Tepujaco,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Bernardo Franco,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2160
+1009,1583,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Martín Maldonado,1819.81,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,1755.61,0,,1755.61,1,0,,,,0,,0,0,0,2118
+1010,1583,"Cuautlalpa, Santiago",,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Melchor Muñoz,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,380
+1011,1583,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Martín López de Gaona,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2119
+1012,1584,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Damián Sedeño,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2121
+1013,1584,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Rodrigo Pérez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2122
+1014,1584,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan de Peñas,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2123
+1015,1584,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan Moctezuma,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2124
+1016,1585,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Donis y Isabel de Portugal,994.27,214,5,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2125
+1017,1589,"Cuautlalpa, Santiago",,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Gerónimo López,1,0,,,,0,,,,,2,2,,,,1,2,,0,,,0,0,,0,,0,,,,0,,0,0,0,381
+1018,1589,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Jerónimo López,1,0,,,,0,,,,,2,2,,,,1,2,,0,,,0,0,,0,,0,,,,0,,0,0,0,2126
+1019,1590,Tepotzotlan y Tepuxaco,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Francisco de Leiva,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2127
+1020,1590,Tepotzotlan y Cuautlapa Santiago,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan de Cisneros,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2128
+1021,1590,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan Fernández del Salvador,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2129
+1022,1591,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Francisco Pacho,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2133
+1023,1591,"Tepotzotlan y San Mateo, Xoloc",,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,,1,0,,,,2,,,,,2,,2,,,1,2,,0,,,0,0,,0,,0,,,,0,,0,0,0,2131
+1024,1591,Tepotzotlan y Tepuxaco,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Domingo de Salcedo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2130
+1025,1591,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Antón Piñón,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,,,,0,,0,0,0,2132
+1026,1592,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan Fernández Salvador,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2134
+1027,1595,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,común,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2135
+1028,1597,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Francisco Hernández,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2136
+1029,1597,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Domingo Núñez,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2137
+1030,1598,"Tepotzotlan, Tepuxaco y Sta. Maria",,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Francisco de Terrazas,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2138
+1031,1601,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Domingo Núñez,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2139
+1032,1602,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Hernando de la Barrera,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2142
+1033,1602,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2141
+1034,1602,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Cornelio Banvontun,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2140
+1035,1602,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan Esteban Causín,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2143
+1036,1605,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Pedro de Escalante,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2144
+1037,1606,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Miguel de Zayas,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2145
+1038,1607,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,2147
+1039,1607,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Martín de Urquiaga,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2146
+1040,1608,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan de Cueva,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2148
+1041,1613,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Luis Moreno,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2149
+1042,1615,Tepujaco,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2161
+1043,1616,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,2150
+1044,1635,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Eugenio de Sarabia,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2152
+1045,N/A,Tepotzotlan,,FALSE,Tepotzotlan,Cuauhtitlan,Cuauhtitlan,Juan Antonio,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2107
+1046,1601,Tequixquiac,,FALSE,Tequixquiac,Hueypoxtla,Hueypoxtla,común,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2175
+1047,1601,Tequixquiac,,FALSE,Tequixquiac,Hueypoxtla,Hueypoxtla,Francisco de Luna,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2176
+1048,1601,Tequixquiac,,FALSE,Tequixquiac,Hueypoxtla,Hueypoxtla,Pedro López,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2177
+1049,1602,Tequixquiac,,FALSE,Tequixquiac,Hueypoxtla,Hueypoxtla,Juan López,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2178
+1050,1602,Tequixquiac,,FALSE,Tequixquiac,Hueypoxtla,Hueypoxtla,Pedro López,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2179
+1051,1602,Tequixquiac,,FALSE,Tequixquiac,Hueypoxtla,Hueypoxtla,Francisco de Luna,801.67,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2180
+1052,1543,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2222
+1053,1567,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Juan Vázquez,0.5,0,,,,0,,,,,1,,,,1,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2238
+1054,1585,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Pedro de Dueñas,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2243
+1055,1586,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Juan Maldonado de Montejo,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2244
+1056,1590,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Diego Ortiz de Oyardía,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2246
+1057,1593,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Juan López de Castilla,1,0,,,,0,,,,,2,1,,,1,1,2,,0,,,0,0,,0,,0,,,,0,,0,0,0,2258
+1058,1597,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Francisco Bernal,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2268
+1059,1603,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Francisco de Arellano,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2280
+1060,1605,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Alonso Pérez de Villaun,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2285
+1061,1608,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Juan García Ponce,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2313
+1062,1613,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2326
+1063,1613,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Domingo de Alaiza,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2331
+1064,1613,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,"gobernador, alcaldes y regidores",85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2329
+1065,1613,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,"gobernador, alcaldes y regidores",85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2333
+1066,1614,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Juan de la Torre,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2335
+1067,1615,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Diego de Ochandiano,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2345
+1068,1615,"Simon, San",,FALSE,Texcoco Central,Texcoco,Texcoco,gobernador y alcaldes,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1480
+1069,1615,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,"gobernador, alcaldes y principales",85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2341
+1070,1615,Tepatlaxco,,FALSE,Texcoco Central,Texcoco,Texcoco,"gobernador, alcaldes y regidores",128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1999
+1071,1615,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2340
+1072,1616,Pentecostes,,FALSE,Texcoco Central,Texcoco,Texcoco,los alcaldes y naturales,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1433
+1073,1616,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Juan García,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2352
+1074,1618,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Juan García,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2361
+1075,1620,Texcoco,,FALSE,Texcoco Central,Texcoco,Texcoco,Pedro Sánchez Quixada,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2364
+1076,1565,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Juan de Acenca,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2233
+1077,1567,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Juan Sánchez,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2237
+1078,1587,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Diego de Aguilera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2245
+1079,1590,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Alonso de Castañeda,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2247
+1080,1590,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Juana de Herrera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2248
+1081,1590,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Francisco Pacho,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2249
+1082,1591,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Pedro Mejía de Bocanegra,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2253
+1083,1591,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Francisco Pacho,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2250
+1084,1591,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,,7022.44,0,,,,0,,,,,0,,,,,0,0,,0,,,7022.44,0,,7022.44,4,0,,,,0,,0,0,0,2251
+1085,1591,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Juan de Rueda,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2252
+1086,1592,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Pedro de Contreras Salazar,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2255
+1087,1592,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,los naturales,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2254
+1088,1597,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Juan de Pomar,1,0,,,,0,,,,,2,1,,,1,1,2,,0,,,0,0,,0,,0,,,,0,,0,0,0,2266
+1089,1602,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Pedro de Villarroel,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2276
+1090,1603,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Juan de Alvarado,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2283
+1091,1603,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Pedro de Villarroel,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2282
+1092,1605,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2284
+1093,1607,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Alonso Laso,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2302
+1094,1607,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Martín de Urquiaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2305
+1095,1607,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Alonso de Villafaña,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2310
+1096,1612,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Agustina Bermúdez,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2318
+1097,1614,"Texcoco, Coatlinchan y Huexotla",,FALSE,Texcoco East,Texcoco,Texcoco,Nicolás de Ahedo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2336
+1098,1616,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2353
+1099,1616,Cozacualco,,FALSE,Texcoco East,Texcoco,Texcoco,Diego de Ochandiano,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,291
+1100,1617,Texcoco,,FALSE,Texcoco East,Texcoco,Texcoco,Luis Carrillo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2359
+1101,1593,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Antonio de Saavedra,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2260
+1102,1597,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Diego Ortiz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2265
+1103,1598,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Francisco Bernal,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2269
+1104,1599,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Juan de Contreras,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2270
+1105,1601,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Lorenzo de Figueroa,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2274
+1106,1601,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Sebastián Frías Salinas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2273
+1107,1602,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Lorenzo Pacheco,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2275
+1108,1603,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Bartolomé de Entrambasaguas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2281
+1109,1603,Guaguatelco,,TRUE,Texcoco Unclear,Texcoco,,Pedro de Villarroel,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,666
+1110,1603,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Alonso de Ulloa,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2277
+1111,1606,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Alonso de Salas,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2298
+1112,1606,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Antonio de Alaya,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2288
+1113,1606,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Antonio de Alaya,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2295
+1114,1606,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Alonso de Salas,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2290
+1115,1606,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Alonso Laso,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2291
+1116,1607,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Alonso de la Vega,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2303
+1117,1607,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2309
+1118,1607,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Domingo de Alayca,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2311
+1119,1607,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Alonso de Salas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2301
+1120,1607,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Antonio de Saavedra Guzmán,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2304
+1121,1607,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Juan de Gámiz Echavarría,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2306
+1122,1607,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Juan de Heredia,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2307
+1123,1608,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2315
+1124,1613,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Domingo de Alaiza,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2332
+1125,1613,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2327
+1126,1614,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Nicolás de Ahedo,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2334
+1127,1615,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Juan de Vargas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2344
+1128,1616,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Felipe Cobo de Soberanis,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2347
+1129,1616,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2348
+1130,1616,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2349
+1131,1616,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2354
+1132,1616,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Juan de Vargas,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2355
+1133,1616,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Juan de la Cruz,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2350
+1134,1617,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2358
+1135,1618,Texcoco,,TRUE,Texcoco Unclear,Texcoco,,Alonso de Ulloa,0.5,0,,,,1,,,,,1,,1,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2360
+1136,1596,Texcoco,,FALSE,Texcoco West,Texcoco,Texcoco,Juan Martínez del Campo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2264
+1137,1606,Texcoco,,FALSE,Texcoco West,Texcoco,Texcoco,Francisco Coronado,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2297
+1138,1609,Texcoco,,FALSE,Texcoco West,Texcoco,Texcoco,Hernán Vázquez de Acuña,513.6,513.6,12,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2316
+1139,1613,Texcoco,,FALSE,Texcoco West,Texcoco,Texcoco,Nicolás de Ahedo,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2322
+1140,1613,Texcoco,,FALSE,Texcoco West,Texcoco,Texcoco,"gobernador, alcaldes y regidores",85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2325
+1141,1613,"Atengo, La Transfiguracion",,FALSE,Texcoco West,Texcoco,Texcoco,Juan de Ayala,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,105
+1142,1613,"Transfiguracion, La",,FALSE,Texcoco West,Texcoco,Texcoco,Juan de Alaya,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2617
+1143,1613,Texcoco; Tequicistlan,,FALSE,Texcoco West,Texcoco,Texcoco,Francisco Domínguez de Velasco,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2330
+1144,1614,"Atengo, La Transfiguracion",,FALSE,Texcoco West,Texcoco,Texcoco,,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,106
+1145,1614,"Atengo, La Transfiguracion",,FALSE,Texcoco West,Texcoco,Texcoco,Juan de Ayala,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,107
+1146,1614,"Panoaya, Sta. Maria Magdalena",,FALSE,Texcoco West,Texcoco,Texcoco,Diego Ochandiano,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1421
+1147,1614,"Panoaya, Sta. Maria Magdalena",,FALSE,Texcoco West,Texcoco,Texcoco,Diego de Ochandiano,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1423
+1148,1614,"Panoaya, Sta. Maria Magdalena",,FALSE,Texcoco West,Texcoco,Texcoco,Juan de Alaya,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1422
+1149,1615,Texcoco,,FALSE,Texcoco West,Texcoco,Texcoco,"gobernador, alcaldes y regidores",85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2346
+1150,1617,Cozacualco,,FALSE,Texcoco West,Texcoco,Texcoco,,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,292
+1151,1617,"Panoaya, Sta. Maria Magdalena",,FALSE,Texcoco West,Texcoco,Texcoco,Diego de Ochandiano,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1424
+1152,1543,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Comunidad Estancia de Chalma,107,107,2.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1153,1555,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Gonzalo López (1),780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+1154,1561,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Común de Tlalmanalco,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+1155,1563,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Miguel de Haro,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1156,1564,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Gaspar de Salamanca,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1157,1565,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Ortuño de Ibarra (6),0,0,,,,1,1,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1158,1565,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Hernando de Vargas (5),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1159,1565,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Francisco Zamudio (7),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1160,1565,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Pedro Meneses,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+1161,1566,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Cisneros (5),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1162,1566,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Rodrigo de Castañeda,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1163,1567,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Bartolomé de Castellanos (1),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1164,1567,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Domingo de Vaquio (1),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1165,1575,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Antonio Cedano,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1166,1584,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Figueroa (criado),0,0,,,,1,1,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1167,1584,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Martín Díaz,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1168,1585,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Alonso Sánchez (labrador),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1169,1587,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Martín de Figueroa,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1170,1587,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Antonio de Figueroa,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1171,1588,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Lupercio Despes (14),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1172,1589,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Comunidad de Tlalmanalco,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1173,1594,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Ortiz del Pozo,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1174,1594,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Lastra,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1175,1594,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Luis de Illescas,780.77,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+1176,1594,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Pedro Lusardo,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1177,1594,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego García de Pedraza (1),865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+1178,1595,Tlalmanalco y Chalco Atenco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Córdova,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1179,1595,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Domingo Martín (indio),64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1180,1595,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Marcos de Raya,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1181,1595,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Alonso Ruiz de la Lima,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1182,1599,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Común de Tlalmanalco,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,
+1183,1599,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Bartolomé Martínez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1184,1600,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Bartolomé Martínez,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1185,1601,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Cristóbal de Valenzuela,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1186,1601,Tlalmanalco y Chalco Atenco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego de Paz (11),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1187,1601,Tlalmanalco y Ixtapaluca,,FALSE,Tlalmanalco,Chalco,Chalco,Diego de Paz,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1188,1601,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego López,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1189,1602,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Silvestre de Aybar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1190,1602,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Antonio Rodríguez Mendoza,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1191,1602,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Pablo de la Serna,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1192,1602,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Cristóbal de Escobar,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1193,1602,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Pedro Nuño de Gaona,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1194,1602,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego Méndez de Santiago (indígena),256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1195,1603,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Marcos de Rivera,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1196,1603,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Bartolomé Martínez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1197,1603,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego López,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1198,1603,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Pedro Nuño de Gaona,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1199,1603,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan López Sayago,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1200,1603,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Baeza,256.8,256.8,6,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1201,1605,Tlalmanalco y Chalco Atenco,,FALSE,Tlalmanalco,Chalco,Chalco,Bartolomé Montero,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1202,1607,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Bartolomé Martínez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1203,1607,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Ortiz Basurto,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1204,1607,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Francisco de la Torre (juez repartidor),171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1205,1607,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Ortiz Basurto,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1206,1607,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Magdalena de Castro,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1207,1608,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Ortiz Basurto,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1208,1609,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Silvestre de Aybar,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1209,1609,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego Rebolledo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1210,1609,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego Rebolledo,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1211,1609,Tlalmanalco y Chalco Atenco,,FALSE,Tlalmanalco,Chalco,Chalco,Arias Pérez de Navia,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1212,1610,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Domingo Núñez,0.5,0,,,,0,,,,,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1213,1610,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Miguel Román,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1214,1611,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Arteaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1215,1612,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego Benavente,53.5,53.5,1.25,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1216,1612,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Arteaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1217,1612,Tlalmanalco y Chalco Atenco,,FALSE,Tlalmanalco,Chalco,Chalco,Matías Pinto,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1218,1612,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Hernando Rangel,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1219,1612,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Común de San Bartolomé,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1220,1612,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Común Ayapango,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1221,1613,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Luis Malla Salceda,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1222,1613,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de la Riva (alférez),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1223,1613,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Común de Tlalmanalco,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1224,1613,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,"Pedro de la Cerda y Castañeda, Alonso Cerón de la Cerda (8)",171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1225,1613,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Luis de Illescas,171.2,171.2,4,,,1,1,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1226,1614,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Francisco de Guzmán,10.7,10.7,0.25,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1227,1614,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Antonio de Ayala,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1228,1614,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Chavarría,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1229,1614,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Rodríguez de Miranda,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1230,1615,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Cristóbal de González Medel,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1231,1615,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego Rodríguez Gil,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1232,1615,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,José de Guevara,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1233,1615,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Iturriaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1234,1615,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Domingo de Izita,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1235,1615,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Domingo de Izita,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1236,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Domingo Andrés (indígena),42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1237,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Barrio Ayoatlapa,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1238,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Mateo Lozano,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1239,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Francisco Muñoz (8),85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1240,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Chavarría,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1241,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Rodríguez de Miranda,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1242,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Iturriaga,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1243,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Domingo Andrés (12),171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1244,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan de Cervantes Casasús,3121.08,0,,,,0,,,,,0,,,,,0,0,,0,,,3121.08,3121.08,4,0,,0,,,,0,,0,0,0,
+1245,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,E. San Cristóbal,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1246,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Hernando de Herrera,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1247,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Hernando de Herrera,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1248,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Pedro Mancera,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1249,1616,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Pedro Mancera (escribano público de Chalco),171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1250,1621,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Alonso Ballesteros,0,0,,,,1,,1,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1251,1622,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Sebastián de Cubas,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1252,1629,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Gómez Pastor,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1253,1632,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Domingo de Izita,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1254,1634,Tlalmanalco y Chalco Atenco,,FALSE,Tlalmanalco,Chalco,Chalco,Pedro Mota,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1255,1641,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Diego Ruiz Lozano,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1256,1642,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Francisco de León,342.4,342.4,8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1257,1644,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Vilchis,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1258,1644,Tlalmanalco,,FALSE,Tlalmanalco,Chalco,Chalco,Juan Altamirano,162.64,162.64,3.8,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1259,1677,Tlalmanalco y Chalco Atenco,,FALSE,Tlalmanalco,Chalco,Chalco,Pedro Jiménez de los Cobos,0,0,,,,1,1,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,
+1260,1563,Tlapanaloya,,FALSE,Tlapanaloya,Hueypoxtla,Hueypoxtla,,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,1,1,0,2549
+1261,1567,Tlapanaloya,,FALSE,Tlapanaloya,Hueypoxtla,Hueypoxtla,Diego de Ayo,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,2550
+1262,1575,Tlapanaloya,,FALSE,Tlapanaloya,Hueypoxtla,Hueypoxtla,Melchor Dávila,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,1,1,0,2551
+1263,1609,Hueypoxtla y Tlapanaloya,,FALSE,Tlapanaloya,Hueypoxtla,Hueypoxtla,Jácome de Arigón,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,1,1,0,724
+1264,1583,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Juan Velosso,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,640
+1265,1583,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Cristóbal Sotelo Moctezuma,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,642
+1266,1583,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Cristóbal Sotelo Moctezuma,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,643
+1267,1583,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Cristóbal Sotelo Moctezuma,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,641
+1268,1598,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Cristóbal Sotelo,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,646
+1269,1601,"Ecatepec, San Cristobal",,FALSE,Ecatepec,Ecatepec,Ecatepec,Cristóbal Sotelo Valderrama,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,648
+1270,1563,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Gabriel Damián,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2630
+1271,1563,Cuautitlan y Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Alonso de Correa,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,309
+1272,1567,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Juan Marín,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2632
+1273,1567,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Pedro González,64.2,64.2,1.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2633
+1274,1567,Cuautitlan y Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Hernando Pacheco,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,315
+1275,1576,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,comunidad,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2634
+1276,1581,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Martín de Olarte,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2635
+1277,1584,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Damián Sedeño,0.5,0,,,,1,,,,1,1,1,,,,0.5,1,,0,,,0,0,,0,,0,,,,0,,0,0,0,2636
+1278,1584,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Gonzalo Pérez de Benavides,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2637
+1279,1584,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,comunidad,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2639
+1280,1585,Tultitlan y Tenayuca,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Francisco de Lara,21.4,21.4,0.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2640
+1281,1585,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Juan de Olarte Cherinos,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2642
+1282,1585,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,herederos de Gabriel de Guzmán,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2641
+1283,1587,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Beatriz de Olvera,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2643
+1284,1593,Tultitlan y Coacalco,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Martín de Olarte,0,0,,,,1,,,1,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2644
+1285,1595,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,los naturales,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2645
+1286,1595,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Sebastián de Luna,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2646
+1287,1599,Cuautitlan y Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Pedro Delgado,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,341
+1288,1600,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Andrés Merino,42.8,42.8,1,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2647
+1289,1600,Tlalnepantla y Cuautitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Gregorio de Porras,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2500
+1290,1603,Cuautitlan y Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Alonso de Oxea,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,348
+1291,1619,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2648
+1292,1621,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,Fernando de Bocanegra y Orozco,0,0,,,,1,,,,1,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2649
+1293,1632,Tultitlan,,FALSE,Tultitlan Coacalco,Cuauhtitlan,Cuauhtitlan,,149.8,149.8,3.5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2652
+1294,1567,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Sancho Martínez de Gamboa,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,885
+1295,1567,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Juan Antonio Covarrubias,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,884
+1296,1567,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Juan González de la Borbolla,128.4,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,883
+1297,1585,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Gabriel de Ortigosa,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,886
+1298,1585,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Melchor Muñoz,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,887
+1299,1585,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Pedro de Villegas y Peralta,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,888
+1300,1587,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,los naturales,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,889
+1301,1591,"Jaltocan y Atocan, Santiago",,FALSE,Xaltocan,Ecatepec,Xaltocan,comunidad,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,891
+1302,1591,"Jaltocan y Atocan, Santiago",,FALSE,Xaltocan,Ecatepec,Xaltocan,gobernador,1560.54,0,,,,0,,,,,0,,,,,0,0,,0,,,1560.54,1560.54,2,0,,0,,,,0,,0,0,0,890
+1303,1592,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Francisco de Orduña,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,892
+1304,1599,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Guillén Brondate,951.47,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,893
+1305,1602,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,gobernador,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,894
+1306,1603,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Juan de Vuiza,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,895
+1307,1607,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,896
+1308,1607,Jaltocan,,FALSE,Xaltocan,Ecatepec,Xaltocan,Luis Ortiz de Vargas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,897
+1309,1565,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Pedro Alonso Izquierdo,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1024
+1310,1567,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Pedro Pérez de la Portilla,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1025
+1311,1591,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Jerónimo de Aguilar,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1026
+1312,1602,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Felipe de Vargas,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1027
+1313,1602,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Antonio de Esquivel,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1028
+1314,1607,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Antonio de Oviedo y Arias,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1029
+1315,1608,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Martín de Urquiaga,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1030
+1316,1618,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Alonso de Quesada Oballa,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1032
+1317,1632,Jilotzingo,,FALSE,Xilotzinco,Zumpango,Zumpango,Diego Arias de Sotelo,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,1033
+1318,1550,Atlapulco,,FALSE,Xochimilco,Xochimilco,Xochimilco,CATALINA ZARATE,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+1319,1564,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,FRANCISCO ALAMBARRI,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+1320,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,ANDRES GARCIA,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1321,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,FRANCISCO SANCHEZ,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1322,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,BARTOLOME SANCHEZ,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1323,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,JUAN VELASCO,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1324,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,ANDRES PEREZ,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1325,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,JUAN AGUILAR,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1326,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,MARTIN ABARRUCIA,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1327,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,HERNANDO ARAGONES,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1328,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,ISABEL MEDINA,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1329,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,FRANCISCO VALLEJO,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1330,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,GARCIA CANARIA,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1331,1567,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,JUAN CANARIA,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1332,1583,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,MARTIN LOPES,1,0,,,,1,,,,,2,1,1,,,1,2,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1333,1584,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,MELCHOR HERNANDES,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1334,1586,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,JUAN FERNANDES,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1335,1592,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,JUAN BRAVO,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1336,1594,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,PEDRO GONSALES,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+1337,1594,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,MARINA MENDOSA,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+1338,1595,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,PUEBLO DE XOCHIMILCO,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+1339,1595,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,PUEBLO DE XOCHIMILCO,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1340,1595,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,HOSPITAL DE XOCHIMILCO,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+1341,1612,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,HOSPITAL DE SAN JUAN DE DIOS,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,AGN
+1342,1613,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,PEDRO SOSA,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+1343,1613,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,FRANCISCO CARRERA,2340.81,0,,,,0,,,,,0,,,,,0,0,,0,,,2340.81,0,,0,,0,,,,2340.81,3,0,0,0,AGN
+1344,1613,Xochimilco,,FALSE,Xochimilco,Xochimilco,Xochimilco,DIEGO CASTRO,908.67,128.4,3,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,AGN
+1345,1567,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Vicente Cuevas,0,0,,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,1,1,0,2749
+1346,1567,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Juan de Leiva,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2747
+1347,1567,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Sancho López de Agurto,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2748
+1348,1583,"Sebastian, San",,FALSE,Zumpango,Zumpango,Zumpango,comunidad,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,1476
+1349,1583,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Gregorio Sánchez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2750
+1350,1584,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Francisco Hernández Chillón,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2751
+1351,1585,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Pedro de Fonesca,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2752
+1352,1590,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Gerónimo Cataño Bojohorquez,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2753
+1353,1593,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,comunidad y hospital,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2754
+1354,1594,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Francisco Hernández Chillón,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2755
+1355,1595,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Juan Esteban,865.87,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,780.27,780.27,1,0,,0,,,,0,,0,0,0,2756
+1356,1598,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,los indios,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2757
+1357,1598,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,gobernador y alcaldes,85.6,85.6,2,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2758
+1358,1603,Zumpango y Jaltocan,,FALSE,Zumpango,Zumpango,Zumpango,Juan de Buyca,780.27,0,,,,0,,,,,0,,,,,0,0,,0,,,780.27,0,,0,,0,,,,780.27,1,0,0,0,2759
+1359,1603,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Juan Feyjo de Ovarrio,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2761
+1360,1603,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Juan de Buyca,214,214,5,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2760
+1361,1604,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,Martín López de Gaona,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2762
+1362,1607,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,,171.2,171.2,4,,,0,,,,,0,,,,,0,0,,0,,,0,0,,0,,0,,,,0,,0,0,0,2763
+1363,1615,Zumpango,,FALSE,Zumpango,Zumpango,Zumpango,,0.5,0,,,,0,,,,,0,,,,,0.5,1,1,0,,,0,0,,0,,0,,,,0,,0,0,0,2765

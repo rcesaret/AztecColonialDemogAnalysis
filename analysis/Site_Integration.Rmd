@@ -1,0 +1,1303 @@
+---
+title: "Untitled"
+author: "Rudolf Cesaretti"
+date: "2024-02-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## TO DO: 
+
+Finish TVP polygons (NOT density points)
+--Aztec sites polygons for final sites
+----TMP
+--preAZ sites (youre useing the Ortman data; not for chron or density pts; thus just get some polys up there!)
+
+Finish survey regions borders
+--surveyed vs unsurveyed area for parsons only (you can come back to Teo later)
+
+Finish Urban/Town Areas
+
+Env Data from AGRICULTURE ANALYSIS
+--BOM elevation regions
+--Geomorphons
+--Rivers
+--land use?
+--topo
+--USE WHAT YOU ALREADY HAVE FROM AGRICULTURE ANALYSIS!!!!!!
+
+Site sherd densities
+-- convert categories to ranges to modal/med/avg sherd dens
+-- convert 1-2-3-4 into geom or arith mean
+-- variable for min, max, range
+-- calc pop / popdens based on sherd dens
+-- Parsons residual
+
+Density Points +mounds
+-- voronoi polygons --> density by area (Aztec + Nada + NoPhoase only!)
+-- upload avg site sher dens to Aztec sites
+--compare pop ests / popdens from 
+---- published data
+---- mounds
+---- published site sherd densities
+---- Density points
+--Illustrate alluvial corredors
+--calculate differential sherd dens by region, env zone, geomorph
+-- Site mounds / mound densities
+
+
+Ethnohistoric sites / regions 
+-- missing archy sites
+-- compare pop
+-- compare popdens
+
+
+ARE NUCLEATED VILLAGE DENSITIES PER MODERB COMPACT SETTLEMENTS REALISTIC FOR AZ RURAL SETTLEMENT?
+EVIDENCE???
+IF PIEDMONT HAS MUCH HIGHER AVG (NONZERO) SHERD DENSITIES, THEN THIS MAY BE EVIDENCE FOR DISPERSED RURAL SETTLEMENT IN ALLUVIAL PLAIN 
+
+
+
+
+
+
+
+
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r}
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+
+wd$analysis <- paste0(wd$dir,"analysis/")
+wd$data_r <- paste0(wd$dir,"data-raw/")
+wd$data_p <- paste0(wd$dir,"data-processed/")
+wd$data_f <- paste0(wd$dir,"data-final-outputs/")
+wd$figs <- paste0(wd$dir,"figures/")
+wd$funcs <- paste0(wd$dir,"functions/")
+
+packages <- c("rgdal", "rgeos", "sp", "sf", "GISTools", "raster","stars", "spatstat",
+              "tidyverse", "tidyr", "nls.multstart", "nlme", "brms", "broom", 
+              "ggrepel", "minpack.lm", "data.table", "zoo", "lmtest", "sandwich", 
+              "nlstools", "MASS", "NSM3", "gridExtra", "ggnewscale", "cowplot", 
+              "scales", "viridis", "Cairo", "SpatialAcc","geodist", "REAT", "boot",
+              "fitdistrplus", "actuar")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# load packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+rm(packages,installed_packages)
+
+
+
+```
+
+Parsons_SurvRegion_MaxExtent
+## Load and Integrate Data
+
+### Parsons Regions
+
+```{r}
+#Parsons_SurvReg <- Parsons_SurvReg %>% rename(Reg = Survey_Zn) %>% 
+
+
+Parsons_SurvReg_Max <- st_read(paste0(wd$data_r,"Parsons_SurvRegion_MaxExtent.gpkg"))
+
+Parsons_SurvReg_Max <- Parsons_SurvReg_Max %>% rename(Reg = Survey_Zn) %>% 
+  mutate(SurvReg = case_when(SurvReg == 1 ~ "CH",
+                             SurvReg == 2 ~ "XO",
+                             SurvReg == 3 ~ "IX",
+                             SurvReg == 4 ~ "TX",
+                             SurvReg == 5 ~ "ZU"))
+
+Parsons_SurvReg_GIS <- st_read(paste0(wd$data_r,"Parsons_SurvReg_GIS_v2.gpkg"))
+#Parsons_SurvReg_GIS <- st_make_valid(Parsons_SurvReg_GIS)
+Parsons_Unsurveyed <- st_read(paste0(wd$data_r,"ParsonsReg_Unsurveyed_Poly_v2.gpkg"))
+#Parsons_Unsurveyed <- st_make_valid(Parsons_Unsurveyed)
+#Parsons_Unsurveyed_Union = st_union(Parsons_Unsurveyed)
+
+
+#Parsons_SurveyedArea <- st_difference(Parsons_SurvReg_GIS, Parsons_Unsurveyed_Union)
+#Parsons_SurveyedArea$ID <- c(4,5,6,7,3,1,2)
+#Parsons_SurveyedArea <- Parsons_SurveyedArea %>% rename(Region = Survey_Zn) %>% 
+#  mutate(Reg = case_when(ID == 1 ~ "CH",
+#                         ID == 2 ~ "XO",
+#                         ID == 3 ~ "IX",
+#                         ID == 6 ~ "TX-I",
+#                         ID == 5 ~ "TX-II",
+#                         ID == 4 ~ "TX-III",
+#                         ID == 7 ~ "ZU")) %>% 
+#  mutate(SurvReg = case_when(ID == 1 ~ "CH",
+#                         ID == 2 ~ "XO",
+#                         ID == 3 ~ "IX",
+#                         ID == 4 ~ "TX",
+#                         ID == 5 ~ "TX",
+#                         ID == 6 ~ "TX",
+#                         ID == 7 ~ "ZU")) %>% 
+#  select(ID,SurvReg,Reg,Region)
+
+
+#st_write(Parsons_SurveyedArea, paste0(wd$dir, "Parsons_SurveyedArea_v2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+#st_write(Parsons_SurvReg_GIS, paste0(wd$dir, "Parsons_SurvReg_GIS_v2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+#st_write(Parsons_Unsurveyed, paste0(wd$dir, "ParsonsReg_Unsurveyed_Poly_v2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+
+
+Parsons_SurveyedArea <- st_read(paste0(wd$data_r,"Parsons_SurveyedArea_v2.gpkg"))
+
+x = st_drop_geometry(Parsons_SurveyedArea)
+
+x = x %>% select(-Area_ha)
+
+Parsons_SurvReg_GIS <- Parsons_SurvReg_GIS %>% rename(Region = Survey_Zn) %>% left_join(x, by=join_by(Region))
+
+```
+
+
+
+#### Aztec Sites
+
+
+```{r}
+
+Parsons_AZ_Site_Data = read.csv(paste0(wd$data_r,"OrtmanData/Parsons_AZ_Site_Data.csv"))
+Parsons_AZ_Site_Data = Parsons_AZ_Site_Data %>% select(-East, -North)
+
+
+TX_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"TX_AZ_Sites_Poly.gpkg"))
+IX_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"IX_AZ_Sites_Poly.gpkg"))
+CH_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"CH_AZ_Sites_Poly2.gpkg"))
+XO_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"XO_AZ_Sites_Poly2.gpkg"))
+ZU_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"ZU_AZ_Sites_Poly.gpkg"))
+#TX_AZ_Sites_Poly <- st_read(paste0(wd$dir,"TX_AZ_Sites_Poly.gpkg"))
+
+XO_AZ_Sites_Poly <- XO_AZ_Sites_Poly %>% filter(Matched == "Y") %>% 
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+ZU_AZ_Sites_Poly <- ZU_AZ_Sites_Poly %>% filter(Matched == "Y") %>% 
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+TX_AZ_Sites_Poly <- TX_AZ_Sites_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+CH_AZ_Sites_Poly <- CH_AZ_Sites_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+IX_AZ_Sites_Poly <- IX_AZ_Sites_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+Parsons_AZ_Sites_Poly <- rbind(CH_AZ_Sites_Poly, XO_AZ_Sites_Poly, IX_AZ_Sites_Poly, TX_AZ_Sites_Poly, ZU_AZ_Sites_Poly)
+
+Parsons_AZ_Sites_Poly <- Parsons_AZ_Sites_Poly %>% rename(Region = SurvReg)
+
+Parsons_AZ_PolyData <- Parsons_AZ_Sites_Poly %>% left_join(Parsons_AZ_Site_Data, by=join_by(Site, Region))
+
+#test = st_drop_geometry(Parsons_AZ_Sites_Poly)
+#test <- Parsons_AZ_Site_Data  %>% select(Site, Region, SiteCode) %>% left_join(test, by=join_by(Site, Region))
+
+#Parsons_AZ_Site_Data = Parsons_AZ_Site_Data %>% rename()
+
+st_write(Parsons_AZ_PolyData, paste0(wd$data_r, "Parsons_AZ_PolyData_v1.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+Parsons_AZ_PolyData <- st_read(paste0(wd$data_r,"Parsons_AZ_PolyData_v1.gpkg"))
+```
+
+
+
+
+#### Pre-Aztec Sites
+
+```{r}
+
+Parsons_preAZ_Site_Data = read.csv(paste0(wd$data_r,"OrtmanData/Parsons_preAZ_Site_Data.csv"))
+Parsons_preAZ_Site_Data = Parsons_preAZ_Site_Data %>% select(-East, -North)
+
+TX_preAZ_Poly <- st_read(paste0(wd$data_r,"TX_preAZ_Poly.gpkg"))
+IX_preAZ_Poly <- st_read(paste0(wd$data_r,"IX_preAZ_Poly2.gpkg"))
+CH_preAZ_Poly <- st_read(paste0(wd$data_r,"CH_preAZ_Poly.gpkg"))
+XO_preAZ_Poly <- st_read(paste0(wd$data_r,"XO_preAZ_Poly.gpkg"))
+ZU_preAZ_Poly <- st_read(paste0(wd$data_r,"ZU_preAZ_Poly2.gpkg"))
+
+#SBOM_preAZ_Poly <- st_read(paste0(wd$dir,"SBOM_preAZ_Poly.gpkg"))
+#TX12_preAZ_Poly <- st_read(paste0(wd$dir,"TX12_preAZ_Poly.gpkg"))
+#ZU_preAZ_Poly <- st_read(paste0(wd$dir,"ZU_preAZ_Poly.gpkg"))
+#North_preAZ_Poly <- rbind(TX12_preAZ_Poly, ZU_preAZ_Poly)
+#TX_AZ_Sites_Poly <- st_read(paste0(wd$dir,"TX_AZ_Sites_Poly.gpkg"))
+
+XO_preAZ_Poly <- XO_preAZ_Poly %>% 
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+ZU_preAZ_Poly <- ZU_preAZ_Poly %>% 
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+TX_preAZ_Poly <- TX_preAZ_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+CH_preAZ_Poly <- CH_preAZ_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+IX_preAZ_Poly <- IX_preAZ_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+Parsons_preAZ_Sites_Poly <- rbind(CH_preAZ_Poly, XO_preAZ_Poly, IX_preAZ_Poly, TX_preAZ_Poly, ZU_preAZ_Poly)
+
+Parsons_preAZ_Sites_Poly <- Parsons_preAZ_Sites_Poly %>% rename(Region = SurvReg)
+
+Parsons_preAZ_PolyData <- Parsons_preAZ_Sites_Poly %>% left_join(Parsons_preAZ_Site_Data, by=join_by(Site, Region))
+
+#test = st_drop_geometry(Parsons_AZ_Sites_Poly)
+#test <- Parsons_AZ_Site_Data  %>% select(Site, Region, SiteCode) %>% left_join(test, by=join_by(Site, Region))
+
+#Parsons_AZ_Site_Data = Parsons_AZ_Site_Data %>% rename()
+
+
+st_write(Parsons_preAZ_PolyData, paste0(wd$data_r, "Parsons_preAZ_PolyData_v1.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+Parsons_preAZ_PolyData <- st_read(paste0(wd$data_r,"Parsons_preAZ_PolyData_v1.gpkg"))
+
+
+```
+
+
+##### Together
+
+```{r}
+Parsons_Sites_PolyData <- rbind(Parsons_AZ_PolyData, Parsons_preAZ_PolyData)
+
+st_write(Parsons_Sites_PolyData, paste0(wd$data_r, "Parsons_Sites_PolyData_v1.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+Parsons_Sites_PolyData <- st_read(paste0(wd$data_r,"Parsons_Sites_PolyData_v1.gpkg"))
+```
+
+
+#### Collections + Features
+
+--Which sites have collections
+--Coords for Ortman mound data
+--make sure ortman list and gis data are the same
+
+```{r}
+ParsonsFeat <- st_read(paste0(wd$data_r,"ParsonsRegionsFeaturePts.gpkg"))
+ParsonsFeat2 <- st_read(paste0(wd$data_r,"AddedParsFeatures.gpkg"))
+ParsonsCol <- st_read(paste0(wd$data_r,"ParsonsReg_Collections_Fixes2.gpkg"))
+
+ParsonsFeat2 <- ParsonsFeat2 %>% rename(OBJECTID = id) %>% mutate(Phase = NA, Type = NA) %>% select(OBJECTID, Name, Phase, Type, East, North, geom)
+ParsonsFeat <- ParsonsFeat %>% rename(Name = Descriptio)
+
+ParsonsFeat <- bind_rows(ParsonsFeat, ParsonsFeat2)
+
+ParsonsFeat <- ParsonsFeat %>% mutate(ID_orig = OBJECTID, ID = 1:2157) %>% select(-OBJECTID) %>% mutate(Collection = NA, Tracing = NA)
+
+ParsonsFeat <- ParsonsFeat %>% select(ID, ID_orig, Name, Phase, Type, Collection, Tracing, East, North, geom)
+
+coords <- st_coordinates(ParsonsFeat)
+ParsonsFeat$East <- coords[, 1]
+ParsonsFeat$North <- coords[, 2]
+
+ParsonsCol2 <- ParsonsCol %>% select(-East, -North, -Easting, -Northing) %>% rename(Name = Coll_ID, ID_orig = OBJECTID) %>% mutate(ID = 2158:(2157+nrow(ParsonsCol)), Collection = T, Phase = NA, Type = NA) 
+
+coords <- st_coordinates(ParsonsCol2)
+ParsonsCol2$East <- coords[, 1]
+ParsonsCol2$North <- coords[, 2]
+
+ParsonsCol2 <- ParsonsCol2 %>% select(ID, ID_orig, Name, Phase, Type, Collection, Tracing, East, North, geom)
+
+ParsonsFeat <- bind_rows(ParsonsFeat, ParsonsCol2)
+
+ParsonsFeat <- st_join(ParsonsFeat, Parsons_SurvReg_GIS, join = st_within)
+ParsonsFeat <- ParsonsFeat %>% select(-ID.y, -Area_ha) %>% rename(ID = ID.x)
+
+ParsonsFeat_csv = st_drop_geometry(ParsonsFeat)
+
+write.csv(ParsonsFeat_csv, paste0(wd$data_r,"ParsonsFeatPts.csv"))
+
+
+
+
+```
+
+```{r}
+
+ParsonsReg_Structures = read.csv(paste0(wd$data_r,"ParsonsReg_Structures.csv"))
+
+ParsonsReg_Structures = distinct(ParsonsReg_Structures)
+
+Parsons_Struct_Pts = st_as_sf(ParsonsReg_Structures,coords=c("East","North"), crs=32614)
+
+coords <- st_coordinates(Parsons_Struct_Pts)
+Parsons_Struct_Pts$East <- coords[, 1]
+Parsons_Struct_Pts$North <- coords[, 2]
+
+tmp = Parsons_AZ_PolyData %>% select(Site) %>% rename(AZ_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "LT") %>% select(Site) %>% rename(LT_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "ET") %>% select(Site) %>% rename(ET_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "CL") %>% select(Site) %>% rename(CL_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "LC") %>% select(Site) %>% rename(LC_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "EC") %>% select(Site) %>% rename(EC_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "TF") %>% select(Site) %>% rename(TF_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "LF") %>% select(Site) %>% rename(LF_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "MF") %>% select(Site) %>% rename(MF_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "EF") %>% select(Site) %>% rename(EF_Site = Site)
+
+Parsons_Struct_Pts <- st_join(Parsons_Struct_Pts, tmp, join = st_within)
+
+rm(tmp)
+
+x = st_drop_geometry(Parsons_Struct_Pts)
+
+write.csv(x, paste0(wd$data_r,"Parsons_Struct_Pts.csv"))
+
+```
+
+```{r}
+
+
+
+
+
+temp = Parsons_AZ_Sites_Poly %>% select(Site, TempSite, Tracing)
+
+#st_crs(ParsonsFeat)
+
+ParsonsFeat <- st_join(ParsonsFeat, Parsons_SurvReg, join = st_within)
+ParsonsFeat <- st_join(ParsonsFeat, temp, join = st_within)
+
+coords <- st_coordinates(ParsonsFeat)
+
+ParsonsFeat$East <- coords[, 1]
+ParsonsFeat$North <- coords[, 2]
+
+ParsonsFeat2 = st_drop_geometry(ParsonsFeat)
+
+write.csv(ParsonsFeat2, paste0(wd$data_r,"ParsonsRegionsFeaturePts.csv"))
+```
+
+
+### Sanders Regions
+
+
+
+#### Aztec Sites
+
+
+```{r}
+
+Sanders_AZ_Site_Data <- read.csv(paste0(wd$data_r,"OrtmanData/Sanders_AZ_Site_Data.csv"))
+Sanders_AZ_Site_Data = Sanders_AZ_Site_Data %>% select(-East, -North)
+
+CU_AZ_Poly <- st_read(paste0(wd$data_r,"CU_AZ_Sites_Poly_MODS2.gpkg"))
+TM_AZ_Poly <- st_read(paste0(wd$data_r,".gpkg"))
+
+
+CU_AZ_Poly <- CU_AZ_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+TM_AZ_Poly <- TM_AZ_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+Sanders_AZ_Sites_Poly <- rbind(CU_AZ_Poly, TM_AZ_Poly)
+
+Sanders_AZ_Sites_Poly <- Sanders_AZ_Sites_Poly %>% rename(Region = SurvReg)
+
+Sanders_AZ_PolyData <- Sanders_AZ_Sites_Poly %>% left_join(Sanders_AZ_Site_Data, by=join_by(Site, Region))
+
+#test = st_drop_geometry(Parsons_AZ_Sites_Poly)
+#test <- Parsons_AZ_Site_Data  %>% select(Site, Region, SiteCode) %>% left_join(test, by=join_by(Site, Region))
+
+#Parsons_AZ_Site_Data = Parsons_AZ_Site_Data %>% rename()
+
+
+#CU_AZ_Poly_Data <- CU_AZ_Poly %>% left_join(CU_AZ_Site_Data, by= join_by(Final_Site == Site))
+
+#test = st_drop_geometry(CU_AZ_Poly)
+
+#test <- CU_AZ_Site_Data %>% left_join(test, by= join_by(Site == Final_Site))
+```
+
+
+
+#### Pre-Aztec Sites
+
+```{r}
+CU_preAZ_Poly <- st_read(paste0(wd$data_r,"CU_preAZ_Poly.gpkg"))
+TM_preAZ_Poly <- st_read(paste0(wd$data_r,"TM_preAZ_Poly2.gpkg"))
+
+Sanders_preAZ_Site_Data <- read.csv(paste0(wd$data_r,"OrtmanData/Sanders_preAZ_Site_Data.csv"))
+Sanders_preAZ_Site_Data = Sanders_preAZ_Site_Data %>% select(-East, -North)
+```
+
+
+
+#### Collections + Features
+--Maja TM Mound data
+
+
+
+### TVP Teo Valley
+
+
+#### Aztec Sites
+
+
+
+
+#### Pre-Aztec Sites
+
+
+
+
+#### Collections + Features
+
+
+
+
+```{r}
+
+
+
+
+TX_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"TX_AZ_Sites_Poly.gpkg"))
+IX_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"IX_AZ_Sites_Poly.gpkg"))
+CH_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"CH_AZ_Sites_Poly2.gpkg"))
+XO_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"XO_AZ_Sites_Poly2.gpkg"))
+ZU_AZ_Sites_Poly <- st_read(paste0(wd$data_r,"ZU_AZ_Sites_Poly.gpkg"))
+#TX_AZ_Sites_Poly <- st_read(paste0(wd$dir,"TX_AZ_Sites_Poly.gpkg"))
+
+XO_AZ_Sites_Poly <- XO_AZ_Sites_Poly %>% filter(Matched == "Y") %>% 
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+ZU_AZ_Sites_Poly <- ZU_AZ_Sites_Poly %>% filter(Matched == "Y") %>% 
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+TX_AZ_Sites_Poly <- TX_AZ_Sites_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+CH_AZ_Sites_Poly <- CH_AZ_Sites_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+IX_AZ_Sites_Poly <- IX_AZ_Sites_Poly %>%
+  rename(TempSite = Site_ID, Site = Final_Site, SurvReg = Study_Area, Sort = Sort_ID) %>% 
+  select(Site, TempSite, Sort, SurvReg, Tracing, Notes) %>% mutate(
+    Area_ha_GIS = as.numeric(st_area(geom))/10000) %>% 
+  mutate(centroid = st_centroid(geom)) %>%
+  mutate(East = st_coordinates(centroid)[,1], North = st_coordinates(centroid)[,2]) %>%
+  select(-centroid)
+
+Parsons_AZ_Sites_Poly <- rbind(CH_AZ_Sites_Poly, XO_AZ_Sites_Poly, IX_AZ_Sites_Poly, TX_AZ_Sites_Poly, ZU_AZ_Sites_Poly)
+
+temp = Parsons_AZ_Sites_Poly %>% select(Site, TempSite, Tracing)
+
+#st_crs(ParsonsFeat)
+
+ParsonsFeat <- st_join(ParsonsFeat, Parsons_SurvReg, join = st_within)
+ParsonsFeat <- st_join(ParsonsFeat, temp, join = st_within)
+
+coords <- st_coordinates(ParsonsFeat)
+
+ParsonsFeat$East <- coords[, 1]
+ParsonsFeat$North <- coords[, 2]
+
+ParsonsFeat2 = st_drop_geometry(ParsonsFeat)
+
+write.csv(ParsonsFeat2, paste0(wd$data_r,"ParsonsRegionsFeaturePts.csv"))
+
+
+
+
+
+
+ParsonsFeat
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+## Geomorphons
+
+
+
+
+
+
+## Density Points
+
+ [1] NA                 "Az"               "EAz"              "EAz,LAz"          "ET"               "LAz"              "Cl"              
+ [8] "ET,LT"            "LT"               "Tol"              "Cl,ET"            "Cl,Az"            "LF"               "TF"              
+[15] "LT,Az"            "LF,TF"            "TF,LT,Az"         "Cl,LT"            "For"              "For,Tol"          "EF"              
+[22] "ECl"              "EF,LF"            "ET,Az"            "LF,Az"            "EF,TF"            "LF,LAz"           "CL,LAz"          
+[29] "MF"               "MF,Cl"            "Cl,TF"            "ET,LAz"           "LF,Cl"            "Col"              "TF,Cl,LT"        
+[36] "TF,Az"            "ET,AZ"            "Tol,Az"           "LF,ET"            "LT,LAz"           "LF,Tol,Az"        "MF,Az"           
+[43] "MF,LF,Az"         "MF,LF"            "MF,TF"            "MF,LF,TF,Az"      "LF,Tol"           "For,Cl"           "LCl"             
+[50] "TF,LT"            "LF,Cl,LT"         "Cl,Tol"           "LF,Cl,Tol"        "For,Cl,Tol"       "Az,Col"           "MF,ET,Az"        
+[57] "LF,Cl,ET,EAz,LAz" "LF,LT"            "LF,LT,Az"         "MF,LF,TF"         "MF,LF,LT"         "MF,LF,TF,LT"      "MF,TF,LT"        
+[64] "TF,Cl"            "TF,Tol"           "TF,Tol,Az"        "For,Tol,Az"       "TF,LAz"           "LT,EAz"           "LF,TF,Az"        
+[71] "ECl,Az"           "For,Az"           "LF,Cl,EAz,LAz"    "Cl,LAz"           "Cl,LT,Az"         "TF,LT,LAz"        "TF,ECl"          
+[78] "Cl,LT,LAz"        "LAz,Col"          "Cl,Tol,Az"        "For,ET"           "For,Cl,Az"        "Cl,ET,LT,Az"      "ET,LT,Az"        
+[85] "TF,ET,LT,Az"      "Cl,ET,Az"         "ECl,ET,LT,Az"     "LT, Az"           "CL"  
+
+
+
+
+"N"      "VLt-Lt" "VLt"    "Lt-Mod" "Mod"    "Lt"     "Tr"     "Mod-Hv" "Hv"     "Tr-VLt"
+```{r}
+
+DP <- st_read(paste0(wd$data_r,"Fixed_Density_Points_32614.gpkg"))
+
+DP <- DP %>% distinct(.keep_all = TRUE)
+#FinalDensVals = unique(DP$Final_Dens)
+#FinalPhaseVals = unique(DP$Final_Phas)
+
+#DP_TEST <- read.csv(paste0(wd$dir,"DP_TEST.csv"))
+
+
+
+DP <- DP %>% rename(East = Easting,
+                    North = Northing,
+                    Final_Phase = Final_Phas,
+                    FOR = Formative,
+                    EC = ECl,
+                    LC = LCl,
+                    CL = Classic,
+                    TOL = Toltec,
+                    EA = EAz,
+                    LA = LAz,
+                    AZ = Aztec,
+                    COL = Colonial) 
+
+
+DP <- DP %>% 
+  mutate(Final_Dens = case_when(Final_Dens == "N" ~ "N",
+                               Final_Dens == "Tr" ~ "T",
+                               Final_Dens == "Tr-VLt" ~ "TVL",
+                               Final_Dens == "VLt" ~ "VL",
+                               Final_Dens == "VLt-Lt" ~ "VLL",
+                               Final_Dens == "Lt" ~ "L",
+                               Final_Dens == "Lt-Mod" ~ "LM",
+                               Final_Dens == "Mod" ~ "M",
+                               Final_Dens == "Mod-Hv" ~ "MH",
+                               Final_Dens == "Hv" ~ "H"))
+
+DP <- DP %>%  mutate(
+         EF = ifelse(!is.na(EF), Final_Dens, NA_character_),
+         MF = ifelse(!is.na(MF), Final_Dens, NA_character_),
+         LF = ifelse(!is.na(LF), Final_Dens, NA_character_),
+         TF = ifelse(!is.na(TF), Final_Dens, NA_character_),
+         FOR = ifelse(!is.na(FOR), Final_Dens, NA_character_),
+         EC = ifelse(!is.na(EC), Final_Dens, NA_character_),
+         LC = ifelse(!is.na(LC), Final_Dens, NA_character_),
+         CL = ifelse(!is.na(CL), Final_Dens, NA_character_),
+         ET = ifelse(!is.na(ET), Final_Dens, NA_character_),
+         LT = ifelse(!is.na(LT), Final_Dens, NA_character_),
+         TOL = ifelse(!is.na(TOL), Final_Dens, NA_character_),
+         EA = ifelse(!is.na(EA), Final_Dens, NA_character_),
+         LA = ifelse(!is.na(LA), Final_Dens, NA_character_),
+         AZ = ifelse(!is.na(AZ), Final_Dens, NA_character_),
+         COL = ifelse(!is.na(COL), Final_Dens, NA_character_))
+
+DP <- DP %>% 
+  mutate(SherdDens = case_when(Final_Dens == "N" ~ 0,
+                               Final_Dens == "T" ~ 0.1,
+                               Final_Dens == "TVL" ~ 0.3,
+                               Final_Dens == "VL" ~ 0.5,
+                               Final_Dens == "VLL" ~ 3,
+                               Final_Dens == "L" ~ 18,
+                               Final_Dens == "LM" ~ 38,
+                               Final_Dens == "M" ~ 100,
+                               Final_Dens == "MH" ~ 200,
+                               Final_Dens == "H" ~ 300))
+
+DP <- DP %>%  mutate(
+         EF_d = ifelse(!is.na(EF), 1, 0),
+         MF_d = ifelse(!is.na(MF), 1, 0),
+         LF_d = ifelse(!is.na(LF), 1, 0),
+         TF_d = ifelse(!is.na(TF), 1, 0),
+         FOR_d = ifelse(!is.na(FOR), 1, 0),
+         EC_d = ifelse(!is.na(EC), 1, 0),
+         LC_d = ifelse(!is.na(LC), 1, 0),
+         CL_d = ifelse(!is.na(CL), 1, 0),
+         ET_d = ifelse(!is.na(ET), 1, 0),
+         LT_d = ifelse(!is.na(LT), 1, 0),
+         TOL_d = ifelse(!is.na(TOL), 1, 0),
+         EA_d = ifelse(!is.na(EA), 1, 0),
+         LA_d = ifelse(!is.na(LA), 1, 0),
+         AZ_d = ifelse(!is.na(AZ), 1, 0),
+         COL_d = ifelse(!is.na(COL), 1, 0))
+
+DP <- DP %>%  mutate(
+         Nada = ifelse(Final_Dens == "N", TRUE, FALSE),
+         NoPhase = ifelse(Nada == F & is.na(Final_Phase), Final_Dens, NA_character_),
+         NoPhase_d = ifelse(Nada == F & is.na(Final_Phase), 1, 0),
+         n_Phases = EF_d+MF_d+LF_d+TF_d+FOR_d+EC_d+LC_d+CL_d+ET_d+LT_d+TOL_d+EA_d+LA_d+AZ_d+COL_d,
+         n_PhasesNP = n_Phases + NoPhase_d
+         #FOR_T = ifelse(EF > 0 | MF > 0 | LF > 0 | TF > 0 | FOR > 0, 1, 0),
+         #CL_T = ifelse(EC > 0 | LC > 0 | CL > 0, 1, 0),
+         #TOL_T = ifelse(ET > 0 | LT > 0 | TOL > 0, 1, 0),
+         #AZ_T = ifelse(EA > 0 | LA > 0 | AZ > 0, 1, 0),
+         )
+
+#DP <- DP %>%
+#  rowwise() %>%
+#  mutate(n_Phases = sum(c_across(EF:COL), na.rm = TRUE)) %>%
+#  ungroup()
+
+
+
+
+
+
+
+DP <- DP %>% mutate(
+         EF_d = SherdDens * EF_d,
+         MF_d = SherdDens * MF_d,
+         LF_d = SherdDens * LF_d,
+         TF_d = SherdDens * TF_d,
+         FOR_d = SherdDens * FOR_d,
+         EC_d = SherdDens * EC_d,
+         LC_d = SherdDens * LC_d,
+         CL_d = SherdDens * CL_d,
+         ET_d = SherdDens * ET_d,
+         LT_d = SherdDens * LT_d,
+         TOL_d = SherdDens * TOL_d,
+         EA_d = SherdDens * EA_d,
+         LA_d = SherdDens * LA_d,
+         AZ_d = SherdDens * AZ_d,
+         COL_d = SherdDens * COL_d,
+         NoPhase_d = SherdDens * NoPhase_d,
+         FOR_T_d = EF_d + MF_d + LF_d + TF_d + FOR_d, # SUM? MAX? MEAN? (ARITH? GEOM?)
+         CL_T_d = EC_d + LC_d + CL_d ,
+         TOL_T_d = ET_d + LT_d + TOL_d,
+         AZ_T_d = EA_d + LA_d + AZ_d,
+         SherdDens_T = FOR_T_d + CL_T_d + TOL_T_d + AZ_T_d + COL_d+ NoPhase_d
+         )
+DP$ID <- 1:nrow(DP)
+
+tmp = Parsons_SurvReg_GIS %>% select(Reg, SurvReg)  
+
+DP <- st_join(DP, tmp, join = st_within)
+
+rm(tmp)
+
+coords <- st_coordinates(DP)
+
+DP$East <- coords[, 1]
+DP$North <- coords[, 2]
+rm(coords)
+
+tmp = Parsons_Sites_PolyData %>% select(Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+rm(tmp)
+
+DP <- DP %>% mutate(InSite = ifelse(is.na(Site), FALSE, TRUE)) %>% select(-Site)
+
+tmp = Parsons_AZ_PolyData %>% select(Site) %>% rename(AZ_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "LT") %>% select(Site) %>% rename(LT_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "ET") %>% select(Site) %>% rename(ET_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "CL") %>% select(Site) %>% rename(CL_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "LC") %>% select(Site) %>% rename(LC_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "EC") %>% select(Site) %>% rename(EC_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "TF") %>% select(Site) %>% rename(TF_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "LF") %>% select(Site) %>% rename(LF_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "MF") %>% select(Site) %>% rename(MF_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+tmp = Parsons_preAZ_PolyData %>% filter(SitePeriod == "EF") %>% select(Site) %>% rename(EF_Site = Site)
+
+DP <- st_join(DP, tmp, join = st_within)
+
+rm(tmp)
+
+
+tmp = DP %>% filter(n_Phases > 1)
+
+
+DP <- DP %>% rename(Old_ShedDens = SherdDens,
+                    Old_OBJECTID = OBJECTID, 
+                    Old_Density = Density, 
+                    Old_Phase = Phase,
+                    Old_Final_Phase = Final_Phase, 
+                    Old_Final_Dens = Final_Dens) %>% 
+  select(ID, East, North, Tracing, Reg, SurvReg, InSite, SherdDens_T, Nada, n_Phases, n_PhasesNP, AZ_Site, LT_Site, ET_Site, CL_Site, LC_Site, EC_Site, TF_Site, LF_Site, MF_Site, EF_Site, NoPhase, EF, MF, LF, TF, FOR, EC, LC, CL, ET, LT, TOL, EA, LA, AZ, COL, NoPhase_d, EF_d, MF_d, LF_d, TF_d, FOR_d, EC_d, LC_d, CL_d, ET_d, LT_d, TOL_d, EA_d, LA_d, AZ_d, COL_d, FOR_T_d, CL_T_d, TOL_T_d, AZ_T_d, Old_ShedDens, Old_OBJECTID, Old_Density, Old_Phase, Old_Final_Dens, Old_Final_Phase)
+
+DP_unique_all <- DP %>% distinct(.keep_all = TRUE)
+DP_prob = DP
+DP = DP_unique_all
+
+st_write(DP, paste0(wd$data_r, "DensPts_v1.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+DP <- st_read(paste0(wd$data_r,"DensPts_v1.gpkg"))
+ 
+```
+
+
+```{r}
+DP <- DP %>% mutate(IX_Blanton = case_when(
+  Tracing == "Ixtap" ~ T,
+  Tracing == "29_SE_2_3_5_8_9" ~ T,
+  Tracing == "22SE_29SW_29SE_SE" ~ T,
+  Tracing == "22SE_29SW_29SE_NE" ~ T,
+  Tracing == "28_NW_1_2_4" ~ T,
+  Tracing == "22SE_29SW_29SE_W" ~ T,
+  Tracing == "23_NE_2_3_5_6" ~ T,
+  Tracing == "22SW_SE_4_5_7_8" ~ T,
+  Tracing == "28_NE_1_2_3_5" ~ T,
+  .default = F))
+
+DP <- DP %>% mutate(NoPhase_VL = case_when(
+  NoPhase == "VL" ~ T,
+  .default = F))
+
+DP <- DP %>% rowwise() %>% mutate(IX_Nada_VL = ifelse(IX_Blanton == T & NoPhase_VL == T, T, F)) %>% ungroup()
+
+DP1 <- DP %>% filter(IX_Nada_VL == F) %>% mutate(
+  SherdDens_T_IXN = SherdDens_T,
+  Nada_IXN = Nada,
+  NoPhase_IXN = NoPhase,
+  NoPhase_d_IXN = NoPhase_d,
+  n_PhasesNP_IXN = n_PhasesNP)
+
+DP2 <- DP %>% filter(IX_Nada_VL == T) %>% mutate(
+  SherdDens_T_IXN = 0,
+  Nada_IXN = T,
+  NoPhase_IXN = NA,
+  NoPhase_d_IXN = 0,
+  n_PhasesNP_IXN = 0
+)
+
+DP <- bind_rows(DP1,DP2)
+
+DP <- DP[order(DP$ID),]
+
+#X = DP %>% filter(Reg == "IX")
+#plot(X["IX_Nada_VL"])
+#plot(X["Nada"])
+st_write(DP, paste0(wd$data_r, "DensPts_v1.1_IXN.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+DP <- st_read(paste0(wd$data_r,"DensPts_v1.1_IXN.gpkg"))
+
+DP2 = DP %>% select(East, North) 
+
+DP2 = distinct(DP2)
+
+DP1 = st_drop_geometry(DP)
+
+DP3 = DP2 %>% left_join(DP1, by = join_by(East,North), multiple = "any")
+
+st_write(DP3, paste0(wd$data_r, "DensPts_v1.2_IXN.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+DP <- st_read(paste0(wd$data_r,"DensPts_v1.2_IXN.gpkg"))
+```
+
+SherdDens_Voronoi_IXNada = SherdDens_Voronoi %>% 
+  mutate(IX_Nada_VL = ifelse(Reg== "IX" & NoPhase == "VL", T, F),
+         SherdDens_T = ifelse(IX_Nada_VL == T, 0, SherdDens_T),
+         Nada = ifelse(IX_Nada_VL == T, T, Nada),
+         NoPhase = ifelse(IX_Nada_VL == T, NA_character_, NoPhase),
+         NoPhase_d = ifelse(IX_Nada_VL == T, 0, NoPhase_d),
+         n_PhasesNP  = ifelse(IX_Nada_VL == T, 0, n_PhasesNP))
+
+SherdDens_Voronoi_IXNada$TotalSherds = SherdDens_Voronoi_IXNada$Area_m2 * SherdDens_Voronoi_IXNada$SherdDens_T
+SherdDens_Voronoi_IXNada$TotalSherds_AZ = (SherdDens_Voronoi_IXNada$Area_m2 * SherdDens_Voronoi_IXNada$AZ_T_d)+ (SherdDens_Voronoi_IXNada$Area_m2 * SherdDens_Voronoi_IXNada$NoPhase_d)
+SherdDens_Voronoi_IXNada$Popdens_AZ = 1.2056*SherdDens_Voronoi_IXNada$AZ_T_d^0.7296
+SherdDens_Voronoi_IXNada$Pop_AZ = SherdDens_Voronoi_IXNada$Popdens_AZ * SherdDens_Voronoi_IXNada$Area_ha
+
+
+# Dens Triangles
+
+
+```{r}
+library(deldir)
+
+st_as_sf.deldir <- function(dd, extract = c("tiles", "triangles")) {
+  extract <- match.arg(extract)
+
+  if (extract == "tiles") {
+    ddlist <- deldir::tile.list(dd)
+  }
+  else if (extract == "triangles") {
+    ddlist <- deldir::triang.list(dd)
+  }
+
+  ddlist %>%
+    purrr::map(~{cbind(x = .$x, y = .$y)} %>%
+                 rbind(.[1,]) %>%
+                 list() %>%
+                 sf::st_polygon()) %>%
+    sf::st_sfc() %>%
+    sf::st_sf() %>%
+    dplyr::mutate(id = dplyr::row_number()) %>%
+    return()
+}
+```
+
+
+```{r}
+
+DP_TX_I <- DP %>% filter(Reg == "TX-I")
+DP_TX_II <- DP %>% filter(Reg == "TX-II")
+DP_TX_III <- DP %>% filter(Reg == "TX-III")
+DP_IX <- DP %>% filter(Reg == "IX")
+DP_ZU <- DP %>% filter(Reg == "ZU")
+DP_CH <- DP %>% filter(Reg == "CH")
+DP_XO <- DP %>% filter(Reg == "XO")
+DP_SBOM = bind_rows(DP_XO, DP_IX, DP_TX_III)
+
+Parsons_SurveyedArea <- st_read(paste0(wd$data_r,"Parsons_SurveyedArea_v2.gpkg"))
+
+### TX-I
+SurvArea = Parsons_SurveyedArea %>% filter(Reg == "TX-I") %>% select(ID) %>% rename(id2 = ID)
+bbox = st_bbox(SurvArea)
+bbox = c(as.numeric(bbox[1]), as.numeric(bbox[3]),as.numeric(bbox[2]),as.numeric(bbox[4]))
+voronoi <- deldir(x = DP_TX_I$East, y = DP_TX_I$North, z = DP_TX_I$ID, round=F)#, rw=bbox
+voronoi_sf <- st_as_sf.deldir(voronoi, extract="tiles")
+st_crs(voronoi_sf) = 32614
+voronoi_sf <- st_join(voronoi_sf, DP_TX_I, join = st_contains)
+voronoi_clipped <- st_intersection(voronoi_sf, SurvArea)
+Voronoi_TX1 = voronoi_clipped %>% select(-id2)
+
+
+### TX-II
+
+SurvArea = Parsons_SurveyedArea %>% filter(Reg == "TX-II") %>% select(ID) %>% rename(id2 = ID)
+bbox = st_bbox(SurvArea)
+bbox = c(as.numeric(bbox[1]), as.numeric(bbox[3]),as.numeric(bbox[2]),as.numeric(bbox[4]))
+voronoi <- deldir(x = DP_TX_II$East, y = DP_TX_II$North, z = DP_TX_II$ID, round=F)#, rw=bbox
+voronoi_sf <- st_as_sf.deldir(voronoi, extract="tiles")
+st_crs(voronoi_sf) = 32614
+voronoi_sf <- st_join(voronoi_sf, DP_TX_II, join = st_contains)
+voronoi_clipped <- st_intersection(voronoi_sf, SurvArea)
+Voronoi_TX2 = voronoi_clipped %>% select(-id2)
+
+### ZU
+#Warning: There were different tags corresponding to duplicated points!! (n=1)
+SurvArea = Parsons_SurveyedArea %>% filter(Reg == "ZU") %>% select(ID) %>% rename(id2 = ID)
+bbox = st_bbox(SurvArea)
+bbox = c(as.numeric(bbox[1]), as.numeric(bbox[3]),as.numeric(bbox[2]),as.numeric(bbox[4]))
+voronoi <- deldir(x = DP_ZU$East, y = DP_ZU$North, z = DP_ZU$ID, round=F)#, rw=bbox
+voronoi_sf <- st_as_sf.deldir(voronoi, extract="tiles")
+st_crs(voronoi_sf) = 32614
+voronoi_sf <- st_join(voronoi_sf, DP_ZU, join = st_contains)
+voronoi_clipped <- st_intersection(voronoi_sf, SurvArea)
+Voronoi_ZU = voronoi_clipped %>% select(-id2)
+
+### CH
+
+SurvArea = Parsons_SurveyedArea %>% filter(Reg == "CH")%>% select(ID) %>% rename(id2 = ID)
+bbox = st_bbox(SurvArea)
+bbox = c(as.numeric(bbox[1]), as.numeric(bbox[3]),as.numeric(bbox[2]),as.numeric(bbox[4]))
+voronoi <- deldir(x = DP_CH$East, y = DP_CH$North, z = DP_CH$ID, round=F)#, rw=bbox
+voronoi_sf <- st_as_sf.deldir(voronoi, extract="tiles")
+st_crs(voronoi_sf) = 32614
+voronoi_sf <- st_join(voronoi_sf, DP_CH, join = st_contains)
+voronoi_clipped <- st_intersection(voronoi_sf, SurvArea)
+Voronoi_CH = voronoi_clipped %>% select(-id2)
+
+
+### SBOM
+
+SurvArea = Parsons_SurveyedArea %>% filter(ID < 5 & ID > 1)%>% select(ID) %>% rename(id2 = ID)
+bbox = st_bbox(SurvArea)
+bbox = c(as.numeric(bbox[1]), as.numeric(bbox[3]), as.numeric(bbox[2]), as.numeric(bbox[4]))
+voronoi <- deldir(x = DP_SBOM$East, y = DP_SBOM$North, z = DP_SBOM$ID, round=F)#, rw=bbox
+voronoi_sf <- st_as_sf.deldir(voronoi, extract="tiles")
+st_crs(voronoi_sf) = 32614
+voronoi_sf <- st_join(voronoi_sf, DP_SBOM, join = st_contains)
+voronoi_clipped <- st_intersection(voronoi_sf, SurvArea)
+Voronoi_SBOM = voronoi_clipped %>% select(-id2)
+
+SherdDens_Voronoi = bind_rows(Voronoi_CH, Voronoi_SBOM, Voronoi_TX1, Voronoi_TX2, Voronoi_ZU)
+
+#SherdDens_Voronoi$id <- 1:nrow(SherdDens_Voronoi)
+SherdDens_Voronoi = SherdDens_Voronoi%>% select(-id)
+
+SherdDens_Voronoi$Area_m2 = as.numeric(st_area(SherdDens_Voronoi))
+SherdDens_Voronoi$Area_ha = as.numeric(st_area(SherdDens_Voronoi))/10000
+SherdDens_Voronoi$TotalSherds = SherdDens_Voronoi$Area_m2 * SherdDens_Voronoi$SherdDens_T
+SherdDens_Voronoi$TotalSherds_IXN = SherdDens_Voronoi$Area_m2 * SherdDens_Voronoi$SherdDens_T_IXN
+SherdDens_Voronoi$TotalSherds_AZ = SherdDens_Voronoi$Area_m2 * SherdDens_Voronoi$AZ_T_d
+
+SherdDens_Voronoi$Popdens_AZ = 1.2056*SherdDens_Voronoi$AZ_T_d^0.7296
+SherdDens_Voronoi$Pop_AZ = SherdDens_Voronoi$Popdens_AZ * SherdDens_Voronoi$Area_ha
+
+
+#plot(st_geometry(SherdDens_Voronoi))
+
+st_write(SherdDens_Voronoi, paste0(wd$data_r, "SherdDens_Voronoi_v1.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+SherdDens_Voronoi <- st_read(paste0(wd$data_r,"SherdDens_Voronoi_v1.gpkg"))
+                                                 
+st_write(SherdDens_Voronoi, paste0(wd$data_r, "SherdDens_Voronoi_v1.1_IXN.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+```
+
+
+## d
+
+
+```{r}
+
+dens = st_drop_geometry(Dens_Voronoi)
+dens = SherdDens_Voronoi %>% filter(SherdDens_T > 0)
+hist(dens$SherdDens_T)
+hist(log(dens$SherdDens_T))
+```
+
+
+, , , , , , ,
+
+
+
+
+
+
+## Site Sherd Density
+
+```{r}
+geometric_mean <- function(x) {
+  exp(mean(log(x)))
+}
+
+
+SD_Reg = SD %>% group_by(Reg) %>% summarize(
+  TotalArea = sum(Area_ha),
+  TotalObs = n(),
+  
+))
+
+SD = st_drop_geometry(SherdDens_Voronoi_IXNada)
+
+
+
+SD = SD %>% filter(InSite == T & !is.null(AZ_Site)) %>% group_by(AZ_Site) %>% summarize(
+  
+  DP_TotalSherds_AZ = sum(TotalSherds_AZ, na.rm=T),
+  DP_TotalSherds = sum(TotalSherds, na.rm=T),
+  DP_TotalArea_ha = sum(Area_ha, na.rm=T),
+  DP_TotalArea_m2 = sum(Area_m2, na.rm=T),
+  DP_Pop_AZ = sum(Pop_AZ, na.rm=T),
+  DP_Popdens_AZ = DP_Pop_AZ / DP_TotalArea_ha,
+  
+  DP_MeanSD_T = DP_TotalSherds / DP_TotalArea_m2,
+  DP_MeanSD_AZ = DP_TotalSherds_AZ / DP_TotalArea_m2,
+  DP_MeanSD_preAZ = (DP_TotalSherds - DP_TotalSherds_AZ) / DP_TotalArea_m2,
+  DP_MeanSD_fracAZ = DP_MeanSD_AZ / DP_MeanSD_preAZ,
+  DP_AvgSD_AZ = mean(AZ_T_d, na.rm=T),
+  DP_MedSD_AZ = median(AZ_T_d, na.rm=T),
+  DP_MinSD_AZ = min(AZ_T_d, na.rm=T),
+  DP_MaxSD_AZ = max(AZ_T_d, na.rm=T),
+  DP_RangeSD_AZ = DP_MaxSD_AZ - DP_MinSD_AZ,
+  DP_sdSD_AZ = sd(AZ_T_d, na.rm=T),
+  DP_AvgSD_T = mean(SherdDens_T, na.rm=T),
+  DP_MedSD_T = median(SherdDens_T, na.rm=T),
+  DP_MinSD_T = min(SherdDens_T, na.rm=T),
+  DP_MaxSD_T = max(SherdDens_T, na.rm=T),
+  DP_RangeShD_T = DP_MaxSD_T - DP_MinSD_T,
+  DP_sdSD_T = sd(SherdDens_T, na.rm=T)
+)
+
+Parsons_AZ_PolyData = Parsons_AZ_PolyData %>% mutate(
+#Parsons_Sites_PolyData = Parsons_Sites_PolyData %>% mutate(
+  Sherd1_d = case_when(Sherd1 == "T" ~ 0.1,
+                       Sherd1 == "VL" ~ 0.5,
+                       Sherd1 == "S" ~ 0.5,
+                       Sherd1 == "L" ~ 18,
+                       Sherd1 == "VLL" ~ 3,
+                       Sherd1 == "SL" ~ 3,
+                       Sherd1 == "LM" ~ 38,
+                       Sherd1 == "M" ~ 100,
+                       Sherd1 == "MH" ~ 200,
+                       Sherd1 == "H" ~ 300,
+                       Sherd1 == "A" ~ 0,
+                       Sherd1 == "" ~ NA,
+                       is.na(Sherd1) ~ NA),
+  Sherd2_d = case_when(Sherd2 == "T" ~ 0.1,
+                       Sherd2 == "VL" ~ 0.5,
+                       Sherd2 == "S" ~ 0.5,
+                       Sherd2 == "L" ~ 18,
+                       Sherd2 == "VLL" ~ 3,
+                       Sherd2 == "SL" ~ 3,
+                       Sherd2 == "LM" ~ 38,
+                       Sherd2 == "M" ~ 100,
+                       Sherd2 == "MH" ~ 200,
+                       Sherd2 == "H" ~ 300,
+                       Sherd2 == "A" ~ 0,
+                       Sherd2 == "" ~ NA,
+                       is.na(Sherd2) ~ NA),
+  Sherd3_d = case_when(Sherd3 == "T" ~ 0.1,
+                       Sherd3 == "VL" ~ 0.5,
+                       Sherd3 == "S" ~ 0.5,
+                       Sherd3 == "L" ~ 18,
+                       Sherd3 == "VLL" ~ 3,
+                       Sherd3 == "SL" ~ 3,
+                       Sherd3 == "LM" ~ 38,
+                       Sherd3 == "M" ~ 100,
+                       Sherd3 == "MH" ~ 200,
+                       Sherd3 == "H" ~ 300,
+                       Sherd3 == "A" ~ 0,
+                       Sherd3 == "" ~ NA,
+                       is.na(Sherd3) ~ NA),
+  Sherd4_d = case_when(Sherd4 == "T" ~ 0.1,
+                       Sherd4 == "VL" ~ 0.5,
+                       Sherd4 == "S" ~ 0.5,
+                       Sherd4 == "L" ~ 18,
+                       Sherd4 == "VLL" ~ 3,
+                       Sherd4 == "SL" ~ 3,
+                       Sherd4 == "LM" ~ 38,
+                       Sherd4 == "M" ~ 100,
+                       Sherd4 == "MH" ~ 200,
+                       Sherd4 == "H" ~ 300,
+                       Sherd4 == "A" ~ 0,
+                       Sherd4 == "" ~ NA,
+                       is.na(Sherd4) ~ NA)) %>%
+  rowwise() %>%
+  mutate(
+    SherdDens_Mean = mean(c_across(Sherd1_d:Sherd4_d), na.rm=T),
+    SherdDens_Med = median(c_across(Sherd1_d:Sherd4_d), na.rm=T),
+    SherdDens_Min = min(c_across(Sherd1_d:Sherd4_d), na.rm=T),
+    SherdDens_Max = max(c_across(Sherd1_d:Sherd4_d), na.rm=T),
+    SherdDens_Range = SherdDens_Max - SherdDens_Min,
+    SherdDens_GeoMean = geometric_mean(c_across(Sherd1_d:Sherd4_d)),
+    TotalSherds_Pub = Area*10000 * SherdDens_Mean,
+    TotalSherds_PubGIS = Area_ha_GIS*10000 * SherdDens_Mean,
+    AreaDiff = Area_ha_GIS - Area,
+    AreaPctDiff = Area_ha_GIS / Area,
+    PopDens_Pub = Population / Area,
+    PopDens_PubGIS = Population / Area_ha_GIS,
+    PopDens_PubMeanSD = 1.2056*SherdDens_Mean^0.7296,
+    Pop_PubMeanSD = Area * PopDens_PubMeanSD,
+    ParsonsResidual = PopDens_Pub - PopDens_PubMeanSD,
+    Mounds_per_ha = MoundTotal / Area_ha_GIS,
+    MoundArea_per_ha = DMoundArea / Area_ha_GIS) %>% ungroup() %>%
+  left_join(SD, by = join_by(Site == AZ_Site))
+
+
+
+
+Parsons_AZ_SiteData = st_drop_geometry(Parsons_AZ_PolyData)
+
+write.csv(Parsons_AZ_SiteData, paste0(wd$data_r,"Parsons_AZ_SiteData.csv"))
+
+st_write(Parsons_AZ_PolyData, paste0(wd$data_r, "Parsons_Sites_PolyData_v2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+
+```
+
+
+
+
+
+
+
+
+
+```
+
+""      "" ""    "" ""    ""     ""     "" "Hv"     ""
+     "EF"          "MF"          "LF"         
+[10] "TF"          "FOR"         "EC"          "LC"          "CL"          "ET"          "LT"          "TOL"         "EA"         
+[19] "LA"          "AZ"          "COL"         "East"        "North"       "geom"        "SherdDens"   "EF_d"        "MF_d"       
+[28] "LF_d"        "TF_d"        "FOR_d"       "EC_d"        "LC_d"        "CL_d"        "ET_d"        "LT_d"        "TOL_d"      
+[37] "EA_d"        "LA_d"        "AZ_d"        "COL_d"       "Nada"        "NoPhase"     "NoPhase_d"   "n_Phases"    "n_PhasesNP" 
+[46] "FOR_T_d"     "CL_T_d"      "TOL_T_d"     "AZ_T_d"      "SherdDens_T"
+## Mounds + Architecture
+
+
+
+## Ethnohistoric Sites
+
+
+
+
+
+
+
+
+## Historic Population
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
