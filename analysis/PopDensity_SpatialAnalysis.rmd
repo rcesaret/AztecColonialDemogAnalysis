@@ -1,0 +1,702 @@
+---
+title: "Pop Density Analysis"
+author: "Rudolf Cesaretti"
+date: "2024-04-08"
+output: html_document
+---
+
+
+
+```{r, setup, include=FALSE,echo=FALSE, message=FALSE,warning=FALSE}
+require(knitr)
+# Set so that long lines in R will be wrapped:
+opts_chunk$set(tidy.opts=list(width.cutoff=75),tidy=TRUE)
+#
+rm(list = ls())
+```
+
+# Setup
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r}
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+
+wd$analysis <- paste0(wd$dir,"analysis/")
+wd$data_r <- paste0(wd$dir,"data-raw/")
+wd$data_p <- paste0(wd$dir,"data-processed/")
+wd$data_f <- paste0(wd$dir,"data-final-outputs/")
+wd$figs <- paste0(wd$dir,"figures/")
+wd$funcs <- paste0(wd$dir,"functions/")
+
+packages <- c("ggstatsplot", "rgdal", "rgeos", "sp", "sf", "spdep", "GISTools", 
+              "raster","stars", "spatstat","gdistance","Matrix","classInt","pacman",
+              "tidyverse", "tidyr", "nls.multstart", "nlme", "brms", "broom", "ineq",
+              "ggrepel", "minpack.lm", "data.table", "zoo", "lmtest", "sandwich", 
+              "nlstools", "MASS", "NSM3", "gridExtra", "ggnewscale", "cowplot", 
+              "scales", "viridis", "Cairo", "SpatialAcc","geodist", "REAT", "boot",
+              "fitdistrplus", "actuar", "DemoTools", "NSM3", "km.ci", "MASS", "DemoTools",
+              "easystats")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# load packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+rm(packages,installed_packages)
+
+#Read in custom R functions located in the wd$funcs directory folder
+FUNCS <- list("RegressionResultsTab.R", "ModelPredFrame.R","SpatialNets.R", "net_stats.R", "bbox_polygon.R", "RS_Acoef.R", "PopAreaResids.R", "LQ.R", "GiniSp.R")
+invisible(lapply(FUNCS, function(x) source(paste0(wd$funcs,x))))
+rm(FUNCS)
+
+```
+ 
+"Radiation_EstFlows.R", "net_stats2.R", "si_to_od_dmat.R", "Est_Beta.R")#,  "SpInt_EstFlows.R"
+# Macro-Scale
+
+```{r}
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Data_v4.gpkg"))
+
+
+st_drop_geometry(Partidos1800) <- st_read(paste0(wd$data_r,"Partidos1800_Data_v4.gpkg"))
+
+write.csv(st_drop_geometry(Partidos1800), paste0(wd$data_r,"Partidos1800_Data_v4.csv"))
+
+```
+
+
+#### Cost-Distance Matrices
+
+```{r}
+
+#Juris <- st_read(paste0(wd$data_r,"Juris_1570_Data.gpkg"))
+Partidos1800 = read.csv(paste0(wd$data_r,"Partidos1800_Data_v4.1.csv"))
+
+#JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+coords = cbind(Partidos1800$CabeceraLonX, Partidos1800$CabeceraLatY)
+#Juris_pts = st_as_sf(st_drop_geometry(Juris1800), coords = c("CabeceraLonX", "CabeceraLatY"), crs = 4326)
+
+
+x = pointDistance(coords, lonlat = T, allpairs = T)/1000
+x[is.na(x)] <- 0
+dmat = x+t(x)
+colnames(dmat) = Partidos1800$Label
+rownames(dmat) = Partidos1800$Label
+
+dmat = dmat/30 #assuming an average 30km per day of travel
+
+dmat_df = as.data.frame(dmat)
+
+write.csv(dmat_df, paste0(wd$data_r,"Distance_Matrix_Partidos1800.csv"))
+
+dist_vars = dmat_df %>% dplyr::select(Mexico, Puebla, Antequera, Celaya, Valladolid, Guadalajara, Guanajuato, `San Luis Potosi`, Merida, Zacatecas) %>% 
+  mutate(Dist_MajorCity = pmin(Mexico, Puebla, Antequera, Guanajuato, Guadalajara, na.rm=T), 
+         Dist_City = pmin(Mexico, Puebla, Antequera, Celaya, Valladolid, Guadalajara, Guanajuato, `San Luis Potosi`, Merida, Zacatecas, na.rm=T)) %>%
+  rename(Dist_Mexico = Mexico, Dist_Puebla = Puebla, Dist_Antequera = Antequera, Dist_Acambaro = Celaya, Dist_Morelia = Valladolid, Dist_Guadalajara = Guadalajara, Dist_Guanajuato = Guanajuato, Dist_SLP = `San Luis Potosi`, Dist_Merida  = Merida, Dist_Zacatecas = Zacatecas)
+dist_vars$Label = rownames(dist_vars)
+
+Partidos1800 = Partidos1800 %>% left_join(dist_vars, by = "Label")
+
+Poly <- st_read(paste0(wd$data_r,"Partidos1800_Data_v4.1.gpkg"))
+Partidos1800_Poly = Poly %>% left_join(Partidos1800, by = "OBJECTID")
+st_write(Partidos1800_Poly, paste0(wd$data_r, "Partidos1800_Data_v4.2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+```
+Partidos1800_pts
+Partidos1800_Poly
+```{r}
+
+```
+
+
+
+
+#### Political/Urban Index c.1800
+
+
+--Van Oss Monuments
+--Van Oss Urban
+--Urban Functions
+--Ports
+--Casa Moneda
+--Caja Real
+_University
+Printing Presses
+
+Acc_UrbFunctions
+Acc_VanOssMonuments
+Acc_Pct_NonIndios
+Acc_NonIndios
+Acc_TotalPop1805_Est
+Acc_Pct_Blancos
+
+
+
+
+
+Here, lambda set to -1 for accessibility metrics because we are already dealing with large distances
+
+
+
+
+
+
+
+```{r}
+
+Partidos1800 = Partidos1800 %>% mutate(
+  UrbFunctions = Port + Port + CasaMoneda + University + PrintingPress + Bishopric +	Capital	+ VanOssUrban + CajaReal,
+  CacGov = Caciques_T+Governadores_T)
+
+#Partidos1800_CORE = Partidos1800 %>% filter(FullData == T)
+
+  #mutate(across(c(variable1, variable2), ~na_if(.x, 0)))
+
+Partidos1800_pts = st_as_sf(st_drop_geometry(Partidos1800), coords = c("CabeceraLonX", "CabeceraLatY"), crs = 4326)
+  
+od = dist.mat(Partidos1800, sp_id  = "OBJECTID", lat_start = "CabeceraLatY", lon_start = "CabeceraLonX", endpoints = Partidos1800, ep_id  = "OBJECTID", lat_end = "CabeceraLatY", lon_end = "CabeceraLonX", unit = "km")
+
+od$distance = od$distance/30
+
+Partidos1800_od <- merge(od, Partidos1800, by.x = "from", by.y = "OBJECTID")  
+
+x = Partidos1800_od %>% filter(!(is.na(UrbFunctions)))
+Acc_UrbFunctions = hansen(x, "to", "from", "UrbFunctions",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility)) %>%  
+  rename(OBJECTID = to, Acc_UrbFunctions = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(Popdens_TotalPopEst_km2)))
+Acc_Popdens_TotalPopEst_km2 = hansen(x, "to", "from", "Popdens_TotalPopEst_km2",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>%  
+  rename(OBJECTID = to, Acc_Popdens_TotalPopEst_km2 = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(Tribs1805)))
+Acc_Tribs1805 = hansen(x, "to", "from", "Tribs1805",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>%
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>% 
+  rename(OBJECTID = to, Acc_Tribs1805 = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(TotalTribPop1805)))
+Acc_TotalTribPop1805 = hansen(x, "to", "from", "TotalTribPop1805",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>%  
+  rename(OBJECTID = to, Acc_TotalTribPop1805 = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(VanOssMonuments))) %>% filter(FullData == T)
+Acc_VanOssMonuments = hansen(x, "to", "from", "VanOssMonuments",  "distance", dtype = "exp", lambda = -1.0, extract_local = F)%>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility)) %>%  
+  rename(OBJECTID = to, Acc_VanOssMonuments = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(Pct_NonIndios)))
+Acc_Pct_NonIndios = hansen(x, "to", "from", "Pct_NonIndios",  "distance", dtype = "exp", lambda = -1.0, extract_local = F)%>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility)) %>%  
+  rename(OBJECTID = to, Acc_Pct_NonIndios = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(NonIndios)))
+Acc_NonIndios = hansen(x, "to", "from", "NonIndios",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>%  
+  rename(OBJECTID = to, Acc_NonIndios = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(TotalPop1805_Est)))
+Acc_TotalPop1805_Est = hansen(x, "to", "from", "TotalPop1805_Est",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>%  
+  rename(OBJECTID = to, Acc_TotalPop1805_Est = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(Pct_Blancos)))
+Acc_Pct_Blancos = hansen(x, "to", "from", "Pct_Blancos",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>%  
+  rename(OBJECTID = to, Acc_Pct_Blancos = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(Blancos)))
+Acc_Blancos = hansen(x, "to", "from", "Blancos",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>%
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>%  
+  rename(OBJECTID = to, Acc_Blancos = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(PopdensArable_TribPop_km2)))
+Acc_PopdensArable_TribPop_km2 = hansen(x, "to", "from", "PopdensArable_TribPop_km2",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>%  
+  rename(OBJECTID = to, Acc_PopdensArable_TribPop_km2 = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(EconComplexity))) %>% filter(FullData == T)
+Acc_EconComplexity = hansen(x, "to", "from", "EconComplexity",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>% 
+  rename(OBJECTID = to, Acc_EconComplexity = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(CacGov)))
+Acc_CacGov = hansen(x, "to", "from", "CacGov",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>%
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>% 
+  rename(OBJECTID = to, Acc_CacGov = accessibility)
+
+x = Partidos1800_od %>% filter(!(is.na(Pct_CaciquesGov_T)))
+Acc_Pct_CaciquesGov_T = hansen(x, "to", "from", "Pct_CaciquesGov_T",  "distance", dtype = "exp", lambda = -1.0, extract_local = F) %>% 
+  #mutate(accessibility = ifelse(accessibility == 0, NA, accessibility))%>% 
+  rename(OBJECTID = to, Acc_Pct_CaciquesGov_T = accessibility)
+
+
+access <- list(Acc_UrbFunctions, Acc_Popdens_TotalPopEst_km2, Acc_Tribs1805, Acc_TotalTribPop1805, Acc_VanOssMonuments, Acc_NonIndios, Acc_Pct_NonIndios, Acc_TotalPop1805_Est, Acc_Pct_Blancos, Acc_Blancos, Acc_PopdensArable_TribPop_km2, Acc_EconComplexity, Acc_CacGov, Acc_Pct_CaciquesGov_T)
+
+access <- reduce(access, left_join, by = "OBJECTID")
+access$OBJECTID = as.numeric(access$OBJECTID)
+
+Partidos1800 = Partidos1800 %>% left_join(access, by="OBJECTID")
+Partidos1800_pts = Partidos1800_pts %>% left_join(access, by="OBJECTID")
+Partidos1800_Poly = Partidos1800_Poly %>% left_join(access, by="OBJECTID")
+
+
+
+
+
+```
+
+Accessibility to Monuments
+Functions
+
+```{r}
+Partidos1800 = Partidos1800 %>% mutate(
+  PueblosPerArea = NumCabeceras1805 / ArableArea_km2,
+  PopTotPerPueblo = TotalPop1805_Est / NumCabeceras1805,
+  PopTribPerPueblo = TotalTribPop1805 / NumCabeceras1805,
+  TribPerPueblo = Tribs1805 / NumCabeceras1805)
+
+
+plot(cor_test(filter(Partidos1800, MacroRegion == "Central Mexico"), "TotalTribPop1805","NumCabeceras1805"))
+
+
+```
+
+
+
+
+
+Tribs1810
+TotalPop1805_Est	Indios	NonIndios	Blancos	Castas	Mestizos	NM
+Tribs1805
+TotalTribPop1805
+NumCabeceras1805	NumCabeceras1810
+PctArable	ArableArea_km2
+VanOssRegionType		VanOssMonuments	MonumentsUrban		Port_Dur		CasaMoneda_Dur		CajaReal_Dur		University_Dur		PrintingPress_Dur	SvBEconType	SvBEconTypeNum	EconComplexity
+Area_km2
+Pct_Indios	Pct_NonIndios	Pct_Blancos	Pct_Castas	Pct_Mestizos	Pct_NM
+TotalYearlyTribute1805
+TotalYearlyTribute1810
+Caciques_T	Governadores_T
+Pct_CaciquesGov_T
+Popdens_TribPop_km2	Popdens_TotalPopEst_km2	PopdensArable_TribPop_km2	PopdensArable_TotalPopEst_km2
+TributePerTrib_1805
+TributePerTrib_1810
+
+
+Zacatecas
+Arizpe
+Merida
+Laguna de los Terminos
+Merida
+Tabasco
+Guadalajara
+
+
+#### Core Periphery Analysis
+
+Acc_Popdens_TotalPopEst_km2, Acc_Tribs1805, Acc_TotalTribPop1805, Acc_TotalPop1805_Est,   Acc_PopdensArable_TribPop_km2, 
+```{r}
+
+pop = Partidos1800 %>% dplyr::select(Nombre, Popdens_TotalPopEst_km2, Acc_Popdens_TotalPopEst_km2)
+
+plot(cor_test(filter(Partidos1800, MacroRegion == "Central Mexico"), "Popdens_TotalPopEst_km2","Acc_Popdens_TotalPopEst_km2"))
+plot(cor_test(filter(Partidos1800, MacroRegion == "Central Mexico"), "Dist_City","Acc_Popdens_TotalPopEst_km2"))
+
+plot(cor_test(filter(Partidos1800, MacroRegion == "Central Mexico"), "Acc_Pct_CaciquesGov_T","Acc_Popdens_TotalPopEst_km2"))
+plot(cor_test(filter(Partidos1800, MacroRegion == "Central Mexico"), "Acc_EconComplexity","Acc_Popdens_TotalPopEst_km2"))
+
+plot(cor_test(filter(Partidos1800, MacroRegion == "Central Mexico"), "Popdens_TotalPopEst_km2", "PopdensArable_TribPop_km2"))
+
+cc = Partidos1800 %>% mutate(PopdensArable_Tribs1805_km2 = Tribs1805/ArableArea_km2) %>% 
+  dplyr::select(PopdensArable_Tribs1805_km2, Acc_Popdens_TotalPopEst_km2,  Acc_UrbFunctions, Acc_VanOssMonuments, Acc_EconComplexity,  Acc_CacGov, Acc_Pct_CaciquesGov_T,Acc_Blancos,Acc_Pct_Blancos,Acc_Pct_NonIndios)
+results <- correlation(cc)
+results %>%
+  summary(redundant = TRUE) %>%
+  plot()
+
+
+cc = Partidos1800 %>% mutate(PopdensArable_Tribs1805_km2 = Tribs1805/ArableArea_km2) %>% 
+  dplyr::select(Acc_PopdensArable_TribPop_km2, Acc_Popdens_TotalPopEst_km2,  Acc_UrbFunctions, Acc_VanOssMonuments, Acc_EconComplexity,  Acc_CacGov, Acc_Pct_CaciquesGov_T,Acc_Blancos,Acc_Pct_Blancos,Acc_Pct_NonIndios)
+results <- correlation(cc)
+results %>%
+  summary(redundant = TRUE) %>%
+  plot()
+
+cc = Partidos1800 %>% mutate(PopdensArable_Tribs1805_km2 = Tribs1805/ArableArea_km2) %>% 
+  dplyr::select(PopdensArable_TribPop_km2, Popdens_TotalPopEst_km2,  UrbFunctions, VanOssMonuments, EconComplexity,  CacGov, Pct_CaciquesGov_T,Blancos,Pct_Blancos,Pct_NonIndios, Dist_Mexico, Dist_MajorCity, Dist_City, TributePerTrib_1805)
+results <- correlation(cc)
+results %>%
+  summary(redundant = TRUE) %>%
+  plot()
+
+
+
+results
+plot(cor_test(filter(Partidos1800, MacroRegion == "Central Mexico"), "Popdens_TotalPopEst_km2", "VanOssMonuments"))
+plot(cor_test(filter(Partidos1800, MacroRegion == "Central Mexico"), "Acc_Popdens_TotalPopEst_km2", "Acc_UrbFunctions"))
+
+plot(cor_test(Partidos1800, "MonumentsUrban", "Acc_UrbFunctions"))
+
+plot(log(Partidos1800$VanOssMonuments), log(Partidos1800$PopdensArable_TribPop_km2))
+```
+
+
+
+### Juris Transport Network
+
+```{r}
+
+
+spnet <- SpatialNets(CD.mat = dmat,#select cost-dist matrix and convert to hrs (hrs=seconds/3600)
+                        nodes = Pts_List[[p]]@data,#create node data
+                        coords = coords,# coordinate pairs for sites 
+                        Pts.sf = st_as_sf(Pts_List[[p]]),# sf class site points
+                        Sites.sf = st_as_sf(Poly_List[[p]]),# sf class site polygons
+                        Catch.sf = st_as_sf(Catch_List[[p]]),# sf class catchment polygons
+                        limits = CatchLims, #
+                        bounds = extent(limits),
+                        window = c(bounds@xmin, bounds@xmax, bounds@ymin, bounds@ymax),
+                        ggplots = "PlotResults",#,"PlotResults", "none"),
+                        ggbasemap = ggbasemap, 
+                        mode = "single",#c("single", "multi", "multicombine"),
+                        method = "gabriel",
+                        combine = "weighted",#("weighted","unweighted"),
+                        plotNodeStat = "centr_clos_n",
+                        ggPlotTitle = "SBOM CL (AD 100-550) Transport Network Modelled as",
+                        knn_k = 5,
+                        maxdist = 1,
+                        outputs = "none")
+```
+
+
+```{r}
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Juris1800$Area_km2 = as.numeric(st_area(Juris1800))/10000/100
+#st_write(Juris1800, paste0(wd$data_r, "Partidos1800_Poly_v3_SvBJuris.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+```
+
+
+```{r}
+Juris1800 <- st_read(paste0(wd$data_r,"Juris1800_Data_v4.gpkg"))
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Data_v4.gpkg"))
+
+Juris1800_2 = Juris1800 %>% filter(In1805MatTribData == "Yes")
+
+```
+
+
+
+
+
+
+
+
+```{r}
+#Cabeceras1805_Juris <- st_read(paste0(wd$data_r,"Cabeceras1805_Juris.gpkg"))
+
+
+Partidos1800_nb <- poly2nb(Partidos1800)
+Partidos_listw <- nb2listw(Partidos1800_nb)
+Juris1800_nb  <- poly2nb(Juris1800_2)
+Juris_listw <- nb2listw(Juris1800_nb)
+
+Partidos1800_pts = st_as_sf(st_drop_geometry(Partidos1800), coords = c("CabeceraLonX", "CabeceraLatY"), 
+                 crs = 4326)
+
+Juris1800_pts = st_as_sf(st_drop_geometry(Juris1800_2), coords = c("CabeceraLonX", "CabeceraLatY"), 
+                 crs = 4326)
+
+
+```
+
+```{r}
+
+df = st_drop_geometry(Partidos1800_Arch)
+od = dist.mat(df, sp_id  = "Juris", lat_start = "CabeceraLatY", lon_start = "CabeceraLonX", endpoints = df, ep_id  = "Juris", 
+lat_end = "CabeceraLatY", lon_end = "CabeceraLonX", unit = "km")
+
+df_od <- merge(od, df, by.x = "from", by.y = "Juris")  
+
+df_od$CC1570_1600 = df_od$CC1570 + df_od$CC1580 + df_od$CC1590
+df_od$CC1570_1620 = df_od$CC1570 + df_od$CC1580 + df_od$CC1590 + df_od$CC1600 + df_od$CC1610
+df_od$CC1600_1620 = df_od$CC1600 + df_od$CC1610
+df_od$CC1520_1550 = df_od$CC1520 + df_od$CC1530 + df_od$CC1540
+df_od$CC1550_1570 = df_od$CC1550 + df_od$CC1560
+df_od$CC1520_1570 = df_od$CC1520 + df_od$CC1530 + df_od$CC1540 + df_od$CC1550 + df_od$CC1560
+
+hans = hansen(df_od, "to", "from", "CC1520_1570",  "distance", dtype = "exp", lambda = -0.5, extract_local = T)  
+
+x = Partidos1800_Arch %>% left_join(hans, by=join_by(Juris == to))
+
+plot(x["accessibility"])
+
+
+```
+
+
+
+
+
+# Jurisdictions / Regions
+
+ *Tlaxcala -- 1580, 1623
+ *Huex 1570s, 1600
+ *Coyoacan 1553
+ *Otumba 1570, 1603
+ *Tlalnepantla 1569, 1600
+ *Cholula 1600
+ *Calpan 1600
+ *Yecapixtla 1564
+ *Chalco 176X
+ *Zinacantepec 1574
+ *Tepoztlan XVI
+ *Xaltocan 1599
+
+
+
+BOM1570_PolyData.gpkg
+```{r}
+BOM1570_PolyData <- st_read(paste0(wd$data_r,"BOM1570_PolyData.gpkg"))
+
+x <- BOM1570_PolyData %>% filter(North > 0)
+
+
+BOM1570_PtsData = st_as_sf(st_drop_geometry(x), coords = c("East", "North"), crs = 32614)
+
+st_crs(BOM1570_PolyData)
+
+y = st_transform(BOM1570_PtsData, crs = 4326)
+st_crs(y)
+
+coordBOM = st_coordinates(y)
+
+BOM1570_PtsData_LatLon = bind_cols(y, coordBOM)
+
+y = BOM1570_PtsData_LatLon %>% dplyr::select(fid_2,X,Y) %>% st_drop_geometry()
+
+x = x %>% left_join(y, by = "fid_2")
+BOM1570_PolyData = BOM1570_PolyData %>% left_join(y, by = "fid_2")
+BOM1570_PolyData_LatLon = st_transform(BOM1570_PolyData, crs = 4326)
+
+
+st_write(BOM1570_PolyData, paste0(wd$data_r, "BOM1570_PolyData_v2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+st_write(BOM1570_PolyData_LatLon, paste0(wd$data_r, "BOM1570_PolyData_LatLon_v2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+st_write(BOM1570_PtsData_LatLon, paste0(wd$data_r, "BOM1570_PtsData_LatLon_v2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+st_write(BOM1570_PtsData, paste0(wd$data_r, "BOM1570_PtsData_v2.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+
+CoyoPts = BOM1570_PtsData_LatLon %>% filter(Jurisdiccion == "Coyoacan")
+CoyoPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Coyoacan")
+
+CuauhtitlanPts = BOM1570_PtsData_LatLon %>% filter(Jurisdiccion == "Cuauhtitlan")
+CuauhtitlanPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Cuauhtitlan")
+
+EcatepecPts = BOM1570_PtsData_LatLon %>% filter(Jurisdiccion == "Ecatepec" | Name %in% c("San Lucas Xoloc", "Santa Ana Zacatlan", "Santa Maria Atzompan"))
+EcatepecPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Ecatepec" | Name %in% c("San Lucas Xoloc", "Santa Ana Zacatlan", "Santa Maria Atzompan"))
+
+MexicoPts = BOM1570_PtsData_LatLon %>% filter(Jurisdiccion == "Mexico")
+MexicoPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Mexico")
+
+PachucaPts = BOM1570_PtsData_LatLon %>% filter(Jurisdiccion == "Pachuca")
+PachucaPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Pachuca")
+
+ZumpangoPts = BOM1570_PtsData_LatLon %>% filter(Jurisdiccion == "Zumpango")
+ZumpangoPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Zumpango")
+
+HueypoxtlaPts = BOM1570_PtsData_LatLon %>% filter(Jurisdiccion == "Hueypoxtla")
+HueypoxtlaPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Hueypoxtla")
+
+TlalnepantlaPts = BOM1570_PtsData_LatLon %>% filter(Cabecera == "Tlalnepantla")
+TlalnepantlaPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Tlalnepantla")
+
+NBOMPts = BOM1570_PtsData_LatLon %>% filter(Jurisdiccion %in% c("Pachuca", "Zumpango", "Hueypoxtla", "Otumba", "Ecatepec", "Cuauhtitlan") | Name %in% c("San Lucas Xoloc", "Santa Ana Zacatlan", "Santa Maria Atzompan"))
+NBOMPoly = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion %in% c("Pachuca", "Zumpango", "Hueypoxtla", "Otumba", "Ecatepec", "Cuauhtitlan") | Name %in% c("San Lucas Xoloc", "Santa Ana Zacatlan", "Santa Maria Atzompan"))
+
+write.csv(st_drop_geometry(BOM1570_PolyData_LatLon), paste0(wd$data_r,"BOM1570_PolyData_LatLon.csv"))
+
+```
+
+
+
+```{r}
+Data1569 = read.csv(paste0(wd$data_r,"SettlementSystems/Data1569.csv"))
+
+hist(log(Data1569$Trib))
+
+fit<-fitdistr(log(Data1569$Trib),"normal")$estimate
+ks.test(log(Data1569$Trib), "pnorm",fit[1],fit[2])
+
+ecdf.ks.CI(log(Data1569$Trib), family="sans", main= "Arozbispado de Mexico 1569 Population", cex.main=2, font.main=2, font.lab=2, xlab="Log Pop", ylab="ECDF(Log Pop)")
+Norm1 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm1), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+RS_Acoef(z = Data1569$Trib, ids = Data1569$Name)
+
+
+
+
+```
+```{r}
+nclass.Sturges(Data1569$Trib)
+nclass.scott(log(Data1569$Trib))
+HTbreaks <- classIntervals(Data1569$Trib, style = "headtails")
+length(HTbreaks$brks) - 1
+```
+
+```{r}
+x=Data1569$Trib
+nc=10
+pal1=brewer.pal(nc,"Set2")
+#fb=as.numeric(unlist(strsplit(ManualHierClasses$Breaks[p], split=", ")))
+
+kmbrks <- classIntervals(x, style = "kmeans", n=nc)
+hcbrks <- classIntervals(x, style = "hclust", n=nc)
+bcbrks <- classIntervals(x, style = "bclust", n=nc)
+fbrks <- classIntervals(x, style = "fisher", n=nc)
+jbrks <- classIntervals(x, style = "jenks", n=nc)
+maxbrks <- classIntervals(x, style = "maximum", n=nc)
+HTbrks <- classIntervals(x, style = "headtails")
+#fixbrks <- classIntervals(x, style = "fixed", fixedBreaks=fb)
+
+par(mfrow = c(2, 2))
+plot(fbrks, pal = pal1, main = "Fisher",log = 'x',xlim=c(min(x)-1, max(x)+5), xlab="Log Population", ylab="ECDF(Population)")
+plot(jbrks, pal = pal1, main = "Jenks",log = 'x',xlim=c(min(x)-1, max(x)+5), xlab="Log Population", ylab="ECDF(Population)")
+plot(kmbrks, pal = pal1, main = "Kmeans",log = 'x',xlim=c(min(x)-1, max(x)+5), xlab="Log Population", ylab="ECDF(Population)")
+plot(HTbrks, pal = pal1, main = "Heads-Tails",log = 'x',xlim=c(min(x)-1, max(x)+5), xlab="Log Population", ylab="ECDF(Population)")
+par(mfrow = c(1, 1))
+
+
+
+par(mfrow = c(2, 2))
+plot(fbrks, pal = pal1, main = "Fisher",xlim=c(min(x)-1, max(x)+5), xlab="Population", ylab="ECDF(Population)")
+plot(jbrks, pal = pal1, main = "Jenks",xlim=c(min(x)-1, max(x)+5), xlab="Population", ylab="ECDF(Population)")
+plot(kmbrks, pal = pal1, main = "Kmeans",xlim=c(min(x)-1, max(x)+5), xlab="Log Population", ylab="ECDF(Population)")
+plot(HTbrks, pal = pal1, main = "Heads-Tails",xlim=c(min(x)-1, max(x)+5), xlab="Log Population", ylab="ECDF(Population)")
+par(mfrow = c(1, 1))
+```
+
+
+
+### Northern BOM
+
+```{r}
+hist(log(NBOMPts$Trib1570))
+hist(log(NBOMPts$PopDens1570))
+
+fit<-fitdistr(log(NBOMPts$Trib1570),"normal")$estimate
+ks.test(log(NBOMPts$Trib1570), "pnorm",fit[1],fit[2])
+
+ecdf.ks.CI(log(NBOMPts$Trib1570), family="sans", main= "NBOM 1570 Population", cex.main=2, font.main=2, font.lab=2, xlab="Log Pop", ylab="ECDF(Log Pop)")
+Norm1 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm1), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+fit<-fitdistr(log(NBOMPts$PopDens1570),"normal")$estimate
+ks.test(log(NBOMPts$PopDens1570), "pnorm",fit[1],fit[2])
+
+ecdf.ks.CI(log(NBOMPts$PopDens1570), family="sans", main= "NBOM 1570 Pop Density", cex.main=2, font.main=2, font.lab=2, xlab="Log Pop Density", ylab="ECDF(Log Pop Density)")
+Norm1 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm1), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+RS_Acoef(z = NBOMPts$Trib1570, ids = NBOMPts$NameShort)
+```
+
+### Coyoacan 1553
+
+### Cuauhtitlan 1569
+
+
+### Zumpango 1569
+
+
+### Ecatepec 1569
+
+
+### Otumba 1569
+
+```{r}
+Otumba <- st_read(paste0(wd$data_r,"Otumba1569_Final.gpkg"))
+Otumba2 <- st_read(paste0(wd$data_r,"Otumba1569Poly_v2_Data.gpkg"))
+
+Otumba_FromBOMData = BOM1570_PolyData_LatLon %>% filter(Jurisdiccion == "Otumba")
+
+RS_Acoef(z = Otumba$Trib1570, ids = Otumba$NameShort)
+```
+
+
+```{r}
+Otumba$PopDens1603 = Otumba$Trib1603/Otumba$Area_ha
+hist(log(Otumba$Trib1570))
+hist(log(Otumba$PopDens1570))
+hist(log(Otumba$Trib1603))
+hist(log(Otumba$PopDens1603))
+
+
+fit<-fitdistr(log(Otumba$Trib1570),"normal")$estimate
+ks.test(log(Otumba$Trib1570), "pnorm",fit[1],fit[2])
+
+ecdf.ks.CI(log(Otumba$Trib1570), family="sans", main= "Otumba 1570 Population", cex.main=2, font.main=2, font.lab=2, xlab="Log Pop", ylab="ECDF(Log Pop)")
+Norm1 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm1), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+fit<-fitdistr(log(Otumba$PopDens1570),"normal")$estimate
+ks.test(log(Otumba$PopDens1570), "pnorm",fit[1],fit[2])
+
+ecdf.ks.CI(log(Otumba$PopDens1570), family="sans", main= "Otumba 1570 Pop Density", cex.main=2, font.main=2, font.lab=2, xlab="Log Pop Density", ylab="ECDF(Log Pop Density)")
+Norm1 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm1), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+
+fit<-fitdistr(log(Otumba$Trib1603),"normal")$estimate
+ks.test(log(Otumba$Trib1603), "pnorm",fit[1],fit[2])
+
+ecdf.ks.CI(log(Otumba$Trib1603), family="sans", main= "Otumba 1603 Population", cex.main=2, font.main=2, font.lab=2, xlab="Log Pop", ylab="ECDF(Log Pop)")
+Norm1 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm1), do.points = FALSE, verticals=T, lwd=2, col="blue")
+
+fit<-fitdistr(log(Otumba$PopDens1603),"normal")$estimate
+ks.test(log(Otumba$PopDens1603), "pnorm",fit[1],fit[2])
+
+ecdf.ks.CI(log(Otumba$PopDens1603), family="sans", main= "Otumba 1603 Pop Density", cex.main=2, font.main=2, font.lab=2, xlab="Log Pop Density", ylab="ECDF(Log Pop Density)")
+Norm1 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm1), do.points = FALSE, verticals=T, lwd=2, col="blue")
+```
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

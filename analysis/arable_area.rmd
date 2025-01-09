@@ -1,0 +1,3095 @@
+---
+title: "Untitled"
+author: "Rudolf Cesaretti"
+date: "2024-04-08"
+output: html_document
+---
+
+
+# Process DEM Raster
+
+### STEP 1
+
+
+
+```{r}
+library("terra")
+
+
+dem1 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N30W110.tar/EarthEnv-DEM90_N30W110/EarthEnv-DEM90_N30W110.bil")
+dem2 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N30W105.tar/EarthEnv-DEM90_N30W105/EarthEnv-DEM90_N30W105.bil")
+#dem13_resampled <- resample(dem13, dem14, method="bilinear")
+dem = merge(dem1, dem2)
+rm(dem1, dem2)
+
+dem3 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N30W100.tar/EarthEnv-DEM90_N30W100/EarthEnv-DEM90_N30W100.bil")
+dem = merge(dem, dem3)
+rm(dem3)
+
+dem15 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N30W115.tar/EarthEnv-DEM90_N30W115/EarthEnv-DEM90_N30W115.bil")
+dem = merge(dem, dem15)
+rm(dem15)
+
+dem16 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N30W120.tar/EarthEnv-DEM90_N30W120/EarthEnv-DEM90_N30W120.bil")
+dem = merge(dem, dem16)
+rm(dem16)
+
+writeRaster(dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem30.tif", overwrite=TRUE)
+
+
+dem4 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N25W120.tar/EarthEnv-DEM90_N25W120/EarthEnv-DEM90_N25W120.bil")
+dem5 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N25W115.tar/EarthEnv-DEM90_N25W115/EarthEnv-DEM90_N25W115.bil")
+dem = merge(dem5, dem4)
+rm(dem4, dem5)
+
+dem6 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N25W110.tar/EarthEnv-DEM90_N25W110/EarthEnv-DEM90_N25W110.bil")
+dem = merge(dem, dem6)
+rm(dem6)
+
+dem7 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N25W105.tar/EarthEnv-DEM90_N25W105/EarthEnv-DEM90_N25W105.bil")
+dem = merge(dem, dem7)
+rm(dem7)
+
+dem8 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N25W100.tar/EarthEnv-DEM90_N25W100/EarthEnv-DEM90_N25W100.bil")
+dem = merge(dem, dem8)
+rm(dem8)
+
+writeRaster(dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem25.tif", overwrite=TRUE)
+
+
+
+
+
+dem9 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N20W110.tar/EarthEnv-DEM90_N20W110/EarthEnv-DEM90_N20W110.bil")
+dem10 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N20W105.tar/EarthEnv-DEM90_N20W105/EarthEnv-DEM90_N20W105.bil")
+dem = merge(dem10, dem9)
+rm(dem9,dem10)
+
+dem11 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N20W100.tar/EarthEnv-DEM90_N20W100/EarthEnv-DEM90_N20W100.bil")
+dem = merge(dem, dem11)
+rm(dem11)
+
+dem12 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N20W095.tar/EarthEnv-DEM90_N20W095/EarthEnv-DEM90_N20W095.bil")
+dem = merge(dem, dem12)
+rm(dem12)
+
+dem13 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N20W090.tar/EarthEnv-DEM90_N20W090/EarthEnv-DEM90_N20W090.bil")
+dem = merge(dem, dem13)
+rm(dem13)
+
+dem14 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N20W115.tar/EarthEnv-DEM90_N20W115/EarthEnv-DEM90_N20W115.bil")
+dem = merge(dem, dem14)
+rm(dem14)
+
+writeRaster(dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem20.tif", overwrite=TRUE)
+
+####
+dem17 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N15W090.tar/EarthEnv-DEM90_N15W090/EarthEnv-DEM90_N15W090.bil")
+dem18 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N15W095.tar/EarthEnv-DEM90_N15W095/EarthEnv-DEM90_N15W095.bil")
+dem = merge(dem18, dem17)
+rm(dem18, dem17)
+
+dem19 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N15W100.tar/EarthEnv-DEM90_N15W100/EarthEnv-DEM90_N15W100.bil")
+dem = merge(dem, dem19)
+rm(dem19)
+
+dem20 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N15W105.tar/EarthEnv-DEM90_N15W105/EarthEnv-DEM90_N15W105.bil")
+dem = merge(dem, dem20)
+rm(dem20)
+
+dem21 <- rast("C:/Users/TJ McMote/Downloads/EarthEnv-DEM90_N15W110.tar/EarthEnv-DEM90_N15W110/EarthEnv-DEM90_N15W110.bil")
+dem = merge(dem, dem21)
+rm(dem21)
+
+writeRaster(dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem15.tif", overwrite=TRUE)
+
+dem15 <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem15.tif")
+dem20 <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem20.tif")
+dem = merge(dem15, dem20)
+rm(dem15, dem20)
+writeRaster(dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem15_20.tif", overwrite=TRUE)
+
+dem25 <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem25.tif")
+dem30 <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem30.tif")
+dem = merge(dem25, dem30)
+rm(dem25, dem30)
+writeRaster(dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem25_30.tif", overwrite=TRUE)
+
+dem25_30 <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem25_30.tif")
+dem15_20 <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem15_20.tif")
+dem = merge(dem15_20, dem25_30)
+rm(dem15_20, dem25_30)
+writeRaster(dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem_mexico.tif", overwrite=TRUE)
+
+dem10 <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem10.tif")
+dem_mexico <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem_mexico.tif")
+dem = merge(dem10, dem_mexico)
+rm(dem10, dem_mexico)
+writeRaster(dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem_mexico2.tif", overwrite=TRUE)
+
+```
+
+
+```{r}
+# Step 1: Read the DEM raster and the polygon shapefile
+dem <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/dem_mexico2.tif") # Replace 'dem_raster.tif' with your raster file path
+poly <- vect("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/MexicoMask.gpkg") # Replace 'polygon.shp' with your polygon shapefile path
+
+# Clip the raster using the polygon, including handling holes properly
+clipped_dem <- crop(dem, poly)
+clipped_dem <- mask(clipped_dem, poly)
+
+# Step 2: Convert zero values to NA
+clipped_dem[clipped_dem == 0] <- NA
+
+writeRaster(clipped_dem, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP.tif", overwrite=TRUE)
+
+slope = terrain(clipped_dem, v="slope", neighbors=8, unit="degrees") 
+writeRaster(slope, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_slope.tif", overwrite=TRUE)
+
+####
+
+clipped_dem <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP.tif")
+slope <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_slope.tif")
+
+ArableElev = clipped_dem
+ArableElev[ArableElev < 3600]  <- 1
+ArableElev[ArableElev >= 3600] <- 0
+writeRaster(ArableElev, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArableElev3600.tif", overwrite=TRUE)
+
+ArableSlope = slope
+ArableSlope[ArableSlope < 16]  <- 1
+ArableSlope[ArableSlope >= 16] <- 0
+writeRaster(ArableSlope, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArableSlope16.tif", overwrite=TRUE)
+
+ArableElev <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArableElev3600.tif") 
+
+Arable = ArableElev*ArableSlope
+writeRaster(Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", overwrite=TRUE)
+
+library(raster)
+library(rgdal)
+
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim.tif")
+#poly <- vect("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/MexicoMask.gpkg") # Replace 'polygon.shp' with your polygon shapefile path
+Arable <- raster("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim.tif")
+poly <- readOGR(dsn="C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/MexicoMask.gpkg")
+
+
+#Arable <- crop(Arable, poly)
+Arable <- mask(Arable, poly)
+suppressWarnings({
+  ArableShrink1 <- focal(Arable, w=matrix(1,3,3), fun=function(x) min(x, na.rm=TRUE))
+})
+
+ArableShrink1 <- erode(Arable, 8)
+
+writeRaster(ArableShrink1, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelimShrink1.tif", overwrite=TRUE)
+```
+
+_3600_15
+
+# Here
+
+```{r}
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+library(sf)
+
+library(tidyverse)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3.gpkg"))
+
+
+#Partidos1800 = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(!(Provincia %in% c("Arizpe")))
+Partidos1800_Mex = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia =="Mexico")
+st_write(Partidos1800_Mex, paste0(wd$data_r, "Partidos1800_Mex.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+Partidos1800_Pue = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia %in% c("Puebla", "Tlaxcala"))
+st_write(Partidos1800_Pue, paste0(wd$data_r, "Partidos1800_Pue.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+Partidos1800_Oax = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia %in% c("Oaxaca (Antequera)"))
+st_write(Partidos1800_Oax, paste0(wd$data_r, "Partidos1800_Oax.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+Partidos1800_Ver = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia %in% c("Veracruz"))
+st_write(Partidos1800_Ver, paste0(wd$data_r, "Partidos1800_Ver.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+Partidos1800_Guan = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia %in% c("San Luis Potosi","Guanajuato"))
+st_write(Partidos1800_Guan, paste0(wd$data_r, "Partidos1800_Guan.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+Partidos1800_Guad = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia %in% c("Guadalajara","Colotlan y Nayarit"))
+st_write(Partidos1800_Guad, paste0(wd$data_r, "Partidos1800_Guad.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+Partidos1800_Val = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia %in% c("Valladolid"))
+st_write(Partidos1800_Val, paste0(wd$data_r, "Partidos1800_Val.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+Partidos1800_Yuc = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia %in% c("Merida","Laguna de los Terminos", "Tabasco"))
+st_write(Partidos1800_Yuc, paste0(wd$data_r, "Partidos1800_Yuc.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+Partidos1800_Zac = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(Provincia %in% c("Zacatecas","Durango (Durango | Parral)", "Arizpe"))
+st_write(Partidos1800_Zac, paste0(wd$data_r, "Partidos1800_Zac.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+
+################ VERACRUZ
+library(terra)
+
+poly <- vect(paste0(wd$data_r,"Partidos1800_Ver.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Ver.tif", overwrite=TRUE)
+
+
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+#tif = system.file("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", package = "stars")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Ver.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Ver.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Ver.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Ver.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+################ MEXICO
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Mex.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Mex.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+#tif = system.file("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", package = "stars")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Mex.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Mex.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Mex.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Mex.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Puebla
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Pue.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Pue.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+#tif = system.file("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", package = "stars")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Pue.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Pue.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Pue.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Pue.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Oaxaca
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Oax.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Oax.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+#tif = system.file("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", package = "stars")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Oax.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Oax.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Oax.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Oax.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+################ Valladolid
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Val.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Val.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Val.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Val.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Val.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Val.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Guanajuato
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Guan.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Guan.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Guan.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Guan.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Guan.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Guan.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Guadalajara
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Guad.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Guad.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Guad.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Guad.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Guad.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Guad.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+################ Yucatan
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Yuc.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Yuc.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Yuc.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Yuc.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Yuc.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Yuc.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Zacatecas
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Zac.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Zac.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Zac.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Zac.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Zac.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Zac.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+#### Combine
+
+library(sf)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Zac <- st_read(paste0(wd$data_r,"Partidos1800_Zac.gpkg"))
+Yuc <- st_read(paste0(wd$data_r,"Partidos1800_Yuc.gpkg"))
+Guan <- st_read(paste0(wd$data_r,"Partidos1800_Guan.gpkg"))
+Guad <- st_read(paste0(wd$data_r,"Partidos1800_Guad.gpkg"))
+Pue <- st_read(paste0(wd$data_r,"Partidos1800_Pue.gpkg"))
+Ver <- st_read(paste0(wd$data_r,"Partidos1800_Ver.gpkg"))
+Val <- st_read(paste0(wd$data_r,"Partidos1800_Val.gpkg"))
+Mex <- st_read(paste0(wd$data_r,"Partidos1800_Mex.gpkg"))
+Oax <- st_read(paste0(wd$data_r,"Partidos1800_Oax.gpkg"))
+library(tidyverse)
+xx = bind_rows(Mex,Pue,Ver,Oax,Guan,Val,Guad,Zac,Yuc)
+
+xx = xx %>% mutate(ArableArea_km2 = Area_km2*PctArable)
+
+st_write(xx, paste0(wd$data_r, "Partidos1800_Poly_v4.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+```
+
+### Juris
+
+```{r}
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+library(sf)
+
+library(tidyverse)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+Partidos1800 <- Partidos1800 %>% filter(!(is.na(GerhardNum)))
+
+#Partidos1800 = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>% filter(!(Provincia %in% c("Arizpe")))
+Partidos1800_Mex = Partidos1800 %>% filter(Provincia =="Mexico")
+st_write(Partidos1800_Mex, paste0(wd$data_r, "Partidos1800_Mex.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+Partidos1800_Pue = Partidos1800 %>% filter(Provincia %in% c("Puebla", "Tlaxcala"))
+st_write(Partidos1800_Pue, paste0(wd$data_r, "Partidos1800_Pue.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+Partidos1800_Oax = Partidos1800 %>% filter(Provincia %in% c("Oaxaca (Antequera)"))
+st_write(Partidos1800_Oax, paste0(wd$data_r, "Partidos1800_Oax.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+Partidos1800_Ver = Partidos1800 %>% filter(Provincia %in% c("Veracruz"))
+st_write(Partidos1800_Ver, paste0(wd$data_r, "Partidos1800_Ver.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+Partidos1800_Guan = Partidos1800 %>% filter(Provincia %in% c("San Luis Potosi","Guanajuato"))
+st_write(Partidos1800_Guan, paste0(wd$data_r, "Partidos1800_Guan.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+Partidos1800_Guad = Partidos1800 %>% filter(Provincia %in% c("Guadalajara","Durango (Durango | Parral)"))
+st_write(Partidos1800_Guad, paste0(wd$data_r, "Partidos1800_Guad.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+Partidos1800_Val = Partidos1800 %>% filter(Provincia %in% c("Valladolid"))
+st_write(Partidos1800_Val, paste0(wd$data_r, "Partidos1800_Val.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+################ VERACRUZ
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Ver.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Ver.tif", overwrite=TRUE)
+
+rm(list = ls())
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+#tif = system.file("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", package = "stars")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Ver.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Ver.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Ver.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Ver.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+################ MEXICO
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Mex.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Mex.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+#tif = system.file("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", package = "stars")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Mex.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Mex.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Mex.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Mex.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Puebla
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Pue.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Pue.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+#tif = system.file("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", package = "stars")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Pue.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Pue.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Pue.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Pue.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Oaxaca
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Oax.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Oax.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+#Arable <- rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+#tif = system.file("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif", package = "stars")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Oax.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Oax.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Oax.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Oax.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+################ Valladolid
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Val.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Val.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Val.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Val.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Val.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Val.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Guanajuato
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Guan.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Guan.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Guan.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Guan.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Guan.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Guan.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+################ Guadalajara
+library(terra)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+poly <- vect(paste0(wd$data_r,"Partidos1800_Guad.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Guad.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+library(terra)
+library(tidyverse)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_Guad.tif")
+Partidos1800 <- vect(paste0(wd$data_r,"Partidos1800_Guad.gpkg"))
+
+s <- terra::extract(Arable, Partidos1800, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Partidos1800$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+library(sf)
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Guad.gpkg"))
+Partidos1800 <- Partidos1800 %>% left_join(s, by = "OBJECTID")
+st_write(Partidos1800, paste0(wd$data_r, "Partidos1800_Guad.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+
+rm(list = ls())
+
+
+#### Combine
+
+library(sf)
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+Guan <- st_read(paste0(wd$data_r,"Partidos1800_Guan.gpkg"))
+Guad <- st_read(paste0(wd$data_r,"Partidos1800_Guad.gpkg"))
+Pue <- st_read(paste0(wd$data_r,"Partidos1800_Pue.gpkg"))
+Ver <- st_read(paste0(wd$data_r,"Partidos1800_Ver.gpkg"))
+Val <- st_read(paste0(wd$data_r,"Partidos1800_Val.gpkg"))
+Mex <- st_read(paste0(wd$data_r,"Partidos1800_Mex.gpkg"))
+Oax <- st_read(paste0(wd$data_r,"Partidos1800_Oax.gpkg"))
+library(tidyverse)
+xx = bind_rows(Mex,Pue,Ver,Oax,Guan,Val,Guad)
+
+xx = xx %>% mutate(ArableArea_km2 = Area_km2*PctArable)
+
+st_write(xx, paste0(wd$data_r, "Partidos1800_Poly_v4_SvBJuris.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+```
+
+
+
+
+clipped_Arable <- mask(clipped_Arable, Partidos1800)
+
+#Extract raster values for each polygon. This creates a list where each element
+#corresponds to the raster values within a polygon
+values <- extract(clipped_Arable, Partidos1800)
+
+#Calculate the percentage of cells that are 1 within each polygon
+percentages <- sapply(values, function(x) {
+  if (length(x) > 0) {  # Avoid division by zero
+    mean(x == 1, na.rm = TRUE) * 100  # Calculate percentage
+  } else {
+    NA  # Return NA if there are no cells within a polygon
+  }
+})
+
+# Add this information back to the sf object if desired
+polygons$percent_one <- percentages
+
+
+Partidos1800$PercentArable <- percentages
+
+ChurchConstructC16
+
+
+
+
+### 1570
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1570 <- st_read(paste0(wd$data_r,"Juris1570.gpkg"))
+Juris1570 <- Juris1570 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1570 <- st_join(Juris1570, JurisCabPts)
+
+Juris1570$Area_km2 <- as.numeric(st_area(Juris1570))/10000/100
+
+st_write(Juris1570, paste0(wd$data_r, "Juris_1570.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1570.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1570.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1570.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1570_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1570_Data.csv"))
+
+rm(list = ls())
+
+
+Juris1570 <- st_read(paste0(wd$data_r,"Juris_1570_Data.gpkg"))
+
+```
+
+
+### 1600
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1600 <- st_read(paste0(wd$data_r,"Juris1600.gpkg"))
+Juris1600 <- Juris1600 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1600 <- st_join(Juris1600, JurisCabPts)
+
+Juris1600$Area_km2 <- as.numeric(st_area(Juris1600))/10000/100
+
+st_write(Juris1600, paste0(wd$data_r, "Juris_1600.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1600.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1600.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1600.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1600_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1600_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+### 1620
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1620 <- st_read(paste0(wd$data_r,"Juris1620.gpkg"))
+Juris1620 <- Juris1620 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1620 <- st_join(Juris1620, JurisCabPts)
+
+Juris1620$Area_km2 <- as.numeric(st_area(Juris1620))/10000/100
+
+st_write(Juris1620, paste0(wd$data_r, "Juris_1620.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1620.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1620.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1620.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1620_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1620_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+### 1645
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1645 <- st_read(paste0(wd$data_r,"Juris1645.gpkg"))
+Juris1645 <- Juris1645 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1645 <- st_join(Juris1645, JurisCabPts)
+
+Juris1645$Area_km2 <- as.numeric(st_area(Juris1645))/10000/100
+
+st_write(Juris1645, paste0(wd$data_r, "Juris_1645.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1645.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1645.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1645.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1645_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1645_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+### 1688
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1688 <- st_read(paste0(wd$data_r,"Juris1688.gpkg"))
+Juris1688 <- Juris1688 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1688 <- st_join(Juris1688, JurisCabPts)
+
+Juris1688$Area_km2 <- as.numeric(st_area(Juris1688))/10000/100
+
+st_write(Juris1688, paste0(wd$data_r, "Juris_1688.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1688.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1688.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1688.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1645 = Trib1645/Area_km2,
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1688_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1688_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+### 1720
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1720 <- st_read(paste0(wd$data_r,"Juris1720.gpkg"))
+Juris1720 <- Juris1720 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1720 <- st_join(Juris1720, JurisCabPts)
+
+Juris1720$Area_km2 <- as.numeric(st_area(Juris1720))/10000/100
+
+st_write(Juris1720, paste0(wd$data_r, "Juris_1720.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1720.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1720.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1720.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1720_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1720_Data.csv"))
+
+rm(list = ls())
+
+```
+
+
+### 1725
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1725 <- st_read(paste0(wd$data_r,"Juris1725.gpkg"))
+Juris1725 <- Juris1725 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1725 <- st_join(Juris1725, JurisCabPts)
+
+Juris1725$Area_km2 <- as.numeric(st_area(Juris1725))/10000/100
+
+st_write(Juris1725, paste0(wd$data_r, "Juris_1725.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1725.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1725.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1725.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1725_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1725_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+
+
+
+
+
+### 1730
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1730 <- st_read(paste0(wd$data_r,"Juris1730.gpkg"))
+Juris1730 <- Juris1730 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1730 <- st_join(Juris1730, JurisCabPts)
+
+Juris1730$Area_km2 <- as.numeric(st_area(Juris1730))/10000/100
+
+st_write(Juris1730, paste0(wd$data_r, "Juris_1730.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1730.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1730.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1730.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1730_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1730_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+
+### 1735
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1735 <- st_read(paste0(wd$data_r,"Juris1735.gpkg"))
+Juris1735 <- Juris1735 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1735 <- st_join(Juris1735, JurisCabPts)
+
+Juris1735$Area_km2 <- as.numeric(st_area(Juris1735))/10000/100
+
+st_write(Juris1735, paste0(wd$data_r, "Juris_1735.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1735.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1735.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1735.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1735_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1735_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+
+
+
+
+### 1745
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1745 <- st_read(paste0(wd$data_r,"Juris1745.gpkg"))
+Juris1745 <- Juris1745 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1745 <- st_join(Juris1745, JurisCabPts)
+
+Juris1745$Area_km2 <- as.numeric(st_area(Juris1745))/10000/100
+
+st_write(Juris1745, paste0(wd$data_r, "Juris_1745.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1745.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1745.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1745.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1745_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1745_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+### 1750
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1750 <- st_read(paste0(wd$data_r,"Juris1750.gpkg"))
+Juris1750 <- Juris1750 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1750 <- st_join(Juris1750, JurisCabPts)
+
+Juris1750$Area_km2 <- as.numeric(st_area(Juris1750))/10000/100
+
+st_write(Juris1750, paste0(wd$data_r, "Juris_1750.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1750.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1750.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1750.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1750_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1750_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+### 1765
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1765 <- st_read(paste0(wd$data_r,"Juris1765.gpkg"))
+Juris1765 <- Juris1765 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1765 <- st_join(Juris1765, JurisCabPts)
+
+Juris1765$Area_km2 <- as.numeric(st_area(Juris1765))/10000/100
+
+st_write(Juris1765, paste0(wd$data_r, "Juris_1765.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1765.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1765.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1765.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1765_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1765_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+### 1775
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1775 <- st_read(paste0(wd$data_r,"Juris1775.gpkg"))
+Juris1775 <- Juris1775 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1775 <- st_join(Juris1775, JurisCabPts)
+
+Juris1775$Area_km2 <- as.numeric(st_area(Juris1775))/10000/100
+
+st_write(Juris1775, paste0(wd$data_r, "Juris_1775.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1775.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1775.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1775.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1775_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1775_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+### 1780
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1780 <- st_read(paste0(wd$data_r,"Juris1780.gpkg"))
+Juris1780 <- Juris1780 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1780 <- st_join(Juris1780, JurisCabPts)
+
+Juris1780$Area_km2 <- as.numeric(st_area(Juris1780))/10000/100
+
+st_write(Juris1780, paste0(wd$data_r, "Juris_1780.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1780.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1780.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1780.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1780_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1780_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+### 1785
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1785 <- st_read(paste0(wd$data_r,"Juris1785.gpkg"))
+Juris1785 <- Juris1785 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1785 <- st_join(Juris1785, JurisCabPts)
+
+Juris1785$Area_km2 <- as.numeric(st_area(Juris1785))/10000/100
+
+st_write(Juris1785, paste0(wd$data_r, "Juris_1785.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1785.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1785.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1785.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1785_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1785_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+
+### 1790
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1790 <- st_read(paste0(wd$data_r,"Juris1790.gpkg"))
+Juris1790 <- Juris1790 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1790 <- st_join(Juris1790, JurisCabPts)
+
+Juris1790$Area_km2 <- as.numeric(st_area(Juris1790))/10000/100
+
+st_write(Juris1790, paste0(wd$data_r, "Juris_1790.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1790.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1790.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1790.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1790_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1790_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+
+
+### 1800
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1800 <- st_read(paste0(wd$data_r,"Juris1800.gpkg"))
+Juris1800 <- Juris1800 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1800 <- st_join(Juris1800, JurisCabPts)
+
+Juris1800$Area_km2 <- as.numeric(st_area(Juris1800))/10000/100
+
+st_write(Juris1800, paste0(wd$data_r, "Juris_1800.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1800.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1800.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1800.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1800_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1800_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+### 1810
+
+```{r}
+library(sf)
+library(tidyverse)
+library(terra)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+
+JurisCabPts <- st_read(paste0(wd$data_r,"JurisCabPts.gpkg"))
+
+Juris1810 <- st_read(paste0(wd$data_r,"Juris1810.gpkg"))
+Juris1810 <- Juris1810 %>% mutate(ID = row_number()) %>% dplyr::select(ID)
+sf_use_s2(FALSE)
+Juris1810 <- st_join(Juris1810, JurisCabPts)
+
+Juris1810$Area_km2 <- as.numeric(st_area(Juris1810))/10000/100
+
+st_write(Juris1810, paste0(wd$data_r, "Juris_1810.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+rm(list = ls())
+
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+poly <- vect(paste0(wd$data_r,"Juris_1810.gpkg")) # Replace 'polygon.shp' with your polygon shapefile path
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16.tif")
+
+
+clipped_Arable <- crop(Arable, poly)
+clipped_Arable <- mask(clipped_Arable, poly)
+writeRaster(clipped_Arable, "C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif", overwrite=TRUE)
+
+rm(list = ls())
+
+#library(terra)
+#library(tidyverse)
+
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+wd$data_r <- paste0(wd$dir,"data-raw/")
+
+Arable = rast("C:/Users/TJ McMote/Dropbox (ASU)/HGIS de las Indias/DEM_MEX_CROP_ArablePrelim_3600_16_tmp.tif")
+Juris <- vect(paste0(wd$data_r,"Juris_1810.gpkg"))
+
+s <- terra::extract(Arable, Juris, fun = mean, na.rm=T) %>% data.frame()
+s$OBJECTID = Juris$OBJECTID
+s = s %>% dplyr::select(-ID) %>% rename(PctArable = dem10)
+#library(sf)
+Juris <- st_read(paste0(wd$data_r,"Juris_1810.gpkg"))
+Juris <- Juris %>% left_join(s, by = "OBJECTID")
+Juris <- Juris %>% filter(OBJECTID > 0)
+
+TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+TribTimeSeries = TribTimeSeries %>% dplyr::select(OBJECTID, CaminoReal:VanOssMonuments, SvBComplexEcon:SvBEconType, Trib1570:PctDecline_1570_1800)
+
+Juris = Juris %>% mutate(ArableArea_km2 = Area_km2*PctArable) %>%
+  left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2, Popdens_Trib1645 = Trib1645/Area_km2, 
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2, PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+
+
+st_write(Juris, paste0(wd$data_r, "Juris_1810_Data.gpkg"), driver = "GPKG", overwrite=T, append=FALSE)
+write.csv(st_drop_geometry(Juris), paste0(wd$data_r,"Juris_1810_Data.csv"))
+
+rm(list = ls())
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+

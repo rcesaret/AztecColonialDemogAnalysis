@@ -1,0 +1,218 @@
+---
+title: "Untitled"
+author: "Rudolf Cesaretti"
+date: "2024-03-30"
+output: html_document
+---
+NMC_ratio
+```{r}
+MT1805_wide = MT1805_wide %>% mutate(MT_ratio_C16_I = Proximos_I/Tribs_C16_I,
+                                     NT_ratio_C16_I = NinosNinas_I/Tribs_C16_I,
+                                     NMT_ratio_C16_I = (NinosNinas_I+Proximos_I)/Tribs_C16_I,
+                                     VST_ratio_C16_I = (ViudosSolteros_I + ViudasSolteras_I) / Tribs_C16_I,
+                                     VaSaT_ratio_C16_I = ViudasSolteras_I / Tribs_C16_I,
+                                     VoSoT_ratio_C16_I = ViudosSolteros_I / Tribs_C16_I,
+                                     AT_ratio_C16_I = Reservados_I/Tribs_C16_I,
+                                     NMAC_ratio_C16_I = (NinosNinas_I+Proximos_I+Reservados_I)/Casados_C16_I,
+                                     NMAT_ratio_C16_I = (NinosNinas_I+Proximos_I+Reservados_I)/Tribs_C16_I)
+
+
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_Married_PopUnder50_C16_I", "PT_ratio_C16_I"))###
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "CT_ratio_C16_I", "PT_ratio_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_Proximos_PopUnder50_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "MT_ratio_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "MC_ratio_C16_I", "PT_ratio_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_Ninos_PopUnder50_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NT_ratio_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NC_ratio_C16_I", "PT_ratio_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_NinosProximos_PopUnder50_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NMT_ratio_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NMC_ratio_C16_I", "PT_ratio_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_VS_PopUnder50_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VSC_ratio_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VST_ratio_C16_I", "PT_ratio_C16_I"))###
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_VaSa_PopUnder50_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VaSaT_ratio_C16_I", "PT_ratio_C16_I"))###
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VaSaC_ratio_C16_I", "PT_ratio_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_VoSo_PopUnder50_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VoSoT_ratio_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VoSoC_ratio_C16_I", "PT_ratio_C16_I"))###
+
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "AT_ratio_C16_I", "PT_ratio_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "AC_ratio_C16_I", "PT_ratio_C16_I"))###
+
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NMAT_ratio_C16_I", "PT_ratio_C16_I"))#####
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NMAC_ratio_C16_I", "PT_ratio_C16_I"))
+
+
+
+##############
+
+
+
+Pct_Married_PopUnder50_C16_I
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = VaSaC_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = VaSaT_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = VoSoC_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = VoSoT_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = VSC_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = VST_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = MC_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = MT_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = AC_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+MT1805_wide %>% filter(PT_ratio_C16_I <5) %>%
+ggplot(aes(x = AT_ratio_C16_I, y = PT_ratio_C16_I)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+q = MT1805_wide %>% filter(PT_ratio_C16_I <5)
+model = lm(PT_ratio_C16_I ~ MT_ratio_C16_I + VoSoC_ratio_C16_I + VaSaT_ratio_C16_I, data = q)
+summary(model)
+
+model = lm(PT_ratio_C16_I ~ MT_ratio_C16_I + VST_ratio_C16_I + CT_ratio_C16_I, data = q)
+summary(model)
+
+model = lm(PT_ratio_C16_I ~ NT_ratio_C16_I + CT_ratio_C16_I + MT_ratio_C16_I, data = q)
+summary(model)
+
+model = lm(PT_ratio_C16_I ~ MT_ratio_C16_I + VoSoC_ratio_C16_I + AT_ratio_C16_I, data = q)
+summary(model)
+
+model = lm(PT_ratio_C16_I ~ MT_ratio_C16_I + VaSaC_ratio_C16_I + AT_ratio_C16_I, data = q)
+summary(model)
+
+model = lm(PT_ratio_C16_I ~ MT_ratio_C16_I + VSC_ratio_C16_I + AT_ratio_C16_I, data = q)
+summary(model)
+NMT_ratio_C16_I
+
+
+```
+
+
+
+
+
+
+```{r}
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_Married_PopUnder50_C16_I", "Pct_TotalExempt_C16_I"))###
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "CT_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_Proximos_PopUnder50_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "MT_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "MC_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_Ninos_PopUnder50_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NT_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NC_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_NinosProximos_PopUnder50_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NMT_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NMC_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_VS_PopUnder50_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VSC_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VST_ratio_C16_I", "Pct_TotalExempt_C16_I"))###
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_VaSa_PopUnder50_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VaSaT_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VaSaC_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "Pct_VoSo_PopUnder50_C16_I", "Pct_TotalExempt_C16_I"))###
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VoSoT_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "VoSoC_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "AT_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "AC_ratio_C16_I", "Pct_TotalExempt_C16_I"))###
+
+
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NMAT_ratio_C16_I", "Pct_TotalExempt_C16_I"))#####
+plot(cor_test(filter(MT1805_wide, PT_ratio_C16_I <5), "NMAC_ratio_C16_I", "Pct_TotalExempt_C16_I"))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

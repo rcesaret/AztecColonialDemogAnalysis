@@ -1761,6 +1761,7 @@ MT1805_B_long = MT1805_B_long %>% mutate(
   
   NonTribAge = Reservados + NinosNinas + Proximos,
   TotalExempt = Proximos + NinosNinas + Governadores + Caciques + Reservados + ViudasSolteras + Ausentes,
+  Pct_TotalExempt = TotalExempt/TribClass_TotalPersons,
   TotalTribPers = ViudosSolteros + Casadas_HusbNoTrib + Casados_WifeNoTrib + Casados_WifeTrib + Casados_WifeTrib + Casados_SinEdad + Casados_SinEdad,
   Pct_NonTribAge = Pct_Reservados+Pct_NinosProximos,
   Pct_VaSaNinoProxReserv = Pct_Reservados+Pct_NinosProximos + Pct_ViudasSolteras,
@@ -1800,7 +1801,17 @@ MT1805_B_long = MT1805_B_long %>% mutate(
   Pct_ViudosSolteros_C16 = ViudosSolteros/ TribClass_TotalPersons_NotAbsent_C16,
   PctViudSoltTotal_C16 = (ViudosSolteros + ViudasSolteras) / TribClass_TotalPersons_NotAbsent_C16,
   Pct_Casados_C16 = Casados_C16 / TribClass_TotalPersons_NotAbsent_C16,
-  TribsC16C18_Ratio = Tribs_C16 / Tribs
+  TribsC16C18_Ratio = Tribs_C16 / Tribs,
+  PopUnder50 = TribClass_TotalPersons_NotAbsent_C16 - Reservados,
+  
+  Pct_Proximos_PopUnder50_C16 = Proximos / PopUnder50,
+  Pct_Ninos_PopUnder50_C16 = NinosNinas / PopUnder50,
+  Pct_NinosProximos_PopUnder50_C16 = (Proximos + NinosNinas)/PopUnder50,
+  Pct_VoSo_PopUnder50_C16 = ViudosSolteros / PopUnder50,
+  Pct_VaSa_PopUnder50_C16 = ViudasSolteras / PopUnder50,
+  Pct_VS_PopUnder50_C16 = (ViudosSolteros + ViudasSolteras)/PopUnder50,
+  Pct_Married_PopUnder50_C16 = (Casados_C16+Casados_C16)/PopUnder50
+  
 )
 
 
@@ -1907,7 +1918,15 @@ MT1805_B_I = MT1805_B_long %>% filter(Race == "Indio") %>%
   Pct_ViudosSolteros_C16 = ViudosSolteros/ TribClass_TotalPersons_NotAbsent_C16,
   PctViudSoltTotal_C16 = (ViudosSolteros + ViudasSolteras) / TribClass_TotalPersons_NotAbsent_C16,
   Pct_Casados_C16 = Casados_C16 / TribClass_TotalPersons_NotAbsent_C16,
-  TribsC16C18_Ratio = Tribs_C16 / Tribs)  %>% 
+  TribsC16C18_Ratio = Tribs_C16 / Tribs,
+  PopUnder50 = TribClass_TotalPersons_NotAbsent_C16 - Reservados,
+  Pct_Proximos_PopUnder50_C16 = Proximos / PopUnder50,
+  Pct_Ninos_PopUnder50_C16 = NinosNinas / PopUnder50,
+  Pct_NinosProximos_PopUnder50_C16 = (Proximos + NinosNinas)/PopUnder50,
+  Pct_VoSo_PopUnder50_C16 = ViudosSolteros / PopUnder50,
+  Pct_VaSa_PopUnder50_C16 = ViudasSolteras / PopUnder50,
+  Pct_VS_PopUnder50_C16 = (ViudosSolteros + ViudasSolteras)/PopUnder50,
+  Pct_Married_PopUnder50_C16 = (Casados_C16+Casados_C16)/PopUnder50)  %>% 
   rename_at(vars(-Partido, -Provincia, -OBJECTID), ~ paste0(., '_I'))
 
 
@@ -1960,18 +1979,628 @@ setdiff(MT1805_A$Partido,MT1805_wide$Partido)
 ### Non-Spatial Analysis of 1805 P/T Ratio
 
 
-##### Get data together
+#### Get data together
+
+Tributary classification in 1805:
+
+Tributarios Enteros (= 1 full tributary):
+    Casados whose wife also clasifies as a tributary
+    Casados "sin edad"
+
+Tributarios Medios (= 1/2 tributary):
+    Casados whose wife was NOT a tributary
+    Casadas whose husband was NOT a tributary
+    Viudos and solteros
+
+There are 2 exceptions to this schema, where all male indios of tributary age (casados, viudos and solteros) were considered a single tributario entero (=1; i.e. no tributarios medios)
+    1. the "Venado y La Hedionda" juris of San Luis Potosi
+    2. the province of Merida
+
+
+
+=EO5+EP5+(0.5*(ER5+ES5+EQ5))
+
 
 ```{r}
 x = MT1805_B_long %>% #filter(Race == "Indio") %>% 
-  mutate(Pct_TotalExempt = (Proximos + NinosNinas + Governadores + Caciques + Reservados + ViudasSolteras + Ausentes)/TribClass_TotalPersons,
-         Tribs = (Casados + Casadas + ViudosSolteros)/2,
-         PT_ratio = TribClass_TotalPersons/Tribs)
+  mutate(TotalExempt = Proximos + NinosNinas + Governadores + Caciques + Reservados + ViudasSolteras + Ausentes,
+    Pct_TotalExempt = TotalExempt/TribClass_TotalPersons,
+         Tribs_C18 = (Casados + Casadas + ViudosSolteros)/2,
+         PT_ratio_C18 = TribClass_TotalPersons/Tribs_C18)
+
+tmp = x %>% select(Partido, Provincia, Race, TotalExempt, TotalExempt_C16, TribClass_TotalPersons, TribClass_TotalPersons_NotAbsent_C16, Tribs_C18, Tribs_C16) %>% group_by(Partido, Provincia, Race) %>% summarize(
+  TotalExempt = sum(TotalExempt,na.rm=T), 
+  TotalExempt_C16 = sum(TotalExempt_C16,na.rm=T), 
+  TribClass_TotalPersons = sum(TribClass_TotalPersons,na.rm=T), 
+  TribClass_TotalPersons_NotAbsent_C16 = sum(TribClass_TotalPersons_NotAbsent_C16,na.rm=T), 
+  Tribs_C18 = sum(Tribs_C18,na.rm=T), 
+  Tribs_C16 = sum(Tribs_C16,na.rm=T)
+) %>% ungroup() %>%
+  filter(Race == "Indio") %>%
+  mutate(TribClass = "Indios Total",
+         Pct_TotalExempt_C18 = TotalExempt/TribClass_TotalPersons,
+         Pct_TotalExempt_C16 = TotalExempt_C16/TribClass_TotalPersons_NotAbsent_C16,
+         PT_ratio_C18 = TribClass_TotalPersons/Tribs_C18,
+         PT_ratio_C16 = TribClass_TotalPersons_NotAbsent_C16/Tribs_C16) %>%
+  select(-TotalExempt, -TotalExempt_C16, -TribClass_TotalPersons, -TribClass_TotalPersons_NotAbsent_C16, -Tribs_C18, -Tribs_C16)
+
+x_keyvars = x %>% select(Partido, Partido, Provincia, Race, TribClass, Pct_TotalExempt, Pct_TotalExempt_C16, PT_ratio_C18, PT_ratio_C16) %>% rename(Pct_TotalExempt_C18 = Pct_TotalExempt)
+
+x_keyvars = bind_rows(x_keyvars, tmp)
+
+
+#PT_ratio_C18, PT_ratio_C16, Pct_TotalExempt, Pct_TotalExempt_C16
+
+#xx = x %>% filter(TribClass == "Indios de Pueblo") %>% filter(Provincia %in% c("Mexico", "Puebla", "Tlaxcala"))
+
+x_sums = x %>% group_by(Provincia, TribClass) %>% summarize(
+  TotalExempt = sum(TotalExempt, na.rm=T),
+  TotalExempt_C16 = sum(TotalExempt_C16, na.rm=T),
+  Tribs_C18 = sum(Tribs_C18, na.rm=T),
+  Tribs_C16 = sum(Tribs_C16, na.rm=T),
+  TribClass_TotalPersons_NotAbsent_C16 = sum(TribClass_TotalPersons_NotAbsent_C16, na.rm=T),
+  TribClass_TotalPersons = sum(TribClass_TotalPersons, na.rm=T)) %>%
+  mutate(
+    Pct_TotalExempt_C18 = TotalExempt / TribClass_TotalPersons,
+    Pct_TotalExempt_C16 = TotalExempt_C16 / TribClass_TotalPersons_NotAbsent_C16,
+    PT_ratio_C18 = TribClass_TotalPersons / Tribs_C18,
+    PT_ratio_C16 = TribClass_TotalPersons_NotAbsent_C16 / Tribs_C16) %>% ungroup() %>% 
+  select(Provincia, TribClass, Pct_TotalExempt_C18, Pct_TotalExempt_C16, PT_ratio_C18, PT_ratio_C16)
+
+
+```
+
+
+First we want to see which ethnicity we should examine. To do so, we can first test differences in the means of the distributions. Where you have data on statistics for different regions by ethnicity, the data are likely to be dependent. This is because the measurements taken within each region are likely to be correlated due to shared characteristics of the region (e.g., economic conditions, cultural factors, environmental factors) that may influence the statistics being measured.
+
+When data are dependent, the typical assumption of independence required for standard ANOVA (Analysis of Variance) tests is violated. However, there are alternative methods that can be used to analyze dependent data, such as repeated measures ANOVA or mixed-effects models. These methods are designed to account for the dependency structure in the data.
+
+https://en.wikipedia.org/wiki/Paired_difference_test
+
+want to know whether the variables under scrutiny are correlated across the three tribute classes (Indios de pueblo, Indios laborios y vagos, negros y mulatos libres).
+
+##### Test normality
+
+###### PT_ratio_C16
+
+```{r}
+library(nortest)
+library(ggridges)
+
+z = MT1805_wide %>% filter(PT_ratio_C16_IP > 0)
+ecdf.ks.CI(z$PT_ratio_C16_IP, main= "P/T - Indios de pueblo", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$PT_ratio_C16_IP,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$PT_ratio_C16_IP, "pnorm",fit[1],fit[2])
+shapiro.test(z$PT_ratio_C16_IP)
+ad.test(z$PT_ratio_C16_IP)
+
+z = MT1805_wide %>% filter(PT_ratio_C16_ILV > 0)
+ecdf.ks.CI(z$PT_ratio_C16_ILV, main= "P/T - Indios vagos y laborios", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$PT_ratio_C16_ILV,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$PT_ratio_C16_ILV, "pnorm",fit[1],fit[2])
+shapiro.test(z$PT_ratio_C16_ILV)
+ad.test(z$PT_ratio_C16_ILV)
+
+z = MT1805_wide %>% filter(PT_ratio_C16_NML > 0)
+ecdf.ks.CI(z$PT_ratio_C16_NML, main= "P/T - Negros y mulatos libres", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$PT_ratio_C16_NML,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$PT_ratio_C16_NML, "pnorm",fit[1],fit[2])
+shapiro.test(z$PT_ratio_C16_NML)
+ad.test(z$PT_ratio_C16_NML)
+
+z = MT1805_wide %>% filter(PT_ratio_C16_T > 0)
+ecdf.ks.CI(z$PT_ratio_C16_T, main= "P/T - All Tribute Classes", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$PT_ratio_C16_T,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$PT_ratio_C16_T, "pnorm",fit[1],fit[2])
+shapiro.test(z$PT_ratio_C16_T)
+ad.test(z$PT_ratio_C16_T)
+
+#ggplot(x, aes(x=PT_ratio_C16, fill=TribClass))+ geom_histogram(position="identity", alpha = 0.5, color="black")
+ggplot(x, aes(x = PT_ratio_C16, y = TribClass, fill = TribClass)) +
+  geom_density_ridges() +
+  theme_ridges()+xlim(1,7)
+```
+
+###### PT_ratio_C18
+
+```{r}
+
+z = MT1805_wide %>% filter(PT_ratio_IP > 0)
+ecdf.ks.CI(z$PT_ratio_IP, main= "P/T - Indios de pueblo", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$PT_ratio_IP,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$PT_ratio_IP, "pnorm",fit[1],fit[2])
+shapiro.test(z$PT_ratio_IP)
+ad.test(z$PT_ratio_IP)
+
+z = MT1805_wide %>% filter(PT_ratio_ILV > 0)
+ecdf.ks.CI(z$PT_ratio_ILV, main= "P/T - Indios vagos y laborios", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$PT_ratio_ILV,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$PT_ratio_ILV, "pnorm",fit[1],fit[2])
+shapiro.test(z$PT_ratio_ILV)
+ad.test(z$PT_ratio_ILV)
+
+z = MT1805_wide %>% filter(PT_ratio_NML > 0)
+ecdf.ks.CI(z$PT_ratio_NML, main= "P/T - Negros y mulatos libres", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$PT_ratio_NML,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$PT_ratio_NML, "pnorm",fit[1],fit[2])
+shapiro.test(z$PT_ratio_NML)
+ad.test(z$PT_ratio_NML)
+
+z = MT1805_wide %>% filter(PT_ratio_T > 0)
+ecdf.ks.CI(z$PT_ratio_T, main= "P/T - All Tribute Classes", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$PT_ratio_T,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$PT_ratio_T, "pnorm",fit[1],fit[2])
+shapiro.test(z$PT_ratio_T)
+ad.test(z$PT_ratio_T)
+
+#ggplot(x, aes(x=PT_ratio, fill=TribClass))+ geom_histogram(position="identity", alpha = 0.5, color="black")
+ggplot(x, aes(x = PT_ratio, y = TribClass, fill = TribClass)) +
+  geom_density_ridges() +
+  theme_ridges()+xlim(1,7)
+```
+
+###### % Exempt C16
+
+```{r}
+
+z = MT1805_wide %>% filter(Pct_TotalExempt_C16_IP > 0)
+ecdf.ks.CI(z$Pct_TotalExempt_C16_IP, main= "P/T - Indios de pueblo", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$Pct_TotalExempt_C16_IP,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$Pct_TotalExempt_C16_IP, "pnorm",fit[1],fit[2])
+shapiro.test(z$Pct_TotalExempt_C16_IP)
+ad.test(z$Pct_TotalExempt_C16_IP)
+
+z = MT1805_wide %>% filter(Pct_TotalExempt_C16_ILV > 0)
+ecdf.ks.CI(z$Pct_TotalExempt_C16_ILV, main= "P/T - Indios vagos y laborios", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$Pct_TotalExempt_C16_ILV,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$Pct_TotalExempt_C16_ILV, "pnorm",fit[1],fit[2])
+shapiro.test(z$Pct_TotalExempt_C16_ILV)
+ad.test(z$Pct_TotalExempt_C16_ILV)
+
+z = MT1805_wide %>% filter(Pct_TotalExempt_C16_NML > 0)
+ecdf.ks.CI(z$Pct_TotalExempt_C16_NML, main= "P/T - Negros y mulatos libres", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$Pct_TotalExempt_C16_NML,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$Pct_TotalExempt_C16_NML, "pnorm",fit[1],fit[2])
+shapiro.test(z$Pct_TotalExempt_C16_NML)
+ad.test(z$Pct_TotalExempt_C16_NML)
+
+z = MT1805_wide %>% filter(Pct_TotalExempt_C16_T > 0)
+ecdf.ks.CI(z$Pct_TotalExempt_C16_T, main= "P/T - All Tribute Classes", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$Pct_TotalExempt_C16_T,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$Pct_TotalExempt_C16_T, "pnorm",fit[1],fit[2])
+shapiro.test(z$Pct_TotalExempt_C16_T)
+ad.test(z$Pct_TotalExempt_C16_T)
+
+#ggplot(x, aes(x=PT_ratio, fill=TribClass))+ geom_histogram(position="identity", alpha = 0.5, color="black")
+ggplot(x, aes(x = Pct_TotalExempt_C16, y = TribClass, fill = TribClass)) +
+  geom_density_ridges() +
+  theme_ridges()#+xlim(1,7)
+```
+
+###### % Exempt C18
+
+```{r}
+
+z = MT1805_wide %>% filter(Pct_TotalExempt_I > 0)
+ecdf.ks.CI(z$Pct_TotalExempt_I, main= "P/T - Indios de pueblo", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$Pct_TotalExempt_I,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$Pct_TotalExempt_I, "pnorm",fit[1],fit[2])
+shapiro.test(z$Pct_TotalExempt_I)
+ad.test(z$Pct_TotalExempt_I)
+
+z = MT1805_wide %>% filter(Pct_TotalExempt_T > 0)
+ecdf.ks.CI(z$Pct_TotalExempt_T, main= "P/T - All Tribute Classes", cex.main=2, font.main=2, font.lab=2, xlab="PT Ratio", ylab="ECDF(PT Ratio)")
+fit<-fitdistr(z$Pct_TotalExempt_T,"normal")$estimate
+Norm2 <- rnorm(10000, fit[1],fit[2])
+lines(ecdf(Norm2), do.points = FALSE, verticals=T, lwd=2, col="blue")
+ks.test(z$Pct_TotalExempt_T, "pnorm",fit[1],fit[2])
+shapiro.test(z$Pct_TotalExempt_T)
+ad.test(z$Pct_TotalExempt_T)
+
+#ggplot(x, aes(x=PT_ratio, fill=TribClass))+ geom_histogram(position="identity", alpha = 0.5, color="black")
+ggplot(x, aes(x = Pct_TotalExempt, y = TribClass, fill = TribClass)) +
+  geom_density_ridges() +
+  theme_ridges()#+xlim(1,7)
+```
+
+
+##### Difference in Means
 
 
 
-xx = x %>% filter(TribClass == "Indios de Pueblo") %>% filter(Provincia %in% c("Mexico", "Puebla", "Tlaxcala"))
+```{r}
+x_complete1 = x %>% group_by(Partido) %>% filter(n_distinct(TribClass) == 4) %>% ungroup() %>% filter(!(Provincia %in% c("Merida"))) %>% filter(!(TribClass %in% c("Todas"))) %>% select(Partido, Provincia, TribClass, PT_ratio_C18, PT_ratio_C16, Pct_TotalExempt, Pct_TotalExempt_C16)
 
+x_complete2 = x %>% group_by(Partido) %>% filter(n_distinct(Race) == 3) %>% ungroup() %>% filter(!(Provincia %in% c("Merida"))) %>% filter(!(Race %in% c("Total"))) %>% select(Partido, Provincia, Race, PT_ratio_C18, PT_ratio_C16, Pct_TotalExempt, Pct_TotalExempt_C16)
+
+ggwithinstats(
+  data = x_complete1,
+  x = TribClass,
+  y = PT_ratio_C18,
+  type="n",
+  pairwise.display = "significant"
+)
+ggwithinstats(
+  data = x_complete2,
+  x    = Race,
+  y    = PT_ratio_C18,
+  type = "n"
+)
+
+plot(cor_test(MT1805_wide, "PT_ratio_C16_IP", "PT_ratio_C16_ILV"))
+MT1805_wide$PT
+
+
+
+```
+plot(cor_test(x, "Tribs", "Tribs_C18"))
+
+ggplot(x, aes(x = Tribs, y = Tribs_C18, color=Provincia)) +
+  geom_point() +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+##### Correlation
+
+###### TribClass
+  
+```{r}
+
+iris %>%
+  select(Species, Sepal.Length, Sepal.Width, Petal.Width) %>%
+  group_by(Species) %>%
+  correlation()
+
+
+#x_wide = x %>%  select(Partido, Provincia, TribClass, PT_ratio_C18, PT_ratio_C16, Pct_TotalExempt, Pct_TotalExempt_C16)
+
+x_PT_ratio_C18 = x_keyvars %>% select(Partido:TribClass, PT_ratio_C18) %>% pivot_wider(
+  names_from = "TribClass",
+  values_from = "PT_ratio_C18",
+  id_cols = Partido:Provincia)
+
+
+
+plot(summary(correlation(x_PT_ratio_C18, method = "distance"), redundant = TRUE))
+
+x_PT_ratio_C16 = x_keyvars %>% select(Partido:TribClass, PT_ratio_C16) %>% pivot_wider(
+  names_from = "TribClass",
+  values_from = "PT_ratio_C16",
+  id_cols = Partido:Provincia)
+
+plot(summary(correlation(x_PT_ratio_C16, method = "distance"), redundant = TRUE))
+
+x_Pct_TotalExempt_C18 = x_keyvars %>% select(Partido:TribClass, Pct_TotalExempt_C18) %>% pivot_wider(
+  names_from = "TribClass",
+  values_from = "Pct_TotalExempt_C18",
+  id_cols = Partido:Provincia)
+
+plot(summary(correlation(x_Pct_TotalExempt_C18, method = "distance"), redundant = TRUE))
+
+x_Pct_TotalExempt_C16 = x_keyvars %>% select(Partido:TribClass, Pct_TotalExempt_C16) %>% pivot_wider(
+  names_from = "TribClass",
+  values_from = "Pct_TotalExempt_C16",
+  id_cols = Partido:Provincia)
+
+plot(summary(correlation(x_Pct_TotalExempt_C16, method = "distance")))
+
+ggplot(x_Pct_TotalExempt_C16, aes(x = Todas, y = `Negros y Mulatos libres`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+x_Pct_TotalExempt_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = Todas, y = `Negros y Mulatos libres`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+x_Pct_TotalExempt_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = Todas, y = `Indios Laborios y Vagos`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+x_Pct_TotalExempt_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = `Negros y Mulatos libres`, y = `Indios Laborios y Vagos`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+x_Pct_TotalExempt_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = `Indios de Pueblo`, y = `Indios Laborios y Vagos`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+x_Pct_TotalExempt_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = `Indios de Pueblo`, y = `Negros y Mulatos libres`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+##########
+
+x_PT_ratio_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = Todas, y = `Indios Laborios y Vagos`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+x_PT_ratio_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = `Negros y Mulatos libres`, y = `Indios Laborios y Vagos`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+x_PT_ratio_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = `Indios de Pueblo`, y = `Indios Laborios y Vagos`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+
+x_PT_ratio_C16 %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco", "Merida", "Potosi", "Arispe"))) %>% ggplot( aes(x = `Indios de Pueblo`, y = `Negros y Mulatos libres`)) +
+  geom_point(aes(colour = Provincia)) +
+  geom_smooth(aes(colour = Provincia), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE) +
+  theme_classic()
+plot(cor_test(x_Pct_TotalExempt_C16, "Todas", "Indios Total"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Todas", "Indios de Pueblo"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Indios Total", "Indios de Pueblo"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Negros y Mulatos libres", "Indios de Pueblo"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Negros y Mulatos libres", "Indios Laborios y Vagos"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Negros y Mulatos libres", "Indios Total"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Negros y Mulatos libres", "Todas"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Indios Laborios y Vagos", "Indios de Pueblo"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Indios Laborios y Vagos", "Negros y Mulatos libres"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Indios Laborios y Vagos", "Indios Total"))
+plot(cor_test(x_Pct_TotalExempt_C16, "Indios Laborios y Vagos", "Todas"))
+
+plot(cor_test(x_Pct_TotalExempt_C18, "Todas", "Indios Total"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Todas", "Indios de Pueblo"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Indios Total", "Indios de Pueblo"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Negros y Mulatos libres", "Indios de Pueblo"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Negros y Mulatos libres", "Indios Laborios y Vagos"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Negros y Mulatos libres", "Indios Total"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Negros y Mulatos libres", "Todas"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Indios Laborios y Vagos", "Indios de Pueblo"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Indios Laborios y Vagos", "Negros y Mulatos libres"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Indios Laborios y Vagos", "Indios Total"))
+plot(cor_test(x_Pct_TotalExempt_C18, "Indios Laborios y Vagos", "Todas"))
+
+plot(cor_test(x_PT_ratio_C18, "Todas", "Indios Total"))
+plot(cor_test(x_PT_ratio_C18, "Todas", "Indios de Pueblo"))
+plot(cor_test(x_PT_ratio_C18, "Indios Total", "Indios de Pueblo"))
+plot(cor_test(x_PT_ratio_C18, "Negros y Mulatos libres", "Indios de Pueblo"))
+plot(cor_test(x_PT_ratio_C18, "Negros y Mulatos libres", "Indios Laborios y Vagos"))
+plot(cor_test(x_PT_ratio_C18, "Negros y Mulatos libres", "Indios Total"))
+plot(cor_test(x_PT_ratio_C18, "Negros y Mulatos libres", "Todas"))
+plot(cor_test(x_PT_ratio_C18, "Indios Laborios y Vagos", "Indios de Pueblo"))
+plot(cor_test(x_PT_ratio_C18, "Indios Laborios y Vagos", "Negros y Mulatos libres"))
+plot(cor_test(x_PT_ratio_C18, "Indios Laborios y Vagos", "Indios Total"))
+plot(cor_test(x_PT_ratio_C18, "Indios Laborios y Vagos", "Todas"))
+
+plot(cor_test(x_PT_ratio_C16, "Todas", "Indios Total"))
+plot(cor_test(x_PT_ratio_C16, "Todas", "Indios de Pueblo"))
+plot(cor_test(x_PT_ratio_C16, "Indios Total", "Indios de Pueblo"))
+plot(cor_test(x_PT_ratio_C16, "Negros y Mulatos libres", "Indios de Pueblo"))
+plot(cor_test(x_PT_ratio_C16, "Negros y Mulatos libres", "Indios Laborios y Vagos"))
+plot(cor_test(x_PT_ratio_C16, "Negros y Mulatos libres", "Indios Total"))
+plot(cor_test(x_PT_ratio_C16, "Negros y Mulatos libres", "Todas"))
+plot(cor_test(x_PT_ratio_C16, "Indios Laborios y Vagos", "Indios de Pueblo"))
+plot(cor_test(x_PT_ratio_C16, "Indios Laborios y Vagos", "Negros y Mulatos libres"))
+plot(cor_test(x_PT_ratio_C16, "Indios Laborios y Vagos", "Indios Total"))
+plot(cor_test(x_PT_ratio_C16, "Indios Laborios y Vagos", "Todas"))
+
+
+```
+
+##### Region
+
+###### Distributions
+
+```{r}
+x_keyvars %>% filter(TribClass== "Todas") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = PT_ratio_C16, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Todas") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = PT_ratio_C18, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Todas") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = Pct_TotalExempt_C16, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Todas") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = Pct_TotalExempt_C18, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+```
+
+
+```{r}
+x_keyvars %>% filter(TribClass== "Negros y Mulatos libres") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = PT_ratio_C16, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Negros y Mulatos libres") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = PT_ratio_C18, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Negros y Mulatos libres") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = Pct_TotalExempt_C16, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Negros y Mulatos libres") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = Pct_TotalExempt_C18, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+```
+
+```{r}
+x_keyvars %>% filter(TribClass== "Indios Laborios y Vagos") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = PT_ratio_C16, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Indios Laborios y Vagos") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = PT_ratio_C18, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Indios Laborios y Vagos") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = Pct_TotalExempt_C16, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Indios Laborios y Vagos") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = Pct_TotalExempt_C18, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+```
+
+
+```{r}
+x_keyvars %>% filter(TribClass== "Indios de Pueblo") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = PT_ratio_C16, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Indios de Pueblo") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = PT_ratio_C18, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Indios de Pueblo") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = Pct_TotalExempt_C16, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+x_keyvars %>% filter(TribClass== "Indios de Pueblo") %>% filter(!(Provincia %in% c("Laguna de los Terminos", "Tlaxcala", "Tabasco"))) %>% ggplot(aes(x = Pct_TotalExempt_C18, y = Provincia, fill = Provincia)) +
+  geom_density_ridges() +
+  theme_ridges()+ 
+  theme(legend.position = "none")#+xlim(1,7)
+
+```
+
+###### Correlation
+
+```{r}
+
+ggdotplotstats(
+  data = filter(x_sums, TribClass == "Todas"),
+  x = Pct_TotalExempt_C16,
+  y = Provincia,
+  title = "Todas",
+  xlab = "Pct_TotalExempt_C18"
+)
+
+ggdotplotstats(
+  data = filter(x_sums, TribClass == "Indios de Pueblo"),
+  x = Pct_TotalExempt_C16,
+  y = Provincia,
+  title = "Indios de Pueblo",
+  xlab = "Pct_TotalExempt_C18"
+)
+```
+
+in R, uing the tidyverse, the following code doesnt work because of the last line. I want to create a new variable that is the same for all rows in the group, which takes the value of the mean of "StatusValue" for all rows in the group  where the variable "status" == "Exempt". How do I do this?
+```{r}
+
+x_bar <- x %>%
+  mutate(CasadosCasadas_C16 = Casados_C16 + Casados_C16) %>%
+  select(Partido, Provincia, TribClass, Race, Reservados, NinosNinas, Proximos, ViudosSolteros, ViudasSolteras, CasadosCasadas_C16) %>%
+  rename(`Aged 50+` = Reservados, Children = NinosNinas, Youth = Proximos, `Widowers & Single Men` = ViudosSolteros, `Widows & Single Women` = ViudasSolteras, Married = CasadosCasadas_C16) %>%
+  pivot_longer(cols = `Aged 50+`:Married) %>%
+  group_by(Provincia, TribClass, name) %>%
+  summarize(value = sum(value, na.rm = TRUE)) %>%
+  ungroup() %>%
+  group_by(Provincia, TribClass) %>%
+  mutate(Total = sum(value, na.rm = TRUE),
+         Status = case_when(
+           name == "Aged 50+" ~ "Exempt",
+           name == "Children" ~ "Exempt",
+           name == "Youth" ~ "Exempt",
+           TRUE ~ "Tributaries")) %>%
+  ungroup() %>%
+  group_by(Provincia, TribClass, Status) %>%
+  mutate(StatusValue = sum(value, na.rm = TRUE),
+         PctStatusValue = StatusValue / Total) %>%
+  ungroup() %>%
+  group_by(Provincia, TribClass) %>%
+  mutate(PctNonTrib = mean(PctStatusValue[Status == "Exempt"], na.rm = TRUE)) %>%
+  ungroup()
+
+x_bar = x %>% mutate(CasadosCasadas_C16 = Casados_C16+Casados_C16) %>%
+  select(Partido, Provincia, TribClass, Race, Reservados, NinosNinas, Proximos, ViudosSolteros, ViudasSolteras, CasadosCasadas_C16) %>% 
+  rename(`Aged 50+`= Reservados, Children = NinosNinas, Youth = Proximos, `Widowers & Single Men` =ViudosSolteros, `Widows & Single Women` = ViudasSolteras, Married = CasadosCasadas_C16) %>%
+  pivot_longer(cols=`Aged 50+`:Married) %>% group_by(Provincia, TribClass, name) %>%
+  summarize(value = sum(value, na.rm=T)) %>% ungroup() %>% group_by(Provincia, TribClass) %>%
+  mutate(Total = sum(value, na.rm=T),
+         Status = case_when(
+           name == "Aged 50+" ~ "Exempt",
+           name == "Children" ~ "Exempt",
+           name == "Youth" ~ "Exempt",
+           .default = "Tributaries"))  %>% ungroup() %>% group_by(Provincia, TribClass, Status) %>% 
+  mutate(StatusValue = sum(value, na.rm=T), PctStatusValue = StatusValue/Total)  %>% ungroup() %>% 
+  group_by(Provincia, TribClass) %>% 
+  mutate(PctNonTrib = mean(StatusValue[Status == "Exempt"])) %>% ungroup() %>% mutate(
+    name = factor(name, levels = c("Children", "Youth", "Aged 50+", "Widows & Single Women", "Widowers & Single Men","Married")),  Provincia = factor(Provincia, levels = unique(Provincia)))
+
+
+
+
+x_bar %>% filter(TribClass == "Todas") %>% ggplot(aes(fill=name, y=value, x=reorder(Provincia, PctNonTrib, decreasing=T))) + 
+    geom_bar(position="fill", stat="identity")+
+  scale_y_continuous(labels = scales::percent) +
+  coord_flip() +
+  theme_light()
+
+```
+
+
+```{r}
+x_PT_ratio_C18 %>% pivot_longer(id_cols=Partido:provincia, cols=) 
+ggplot(x, aes(x = PT_ratio_C16, y = TribClass, fill = TribClass)) +
+  geom_density_ridges() +
+  theme_ridges()+xlim(1,7)
 ```
 
 
@@ -2009,11 +2638,30 @@ ystats = y %>% group_by(Provincia, TribClass) %>%
 
 
 
-x %>% select(TribClass, Pct_TotalExempt, Pct_TotalExempt_C16, PT_ratio, PT_ratio_C16) %>% 
+tab1 = x %>% select(TribClass, Pct_TotalExempt, Pct_TotalExempt_C16, PT_ratio, PT_ratio_C16) %>% 
   group_by(TribClass) %>% 
-  report() %>%
+  report_table() %>%
   summary()
 
+tab1
+report::display(tab1)
+
+
+c = point_estimate(x$Pct_TotalExempt_C16)
+plot(c)
+
+m = x %>% select(Pct_TotalExempt, Pct_TotalExempt_C16, PT_ratio, PT_ratio_C16) %>% correlation()
+summary(m)
+
+ggdotplotstats(
+  data       = x,
+  y          = country,
+  x          = lifeExp,
+  test.value = 55,
+  type       = "robust",
+  title      = "Distribution of life expectancy in Asian continent",
+  xlab       = "Life expectancy"
+)
 
 ```
 
@@ -2168,7 +2816,7 @@ Urb rate estimate
 
 ```{r}
 
-Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3_SvBJuris.gpkg"))
+Juris1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v4_SvBJuris.gpkg"))
 
 TribTimeSeries = read.csv(paste0(wd$data_r,"TribTimeSeriesNewSpain.csv"))
 
@@ -2217,7 +2865,56 @@ TribTimeSeries = TribTimeSeries %>% mutate(
   PctDecline_1570_1800 = (1-(Trib1800/Trib1570))*-1
 ) %>% rename(GerhNum = GerhardNum)
 
-Juris1800_Data = Juris1800 %>% left_join(TribTimeSeries, by = "OBJECTID")
+Juris1800_Data = Juris1800 %>% left_join(TribTimeSeries, by = "OBJECTID") %>% mutate(
+  Popdens_Trib1570 = Trib1570/Area_km2,
+  Popdens_Trib1580 = Trib1580/Area_km2,
+  Popdens_Trib1590 = Trib1590/Area_km2,
+  Popdens_Trib1600 = Trib1600/Area_km2,
+  Popdens_Trib1620 = Trib1620/Area_km2,
+  Popdens_Trib1645 = Trib1645/Area_km2,
+  Popdens_Trib1688 = Trib1688/Area_km2,
+  Popdens_Trib1720 = Trib1720/Area_km2,
+  Popdens_Trib1725 = Trib1725/Area_km2,
+  Popdens_Trib1730 = Trib1730/Area_km2,
+  Popdens_Trib1735 = Trib1735/Area_km2,
+  Popdens_Fam1743 = Fam_1743/Area_km2,
+  Popdens_Trib1745 = Trib1745/Area_km2,
+  Popdens_Trib1750 = Trib1750/Area_km2,
+  Popdens_Trib1765 = Trib1765/Area_km2,
+  Popdens_Trib1775 = Trib1775/Area_km2,
+  Popdens_Trib1780 = Trib1780/Area_km2,
+  Popdens_Trib1785 = Trib1785/Area_km2,
+  Popdens_Trib1790 = Trib1790/Area_km2,
+  Popdens_Trib1800 = Trib1800/Area_km2,
+  Popdens_Trib1810 = Trib1810/Area_km2,
+  
+  PopdensArable_Trib1570 = Trib1570/ArableArea_km2,
+  PopdensArable_Trib1580 = Trib1580/ArableArea_km2,
+  PopdensArable_Trib1590 = Trib1590/ArableArea_km2,
+  PopdensArable_Trib1600 = Trib1600/ArableArea_km2,
+  PopdensArable_Trib1620 = Trib1620/ArableArea_km2,
+  PopdensArable_Trib1645 = Trib1645/ArableArea_km2,
+  PopdensArable_Trib1688 = Trib1688/ArableArea_km2,
+  PopdensArable_Trib1720 = Trib1720/ArableArea_km2,
+  PopdensArable_Trib1725 = Trib1725/ArableArea_km2,
+  PopdensArable_Trib1730 = Trib1730/ArableArea_km2,
+  PopdensArable_Trib1735 = Trib1735/ArableArea_km2,
+  PopdensArable_Fam1743 = Fam_1743/ArableArea_km2,
+  PopdensArable_Trib1745 = Trib1745/ArableArea_km2,
+  PopdensArable_Trib1750 = Trib1750/ArableArea_km2,
+  PopdensArable_Trib1765 = Trib1765/ArableArea_km2,
+  PopdensArable_Trib1775 = Trib1775/ArableArea_km2,
+  PopdensArable_Trib1780 = Trib1780/ArableArea_km2,
+  PopdensArable_Trib1785 = Trib1785/ArableArea_km2,
+  PopdensArable_Trib1790 = Trib1790/ArableArea_km2,
+  PopdensArable_Trib1800 = Trib1800/ArableArea_km2,
+  PopdensArable_Trib1810 = Trib1810/ArableArea_km2
+)
+
+write.csv(st_drop_geometry(Juris1800_Data), paste0(wd$data_r,"TribTimeSeries_df.csv"))
+
+st_drop_geometry(Juris1800_Data) 
+st_write(Juris1800_Data, paste0(wd$data_r, "Juris1800_Data_v4.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
 
 st_write(Juris1800_Data, paste0(wd$data_r, "TribTimeSeries.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
 ```
@@ -2238,13 +2935,15 @@ st_write(Juris1800_Data, paste0(wd$data_r, "TribTimeSeries.gpkg"), driver = "GPK
 
 ```{r}
 
-Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3.gpkg"))
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v4.gpkg"))
 
 
 Partidos1800_Data = Partidos1800 %>% filter(In1805MatTribData == "Yes") %>%
   left_join(MT1805_wide, by = "OBJECTID") %>%
   mutate(Popdens_TribPop_km2 = TribClass_TotalPersons_T/Area_km2,
-         Popdens_TotalPopEst_km2 = TotalPop1805_Est/Area_km2)
+         Popdens_TotalPopEst_km2 = TotalPop1805_Est/Area_km2,
+         PopdensArable_TribPop_km2 = TribClass_TotalPersons_T/ArableArea_km2,
+         PopdensArable_TotalPopEst_km2 = TotalPop1805_Est/ArableArea_km2)
 
 setdiff(MT1805_wide$OBJECTID,Partidos1800_Data$OBJECTID)
 setdiff(Partidos1800_Data$OBJECTID,MT1805_wide$OBJECTID)
@@ -2265,12 +2964,84 @@ plot(st_geometry(Partidos1800_Data_OUW), col = sf.colors(12, categorical = TRUE)
 #  mutate(Popdens_TribPop_km2 = TribClass_TotalPersons_T/Area_km2,
 #         Popdens_TotalPopEst_km2 = TotalPop1805_Est/Area_km2)
 
-st_write(Partidos1800_Data, paste0(wd$data_r, "Partidos1800_Data_v3.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
+st_write(Partidos1800_Data, paste0(wd$data_r, "Partidos1800_Data_v4.gpkg"), driver = "GPKG", overwrite=TRUE, append=FALSE)
 
 
 
 ```
 
+### 
+```{r}
+sf_use_s2(FALSE)
+Juris1800_Data2 = Juris1800_Data %>% filter(In1805MatTribData == "Yes")
+
+intersection <- st_intersection(Juris1800_Data2, Partidos1800_Data)
+
+overlap_max <- intersection %>%
+  group_by(polygons2_id = st_coordinates(.)[, 1]) %>%
+  summarize(max_overlap_id = polygons1_id[which.max(st_area(.))])
+```
+
+
+### Spatial Autocorrelation
+
+```{r}
+#Cabeceras1805_Juris <- st_read(paste0(wd$data_r,"Cabeceras1805_Juris.gpkg"))
+
+
+Partidos1800_nb <- poly2nb(Partidos1800_Data)
+Partidos_listw <- nb2listw(Partidos1800_nb)
+Juris1800_nb  <- poly2nb(Juris1800_Data2)
+Juris_listw <- nb2listw(Juris1800_nb)
+
+Partidos1800_pts = st_as_sf(st_drop_geometry(Partidos1800_Data), coords = c("CabeceraLonX", "CabeceraLatY"), 
+                 crs = 4326)
+
+Juris1800_pts = st_as_sf(st_drop_geometry(Juris1800_Data2), coords = c("CabeceraLonX", "CabeceraLatY"), 
+                 crs = 4326)
+
+plot(st_geometry(Partidos1800_pts))
+
+plot(st_geometry(Partidos1800_Data), border="grey")
+plot(Partidos1800_nb, st_geometry(Partidos1800_pts), add=TRUE, col="blue")
+
+plot(st_geometry(Juris1800_Data2), border="grey")
+plot(Juris1800_nb, st_geometry(Juris1800_pts), add=TRUE, col="blue")
+
+moran.test(Partidos1800_Data$PT_ratio_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$PT_ratio_C16_IP, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$PT_ratio_C16_T, Partidos_listw, na.action=na.omit)
+
+moran.test(Partidos1800_Data$Popdens_TotalPopEst_km2, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Popdens_TotalPopEst_km2, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$PC_ratio_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$TributePerCapita_1805, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$VoSoC_ratio_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$NC_ratio_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$VSC_ratio_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$VaSaC_ratio_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_NonTribAge_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_Married_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$PT_ratio_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_Reservados_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_Ausentes_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_TotalExempt_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_TotalExempt_I, Partidos_listw, na.action=na.omit)
+
+moran.test(Partidos1800_Data$Pct_Ninos_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_Proximos_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_Ninos_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$Pct_NinosProximos_C16_I, Partidos_listw, na.action=na.omit)
+moran.test(Partidos1800_Data$, Partidos_listw, na.action=na.omit)
+Pct_Proximos_C16_I
+Pct_Ninos_C16_I
+Pct_NinosProximos_C16_I
+
+plot(Partidos1800_Data["Pct_Proximos_C16_I"])
+plot(Partidos1800_Data["Pct_Ninos_C16_I"])
+plot(Partidos1800_Data["Pct_NinosProximos_C16_I"])
+plot(Partidos1800_Data["PT_ratio_C16_NML"])
+```
 
 
 ```{r}

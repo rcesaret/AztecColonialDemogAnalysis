@@ -1,0 +1,209 @@
+---
+title: "Variable Rates of Decline"
+author: "Rudolf Cesaretti"
+date: "2024-04-03"
+output: html_document
+---
+
+
+```{r, setup, include=FALSE,echo=FALSE, message=FALSE,warning=FALSE}
+require(knitr)
+# Set so that long lines in R will be wrapped:
+opts_chunk$set(tidy.opts=list(width.cutoff=75),tidy=TRUE)
+#
+rm(list = ls())
+```
+
+## Setup
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r}
+wd <- list()
+wd$dir <- "C:/Users/TJ McMote/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+#wd$dir <- "D:/Dropbox (ASU)/AztecColonialDemography/AztecColonialDemogAnalysis/"
+
+wd$analysis <- paste0(wd$dir,"analysis/")
+wd$data_r <- paste0(wd$dir,"data-raw/")
+wd$data_p <- paste0(wd$dir,"data-processed/")
+wd$data_f <- paste0(wd$dir,"data-final-outputs/")
+wd$figs <- paste0(wd$dir,"figures/")
+wd$funcs <- paste0(wd$dir,"functions/")
+
+packages <- c("ggstatsplot", "rgdal", "rgeos", "sp", "sf", "spdep", "GISTools", 
+              "raster","stars", "terra", "spatstat",
+              "tidyverse", "tidyr", "nls.multstart", "nlme", "brms", "broom", 
+              "ggrepel", "minpack.lm", "data.table", "zoo", "lmtest", "sandwich", 
+              "nlstools", "MASS", "NSM3", "gridExtra", "ggnewscale", "cowplot", 
+              "scales", "viridis", "Cairo", "SpatialAcc","geodist", "REAT", "boot",
+              "fitdistrplus", "actuar", "DemoTools", "NSM3", "km.ci", "MASS", "DemoTools",
+              "easystats")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# load packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+rm(packages,installed_packages)
+
+
+
+```
+
+```{r}
+ParishFoundationsC16 = read.csv(paste0(wd$data_r,"ParishFoundationsC16.csv"))
+Parish <- ParishFoundationsC16 %>% 
+  separate_rows(Town, sep = ",\\s*")
+
+write.csv(Parish, paste0(wd$data_r,"ParishFoundationsC16_long.csv"))
+```
+
+```{r}
+Church <- ChurchConstructC16 %>% 
+  separate_rows(Town, sep = ",\\s*")
+
+Encoding(ChurchConstructC16$Town) <- "UTF-8"
+
+Church2 <- ChurchConstructC16 %>% filter(DecadeStart == 1570 & MO == "OFM") %>%
+  separate_rows(Town, sep = ",\\s*")
+
+write.csv(Parish, paste0(wd$data_r,"ChurchConstructC16_long.csv"))
+
+
+```
+
+
+
+```{r}
+CCC16 = read.csv(paste0(wd$data_r,"ChurchConstructC16_new.csv"))
+Encoding(CCC16$Town) <- "UTF-8"
+
+
+CCC16_Juris_wide = CCC16 %>% select(DecadeStart, MO, Town, Juris, Provincia, Decades) %>% 
+  pivot_wider(id_cols= c(MO, Town, Juris, Provincia), names_prefix = "CC", names_from = DecadeStart, values_from = Decades, values_fill = 0) %>%
+  mutate(across(everything(), ~ ifelse(. == "NULL", 0, .))) %>% 
+  mutate(CC1530 = as.numeric(CC1530)) %>%
+  group_by(Juris, Provincia) %>% 
+  summarize(CC1520 = sum(CC1520, na.rm=T),
+          CC1530 = sum(CC1530, na.rm=T),
+          CC1540 = sum(CC1540, na.rm=T),
+          CC1550 = sum(CC1550, na.rm=T),
+          CC1560 = sum(CC1560, na.rm=T),
+          CC1570 = sum(CC1570, na.rm=T),
+          CC1580 = sum(CC1580, na.rm=T),
+          CC1590 = sum(CC1590, na.rm=T),
+          CC1600 = sum(CC1600, na.rm=T),
+          CC1610 = sum(CC1610, na.rm=T))
+
+CCC16_Juris_long = CCC16_Juris_wide %>% pivot_longer(cols = CC1520:CC1610, names_to = "Variable", values_to = "Value") %>% mutate(
+    DecadeStart = as.numeric(str_sub(Variable, start = 3)) # Remove first two characters and convert to numeric
+  )
+
+
+CCC16_Prov_long = CCC16_Juris_long %>% group_by(Provincia,Variable,DecadeStart) %>% summarize(Value = sum(Value)) %>% mutate(index = 1/cumsum(Value))
+
+CCC16_Prov_long %>% filter(Provincia == "Mexico") %>% ggplot(aes(DecadeStart, index, color=Provincia))+geom_line()
+```
+
+
+
+Show in New Window
+Error in type.convert.default(data[[i]], as.is = as.is[i], dec = dec,  : 
+  invalid multibyte string at '<96>152'
+Show in New Window
+Warning: input string 1 is invalid UTF-8
+Show in New Window
+[1] "Apa y Tepeapulco"  "Chalchihuites"     "Durango"           "Huajuapan"         "Huexotzingo"       "Mexicaltzinco"    
+ [7] "Nombre de Dios"    "Teotihuacan"       "Tetela del Volcan" "Tlaltenango"         
+
+Apa 
+Huajuapan y Tonala
+Huejotzingo
+Mexicaltzingo
+```{r}
+
+CCC16_Juris_wide2 = CCC16_Juris_wide %>% 
+  mutate(Juris = case_when(
+  Juris == "Apa y Tepeapulco" ~ "Apa",
+  Juris == "Huajuapan" ~ "Huajuapan y Tonala",
+  Juris == "Huexotzingo" ~ "Huejotzingo",
+  Juris == "Mexicaltzinco" ~ "Mexicaltzingo",
+  Juris == "Tetela del Volcan" ~ "Cuautla",
+  .default = Juris
+)) %>% group_by(Juris, Provincia) %>% 
+  summarize(CC1520 = sum(CC1520, na.rm=T),
+          CC1530 = sum(CC1530, na.rm=T),
+          CC1540 = sum(CC1540, na.rm=T),
+          CC1550 = sum(CC1550, na.rm=T),
+          CC1560 = sum(CC1560, na.rm=T),
+          CC1570 = sum(CC1570, na.rm=T),
+          CC1580 = sum(CC1580, na.rm=T),
+          CC1590 = sum(CC1590, na.rm=T),
+          CC1600 = sum(CC1600, na.rm=T),
+          CC1610 = sum(CC1610, na.rm=T)) %>% ungroup()
+
+Partidos1800 <- st_read(paste0(wd$data_r,"Partidos1800_Poly_v3.gpkg"))
+
+tmp = Partidos1800 %>% mutate(Juris = case_when(
+  Nombre == "San Juan Teotihuacan" ~ "Teotihuacan",
+  .default = Nombre
+  
+), ProvinciaOrg = Provincia, 
+   Provincia = case_when(
+    Provincia == "Oaxaca (Antequera)" ~ "Oaxaca",
+    Provincia == "Durango (Durango | Parral)" ~ "Durango",
+    .default = Provincia
+))
+
+Partidos1800_Arch = tmp %>% left_join(CCC16_Juris_wide2, by=join_by(Juris == Juris, Provincia == Provincia)) %>% select(Juris, Provincia, CC1520:CC1610, OBJECTID, Area_km2, State, GerhardName, GerhardNum, CabeceraLonX, CabeceraLatY) %>% filter(CC1520 > -1)
+
+setdiff(Partidos1800_Arch$Juris, CCC16_Juris_wide2$Juris)
+setdiff(CCC16_Juris_wide2$Juris, Partidos1800_Arch$Juris)
+
+
+```
+
+
+```{r}
+coords = cbind(Partidos1800_Arch$CabeceraLonX, Partidos1800_Arch$CabeceraLatY)
+
+x = pointDistance(coords, lonlat = T, allpairs = T)/1000
+x[is.na(x)] <- 0
+dmat = x+t(x)
+colnames(dmat) = Partidos1800_Arch$Juris
+rownames(dmat) = Partidos1800_Arch$Juris
+
+ac(n = Partidos1800_Arch$CC1550, D = dmat, d0 = 99999999, family = "Hansen")
+#distance(coords, coords, type = "euclidean")
+
+###############333333333
+df = st_drop_geometry(Partidos1800_Arch)
+od = dist.mat(df, sp_id  = "Juris", lat_start = "CabeceraLatY", lon_start = "CabeceraLonX", endpoints = df, ep_id  = "Juris", 
+lat_end = "CabeceraLatY", lon_end = "CabeceraLonX", unit = "km")
+
+df_od <- merge(od, df, by.x = "from", by.y = "Juris")  
+
+df_od$CC1570_1600 = df_od$CC1570 + df_od$CC1580 + df_od$CC1590
+df_od$CC1570_1620 = df_od$CC1570 + df_od$CC1580 + df_od$CC1590 + df_od$CC1600 + df_od$CC1610
+df_od$CC1600_1620 = df_od$CC1600 + df_od$CC1610
+df_od$CC1520_1550 = df_od$CC1520 + df_od$CC1530 + df_od$CC1540
+df_od$CC1550_1570 = df_od$CC1550 + df_od$CC1560
+df_od$CC1520_1570 = df_od$CC1520 + df_od$CC1530 + df_od$CC1540 + df_od$CC1550 + df_od$CC1560
+
+hans = hansen(df_od, "to", "from", "CC1520_1570",  "distance", dtype = "exp", lambda = -0.5, extract_local = T)  
+
+x = Partidos1800_Arch %>% left_join(hans, by=join_by(Juris == to))
+
+plot(x["accessibility"])
+
+```
+
+
+
